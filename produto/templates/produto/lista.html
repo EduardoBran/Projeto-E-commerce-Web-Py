@@ -18,16 +18,22 @@
 
 
                 <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                        to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{ produto.nome }}</h5>
+                    <p class="card-text">{{ produto.descricao_curta }}</p>
                     <div class="container product-price-block text-center">
+
+                        {% if produto.preco_marketing_promocional %}
                         <span class="product-price">
-                            R$ 54,90
+                            {{ produto.preco_marketing_promocional }}
                         </span>
                         <span class="product-old-price text-muted">
-                            R$ 99,90
+                            {{ produto.preco_marketing }}
                         </span>
+                        {% else %}
+                        <span class="product-price">
+                            {{ produto.preco_marketing}}
+                        </span>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="card-footer bg-transparent border-top-light-custom text-center">
