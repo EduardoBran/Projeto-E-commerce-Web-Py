@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="row">
+    <div class="col-lg">
+        <div class="row no-gutters">
+            <div class="col-lg-12">
+                <img class="img-fluid" src="imgs/keyboard_robot_bw_clone_lego_27558_1280x720.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg">
+        <div class="mt-4 mt-lg-0">
+            <h1 class="h2">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling
+                extra attention to featured content or information.</p>
+            <p class="lead">
+                <span id="variation-preco" class="lead product-price">R$29,90</span>
+                <span id="variation-preco-promocional" class="lead product-old-price text-muted">R$49,90</span>
+            </p>
+
+            <form action="/addtocart/" id="form-add-to-cart">
+                <div class="form-group">
+                    <select id="select-variacoes" name="vid" class="form-control form-control-lg">
+                        <option data-preco="R$ 59,90" data-preco-promocional="R$ 39,90" value="45">P
+                        </option>
+                        <option data-preco="R$ 51,90" data-preco-promocional="R$ 49,90" value="45">M
+                        </option>
+                        <option data-preco="R$ 52,90" data-preco-promocional="R$ 89,90" value="45">G
+                        </option>
+                    </select>
+                </div>
+
+                <div class="text-left">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
