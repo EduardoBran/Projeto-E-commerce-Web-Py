@@ -6,15 +6,16 @@
     <div class="col-lg">
         <div class="row no-gutters">
             <div class="col-lg-12">
-                <img class="img-fluid" src="imgs/keyboard_robot_bw_clone_lego_27558_1280x720.jpg">
+                {% if produto.imagem %}
+                <img class="img-fluid" src="{{ produto.imagem.url }}">
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="col-lg">
         <div class="mt-4 mt-lg-0">
-            <h1 class="h2">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling
-                extra attention to featured content or information.</p>
+            <h1 class="h2">{{ produto.nome }}</h1>
+            <p class="lead">{{ produto.descricao_curta }}</p>
             <p class="lead">
                 <span id="variation-preco" class="lead product-price">R$29,90</span>
                 <span id="variation-preco-promocional" class="lead product-old-price text-muted">R$49,90</span>
@@ -46,4 +47,12 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="mt-5 mb-5">
+            <h2 class="text-center">{{ produto.nome }}</h2>
+            {{ produto.descricao_longa|linebreaks }}
+        </div>
+    </div>
+</div>
 {% endblock %}
