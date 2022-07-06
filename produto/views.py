@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views import View
 from django.http import HttpResponse
+from django.contrib import messages
 from . import models
 
 
@@ -22,6 +23,14 @@ class DetalheProduto(DetailView):
 
 class AdicionarAoCarrinho(View):
     def get(self, *args, **kwargs):
+
+        messages.error(
+            self.request,
+            'Erro de teste'
+        )
+        # redirect para a página que o usuário estava anteriormente
+        return redirect(self.request.META['HTTP_REFERER'])
+
         return HttpResponse('Adicionar carrinho')
 
 
