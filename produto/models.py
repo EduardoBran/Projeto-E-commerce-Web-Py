@@ -69,6 +69,7 @@ class Produto(models.Model):
         return self.nome
 
     class Meta:
+        ordering = ['id']
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
 
