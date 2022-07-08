@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load omfilters %}
+{% load static %}
 
 {% block conteudo %}
 
-{% if request.session.carrinho %}
+{% if carrinho.values %}
 
 <div class="row mt-3">
     <div class="col">
@@ -19,22 +21,43 @@
                     <th>Total</th>
                 </tr>
 
+                {% for linha_carrinho in carrinho.values %}
 
                 <tr>
                     <td class="d-none d-lg-block">
-                        <img class="cart-img" src="imgs/7eb9d706-b8e3-48d0-957e-25f4a722f944.jpg">
+                        <img class="cart-img" src="{% get_media_prefix %}{{ linha_carrinho.imagem }}">
                     </td>
                     <td>
-                        Nome do produto que o cliente está comprando
+                        <a href="{% url 'produto:detalhe' linha_carrinho.slug %}">
+                            {{ linha_carrinho.produto_nome }}
+                        </a>
                         <a class="ml-3" href="#">
                             <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
                         </a>
                     </td>
-                    <td>Variação</td>
-                    <td>2x</td>
-                    <td>R$ 10500,59</td>
+                    <td>{{ linha_carrinho.variacao_nome }}</td>
+                    <td>
+                        {{ linha_carrinho.quantidade }} x
+                        {% if linha_carrinho.preco_unitario_promocional %}
+                        {{ linha_carrinho.preco_unitario_promocional }}
+                        {% else %}
+                        {{ linha_carrinho.preco_unitario }}
+                        {% endif %}
+
+                    </td>
+
+                    {% if linha_carrinho.preco_quantitativo_promocional %}
+
+                    <td>{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}</td>
+
+                    {% else %}
+
+                    <td>{{ linha_carrinho.preco_quantitativo|formata_preco }}</td>
+
+                    {% endif %}
                 </tr>
 
+                {% endfor %}
 
             </table>
         </div>
@@ -71,5 +94,11 @@
 </div>
 
 {% endif %}
+
+
+<br><br>
+{{ request.session.carrinho }}
+<br><br>
+
 
 {% endblock %}

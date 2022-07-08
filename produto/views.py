@@ -46,6 +46,7 @@ class AdicionarAoCarrinho(View):
             return redirect(http_referer)
 
         variacao = get_object_or_404(models.Variacao, id=variacao_id)
+
         variacao_estoque = variacao.estoque
         produto = variacao.produto
 
@@ -126,7 +127,10 @@ class RemoverDoCarrinho(View):
 
 class Carrinho(View):
     def get(self, *args, **kwargs):
-        return render(self.request, 'produto/carrinho.html')
+        contexto = {
+            'carrinho': self.request.session.get('carrinho', {})
+        }
+        return render(self.request, 'produto/carrinho.html', contexto)
 
 
 class Finalizar(View):
