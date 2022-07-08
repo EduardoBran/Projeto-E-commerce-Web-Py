@@ -84,7 +84,7 @@ class AdicionarAoCarrinho(View):
             if variacao_estoque < quantidade_carrinho:
                 messages.warning(
                     self.request,
-                    f'Estoque insuficiente para {quantidade_carrinho}x no produto "{produto_nome}".'
+                    f'Estoque insuficiente para {quantidade_carrinho}x no produto "{produto_nome}". '
                     f'Adicionamos {variacao_estoque}x no seu carrinho.'
                 )
                 quantidade_carrinho = variacao_estoque
