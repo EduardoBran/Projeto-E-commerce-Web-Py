@@ -4,7 +4,7 @@
 
 {% block conteudo %}
 
-{% if carrinho.values %}
+{% if carrinho %}
 
 <div class="row mt-3">
     <div class="col">
@@ -31,7 +31,8 @@
                         <a href="{% url 'produto:detalhe' linha_carrinho.slug %}">
                             {{ linha_carrinho.produto_nome }}
                         </a>
-                        <a class="ml-3" href="#">
+                        <a class="ml-3"
+                            href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
                             <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
                         </a>
                     </td>
@@ -94,11 +95,5 @@
 </div>
 
 {% endif %}
-
-
-<br><br>
-{{ request.session.carrinho }}
-<br><br>
-
 
 {% endblock %}
