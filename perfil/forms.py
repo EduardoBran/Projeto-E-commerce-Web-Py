@@ -14,12 +14,13 @@ class UserForm(forms.ModelForm):
     password = forms.CharField(
         required=False,
         widget=forms.PasswordInput(),
-        label='Senha*'
+        label='Senha'
+        # help_text=''
     )
     password2 = forms.CharField(
         required=False,
         widget=forms.PasswordInput(),
-        label='Confirmação senha*'
+        label='Confirmação senha'
     )
 
     def __init__(self, usuario=None, *args, **kwargs):
@@ -49,6 +50,7 @@ class UserForm(forms.ModelForm):
         error_msg_email_exists = 'E-mail já existe.'
         error_msg_password_match = 'As duas senhas não conferem.'
         error_msg_password_short = 'Sua senha precisa de pelo menos 6 caracters.'
+        error_msg_require_field = 'Este campo é obrigatório.'
 
         # Usuários logados: atualização
         if self.usuario:
@@ -57,7 +59,7 @@ class UserForm(forms.ModelForm):
                     validation_error_msgs['username'] = error_msg_user_exists
 
             if email_db:
-                if email_data != email_db:
+                if email_data != email_db.email:
                     validation_error_msgs['email'] = error_msg_email_exists
 
             if password_data:
@@ -70,7 +72,24 @@ class UserForm(forms.ModelForm):
 
         # Usuários não logados: cadastro
         else:
-            ...
+            if usuario_db:
+                validation_error_msgs['username'] = error_msg_user_exists
+
+            if email_db:
+                validation_error_msgs['email'] = error_msg_email_exists
+
+            if not password_data:
+                validation_error_msgs['password'] = error_msg_require_field
+
+            if not password2_data:
+                validation_error_msgs['password2'] = error_msg_require_field
+
+            if password_data != password2_data:
+                validation_error_msgs['password'] = error_msg_password_match
+                validation_error_msgs['password2'] = error_msg_password_match
+
+            if len(password_data) < 6:
+                validation_error_msgs['password'] = error_msg_password_short
 
         if validation_error_msgs:
             raise(forms.ValidationError(validation_error_msgs))
