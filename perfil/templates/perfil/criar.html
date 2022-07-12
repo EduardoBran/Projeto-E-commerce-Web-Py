@@ -6,15 +6,21 @@
 <div class="row">
 
     {% if not request.user.is_authenticated %}
-    <div class="col-lg">
-        <h1>Login</h1>
+    <div class="col-lg mt-3">
+        <h4>Login</h4>
+        <p>
+            Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:
+        </p>
     </div>
     {% endif %}
 
-    <div class="col-lg">
+    <div class="col-lg mt-3">
 
         {% block titulocadastro %}
-        <h1>Cadastro</h1>
+        <h4>Cadastro</h4>
+        <p>
+            Caso ainda não tenha cadastro, utilize o formulário abaixo para se cadastrar:
+        </p>
         {% endblock %}
 
         <form method="POST" , action="">
