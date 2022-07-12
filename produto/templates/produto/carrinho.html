@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load omfilters %}
-{% load static %}
 
 {% block conteudo %}
 
@@ -11,57 +10,7 @@
         <h3>Carrinho de compras</h3>
         <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
 
-        <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <th class="d-none d-lg-block">Imagem</th>
-                    <th>Produto</th>
-                    <th>V.</th>
-                    <th>QTD.</th>
-                    <th>Total</th>
-                </tr>
-
-                {% for linha_carrinho in carrinho.values %}
-
-                <tr>
-                    <td class="d-none d-lg-block">
-                        <img class="cart-img" src="{% get_media_prefix %}{{ linha_carrinho.imagem }}">
-                    </td>
-                    <td>
-                        <a href="{% url 'produto:detalhe' linha_carrinho.slug %}">
-                            {{ linha_carrinho.produto_nome }}
-                        </a>
-                        <a class="ml-3"
-                            href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
-                            <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
-                        </a>
-                    </td>
-                    <td>{{ linha_carrinho.variacao_nome }}</td>
-                    <td>
-                        {{ linha_carrinho.quantidade }} x
-                        {% if linha_carrinho.preco_unitario_promocional %}
-                        {{ linha_carrinho.preco_unitario_promocional }}
-                        {% else %}
-                        {{ linha_carrinho.preco_unitario }}
-                        {% endif %}
-
-                    </td>
-
-                    {% if linha_carrinho.preco_quantitativo_promocional %}
-
-                    <td>{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}</td>
-
-                    {% else %}
-
-                    <td>{{ linha_carrinho.preco_quantitativo|formata_preco }}</td>
-
-                    {% endif %}
-                </tr>
-
-                {% endfor %}
-
-            </table>
-        </div>
+        {% include 'parciais/_carrinho.html' %}
     </div>
 </div>
 
@@ -79,7 +28,7 @@
         </div>
     </div>
     <div class="col-lg mt-auto">
-        <a class="btn btn-lg btn-block btn-primary" href="#">
+        <a class="btn btn-lg btn-block btn-primary" href="{% url 'produto:resumodacompra' %}">
             Finalizar a compra
         </a>
     </div>

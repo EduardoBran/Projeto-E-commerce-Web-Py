@@ -1,4 +1,3 @@
-from cmath import log
 from this import s
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.list import ListView

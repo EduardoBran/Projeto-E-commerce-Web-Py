@@ -1,1 +1,98 @@
-produto / resumodacompra
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="row mb-5">
+    <div class="col-lg">
+        <h2>Resumo da sua compra</h2>
+
+        <p class="lead">Dados do usuário</p>
+        <p>Caso precise editar, <a href="/userprofile/update/">clique aqui</a></p>
+        <dl class="row">
+            <dt class="col-lg-2">Nome:</dt>
+            <dd class="col-lg-4">John</dd>
+            <dt class="col-lg-2">Sobrenome:</dt>
+            <dd class="col-lg-4">Caralho</dd>
+
+            <dt class="col-lg-2">Idade:</dt>
+            <dd class="col-lg-4">55</dd>
+            <dt class="col-lg-2">Nascimento:</dt>
+            <dd class="col-lg-4">30 de Abril de 1898</dd>
+
+            <dt class="col-lg-2">CPF:</dt>
+            <dd class="col-lg-4">11111111111</dd>
+            <dt class="col-lg-2">E-mail:</dt>
+            <dd class="col-lg-4">email@gmail.com</dd>
+        </dl>
+
+        <p class="lead">Dados de endereço</p>
+        <p>Caso precise editar, <a href="#">clique aqui</a></p>
+        <dl class="row">
+            <dt class="col-lg-2">Endereço:</dt>
+            <dd class="col-lg-4">Av. Filho Junior</dd>
+            <dt class="col-lg-2">Número:</dt>
+            <dd class="col-lg-4">12</dd>
+
+            <dt class="col-lg-2">Complemento:</dt>
+            <dd class="col-lg-4">Casa</dd>
+            <dt class="col-lg-2">Nascimento:</dt>
+            <dd class="col-lg-4">Centro</dd>
+
+            <dt class="col-lg-2">Cidade:</dt>
+            <dd class="col-lg-4">São Paulo</dd>
+            <dt class="col-lg-2">Estado:</dt>
+            <dd class="col-lg-4">SP</dd>
+
+            <dt class="col-lg-2">CEP:</dt>
+            <dd class="col-lg-4">00000000</dd>
+        </dl>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+        <h3>Carrinho de compras</h3>
+        <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
+
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th class="d-none d-lg-block">Imagem</th>
+                    <th>Produto</th>
+                    <th>AT.</th>
+                    <th>QTD.</th>
+                    <th>Total</th>
+                </tr>
+
+                <tr>
+                    <td class="d-none d-lg-block">
+                        <img class="img-thumbnail img-fluid" style="width:150px; height: auto;"
+                            src="imgs/7eb9d706-b8e3-48d0-957e-25f4a722f944.jpg">
+                    </td>
+                    <td>
+                        Camiseta Redbug Super Natural Bros
+                        <a class="ml-3" href="#">
+                            <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    <td>P</td>
+                    <td>1 x 39,9</td>
+                    <td>R$ 39,90</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <a class="btn btn-block btn-primary btn-lg" href="#">
+            Realizar pedido e pagar
+        </a>
+    </div>
+</div>
+
+{% endblock %}
