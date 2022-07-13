@@ -28,9 +28,15 @@
         </div>
     </div>
     <div class="col-lg mt-auto">
+        {% if request.user.is_authenticated %}
         <a class="btn btn-lg btn-block btn-primary" href="{% url 'produto:resumodacompra' %}">
-            Finalizar a compra
+            Comprar
         </a>
+        {% else %}
+        <a class="btn btn-lg btn-block btn-primary" href="{% url 'perfil:criar' %}">
+            Entrar ou cadastrar e comprar
+        </a>
+        {% endif %}
     </div>
 </div>
 
