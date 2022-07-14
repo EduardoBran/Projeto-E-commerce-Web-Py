@@ -10,7 +10,15 @@ from .models import Pedido, ItemPedido
 from utils import utils
 
 
-class Pagar(DetailView):
+class DispatchLoginRequired(View):
+    def dispatch(self, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('perfil:criar')
+
+        return super().dispatch(*args, **kwargs)
+
+
+class Pagar(DispatchLoginRequired, DetailView):
     template_name = 'pedido/pagar.html'
     model = Pedido
     pk_url_kwarg = 'pk'
