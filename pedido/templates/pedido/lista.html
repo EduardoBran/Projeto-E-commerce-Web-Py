@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+{% load omfilters %}
+
 {% block conteudo %}
 
 <div class="row">
     <div class="col">
-        <h3 class="mb-4">Pedidos de luizotavio</h3>
+        <h3 class="mb-4">Pedidos de {{ user }}</h3>
         <p>Abaixo todos os seus pedidos realizados na loja.</p>
 
         <div class="table-responsive">
@@ -17,35 +19,25 @@
                     <th scope="col">Mais detalhes</th>
                 </tr>
 
-
+                {% for pedido in pedidos %}
                 <tr>
-                    <th scope="row">Pedido N. 15</td>
-                    <td>R$ 2227,90</td>
-                    <td>2</td>
-                    <td>Criado</td>
+                    <th scope="row">{{ pedido }}</td>
+                    <td>{{ pedido.total|formata_preco }}</td>
+                    <td>{{ pedido.qtd_total }}</td>
+                    <td>{{ pedido.get_status_display }}</td>
                     <td>
-                        <a href="/pedido/detalhe/15">
+                        <a href="{% url 'pedido:detalhe' pedido.id %}">
                             Ver <i class="fas fa-search-plus ml-2"></i>
                         </a>
                     </td>
                 </tr>
-
-                <tr>
-                    <th scope="row">Pedido N. 10</td>
-                    <td>R$ 54,90</td>
-                    <td>1</td>
-                    <td>Criado</td>
-                    <td>
-                        <a href="/pedido/detalhe/10">
-                            Ver <i class="fas fa-search-plus ml-2"></i>
-                        </a>
-                    </td>
-                </tr>
-
+                {% endfor %}
 
             </table>
         </div>
     </div>
 </div>
+
+{% include 'parciais/_pagination.html' %}
 
 {% endblock %}
