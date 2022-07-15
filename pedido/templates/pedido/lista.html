@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="row">
+    <div class="col">
+        <h3 class="mb-4">Pedidos de luizotavio</h3>
+        <p>Abaixo todos os seus pedidos realizados na loja.</p>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Qtd. Itens</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Mais detalhes</th>
+                </tr>
+
+
+                <tr>
+                    <th scope="row">Pedido N. 15</td>
+                    <td>R$ 2227,90</td>
+                    <td>2</td>
+                    <td>Criado</td>
+                    <td>
+                        <a href="/pedido/detalhe/15">
+                            Ver <i class="fas fa-search-plus ml-2"></i>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Pedido N. 10</td>
+                    <td>R$ 54,90</td>
+                    <td>1</td>
+                    <td>Criado</td>
+                    <td>
+                        <a href="/pedido/detalhe/10">
+                            Ver <i class="fas fa-search-plus ml-2"></i>
+                        </a>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
