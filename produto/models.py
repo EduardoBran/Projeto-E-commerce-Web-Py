@@ -1,14 +1,17 @@
-from pickletools import optimize
-from django.db import models
-from django.conf import settings
-from PIL import Image
 import os
+
+from categoria.models import Categoria
+from django.conf import settings
+from django.db import models
 from django.utils.text import slugify
+from PIL import Image
 from utils import utils
 
 
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
+    categoria_produto = models.ForeignKey(
+        Categoria, on_delete=models.DO_NOTHING,  blank=True, null=True, verbose_name='Categoria')
     descricao_curta = models.TextField(
         max_length=255, verbose_name='Descrição curta')
     descricao_longa = models.TextField(verbose_name='Descrição longa')

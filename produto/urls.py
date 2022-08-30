@@ -1,4 +1,5 @@
 from django.urls import path
+
 from . import views
 
 app_name = 'produto'
@@ -13,5 +14,7 @@ urlpatterns = [
     path('carrinho/', views.Carrinho.as_view(), name='carrinho'),
     path('resumodacompra/', views.ResumoDaCompra.as_view(), name='resumodacompra'),
     path('busca/', views.Busca.as_view(), name='busca'),
+    path('categoria/<str:categoria>',
+         views.ProdutoCategoria.as_view(), name='categoria'),
 
 ]

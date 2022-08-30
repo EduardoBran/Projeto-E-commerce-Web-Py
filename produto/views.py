@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from django.views import View
-from django.http import HttpResponse
+from categoria.models import Categoria
 from django.contrib import messages
-from . import models
-from perfil.models import Perfil
 from django.db.models import Q
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.views import View
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+from perfil.models import Perfil
+
+from . import models
 
 
 class ListaProdutos(ListView):
@@ -15,6 +17,13 @@ class ListaProdutos(ListView):
     context_object_name = 'produtos'
     paginate_by = 6
     ordering = ['-id']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = Categoria.objects.all()
+        context['categoria'] = self.kwargs.get('categoria', None)
+        context['termo'] = self.request.GET.get('termo')
+        return context
 
 
 class Busca(ListaProdutos):
@@ -34,6 +43,22 @@ class Busca(ListaProdutos):
         )
 
         self.request.session.save()
+
+        return qs
+
+
+class ProdutoCategoria(ListaProdutos):
+    template_name = 'produto/produto_categoria.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        categoria = self.kwargs.get('categoria', None)
+
+        if not categoria:
+            return qs
+
+        qs = qs.filter(categoria_produto__nome_cat__iexact=categoria)
 
         return qs
 
