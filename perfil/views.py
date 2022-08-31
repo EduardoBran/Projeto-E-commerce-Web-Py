@@ -1,15 +1,16 @@
-from this import s
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic.list import ListView
-from django.views import View
-from django.http import HttpResponse
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
 import copy
 
-from . import models
-from . import forms
+from categoria.models import Categoria
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+from django.views.generic.list import ListView
+from this import s
+
+from . import forms, models
 
 
 class BasePerfil(View):
@@ -43,7 +44,9 @@ class BasePerfil(View):
                 'userform': forms.UserForm(
                     data=self.request.POST or None),
                 'perfilform': forms.PerfilForm(
-                    data=self.request.POST or None)
+                    data=self.request.POST or None),
+                'categorias': Categoria.objects.all(),
+                'categoria': self.kwargs.get('categoria', None)
             }
 
         self.userform = self.contexto['userform']

@@ -69,6 +69,12 @@ class DetalheProduto(DetailView):
     context_object_name = 'produto'
     slug_url_kwarg = 'slug'  # o slug vem da urls.py
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = Categoria.objects.all()
+        context['categoria'] = self.kwargs.get('categoria', None)
+        return context
+
 
 class AdicionarAoCarrinho(View):
     def get(self, *args, **kwargs):
