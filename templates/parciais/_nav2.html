@@ -340,15 +340,15 @@
                         Suporte
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Política de Privacidade</a>
-                        <a class="dropdown-item" href="#">Termos de Uso</a>
+                        <a class="dropdown-item" href="{% url 'suporte:privacidade' %}">Política de Privacidade</a>
+                        <a class="dropdown-item" href="{% url 'suporte:termos' %}">Termos de Uso</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a class="nav-link" href="{% url 'suporte:contato' %}">Contato</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre</a>
+                    <a class="nav-link" href="{% url 'suporte:sobre' %}">Sobre</a>
                 </li>
             </ul>
         </div>
@@ -377,7 +377,7 @@
             <div class="row align-items-center">
                 <div class="col-10 pl-0">
                     <a class="btn btn-primary" href="{% url 'perfil:criar' %}"><i
-                            class="fa-solid fa-circle-user mr-1"></i> LogIn</a>
+                            class="fa-solid fa-circle-user mr-1"></i> Login</a>
                 </div>
 
                 <div class="col-2 text-left">
@@ -403,18 +403,18 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a href="#">Política de Privacidade</a>
+                    <a href="{% url 'suporte:privacidade' %}">Política de Privacidade</a>
                 </li>
                 <li>
-                    <a href="#">Termos de Uso</a>
+                    <a href="{% url 'suporte:termos' %}">Termos de Uso</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="#"><i class="fa-solid fa-phone mr-3"></i> Contato</a>
+            <a href="{% url 'suporte:contato' %}"><i class="fa-solid fa-phone mr-3"></i> Contato</a>
         </li>
         <li>
-            <a href="#"><i class="fa-regular fa-face-smile mr-3"></i></i> Sobre</a>
+            <a href="{% url 'suporte:sobre' %}"><i class="fa-regular fa-face-smile mr-3"></i></i> Sobre</a>
         </li>
     </ul>
 
