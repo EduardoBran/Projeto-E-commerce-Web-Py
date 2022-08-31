@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'pedido',
     'perfil',
     'categoria',
+    'suporte',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
