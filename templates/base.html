@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     {% include 'parciais/_head.html' %}
     <title>{% block titulo %}{% endblock %}E-commerce</title>
 </head>
 
-<body>
-    {% include 'parciais/_nav.html' %}
+<body style='background-color: #e4e4e4;'>
+    {% include 'parciais/_nav2.html' %}
+    <div class="overlay"></div>
     <main class="container mt-4 mb-4">
         {% include 'parciais/_messages.html' %}
         {% block conteudo %}{% endblock %}
