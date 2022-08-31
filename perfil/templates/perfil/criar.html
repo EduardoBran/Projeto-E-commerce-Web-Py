@@ -5,56 +5,90 @@
 
 {% block conteudo %}
 
-<div class="row">
+<style>
+    .fundo {
+        background-image: url('https://i.postimg.cc/9FBHqcMP/blurry-background.jpg');
+        background-size: 100% 100%;
+    }
 
-    {% if not request.user.is_authenticated %}
-    <div class="col-lg mt-3">
-        <h4>Login</h4>
-        <p>
-            Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:
-        </p>
+    .fundo2 {
+        background-color: #F8F8FF;
+    }
 
-        <form method="POST" action="{% url 'perfil:login' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="InputUsuario1">Usuário</label>
-                <input type="text" name='username' class="form-control" id="InputUsuario1"
-                    aria-describedby="usuarioHelp" placeholder="Digite seu usuário">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Senha</label>
-                <input name='password' type="password" class="form-control" id="exampleInputPassword1"
-                    placeholder="Digite sua senha">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Entrar</button>
-        </form>
+    p {
+        font-family: Garamond, Arial;
+        font-size: 19px;
+    }
+</style>
 
-    </div>
-    {% endif %}
+<div class="card shadow border fundo">
+    <div class="card-body">
+        <div class="row">
+            {% if not request.user.is_authenticated %}
+            <div class="col-lg-12 mt-3">
+                <div class="card shadow border fundo2">
+                    <div class="card-body">
 
-    <div class="col-lg mt-3">
+                        <h1 class="text-center" style="font-family: Copperplate, Arial;">Login</h1>
+                        <br>
 
-        {% block titulocadastro %}
-        <h4>Cadastro</h4>
-        <p>
-            Caso ainda não tenha cadastro, utilize o formulário abaixo para se cadastrar:
-        </p>
-        {% endblock %}
+                        <p class="text-center">
+                            Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:
+                        </p>
+                        <br>
 
-        <form method="POST" , action="">
-            {% csrf_token %}
-            {{ userform|crispy }}
-            {{ perfilform|crispy }}
+                        <form method="POST" action="{% url 'perfil:login' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="InputUsuario1">Usuário</label>
+                                <input type="text" name='username' class="form-control" id="InputUsuario1"
+                                    aria-describedby="usuarioHelp" placeholder="Digite seu usuário">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Senha</label>
+                                <input name='password' type="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Digite sua senha">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg"
+                                style="margin-top: 25px;">Entrar</button>
+                        </form>
 
-            <div class="row">
-                <div class="col">
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">
-                        Enviar
-                    </button>
+                    </div>
                 </div>
             </div>
-        </form>
+            {% endif %}
+
+            <div class="col-lg-12 mt-3">
+                <div class="card shadow border fundo2">
+                    <div class="card-body">
+
+                        {% block titulocadastro %}
+                        <h1 class="text-center" style="font-family: Copperplate, Arial;">Cadastro</h1>
+                        <br>
+
+                        <p class="text-center">
+                            Caso ainda não tenha cadastro, utilize o formulário abaixo para se cadastrar:
+                        </p>
+                        <br>
+                        {% endblock %}
+
+                        <form method="POST" , action="">
+                            {% csrf_token %}
+                            {{ userform|crispy }}
+                            {{ perfilform|crispy }}
+
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 {% endblock %}
