@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.views import View
+from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from perfil.models import Perfil
@@ -45,6 +46,10 @@ class Busca(ListaProdutos):
         self.request.session.save()
 
         return qs
+
+
+class Home(ListaProdutos):
+    template_name = 'produto/home.html'
 
 
 class ProdutoCategoria(ListaProdutos):
