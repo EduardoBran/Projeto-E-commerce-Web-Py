@@ -182,4 +182,9 @@ class Logout(View):
         self.request.session['carrinho'] = carrinho
         self.request.session.save()
 
+        messages.warning(
+            self.request,
+            'Usuário foi deslogado com sucesso.'
+        )
+
         return redirect('produto:lista')
