@@ -280,9 +280,13 @@
 
         <ul class="navbar-nav ml-auto d-block d-md-none">
             <li class="nav-item">
-                <a class="btn btn-link" href="#">
+                <a class="btn btn-link" href="{% url 'produto:carrinho' %}">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-danger">3</span>
+                    {% if request.session.carrinho %}
+                    <span class="badge badge-danger">{{ request.session.carrinho|qtd_total_carrinho }}</span>
+                    {% else %}
+                    <span class="badge badge-danger">0</span>
+                    {% endif %}
                 </a>
             </li>
         </ul>
@@ -297,26 +301,21 @@
             </form>
 
             <ul class="navbar-nav">
-                {% if request.session.carrinho %}
+
                 <li class="nav-item">
                     <a class="btn btn-link" href="{% url 'produto:carrinho' %}"><i class="fas fa-shopping-cart"></i>
+                        {% if request.session.carrinho %}
                         <span class="badge badge-danger">
-                            {{ request.session.carrinho|qtd_total_carrinho }}x
+                            {{ request.session.carrinho|qtd_total_carrinho }}
                         </span>
+                        {% else %}
+                        <span class="badge badge-danger">0</span>
+                        {% endif %}
                     </a>
                 </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="btn btn-link" href="{% url 'produto:carrinho' %}"><i class="fas fa-shopping-cart"></i>
-                        <span class="badge badge-danger">
-                            0
-                        </span>
-                    </a>
-                </li>
-                {% endif %}
                 <li class="nav-item ml-md-3">
                     <a class="btn btn-primary" href="{% url 'perfil:criar' %}"><i class="bx bxs-user-circle mr-1"></i>
-                        Log In / Registro
+                        Login / Registro
                     </a>
                 </li>
             </ul>
@@ -333,7 +332,7 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Produtos</a>
+                    <a class="nav-link" href="{% url 'produto:lista' %}">Produtos</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -374,7 +373,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-10 pl-0">
-                    <a class="btn btn-primary" href="#"><i class="fa-solid fa-circle-user mr-1"></i> Log In</a>
+                    <a class="btn btn-primary" href="{% url 'perfil:criar' %}"><i
+                            class="fa-solid fa-circle-user mr-1"></i> LogIn</a>
                 </div>
 
                 <div class="col-2 text-left">
@@ -391,7 +391,7 @@
             <a href="/"><i class="fa-solid fa-house mr-3"></i> Home</a>
         </li>
         <li>
-            <a href="/"><i class="fa-solid fa-briefcase mr-3"></i> Produtos</a>
+            <a href="{% url 'produto:lista' %}"><i class="fa-solid fa-briefcase mr-3"></i> Produtos</a>
         </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
