@@ -7,25 +7,44 @@
 
 <style>
     .fundo {
-        background-image: url('https://i.postimg.cc/9FBHqcMP/blurry-background.jpg');
-        background-size: 100% 100%;
+        width: 100%;
+        min-height: 100%;
+
+        background: #009bff;
+        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+        background: -o-linear-gradient(left, #0072ff, #00c6ff);
+        background: -moz-linear-gradient(left, #0072ff, #00c6ff);
+        background: linear-gradient(left, #0072ff, #00c6ff);
+
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 
     .fundo2 {
-        background-color: #F8F8FF;
+        background-color: #fff;
     }
 
     p {
         font-family: Garamond, Arial;
         font-size: 19px;
     }
+
+    .borda {
+        border-radius: 30px;
+    }
 </style>
 
 <div class="card shadow border fundo">
-    <div class="card-body">
+    <div class="card-body borda">
         <div class="row">
             {% if not request.user.is_authenticated %}
-            <div class="col-lg-12 mt-3">
+            <div class="col-lg-12">
                 <div class="card shadow border fundo2">
                     <div class="card-body">
 
@@ -60,7 +79,7 @@
 
             <div class="col-lg-12 mt-3">
                 <div class="card shadow border fundo2">
-                    <div class="card-body">
+                    <div class="card-body borda">
 
                         {% block titulocadastro %}
                         <h1 class="text-center" style="font-family: Copperplate, Arial;">Cadastro</h1>
