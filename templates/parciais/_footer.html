@@ -5,7 +5,7 @@
 
 <style>
     .site-footer {
-        background: #fff !important;
+        background: #008B8B !important;
         padding: 45px 0 20px;
         font-size: 15px;
         line-height: 24px;
@@ -23,15 +23,16 @@
     }
 
     .site-footer h6 {
-        color: #000;
-        font-size: 16px;
+        color: #fff;
+        font-size: 20px;
         text-transform: uppercase;
         margin-top: 5px;
+        margin-bottom: 20px;
         letter-spacing: 2px
     }
 
     .site-footer a {
-        color: #737373;
+        color: white;
     }
 
     .site-footer a:hover {
@@ -180,7 +181,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h6>Sobre</h6>
-                <p class="text-justify" style="color: #acacac;">
+                <p class="text-justify" style="color: #DCDCDC;">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
                     totam rem aperiam,
                     eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -200,7 +201,7 @@
                     {% for categoria in categorias %}
                     <li>
                         <a class="dropdown-item" href="{% url 'produto:categoria' categoria.nome_cat %}" name="buscar"
-                            style="color: #909093;">
+                            style="color: #DCDCDC;">
                             {{ categoria.nome_cat }}
                         </a>
                     </li>
@@ -212,16 +213,16 @@
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
                     <li>
-                        <a href="/" style="color: #909093;">Home</a>
+                        <a href="/" style="color: #DCDCDC;">Home</a>
                     </li>
                     <li>
-                        <a href="#" style="color: #909093;">Sobre</a>
+                        <a href="#" style="color: #DCDCDC;">Sobre</a>
                     </li>
                     <li>
-                        <a href="#" style="color: #909093;">Contato</a>
+                        <a href="#" style="color: #DCDCDC;">Contato</a>
                     </li>
                     <!-- <li>
-                        <a href="#" style="color: #909093;">Link Rápido 3</a>
+                        <a href="#" style="color: #fff;">Link Rápido 3</a>
                     </li> -->
                 </ul>
             </div>
@@ -241,9 +242,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <p class="copyright-text text-center" style="color: #909093;">
+                <p class="copyright-text text-center" style="color: #fff;">
                     Unique
-                    <a href="https://www.linkedin.com/in/eduardombrandao/" style="color: #909093;">
+                    <a href="https://www.linkedin.com/in/eduardombrandao/" style="color: #fff;">
 
                     </a>
                 </p>
