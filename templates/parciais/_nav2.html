@@ -158,7 +158,7 @@
     }
 
     #sidebar ul li a:hover {
-        color: #7386d5;
+        color: #008B8B;
         background: #fff;
     }
 
@@ -267,6 +267,23 @@
 
     .fundo1 {
         background-color: #008B8B;
+    }
+
+    .botaoSidebar {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .tamanhoBotao {
+        width: 49%;
+    }
+
+    .tamanhoBotaoLogado {
+        width: 32%;
+    }
+
+    .iconesColorSubmenu {
+        color: #343a40;
     }
 </style>
 
@@ -419,44 +436,76 @@
 <nav id="sidebar">
     <div class="sidebar-header">
         <div class="container">
+            {% if request.user.is_authenticated %}
             <div class="row align-items-center">
-                <div class="col-10 pl-0">
-                    {% if request.user.is_authenticated %}
-                    <a class="btn btn-primary" href="{% url 'perfil:criar' %}">
-                        <i class="fa-solid fa-circle-user mr-1"></i>
-                        Atualizar
-                    </a>
-                    <a class="btn btn-danger" href="{% url 'perfil:logout' %}">
-                        <i class="fa-solid fa-circle-user mr-1"></i>
-                        Logout
-                    </a>
-                    {% else %}
-                    <a class="btn btn-primary" href="{% url 'perfil:criar' %}">
-                        <i class="fa-solid fa-circle-user mr-1"></i>
-                        Login
-                    </a>
-                    {% endif %}
-                </div>
-
                 <div class="col-2 text-left">
+                    <i class="fa-regular fa-circle-user fa-3x" style="color: #008B8B;"></i>
+                </div>
+                <div class="col-8 text-center">
+                    <p style="margin: 0; color: #515151;"><strong>Olá, {{ request.user }}</strong></p>
+
+                </div>
+                <div class="col-2 text-right">
                     <button type="button" id="sidebarCollapseX" class="btn btn-link">
-                        <i class="fa-solid fa-xmark"></i>
+                        <i class="fa-solid fa-xmark fa-lg" style="color: #008B8B;"></i>
                     </button>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <button class="btn btn-dark botaoSidebar tamanhoBotaoLogado">
+                        <a href="{% url 'pedido:lista' %}" style="color: white;">Pedidos</a>
+                    </button>
+
+                    <button class="btn btn-dark botaoSidebar tamanhoBotaoLogado">
+                        <a href="{% url 'perfil:criar' %}" style="color: white;">Atualizar</a>
+                    </button>
+
+                    <button class="btn btn-dark botaoSidebar tamanhoBotaoLogado">
+                        <a href="{% url 'perfil:logout' %}" style="color: white;">Logout</a>
+                    </button>
+                </div>
+            </div>
+            {% else %}
+            <div class="row align-items-center">
+                <div class="col-2 text-left">
+                    <i class="fa-regular fa-circle-user fa-3x" style="color: #008B8B;"></i>
+                </div>
+                <div class="col-8 text-center">
+                    <p style="margin: 0; color: #515151;"><strong>Entre ou cadastre-se</strong></p>
+                </div>
+
+                <div class="col-2 text-right">
+                    <button type="button" id="sidebarCollapseX" class="btn btn-link">
+                        <i class="fa-solid fa-xmark fa-lg" style="color: #008B8B;"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <button class="btn btn-dark botaoSidebar tamanhoBotao">
+                        <a href="{% url 'perfil:criar' %}" style="color: white;">Entrar</a>
+                    </button>
+                    <button class="btn btn-dark botaoSidebar tamanhoBotao">
+                        <a href="{% url 'perfil:criar' %}" style="color: white;">Cadastrar</a>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 
     <ul class="list-unstyled components links">
-        <li class="active">
-            <a href="/"><i class="fa-solid fa-house mr-3"></i> Home</a>
+        <li>
+            <a href="/"><i class="fa-solid fa-house mr-3 iconesColorSubmenu"></i> Home</a>
         </li>
         <li>
-            <a href="{% url 'produto:lista' %}"><i class="fa-solid fa-briefcase mr-3"></i> Produtos</a>
+            <a href="{% url 'produto:lista' %}"><i class="fa-solid fa-briefcase mr-3 iconesColorSubmenu"></i>
+                Produtos</a>
         </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fa-solid fa-circle-question mr-3"></i>
+                <i class="fa-solid fa-circle-question mr-3 iconesColorSubmenu"></i>
                 Suporte
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -469,14 +518,18 @@
             </ul>
         </li>
         <li>
-            <a href="{% url 'suporte:contato' %}"><i class="fa-solid fa-phone mr-3"></i> Contato</a>
+            <a href="{% url 'suporte:contato' %}"><i class="fa-solid fa-phone mr-3 iconesColorSubmenu"></i>
+                Contato
+            </a>
         </li>
         <li>
-            <a href="{% url 'suporte:sobre' %}"><i class="fa-regular fa-face-smile mr-3"></i></i> Sobre</a>
+            <a href="{% url 'suporte:sobre' %}"><i class="fa-regular fa-face-smile mr-3 iconesColorSubmenu"></i></i>
+                Sobre
+            </a>
         </li>
     </ul>
 
-    <h6 class="text-uppercase mb-1">Categorias</h6>
+    <h5 class="text-uppercase mb-1"><strong>Categorias</strong></h5>
     <ul class="list-unstyled components mb-3">
         {% for categoria in categorias %}
         <li>
@@ -488,10 +541,10 @@
     </ul>
 
     <ul class="social-icons">
-        <li><a href="#" target="_blank" title=""><i class="fa-brands fa-facebook"></i></a></li>
-        <li><a href="#" target="_blank" title=""><i class="fa-brands fa-twitter"></i></a></li>
-        <li><a href="#" target="_blank" title=""><i class="fa-solid fa-envelope"></i></a></li>
-        <li><a href="#" target="_blank" title=""><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#" target="_blank" title=""><i class="fa-brands fa-facebook iconesColorSubmenu"></i></a></li>
+        <li><a href="#" target="_blank" title=""><i class="fa-brands fa-twitter iconesColorSubmenu"></i></a></li>
+        <li><a href="#" target="_blank" title=""><i class="fa-solid fa-envelope iconesColorSubmenu"></i></a></li>
+        <li><a href="#" target="_blank" title=""><i class="fa-brands fa-instagram iconesColorSubmenu"></i></a></li>
     </ul>
 
 </nav>
