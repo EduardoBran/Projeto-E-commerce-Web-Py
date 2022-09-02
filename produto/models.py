@@ -15,8 +15,7 @@ class Produto(models.Model):
     descricao_curta = models.TextField(
         max_length=255, verbose_name='Descrição curta')
     descricao_longa = models.TextField(verbose_name='Descrição longa')
-    imagem = models.ImageField(
-        upload_to='produto_imagens/%Y/%m/', blank=True, null=True)
+    imagem = models.URLField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
     preco_marketing = models.FloatField(verbose_name='Preço')
     preco_marketing_promocional = models.FloatField(
