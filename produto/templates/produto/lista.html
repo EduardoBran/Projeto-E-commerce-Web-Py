@@ -15,7 +15,7 @@
 
                 {% if produto.imagem %}
                 <a href="{% url 'produto:detalhe' produto.slug %}">
-                    <img class="card-img-top" src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                    <img class="card-img-top" src="{{ produto.imagem }}" alt="{{ produto.nome }}">
                 </a>
                 {% endif %}
 

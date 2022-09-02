@@ -111,11 +111,6 @@ class AdicionarAoCarrinho(View):
         slug = produto.slug
         imagem = produto.imagem
 
-        if imagem:
-            imagem = imagem.name
-        else:
-            imagem = ''
-
         if variacao.estoque < 1:
             messages.error(
                 self.request,
