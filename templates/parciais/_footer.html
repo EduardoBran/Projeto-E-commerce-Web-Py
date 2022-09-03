@@ -216,14 +216,20 @@
                         <a href="/" style="color: #DCDCDC;">Home</a>
                     </li>
                     <li>
-                        <a href="#" style="color: #DCDCDC;">Sobre</a>
+                        <a href="{% url 'produto:lista' %}" style="color: #DCDCDC;">Produtos</a>
                     </li>
                     <li>
-                        <a href="#" style="color: #DCDCDC;">Contato</a>
+                        <a href="{% url 'suporte:privacidade' %}" style="color: #DCDCDC;">Política de Privacidade</a>
                     </li>
-                    <!-- <li>
-                        <a href="#" style="color: #fff;">Link Rápido 3</a>
-                    </li> -->
+                    <li>
+                        <a href="{% url 'suporte:termos' %}" style="color: #DCDCDC;">Termos de Uso</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'suporte:contato' %}" style="color: #DCDCDC;">Contato</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'suporte:sobre' %}" style="color: #DCDCDC;">Sobre</a>
+                    </li>
                 </ul>
             </div>
         </div>
