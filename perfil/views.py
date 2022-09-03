@@ -14,7 +14,7 @@ from . import forms, models
 
 
 class BasePerfil(View):
-    template_name = 'perfil/criar.html'
+    template_name = 'perfil/entrar.html'
 
     def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
@@ -63,6 +63,8 @@ class BasePerfil(View):
 
 
 class Criar(BasePerfil):
+    template_name = 'perfil/criar.html'
+
     def post(self, *args, **kwargs):
         if not self.userform.is_valid() or not self.perfilform.is_valid():
             messages.error(
