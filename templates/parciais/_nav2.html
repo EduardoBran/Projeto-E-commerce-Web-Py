@@ -274,16 +274,25 @@
         color: #fff;
     }
 
+    .botaoSidebar2 {
+        background-color: #f8f9fa;
+        color: #000;
+    }
+
     .tamanhoBotao {
         width: 49%;
     }
 
-    .tamanhoBotaoLogado {
-        width: 32%;
-    }
-
     .iconesColorSubmenu {
         color: #343a40;
+    }
+
+    .editarDados {
+        margin-right: 40px;
+        font-size: 0.8rem;
+        color: #515151;
+        text-decoration: underline;
+        font-style: italic;
     }
 </style>
 
@@ -338,7 +347,7 @@
 
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'perfil:criar' %}">Atualizar dados</a>
+                        <a class="dropdown-item" href="{% url 'perfil:criar' %}">Editar meus dados</a>
                         <a class="dropdown-item" href="{% url 'pedido:lista' %}">Meus pedidos</a>
                         <a class="dropdown-item" href="{% url 'perfil:logout' %}">Logout</a>
                     </div>
@@ -442,7 +451,12 @@
                     <i class="fa-regular fa-circle-user fa-3x" style="color: #008B8B;"></i>
                 </div>
                 <div class="col-8 text-center">
-                    <p style="margin: 0; color: #515151;"><strong>Olá, {{ request.user }}</strong></p>
+                    <p style="margin: 0; color: #515151; font-size: 0.9rem;">
+                        <strong>Olá, {{ request.user }}</strong>
+                    </p>
+                    <p style="margin: 0;">
+                        <a class=" editarDados" href="{% url 'perfil:criar' %}">editar meus dados</a>
+                    </p>
 
                 </div>
                 <div class="col-2 text-right">
@@ -453,16 +467,13 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <button class="btn btn-dark botaoSidebar tamanhoBotaoLogado">
+                    <button class="btn btn-dark botaoSidebar tamanhoBotao">
                         <a href="{% url 'pedido:lista' %}" style="color: white;">Pedidos</a>
                     </button>
 
-                    <button class="btn btn-dark botaoSidebar tamanhoBotaoLogado" style="margin-bottom: 1px;">
-                        <a href="{% url 'perfil:criar' %}" style="color: white;">Atualizar</a>
-                    </button>
-
-                    <button class="btn btn-dark botaoSidebar tamanhoBotaoLogado" style="margin-bottom: 1px;">
-                        <a href="{% url 'perfil:logout' %}" style="color: white;">Logout</a>
+                    <button class="btn btn-light botaoSidebar2 tamanhoBotao border border-dark"
+                        style="margin-bottom: 1px;">
+                        <a href="{% url 'perfil:logout' %}" style="color: #000;">Logout</a>
                     </button>
                 </div>
             </div>
@@ -486,8 +497,9 @@
                     <button class="btn btn-dark botaoSidebar tamanhoBotao">
                         <a href="{% url 'perfil:criar' %}" style="color: white;">Entrar</a>
                     </button>
-                    <button class="btn btn-dark botaoSidebar tamanhoBotao" style="margin-bottom: 1px;">
-                        <a href="{% url 'perfil:criar' %}" style="color: white;">Cadastrar</a>
+                    <button class="btn btn-dark botaoSidebar2 tamanhoBotao border border-dark"
+                        style="margin-bottom: 1px;">
+                        <a href="{% url 'perfil:criar' %}" style="color: #000;">Cadastrar</a>
                     </button>
                 </div>
             </div>
