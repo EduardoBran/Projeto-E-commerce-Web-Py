@@ -281,6 +281,7 @@
 
     .tamanhoBotao {
         width: 49%;
+        border-radius: 25px;
     }
 
     .iconesColorSubmenu {
@@ -467,12 +468,11 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <button class="btn btn-dark botaoSidebar tamanhoBotao">
+                    <button class="btn btn-dark botaoSidebar tamanhoBotao border border-dark">
                         <a href="{% url 'pedido:lista' %}" style="color: white;">Pedidos</a>
                     </button>
 
-                    <button class="btn btn-light botaoSidebar2 tamanhoBotao border border-dark"
-                        style="margin-bottom: 1px;">
+                    <button class="btn btn-light botaoSidebar2 tamanhoBotao border border-dark">
                         <a href="{% url 'perfil:logout' %}" style="color: #000;">Sair</a>
                     </button>
                 </div>
@@ -494,12 +494,11 @@
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-center">
-                    <button class="btn btn-dark botaoSidebar tamanhoBotao">
+                    <button class="btn btn-dark botaoSidebar tamanhoBotao border border-dark">
                         <a href="{% url 'perfil:entrar' %}" style="color: white;">Entrar</a>
                     </button>
-                    <button class="btn btn-dark botaoSidebar2 tamanhoBotao border border-dark"
-                        style="margin-bottom: 1px;">
-                        <a href="{% url 'perfil:criar' %}" style="color: #000;">Cadastrar</a>
+                    <button class="btn btn-dark botaoSidebar2 tamanhoBotao border border-dark">
+                        <a href=" {% url 'perfil:criar' %}" style="color: #000;">Cadastrar</a>
                     </button>
                 </div>
             </div>
