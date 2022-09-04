@@ -7,54 +7,23 @@
 <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
 
 <style>
-    /*---------------------------------------------*/
-    a {
-        font-family: Montserrat-Regular;
-        font-size: 14px;
-        line-height: 1.7;
-        color: #666666;
-        margin: 0px;
-        transition: all 0.4s;
-        -webkit-transition: all 0.4s;
-        -o-transition: all 0.4s;
-        -moz-transition: all 0.4s;
+    /* IMAGEM */
+
+    .contact1-pic {
+        width: 50%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
     }
 
-    a:focus {
-        outline: none !important;
+    .contact1-pic img {
+        max-width: 100%;
     }
 
-    a:hover {
-        text-decoration: none;
-        color: #57b846;
-    }
+    /* FORM */
 
-    /*---------------------------------------------*/
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 0px;
-    }
-
-    p {
-        font-family: Montserrat-Regular;
-        font-size: 14px;
-        line-height: 1.7;
-        color: #666666;
-        margin: 0px;
-    }
-
-    ul,
-    li {
-        margin: 0px;
-        list-style-type: none;
-    }
-
-
-    /*---------------------------------------------*/
     input {
         outline: none;
         border: none;
@@ -102,77 +71,6 @@
         color: #999999;
     }
 
-    /*---------------------------------------------*/
-    button {
-        outline: none !important;
-        border: none;
-        background: transparent;
-    }
-
-    button:hover {
-        cursor: pointer;
-    }
-
-    iframe {
-        border: none !important;
-    }
-
-    /*//////////////////////////////////////////////////////////////////
-[ Contact 1 ]*/
-
-    .contact1 {
-        width: 100%;
-        min-height: 100%;
-        padding: 15px;
-
-        background: #009bff;
-        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
-        background: -o-linear-gradient(left, #0072ff, #00c6ff);
-        background: -moz-linear-gradient(left, #0072ff, #00c6ff);
-        background: linear-gradient(left, #0072ff, #00c6ff);
-
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .container-contact1 {
-        width: 1163px;
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-
-        padding: 90px 130px 88px 148px;
-    }
-
-    /*------------------------------------------------------------------
-[  ]*/
-    .contact1-pic {
-        width: 296px;
-    }
-
-    .contact1-pic img {
-        max-width: 100%;
-    }
-
-
-    /*------------------------------------------------------------------
-[  ]*/
     .contact1-form {
         width: 390px;
     }
@@ -180,11 +78,10 @@
     .contact1-form-title {
         display: block;
         font-family: Montserrat-ExtraBold;
-        font-size: 24px;
+        font-size: 38px;
         color: #333333;
         line-height: 1.2;
         text-align: center;
-        padding-bottom: 44px;
     }
 
     input.input1 {
@@ -207,7 +104,7 @@
         border-radius: 25px;
     }
 
-    /*---------------------------------------------*/
+    /* INPUT FORM */
     .wrap-input1 {
         position: relative;
         width: 100%;
@@ -235,7 +132,7 @@
         width: 100%;
         height: 100%;
         box-shadow: 0px 0px 0px 0px;
-        color: rgba(87, 184, 70, 0.5);
+        color: #004242;
     }
 
     .input1:focus+.shadow-input1 {
@@ -257,7 +154,22 @@
         }
     }
 
-    /*---------------------------------------------*/
+    /* BOTÃO */
+
+    button {
+        outline: none !important;
+        border: none;
+        background: transparent;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    iframe {
+        border: none !important;
+    }
+
     .container-contact1-form-btn {
         display: -webkit-box;
         display: -webkit-flex;
@@ -272,7 +184,7 @@
         min-width: 193px;
         height: 50px;
         border-radius: 25px;
-        background: #57b846;
+        background: #343a40;
         font-family: Montserrat-Bold;
         font-size: 15px;
         line-height: 1.5;
@@ -294,7 +206,6 @@
 
     .contact1-form-btn i {
         margin-left: 7px;
-
         -webkit-transition: all 0.4s;
         -o-transition: all 0.4s;
         -moz-transition: all 0.4s;
@@ -302,7 +213,8 @@
     }
 
     .contact1-form-btn:hover {
-        background: #333333;
+        background: #f1f1f1;
+        color: black;
     }
 
     .contact1-form-btn:hover i {
@@ -313,8 +225,7 @@
         transform: translateX(10px);
     }
 
-    /*------------------------------------------------------------------
-[ Responsive ]*/
+    /* RESPONSIVIDADE */
 
     @media (max-width: 1200px) {
         .contact1-pic {
@@ -322,7 +233,7 @@
         }
 
         .contact1-form {
-            width: 44%;
+            width: 100%;
         }
     }
 
@@ -336,7 +247,7 @@
         }
 
         .contact1-form {
-            width: 55%;
+            width: 100%;
         }
     }
 
@@ -358,10 +269,17 @@
         .container-contact1 {
             padding: 90px 15px 88px 15px;
         }
+
+        .contact1-pic {
+            display: none;
+        }
+
+        .contact1-form {
+            width: 100%;
+        }
     }
 
-    /*------------------------------------------------------------------
-[ Alert validate ]*/
+    /* MENSAGENS DE ALERTA VALIDAÇÃO */
 
     .validate-input {
         position: relative;
@@ -420,54 +338,77 @@
         opacity: 1;
     }
 
+    /* RESPONSIVIDADE MENSAGENS DE ALERTA VALIDAÇÃO */
+
     @media (max-width: 992px) {
         .alert-validate::before {
             visibility: visible;
             opacity: 1;
         }
     }
+
+    /* FUNDO */
+
+    .card-fundo {
+        background: black;
+        background: -webkit-linear-gradient(left, #343a40, #888888);
+        background: -o-linear-gradient(left, #343a40, #888888);
+        background: -moz-linear-gradient(left, #343a40, #888888);
+        background: linear-gradient(left, #343a40, #888888);
+    }
 </style>
 
-<div class="contact1">
-    <div class="container-contact1">
-        <div class="contact1-pic js-tilt" data-tilt>
-            <img src="https://i.postimg.cc/yd7NgCtk/img-01.png" alt="IMG">
+<div class="card">
+    <div class="card-body card-fundo" style="padding: 10px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12 col-xl-6 my-auto">
+                        <div class="contact1-pic js-tilt mx-auto" data-tilt>
+                            <img src="https://i.postimg.cc/pLR0vLCV/mailbox-clipart-md.png" alt="IMG">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mx-auto">
+                        <form class="contact1-form validate-form" action="{% url 'suporte:contato' %}" method="POST">
+                            {% csrf_token %}
+                            <span class="contact1-form-title mt-5 mb-4">
+                                Contato
+                            </span>
+
+                            <div class="wrap-input1 validate-input" data-validate="Campo Nome é obrigatório">
+                                <input class="input1" type="text" name="nome" placeholder="Nome">
+                                <span class="shadow-input1"></span>
+                            </div>
+
+                            <div class="wrap-input1 validate-input"
+                                data-validate="Campo E-mail válido obrigatório: ex@abc.xyz">
+                                <input class="input1" type="text" name="email" placeholder="E-mail">
+                                <span class="shadow-input1"></span>
+                            </div>
+
+                            <div class="wrap-input1 validate-input" data-validate="Campo Assunto é obrigatório ">
+                                <input class="input1" type="text" name="assunto" placeholder="Assunto">
+                                <span class="shadow-input1"></span>
+                            </div>
+
+                            <div class="wrap-input1 validate-input" data-validate="Campo Mensagem é obrigatório">
+                                <textarea class="input1" name="mensagem" placeholder="Mensagem"></textarea>
+                                <span class="shadow-input1"></span>
+                            </div>
+
+                            <div class="container-contact1-form-btn mt-4 mb-2">
+                                <button class="contact1-form-btn" type="submit">
+                                    <span>
+                                        Enviar e-mail
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <form class="contact1-form validate-form">
-            <span class="contact1-form-title">
-                Get in touch
-            </span>
-
-            <div class="wrap-input1 validate-input" data-validate="Name is required">
-                <input class="input1" type="text" name="name" placeholder="Name">
-                <span class="shadow-input1"></span>
-            </div>
-
-            <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input1" type="text" name="email" placeholder="Email">
-                <span class="shadow-input1"></span>
-            </div>
-
-            <div class="wrap-input1 validate-input" data-validate="Subject is required">
-                <input class="input1" type="text" name="subject" placeholder="Subject">
-                <span class="shadow-input1"></span>
-            </div>
-
-            <div class="wrap-input1 validate-input" data-validate="Message is required">
-                <textarea class="input1" name="message" placeholder="Message"></textarea>
-                <span class="shadow-input1"></span>
-            </div>
-
-            <div class="container-contact1-form-btn">
-                <button class="contact1-form-btn">
-                    <span>
-                        Send Email
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    </span>
-                </button>
-            </div>
-        </form>
     </div>
 </div>
 
@@ -486,84 +427,69 @@
     })
 </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-    gtag('config', 'UA-23581568-13');
-</script>
-
-<!--===============================================================================================-->
+<!--FUNÇÃO jQuery-->
 <script>
 
-    (function ($) {
-        "use strict";
+        (function ($) {
+            "use strict";
+
+            /*==================================================================
+            [ Validate ]*/
+            var name = $('.validate-input input[name="nome"]');
+            var email = $('.validate-input input[name="email"]');
+            var subject = $('.validate-input input[name="assunto"]');
+            var message = $('.validate-input textarea[name="mensagem"]');
 
 
-        /*==================================================================
-        [ Validate ]*/
-        var name = $('.validate-input input[name="name"]');
-        var email = $('.validate-input input[name="email"]');
-        var subject = $('.validate-input input[name="subject"]');
-        var message = $('.validate-input textarea[name="message"]');
+            $('.validate-form').on('submit', function () {
+                var check = true;
+
+                if ($(name).val().trim() == '') {
+                    showValidate(name);
+                    check = false;
+                }
+
+                if ($(subject).val().trim() == '') {
+                    showValidate(subject);
+                    check = false;
+                }
 
 
-        $('.validate-form').on('submit', function () {
-            var check = true;
+                if ($(email).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                    showValidate(email);
+                    check = false;
+                }
 
-            if ($(name).val().trim() == '') {
-                showValidate(name);
-                check = false;
-            }
+                if ($(message).val().trim() == '') {
+                    showValidate(message);
+                    check = false;
+                }
 
-            if ($(subject).val().trim() == '') {
-                showValidate(subject);
-                check = false;
-            }
-
-
-            if ($(email).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                showValidate(email);
-                check = false;
-            }
-
-            if ($(message).val().trim() == '') {
-                showValidate(message);
-                check = false;
-            }
-
-            return check;
-        });
-
-
-        $('.validate-form .input1').each(function () {
-            $(this).focus(function () {
-                hideValidate(this);
+                return check;
             });
-        });
-
-        function showValidate(input) {
-            var thisAlert = $(input).parent();
-
-            $(thisAlert).addClass('alert-validate');
-        }
-
-        function hideValidate(input) {
-            var thisAlert = $(input).parent();
-
-            $(thisAlert).removeClass('alert-validate');
-        }
 
 
+            $('.validate-form .input1').each(function () {
+                $(this).focus(function () {
+                    hideValidate(this);
+                });
+            });
 
-    })(jQuery);
+            function showValidate(input) {
+                var thisAlert = $(input).parent();
+
+                $(thisAlert).addClass('alert-validate');
+            }
+
+            function hideValidate(input) {
+                var thisAlert = $(input).parent();
+
+                $(thisAlert).removeClass('alert-validate');
+            }
+
+        })(jQuery);
 </script>
-
 
 <script src="https://kit.fontawesome.com/979f4dc9a1.js" crossorigin="anonymous"></script>
-
-
 {% endblock %}

@@ -1,8 +1,11 @@
 from categoria.models import Categoria
+from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from produto.models import Produto
+
+from .forms import *
 
 
 class Privacidade(TemplateView):
@@ -27,9 +30,21 @@ class Sobre(Privacidade):
 
 
 def ContatoView(request):
+    if str(request.method) == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.send_email()
+            messages.success(request, 'Email enviado com sucesso.')
+            form = ContatoForm()
+        else:
+            messages.error(request, 'Email NÃO FOI enviado com sucesso.')
+    else:
+        form = ContatoForm()
+
     categorias = Categoria.objects.all()
 
     context = {
-        'categorias': categorias
+        'categorias': categorias,
+        'form': form
     }
     return render(request, 'suporte/contato.html', context)
