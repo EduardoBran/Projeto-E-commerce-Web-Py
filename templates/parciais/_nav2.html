@@ -455,7 +455,7 @@
                     <p style="margin: 0; color: #515151; font-size: 0.9rem;">
                         <strong>Olá, {{ request.user }}</strong>
                     </p>
-                    <p style="margin: 0;">
+                    <p style="margin: 0; margin-left: 0px;">
                         <a class="editarDados" href="{% url 'perfil:criar' %}">editar meus dados</a>
                     </p>
 
@@ -508,16 +508,15 @@
 
     <ul class="list-unstyled components links">
         <li>
-            <a href="/"><i class="fa-solid fa-house mr-3 iconesColorSubmenu"></i> Home</a>
+            <a href="/"><i class="fa-solid fa-house mr-3 iconesColorSubmenu"></i>Home</a>
         </li>
         <li>
-            <a href="{% url 'produto:lista' %}"><i class="fa-solid fa-briefcase mr-3 iconesColorSubmenu"></i>
-                Produtos</a>
+            <a href="{% url 'produto:lista' %}"><i
+                    class="fa-solid fa-briefcase mr-3 iconesColorSubmenu"></i>Produtos</a>
         </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fa-solid fa-circle-question mr-3 iconesColorSubmenu"></i>
-                Suporte
+                <i class="fa-solid fa-circle-question mr-3 iconesColorSubmenu"></i>Suporte
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
@@ -529,13 +528,12 @@
             </ul>
         </li>
         <li>
-            <a href="{% url 'suporte:contato' %}"><i class="fa-solid fa-phone mr-3 iconesColorSubmenu"></i>
-                Contato
+            <a href="{% url 'suporte:contato' %}"><i class="fa-solid fa-phone mr-3 iconesColorSubmenu"></i>Contato
             </a>
         </li>
         <li>
-            <a href="{% url 'suporte:sobre' %}"><i class="fa-regular fa-face-smile mr-3 iconesColorSubmenu"></i></i>
-                Sobre
+            <a href="{% url 'suporte:sobre' %}"><i
+                    class="fa-regular fa-face-smile mr-3 iconesColorSubmenu"></i></i>Sobre
             </a>
         </li>
     </ul>
