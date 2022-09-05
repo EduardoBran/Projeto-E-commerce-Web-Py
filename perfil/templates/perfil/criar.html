@@ -68,9 +68,8 @@
                                 <label for="id_username" class="requiredField">
                                     Usuário<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name='username' maxlength="150"
+                                <input class="input1 form-control" type="text" name='username' maxlength="150"
                                     placeholder="Digite seu usuário" required id="id_username">
-                                <span class="shadow-input1"></span>
                                 <small id="hint_id_username" class="form-text text-muted">
                                     Obrigatório. 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.
                                 </small>
@@ -80,9 +79,8 @@
                                 <label for="id_password" class="requiredField">
                                     Senha<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="password" name='password' maxlength="150"
+                                <input class="input1 form-control" type="password" name='password' maxlength="150"
                                     placeholder="Digite sua senha" required id="id_password">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4"
@@ -90,115 +88,108 @@
                                 <label for="id_password2" class="requiredField">
                                     Confirmação senha<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="password" name='password2' maxlength="150"
+                                <input class="input1 form-control" type="password" name='password2' maxlength="150"
                                     placeholder="Digite a confirmação da sua senha" required id="id_password2">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4"
                                 data-validate="Campo Primeiro Nome é obrigatório">
                                 <label for="id_first_name">Primeiro nome</label>
-                                <input class="input1" type="text" name='first_name'
+                                <input class="input1 form-control" type="text" name='first_name'
                                     placeholder="Digite seu primeiro nome" id="id_first_name">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4"
                                 data-validate="Campo Último Nome é obrigatório">
                                 <label for="id_last_name">Último nome</label>
-                                <input class="input1" type="text" name='last_name' placeholder="Digite seu último nome"
-                                    id="id_last_name">
-                                <span class="shadow-input1"></span>
+                                <input class="input1 form-control" type="text" name='last_name'
+                                    placeholder="Digite seu último nome" id="id_last_name">
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo E-mail é obrigatório">
-                                <label for="id_email">Endereço de e-mail</label>
-                                <input class="input1" type="email" name='email'
-                                    placeholder="Digite seu endereço de e-mail" id="id_email">
-                                <span class="shadow-input1"></span>
+                                <label for="id_email" class="requiredField">
+                                    Endereço de e-mail<span class="asteriskField">*</span>
+                                </label>
+                                <input class="input1 form-control" type="email" name='email'
+                                    placeholder="Digite seu endereço de e-mail" required id="id_email">
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Idade é obrigatório">
                                 <label for="id_idade">Idade</label>
-                                <input class="input1" type="number" name='idade' placeholder="Digite sua idade"
-                                    id="id_idade">
-                                <span class="shadow-input1"></span>
+                                <input class="input1 form-control" type="number" name='idade'
+                                    placeholder="Digite sua idade" id="id_idade">
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4"
                                 data-validate="Campo Data de Nascimento é obrigatório">
-                                <label for="id_data_nascimento" class="requiredField">Data de nascimento</label>
-                                <input class="input1" type="text" name='data_nascimento'
+                                <label for="id_data_nascimento">Data de nascimento</label>
+                                <input class="input1 form-control" type="text" name='data_nascimento'
                                     placeholder="Digite sua data de nascimento" id="id_data_nascimento">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Cpf é obrigatório">
                                 <label for="id_cpf" class="requiredField">
                                     Cpf<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name='cpf' maxlength="11" placeholder="Digite seu cpf"
-                                    required id="id_cpf">
-                                <span class="shadow-input1"></span>
+                                <input class="input1 form-control" type="text" name='cpf' maxlength="11"
+                                    placeholder="Digite seu cpf" required id="id_cpf">
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Endereço é obrigatório">
                                 <label for="id_endereco" class="requiredField">
                                     Endereço<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name='endereco' maxlength="50"
+                                <input class="input1 form-control" type="text" name='endereco' maxlength="50"
                                     placeholder="Digite seu endereço" required id="id_endereco">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Número é obrigatório">
                                 <label for="id_numero" class="requiredField">
                                     Número<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name="numero" maxlength="5"
+                                <input class="input1 form-control" type="text" name="numero" maxlength="5"
                                     placeholder="Digite seu endereço" required id="id_numero">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4"
                                 data-validate="Campo Complemento é obrigatório">
-                                <label for="id_complemento" class="requiredField">
-                                    Complemento<span class="asteriskField">*</span>
+                                <label for="id_complemento">
+                                    Complemento
                                 </label>
-                                <input class="input1" type="text" name="complemento" maxlength="30"
-                                    placeholder="Digite o complemento do endereço" required id="id_complemento">
-                                <span class="shadow-input1"></span>
+                                <input class="input1 form-control" type="text" name="complemento" maxlength="30"
+                                    placeholder="Digite o complemento do endereço" id="id_complemento">
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Bairro é obrigatório">
                                 <label for="id_bairro" class="requiredField">
                                     Bairro<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name="bairro" maxlength="30"
+                                <input class="input1 form-control" type="text" name="bairro" maxlength="30"
                                     placeholder="Digite o bairro do endereço" required id="id_bairro">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Cep é obrigatório">
                                 <label for="id_cep" class="requiredField">
                                     Cep<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name="cep" maxlength="8"
+                                <input class="input1 form-control" type="text" name="cep" maxlength="8"
                                     placeholder="Digite o cep do endereço" required id="id_cep">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div class="wrap-input1 validate-input mt-4" data-validate="Campo Cidade é obrigatório">
                                 <label for="id_cidade" class="requiredField">
                                     Cidade<span class="asteriskField">*</span>
                                 </label>
-                                <input class="input1" type="text" name="cidade" maxlength="30"
+                                <input class="input1 form-control" type="text" name="cidade" maxlength="30"
                                     placeholder="Digite sua cidade" required id="id_cidade">
-                                <span class="shadow-input1"></span>
                             </div>
 
                             <div>
-                                <select name="estado" class="select form-control" id="id_estado">
+                                <label for="id_estado" class="requiredField">
+                                    UF<span class="asteriskField">*</span>
+                                </label>
+                                <select name="estado" class="select form-control" id="id_estado"
+                                    style="border-radius: 25px;">
                                     <option value="AC" selected="">Acre</option>
                                     <option value="AL">Alagoas</option>
                                     <option value="AP">Amapá</option>
