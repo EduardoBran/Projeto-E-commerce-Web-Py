@@ -152,7 +152,7 @@ class Login(View):
                 self.request,
                 'Usuário ou senha inválidos.'
             )
-            return redirect('perfil:criar')
+            return redirect('perfil:entrar')
 
         usuario = authenticate(
             self.request, username=username, password=password
@@ -163,7 +163,7 @@ class Login(View):
                 self.request,
                 'Usuário ou senha inválidos.'
             )
-            return redirect('perfil:criar')
+            return redirect('perfil:entrar')
 
         login(self.request, user=usuario)
 

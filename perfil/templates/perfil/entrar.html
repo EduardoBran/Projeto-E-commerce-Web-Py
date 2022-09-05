@@ -1,73 +1,67 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
 {% block titulo %}Entrar | {% endblock %}
 
 {% block conteudo %}
 
-<style>
-    .fundo {
-        width: 100%;
-        min-height: 100%;
+<script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="{% static 'assets/custom/js/tilt.jquery.min.js'%}"></script>
+<script src="{% static 'assets/custom/js/formulario.js'%}"></script>
 
-        background: #009bff;
-        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
-        background: -o-linear-gradient(left, #0072ff, #00c6ff);
-        background: -moz-linear-gradient(left, #0072ff, #00c6ff);
-        background: linear-gradient(left, #0072ff, #00c6ff);
-
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .fundo2 {
-        background-color: #fff;
-    }
-
-    p {
-        font-family: Garamond, Arial;
-        font-size: 19px;
-    }
-
-    .borda {
-        border-radius: 30px;
-    }
-</style>
-
-<div class="card shadow border fundo">
-    <div class="card-body borda">
-        <div class="row">
-
-            <div class="col-lg-12">
-                <div class="card shadow border fundo2">
-                    <div class="card-body">
-
-                        <h1 class="text-center" style="font-family: Copperplate, Arial;">Login</h1>
-                        <br>
-                        <p class="text-center">
-                            Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:
-                        </p>
-                        <br>
-                        <form method="POST" action="{% url 'perfil:login' %}">
+<div class="card">
+    <div class="card-body card-fundo border" style="padding: 5px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12 col-xl-6 my-auto">
+                        <div class="contact1-pic js-tilt mx-auto" data-tilt>
+                            <img src="https://i.postimg.cc/Vknyqz9v/logoTemp.png" alt="IMG">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mx-auto">
+                        <form class="contact1-form validate-form" method="POST" action="{% url 'perfil:login' %}">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <label for="InputUsuario1">Usuário</label>
-                                <input type="text" name='username' class="form-control" id="InputUsuario1"
-                                    aria-describedby="usuarioHelp" placeholder="Digite seu usuário">
+                            <span class="contact1-form-title">
+                                Login
+                            </span>
+
+                            <span class="contact1-form-title mt-2 text-muted mb-1" style="font-size: 18px;">
+                                Faça login para efetuar sua compra com as informações já cadastradas.
+                            </span>
+
+                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Nome é obrigatório">
+                                <input class="input1" type="text" name='username' placeholder="Digite seu usuário">
+                                <span class="shadow-input1"></span>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Senha</label>
-                                <input name='password' type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Digite sua senha">
+
+                            <div class="wrap-input1 validate-input mt-3 mb-1" data-validate="Campo Senha é obrigatório">
+                                <input class="input1" type="password" name='password' placeholder="Digite sua senha">
+                                <span class="shadow-input1"></span>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block btn-lg"
-                                style="margin-top: 25px;">Entrar</button>
+
+                            <div class="container-contact1-form-btn mt-4">
+                                <button class="contact1-form-btn" type="submit">
+                                    <span>
+                                        Entrar
+                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <span class="contact1-form-title mt-4" style="font-size: 17px;">
+                                não tem cadastro?
+                                <a href="{% url 'perfil:criar' %}" style="color: #525252;">
+                                    <u>cadastre-se</u>
+                                </a>
+                            </span>
+                            <span class="contact1-form-title mt-3" style="font-size: 17px;">
+                                Ao continuar com o acesso, você concorda com a nossa
+                            </span>
+                            <span class="contact1-form-title mb-2" style="font-size: 17px;">
+                                <a href="{% url 'suporte:privacidade' %}" style="color: #525252;">
+                                    <u>política de privacidade</u>
+                                </a>
+                            </span>
                         </form>
                     </div>
                 </div>
@@ -76,5 +70,62 @@
     </div>
 </div>
 <br>
-<a href="{% url 'perfil:criar' %}">AINDA NÃO É USUÁRIO? REGISTRAR</a>
+
+<!-- EFEITO IMAGEM -->
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+
+<!-- EFEITO HOOVER -->
+<script>
+        (function ($) {
+            "use strict";
+
+            /*==================================================================
+            [ Validate ]*/
+            var name = $('.validate-input input[name="username"]');
+            var senha = $('.validate-input input[name="password"]');
+
+
+            $('.validate-form').on('submit', function () {
+                var check = true;
+
+                if ($(name).val().trim() == '') {
+                    showValidate(name);
+                    check = false;
+                }
+
+                if ($(senha).val().trim() == '') {
+                    showValidate(senha);
+                    check = false;
+                }
+
+                return check;
+            });
+
+
+            $('.validate-form .input1').each(function () {
+                $(this).focus(function () {
+                    hideValidate(this);
+                });
+            });
+
+            function showValidate(input) {
+                var thisAlert = $(input).parent();
+
+                $(thisAlert).addClass('alert-validate');
+            }
+
+            function hideValidate(input) {
+                var thisAlert = $(input).parent();
+
+                $(thisAlert).removeClass('alert-validate');
+            }
+
+        })(jQuery);
+</script>
+
+<script src="https://kit.fontawesome.com/979f4dc9a1.js" crossorigin="anonymous"></script>
 {% endblock %}
