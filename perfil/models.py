@@ -1,13 +1,10 @@
 import re
-from datetime import date, datetime
+from datetime import date
 from unittest.mock import NonCallableMagicMock
 
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.functions import ExtractYear
 from django.forms import ValidationError
-from django.utils import timezone
-from django.utils.timezone import now
 from utils.validacpf import valida_cpf
 
 
