@@ -126,6 +126,16 @@ textarea.input1+.shadow-input1 {
     color: #004242;
 }
 
+.input1:focus {
+    display: block;
+    width: 100%;
+    background: #e6e6e6;
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #004242;
+}
+
 .input1:focus+.shadow-input1 {
     -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
     animation: anim-shadow 0.5s ease-in-out forwards;

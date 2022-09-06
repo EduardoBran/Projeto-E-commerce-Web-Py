@@ -11,7 +11,7 @@ class PerfilForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={'type': 'date',
-                   'class': 'input1 form-control'}
+                   'class': 'input1 form-control textinput textInput'}
         ),
         label='Data de nascimento*'
     )
@@ -19,7 +19,7 @@ class PerfilForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
             attrs={'type': 'number',
-                   'class': 'input1 form-control',
+                   'class': 'input1 form-control textinput textInput',
                    'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
                    'maxlength': 11}
         ),
@@ -28,14 +28,14 @@ class PerfilForm(forms.ModelForm):
     endereco = forms.CharField(
         required=True,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control'}
+            attrs={'class': 'input1 form-control textinput textInput'}
         ),
         label='Endereço'
     )
     numero = forms.CharField(
         required=True,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control',
+            attrs={'class': 'input1 form-control textinput textInput',
                    'maxlength': 4}
         ),
         label='Número'
@@ -43,7 +43,7 @@ class PerfilForm(forms.ModelForm):
     complemento = forms.CharField(
         required=False,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control',
+            attrs={'class': 'input1 form-control textinput textInput',
                    'maxlength': 4}
         ),
     )
@@ -51,7 +51,7 @@ class PerfilForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
             attrs={'type': 'number',
-                   'class': 'input1 form-control',
+                   'class': 'input1 form-control textinput textInput',
                    'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
                    'maxlength': 8}
         ),
@@ -60,14 +60,14 @@ class PerfilForm(forms.ModelForm):
     bairro = forms.CharField(
         required=True,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control',
+            attrs={'class': 'input1 form-control textinput textInput',
                    'maxlength': 30}
         ),
     )
     cidade = forms.CharField(
         required=True,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control',
+            attrs={'class': 'input1 form-control textinput textInput',
                    'maxlength': 30}
         ),
     )
@@ -103,7 +103,7 @@ class PerfilForm(forms.ModelForm):
     estado = forms.CharField(
         required=True,
         widget=forms.Select(
-            attrs={'class': 'input1 form-control'},
+            attrs={'class': 'input1 form-control textinput textInput'},
             choices=choices,
         )
     )
@@ -122,7 +122,7 @@ class UserForm(forms.ModelForm):
     username = forms.CharField(
         required=True,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control', }
+            attrs={'class': 'input1 form-control textinput textInput', }
         ),
         label='Usuário',
         help_text='Obrigatório. 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.'
@@ -130,7 +130,7 @@ class UserForm(forms.ModelForm):
     password = forms.CharField(
         required=True,
         widget=forms.PasswordInput(
-            attrs={'class': 'input1 form-control', }
+            attrs={'class': 'input1 form-control textinput textInput', }
         ),
         label='Senha',
         help_text='Ex: mínimo de 6 caracteres com letras e números.'
@@ -138,7 +138,7 @@ class UserForm(forms.ModelForm):
     password2 = forms.CharField(
         required=True,
         widget=forms.PasswordInput(
-            attrs={'class': 'input1 form-control'}
+            attrs={'class': 'input1 form-control textinput textInput'}
         ),
         label='Confirmação senha',
         help_text='Informe a mesma senha informada anteriormente, para verificação.'
@@ -146,7 +146,7 @@ class UserForm(forms.ModelForm):
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(
-            attrs={'class': 'input1 form-control'}
+            attrs={'class': 'input1 form-control textinput textInput'}
         ),
         label='E-mail',
         help_text='Ex: seuemail@dominio.com.br'
@@ -154,14 +154,14 @@ class UserForm(forms.ModelForm):
     first_name = forms.CharField(
         required=False,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control'}
+            attrs={'class': 'input1 form-control textinput textInput'}
         ),
         label='Nome'
     )
     last_name = forms.CharField(
         required=False,
         widget=forms.TextInput(
-            attrs={'class': 'input1 form-control'}
+            attrs={'class': 'input1 form-control textinput textInput'}
         ),
         label='Sobrenome'
     )
