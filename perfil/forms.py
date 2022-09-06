@@ -7,39 +7,142 @@ from . import models
 
 
 class PerfilForm(forms.ModelForm):
-    # endereco = forms.CharField(
-    #     required=True,
-    #     widget=forms.TextInput(),
-    #     label='ENDEREÇO!!!',
-    #     help_text='tag small lá do form'
-    # )
     data_nascimento = forms.DateField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={'type': 'date',
+                   'style': 'color: green;'}
+        ),
+        label='Data de nascimento*'
+    )
+    cpf = forms.CharField(
+        required=True,
+        widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
+            attrs={'type': 'number',
+                   'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
+                   'maxlength': 11}
+        ),
+        label='Cpf*',
+        help_text='Informar somente números.'
+    )
+    endereco = forms.CharField(
+        required=True,
+        widget=forms.TextInput(),
+        label='Endereço'
+    )
+    numero = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={'maxlength': 4}),
+        label='Número'
+    )
+    complemento = forms.CharField(
         required=False,
         widget=forms.TextInput(
-            attrs={'type': 'date'}
+            attrs={'maxlength': 25}),
+    )
+    cep = forms.CharField(
+        required=True,
+        widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
+            attrs={'type': 'number',
+                   'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
+                   'maxlength': 8}
+        ),
+        help_text='Informar somente números.'
+    )
+    bairro = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={'maxlength': 30}),
+    )
+    cidade = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={'maxlength': 30}),
+    )
+    choices = [
+        ('AC', 'Acre'),
+        ('AL', 'Alagoas'),
+        ('AP', 'Amapá'),
+        ('AM', 'Amazonas'),
+        ('BA', 'Bahia'),
+        ('CE', 'Ceará'),
+        ('DF', 'Distrito Federal'),
+        ('ES', 'Espírito Santo'),
+        ('GO', 'Goiás'),
+        ('MA', 'Maranhão'),
+        ('MT', 'Mato Grosso'),
+        ('MS', 'Mato Grosso do Sul'),
+        ('MG', 'Minas Gerais'),
+        ('PA', 'Pará'),
+        ('PB', 'Paraíba'),
+        ('PR', 'Paraná'),
+        ('PE', 'Pernambuco'),
+        ('PI', 'Piauí'),
+        ('RJ', 'Rio de Janeiro'),
+        ('RN', 'Rio Grande do Norte'),
+        ('RS', 'Rio Grande do Sul'),
+        ('RO', 'Rondônia'),
+        ('RR', 'Roraima'),
+        ('SC', 'Santa Catarina'),
+        ('SP', 'São Paulo'),
+        ('SE', 'Sergipe'),
+        ('TO', 'Tocantins'),
+    ]
+    estado = forms.CharField(
+        required=True,
+        widget=forms.Select(
+            attrs={'style': 'color: orange;'},
+            choices=choices,
         )
     )
 
     class Meta:
         model = models.Perfil
-        fields = ('idade', 'data_nascimento', 'cpf',
-                  'endereco', 'numero', 'complemento',
-                  'bairro', 'cep', 'cidade', 'estado'
+        fields = ('data_nascimento', 'cpf', 'endereco',
+                  'numero', 'complemento', 'cep',
+                  'bairro', 'cidade', 'estado'
                   )
         exclude = ('usuario',)
 
 
 class UserForm(forms.ModelForm):
+
+    username = forms.CharField(
+        required=True,
+        # widget=forms.TextInput(
+        #     attrs={'style': 'background-color: blue;'}
+        # )
+        label='Usuário',
+        help_text='Obrigatório. 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.'
+    )
     password = forms.CharField(
-        required=False,
+        required=True,
         widget=forms.PasswordInput(),
-        label='Senha'
-        # help_text=''
+        label='Senha*',
+        help_text='Ex: mínimo de 6 caracteres com letras e números.'
     )
     password2 = forms.CharField(
-        required=False,
+        required=True,
         widget=forms.PasswordInput(),
-        label='Confirmação senha'
+        label='Confirmação senha*',
+        help_text='Informe a mesma senha informada anteriormente, para verificação.'
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(),
+        label='E-mail',
+        help_text='Ex: seuemail@dominio.com.br'
+    )
+    first_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(),
+        label='Nome'
+    )
+    last_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(),
+        label='Sobrenome'
     )
 
     def __init__(self, usuario=None, *args, **kwargs):
@@ -50,7 +153,7 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'password', 'password2',
-                  'first_name', 'last_name', 'email')
+                  'email', 'first_name', 'last_name')
 
     def clean(self, *args, **kwargs):
         data = self.data
