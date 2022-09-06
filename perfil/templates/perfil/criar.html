@@ -1,44 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block titulo %}Criar perfil | {% endblock %}
 
 {% block conteudo %}
-
-<style>
-    .fundo {
-        width: 100%;
-        min-height: 100%;
-
-        background: #009bff;
-        background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
-        background: -o-linear-gradient(left, #0072ff, #00c6ff);
-        background: -moz-linear-gradient(left, #0072ff, #00c6ff);
-        background: linear-gradient(left, #0072ff, #00c6ff);
-
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .fundo2 {
-        background-color: #fff;
-    }
-
-    p {
-        font-family: Garamond, Arial;
-        font-size: 19px;
-    }
-
-    .borda {
-        border-radius: 30px;
-    }
-</style>
 
 <div class="card">
     <div class="card-body card-fundo border" style="padding: 5px;">
@@ -64,161 +30,8 @@
                             </span>
                             {% endblock %}
 
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Usuário é obrigatório">
-                                <label for="id_username" class="requiredField">
-                                    Usuário<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name='username' maxlength="150"
-                                    placeholder="Digite seu usuário" required id="id_username">
-                                <small id="hint_id_username" class="form-text text-muted">
-                                    Obrigatório. 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.
-                                </small>
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Senha é obrigatório">
-                                <label for="id_password" class="requiredField">
-                                    Senha<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="password" name='password' maxlength="150"
-                                    placeholder="Digite sua senha" required id="id_password">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4"
-                                data-validate="Campo Confirmação de Senha é obrigatório">
-                                <label for="id_password2" class="requiredField">
-                                    Confirmação senha<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="password" name='password2' maxlength="150"
-                                    placeholder="Digite a confirmação da sua senha" required id="id_password2">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4"
-                                data-validate="Campo Primeiro Nome é obrigatório">
-                                <label for="id_first_name">Primeiro nome</label>
-                                <input class="input1 form-control" type="text" name='first_name'
-                                    placeholder="Digite seu primeiro nome" id="id_first_name">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4"
-                                data-validate="Campo Último Nome é obrigatório">
-                                <label for="id_last_name">Último nome</label>
-                                <input class="input1 form-control" type="text" name='last_name'
-                                    placeholder="Digite seu último nome" id="id_last_name">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo E-mail é obrigatório">
-                                <label for="id_email" class="requiredField">
-                                    Endereço de e-mail<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="email" name='email'
-                                    placeholder="Digite seu endereço de e-mail" required id="id_email">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Idade é obrigatório">
-                                <label for="id_idade">Idade</label>
-                                <input class="input1 form-control" type="number" name='idade'
-                                    placeholder="Digite sua idade" id="id_idade">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4"
-                                data-validate="Campo Data de Nascimento é obrigatório">
-                                <label for="id_data_nascimento">Data de nascimento</label>
-                                <input class="input1 form-control" type="text" name='data_nascimento'
-                                    placeholder="Digite sua data de nascimento" id="id_data_nascimento">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Cpf é obrigatório">
-                                <label for="id_cpf" class="requiredField">
-                                    Cpf<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name='cpf' maxlength="11"
-                                    placeholder="Digite seu cpf" required id="id_cpf">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Endereço é obrigatório">
-                                <label for="id_endereco" class="requiredField">
-                                    Endereço<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name='endereco' maxlength="50"
-                                    placeholder="Digite seu endereço" required id="id_endereco">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Número é obrigatório">
-                                <label for="id_numero" class="requiredField">
-                                    Número<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name="numero" maxlength="5"
-                                    placeholder="Digite seu endereço" required id="id_numero">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4"
-                                data-validate="Campo Complemento é obrigatório">
-                                <label for="id_complemento">
-                                    Complemento
-                                </label>
-                                <input class="input1 form-control" type="text" name="complemento" maxlength="30"
-                                    placeholder="Digite o complemento do endereço" id="id_complemento">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Bairro é obrigatório">
-                                <label for="id_bairro" class="requiredField">
-                                    Bairro<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name="bairro" maxlength="30"
-                                    placeholder="Digite o bairro do endereço" required id="id_bairro">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Cep é obrigatório">
-                                <label for="id_cep" class="requiredField">
-                                    Cep<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name="cep" maxlength="8"
-                                    placeholder="Digite o cep do endereço" required id="id_cep">
-                            </div>
-
-                            <div class="wrap-input1 validate-input mt-4" data-validate="Campo Cidade é obrigatório">
-                                <label for="id_cidade" class="requiredField">
-                                    Cidade<span class="asteriskField">*</span>
-                                </label>
-                                <input class="input1 form-control" type="text" name="cidade" maxlength="30"
-                                    placeholder="Digite sua cidade" required id="id_cidade">
-                            </div>
-
-                            <div>
-                                <label for="id_estado" class="requiredField">
-                                    UF<span class="asteriskField">*</span>
-                                </label>
-                                <select name="estado" class="select form-control" id="id_estado"
-                                    style="border-radius: 25px;">
-                                    <option value="AC" selected="">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
-                                </select>
-                            </div>
+                            {{ userform|crispy }}
+                            {{ perfilform|crispy }}
 
                             <div class="container-contact1-form-btn mt-4">
                                 <button class="contact1-form-btn" type="submit">
@@ -250,4 +63,5 @@
         <br>
     </div>
 </div>
+<script src="https://kit.fontawesome.com/979f4dc9a1.js" crossorigin="anonymous"></script>
 {% endblock %}
