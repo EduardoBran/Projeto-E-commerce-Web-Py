@@ -7,9 +7,26 @@ from . import models
 
 
 class PerfilForm(forms.ModelForm):
+    # endereco = forms.CharField(
+    #     required=True,
+    #     widget=forms.TextInput(),
+    #     label='ENDEREÇO!!!',
+    #     help_text='tag small lá do form'
+    # )
+    data_nascimento = forms.DateField(
+        required=False,
+        # procurar uma classe que formate a data
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
+    )
+
     class Meta:
         model = models.Perfil
-        fields = '__all__'
+        fields = ('idade', 'data_nascimento', 'cpf',
+                  'endereco', 'numero', 'complemento',
+                  'bairro', 'cep', 'cidade', 'estado'
+                  )
         exclude = ('usuario',)
 
 
@@ -24,11 +41,6 @@ class UserForm(forms.ModelForm):
         required=False,
         widget=forms.PasswordInput(),
         label='Confirmação senha'
-    )
-    email = forms.EmailField(
-        required=False,
-        # widget=forms.EmailInput(attrs={'style': 'background-color: orange;'}),
-        label='Email!!!!!!!!!!!!!!!!!!!'
     )
 
     def __init__(self, usuario=None, *args, **kwargs):
