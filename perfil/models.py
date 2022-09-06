@@ -1,15 +1,20 @@
-from unittest.mock import NonCallableMagicMock
-from django.db import models
-from django.contrib.auth.models import User
-from django.forms import ValidationError
 import re
+from datetime import date, datetime
+from unittest.mock import NonCallableMagicMock
+
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.functions import ExtractYear
+from django.forms import ValidationError
+from django.utils import timezone
+from django.utils.timezone import now
 from utils.validacpf import valida_cpf
 
 
 class Perfil(models.Model):
     usuario = models.OneToOneField(
         User, on_delete=models.CASCADE, verbose_name='Usuário')
-    idade = models.PositiveIntegerField()
+    idade = models.PositiveIntegerField(default=0)
     data_nascimento = models.DateField(verbose_name='Data de nascimento')
     cpf = models.CharField(max_length=11)
     endereco = models.CharField(max_length=50, verbose_name='Endereço')
@@ -76,6 +81,22 @@ class Perfil(models.Model):
 
         if error_messages:
             raise ValidationError(error_messages)
+
+    def save(self, force_insert=False, force_update=False, *args, **kwargs):
+        ano_user = self.data_nascimento.year
+        mes_user = self.data_nascimento.month
+        dia_user = self.data_nascimento.day
+        ano_atual = date.today().year
+        mes_atual = date.today().month
+        dia_atual = date.today().day
+        # print(f'Ano - {ano_atual} ||| Mês - {mes_atual} ||| Dia - {dia_atual}')
+
+        idade = ano_atual - ano_user - \
+            ((mes_atual, dia_atual) < (mes_user, dia_user))
+
+        self.idade = idade
+
+        super(Perfil, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Perfil'

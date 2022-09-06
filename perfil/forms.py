@@ -15,7 +15,6 @@ class PerfilForm(forms.ModelForm):
     # )
     data_nascimento = forms.DateField(
         required=False,
-        # procurar uma classe que formate a data
         widget=forms.TextInput(
             attrs={'type': 'date'}
         )
