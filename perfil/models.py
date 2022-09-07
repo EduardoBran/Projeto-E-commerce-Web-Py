@@ -65,7 +65,10 @@ class Perfil(models.Model):
              (self.data_nascimento.month, self.data_nascimento.day))
 
         if idade < 18:
-            error_messages['data_nascimento'] = 'Menor que 18 anos não pode.'
+            error_messages['data_nascimento'] = 'O cadastro só é possível para maiores de 18 anos.'
+
+        if self.data_nascimento.year < 1910 or self.data_nascimento.year > date.today().year:
+            error_messages['data_nascimento'] = 'Data inválida.'
 
         cpf_enviado = self.cpf or None
         cpf_salvo = None
