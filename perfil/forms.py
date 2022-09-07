@@ -7,14 +7,6 @@ from . import models
 
 
 class PerfilForm(forms.ModelForm):
-    data_nascimento = forms.DateField(
-        required=True,
-        widget=forms.TextInput(
-            attrs={'type': 'date',
-                   'class': 'input1 form-control textinput textInput'}
-        ),
-        label='Data de nascimento*'
-    )
     cpf = forms.CharField(
         required=True,
         widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
@@ -25,12 +17,31 @@ class PerfilForm(forms.ModelForm):
         ),
         help_text='Informar somente números.'
     )
+    data_nascimento = forms.DateField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={'type': 'date',
+                   'class': 'input1 form-control textinput textInput'}
+        ),
+        label='Data de nascimento*'
+    )
+    cep = forms.CharField(
+        required=True,
+        widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
+            attrs={'type': 'number',
+                   'class': 'input1 form-control textinput textInput',
+                   #    'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
+                   'onblur': 'pesquisacep(this.value);',
+                   'maxlength': 8}
+        ),
+        help_text='Informar somente números.'
+    )
     endereco = forms.CharField(
         required=True,
         widget=forms.TextInput(
             attrs={'class': 'input1 form-control textinput textInput'}
         ),
-        label='Endereço'
+        label='Logradouro'
     )
     numero = forms.CharField(
         required=True,
@@ -46,16 +57,6 @@ class PerfilForm(forms.ModelForm):
             attrs={'class': 'input1 form-control textinput textInput',
                    'maxlength': 4}
         ),
-    )
-    cep = forms.CharField(
-        required=True,
-        widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
-            attrs={'type': 'number',
-                   'class': 'input1 form-control textinput textInput',
-                   'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
-                   'maxlength': 8}
-        ),
-        help_text='Informar somente números.'
     )
     bairro = forms.CharField(
         required=True,
@@ -110,8 +111,8 @@ class PerfilForm(forms.ModelForm):
 
     class Meta:
         model = models.Perfil
-        fields = ('data_nascimento', 'cpf', 'endereco',
-                  'numero', 'complemento', 'cep',
+        fields = ('cpf', 'data_nascimento', 'cep',
+                  'endereco', 'numero', 'complemento',
                   'bairro', 'cidade', 'estado'
                   )
         exclude = ('usuario',)
