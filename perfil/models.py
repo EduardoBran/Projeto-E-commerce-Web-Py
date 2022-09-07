@@ -60,6 +60,13 @@ class Perfil(models.Model):
     def clean(self):
         error_messages = {}
 
+        idade = date.today().year - self.data_nascimento.year - \
+            ((date.today().month, date.today().day) <
+             (self.data_nascimento.month, self.data_nascimento.day))
+
+        if idade < 18:
+            error_messages['data_nascimento'] = 'Menor que 18 anos não pode.'
+
         cpf_enviado = self.cpf or None
         cpf_salvo = None
         perfil = Perfil.objects.filter(cpf=cpf_enviado).first()
