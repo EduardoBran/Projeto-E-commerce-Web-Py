@@ -5,9 +5,7 @@
 
 {% block conteudo %}
 
-<script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="{% static 'assets/custom/js/tilt.jquery.min.js'%}"></script>
-<script src="{% static 'assets/custom/js/formulario.js'%}"></script>
+<script src="{% static 'js/tilt.jquery.min.js'%}"></script>
 
 <div class="card">
     <div class="card-body card-fundo border" style="padding: 5px;">
@@ -78,11 +76,6 @@
     $('.js-tilt').tilt({
         scale: 1.1
     })
-
-    // $("#id_user").focusout(function () {
-    //     alert('testando');
-    // });
 </script>
 
-<script src="https://kit.fontawesome.com/979f4dc9a1.js" crossorigin="anonymous"></script>
 {% endblock %}
