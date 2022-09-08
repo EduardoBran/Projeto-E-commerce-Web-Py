@@ -13,7 +13,7 @@ class Perfil(models.Model):
         User, on_delete=models.CASCADE, verbose_name='Usuário')
     idade = models.PositiveIntegerField(default=0)
     data_nascimento = models.DateField(verbose_name='Data de nascimento')
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=15)
     endereco = models.CharField(max_length=50, verbose_name='Endereço')
     numero = models.CharField(max_length=5, verbose_name='Número')
     complemento = models.CharField(max_length=30, blank=True, null=True)

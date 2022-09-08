@@ -9,11 +9,10 @@ from . import models
 class PerfilForm(forms.ModelForm):
     cpf = forms.CharField(
         required=True,
-        widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
-            attrs={'type': 'number',
-                   'class': 'input1 form-control textinput textInput',
-                   'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
-                   'maxlength': 11}
+        widget=forms.TextInput(
+            attrs={'class': 'input1 form-control textinput textInput',
+                   'maxlength': 15
+                   }
         ),
         help_text='Informar somente números.'
     )
