@@ -11,7 +11,7 @@ class PerfilForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={'class': 'input1 form-control textinput textInput',
-                   'maxlength': 15
+                   'maxlength': 14
                    }
         ),
         help_text='Informar somente números.'
