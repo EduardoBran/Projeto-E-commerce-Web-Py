@@ -59,8 +59,41 @@
     </div>
 </div>
 
-<!-- função para preenchimento automatico do cep -->
 <script>
+
+    // função mascara do campo cpf
+    const input = document.getElementById("id_cpf");
+
+    input.addEventListener("keyup", formatarCPF);
+
+    function formatarCPF(e) {
+
+        var v = e.target.value.replace(/\D/g, "");
+
+        v = v.replace(/(\d{3})(\d)/, "$1.$2");
+
+        v = v.replace(/(\d{3})(\d)/, "$1.$2");
+
+        v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+        e.target.value = v;
+    }
+
+    // função mascara do campo cep
+    const inputCep = document.getElementById("id_cep");
+
+    inputCep.addEventListener("keyup", formatarCep);
+
+    function formatarCep(e) {
+
+        var v = e.target.value.replace(/\D/g, "")
+
+        v = v.replace(/^(\d{5})(\d)/, "$1-$2")
+
+        e.target.value = v;
+    }
+
+    //funções para preenchimento automático do cep 
     function limpa_formulário_cep() {
         //Limpa valores do formulário de cep.
         document.getElementById('id_endereco').value = ("");
@@ -124,27 +157,7 @@
             limpa_formulário_cep();
         }
     };
-</script>
 
-<!-- função mascara do campo cpf -->
-<script>
-    const input = document.getElementById("id_cpf");
-
-    input.addEventListener("keyup", formatarCPF);
-
-    function formatarCPF(e) {
-
-        var v = e.target.value.replace(/\D/g, "");
-
-        v = v.replace(/(\d{3})(\d)/, "$1.$2");
-
-        v = v.replace(/(\d{3})(\d)/, "$1.$2");
-
-        v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-
-        e.target.value = v;
-
-    } 
 </script>
 
 <script src="https://kit.fontawesome.com/979f4dc9a1.js" crossorigin="anonymous"></script>

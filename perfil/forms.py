@@ -27,11 +27,11 @@ class PerfilForm(forms.ModelForm):
     cep = forms.CharField(
         required=True,
         widget=forms.TextInput(  # oninput necessário para o maxlength funcionar
-            attrs={'type': 'number',
-                   'class': 'input1 form-control textinput textInput',
-                   #    'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
-                   'onblur': 'pesquisacep(this.value);',
-                   'maxlength': 8}
+            attrs={  # 'type': 'number',
+                'class': 'input1 form-control textinput textInput',
+                # 'oninput': 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);',
+                'onblur': 'pesquisacep(this.value);',
+                'maxlength': 9}
         ),
         help_text='Informar somente números.'
     )
