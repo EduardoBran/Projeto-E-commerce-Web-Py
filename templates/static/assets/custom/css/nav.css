@@ -279,46 +279,13 @@ ul.social-icons li {
     border-radius: 25px;
 }
 
-
+.iconesColorSubmenu {
+    color: #343a40;
+}
 
 .editarDados {
     font-size: 0.8rem;
     color: #515151;
     text-decoration: underline;
     font-style: italic;
-}
-
-{% comment %} social icons nav submenu {% endcomment %}
-
-.iconesColorSubmenu {
-    color: #343a40;
-}
-
-.social-iconsNav {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
-
-.social-iconsNav li {
-    display: inline-block;
-}
-
-.social-iconsNav a {
-    background-color: #eceeef;
-    color: #818a91;
-    font-size: 16px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 80%;
-    -webkit-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    transition: all .2s linear;
-}
-
-.social-iconsNav.size-sm a {
-    line-height: 34px;
-    height: 34px;
-    width: 34px;
-    font-size: 14px;
 }
