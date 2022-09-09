@@ -45,32 +45,6 @@ ul.errorlist li {
     font-weight: bold;
 }
 
-/*
-@media (min-width: 48em) {
-    .card-columns {
-        -webkit-column-count: 3;
-        -moz-column-count: 3;
-        column-count: 3;
-    }
-}
-
-
-@media (min-width: 62em) {
-    .card-columns {
-        -webkit-column-count: 4;
-        -moz-column-count: 4;
-        column-count: 4;
-    }
-}
-
-@media (min-width: 75em) {
-    .card-columns {
-        -webkit-column-count: 5;
-        -moz-column-count: 5;
-        column-count: 5;
-    }
-}
-*/
 .form-group textarea {
     width: 100%;
 }
@@ -80,9 +54,4 @@ ul.errorlist li {
 }
 .cart-img {
     max-width: 150px;
-}
-
-
-.testando {
-    color: orange;
 }

@@ -1,0 +1,80 @@
+{% load static %}
+<script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+<style>
+    /* ScrollToTop */
+    .smoothscroll-top {
+        position: fixed;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        bottom: 20px;
+        right: 19px;
+        z-index: 99;
+    }
+
+    .smoothscroll-top i {
+        font-size: 38px;
+        color: #008b8b;
+        background-color: #fff;
+        border-radius: 30px;
+        text-align: center;
+
+
+    }
+
+    .smoothscroll-top:hover {
+        color: #fff;
+        background-color: #696969;
+        transition: all 0.2s ease-in-out;
+        transition-delay: .2s;
+        -moz-transition: all 0.2s ease-in-out;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.14), 0 6px 10px rgba(0, 0, 0, 0.28);
+    }
+
+    .smoothscroll-top.show {
+        visibility: visible;
+        cursor: pointer;
+        opacity: 1;
+        bottom: 30px;
+        border-radius: 30px;
+    }
+
+    /* .smoothscroll-top i.fa {
+        line-height: inherit;
+    } */
+</style>
+
+
+
+
+<!-- Go to Top Link -->
+<div class="smoothscroll-top">
+
+    <i class="fa fa-2x fa-arrow-circle-up"></i>
+
+</div>
+
+
+<script>
+    $(function () {
+        $(document).on('scroll', function () {
+            if ($(window).scrollTop() > 100) {
+                $('.smoothscroll-top').addClass('show');
+            } else {
+                $('.smoothscroll-top').removeClass('show');
+            }
+        });
+        $('.smoothscroll-top').on('click', scrollToTop);
+    });
+
+    function scrollToTop() {
+        verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+        element = $('body');
+        offset = element.offset();
+        offsetTop = offset.top;
+        $('html, body').animate({ scrollTop: offsetTop }, 600, 'linear').animate({ scrollTop: 25 }, 200).animate({ scrollTop: 0 }, 150).animate({ scrollTop: 0 }, 50);
+    }
+</script>
