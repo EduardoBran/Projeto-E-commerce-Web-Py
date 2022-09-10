@@ -7,58 +7,53 @@
 
 <script src="{% static 'js/tilt.jquery.min.js'%}"></script>
 
-<div class="card">
-    <div class="card-body card-fundo border" style="padding: 5px;">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-12 col-xl-6 my-auto">
-                        <div class="contact1-pic js-tilt mx-auto" data-tilt>
-                            <img src="https://i.postimg.cc/pLR0vLCV/mailbox-clipart-md.png" alt="IMG">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mx-auto">
-                        <form class="contact1-form validate-form" action="{% url 'suporte:contato' %}" method="POST">
-                            {% csrf_token %}
-                            <span class="contact1-form-title mt-5">
-                                Contato
-                            </span>
-                            <span class="contact1-form-title mt-2 text-muted mb-5" style="font-size: 18px;">
-                                Nos envie um e-mail com críticas ou sugestões.
-                            </span>
-
-                            <div class="wrap-input1 validate-input" data-validate="Campo Nome é obrigatório">
-                                <input class="input1" type="text" name="nome" placeholder="Nome">
-                                <span class="shadow-input1"></span>
-                            </div>
-
-                            <div class="wrap-input1 validate-input"
-                                data-validate="Campo E-mail válido obrigatório: ex@abc.xyz">
-                                <input class="input1" type="text" name="email" placeholder="E-mail">
-                                <span class="shadow-input1"></span>
-                            </div>
-
-                            <div class="wrap-input1 validate-input" data-validate="Campo Assunto é obrigatório ">
-                                <input class="input1" type="text" name="assunto" placeholder="Assunto">
-                                <span class="shadow-input1"></span>
-                            </div>
-
-                            <div class="wrap-input1 validate-input" data-validate="Campo Mensagem é obrigatório">
-                                <textarea class="input1" name="mensagem" placeholder="Mensagem"></textarea>
-                                <span class="shadow-input1"></span>
-                            </div>
-
-                            <div class="container-contact1-form-btn mt-4 mb-5">
-                                <button class="contact1-form-btn" type="submit">
-                                    <span>
-                                        Enviar e-mail
-                                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+<div class="card shadow border">
+    <div class="card-body" style="padding: 5px;">
+        <div class="row">
+            <div class="col-lg-12 col-xl-6 my-auto">
+                <div class="contact1-pic js-tilt mx-auto" data-tilt>
+                    <img src="https://i.postimg.cc/pLR0vLCV/mailbox-clipart-md.png" alt="IMG">
                 </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mx-auto">
+                <form class="contact1-form validate-form" action="{% url 'suporte:contato' %}" method="POST">
+                    {% csrf_token %}
+                    <span class="contact1-form-title mt-5">
+                        Contato
+                    </span>
+                    <span class="contact1-form-title mt-2 text-muted mb-5" style="font-size: 18px;">
+                        Nos envie um e-mail com críticas ou sugestões.
+                    </span>
+
+                    <div class="wrap-input1 validate-input" data-validate="Campo Nome é obrigatório">
+                        <input class="input1" type="text" name="nome" placeholder="Nome">
+                        <span class="shadow-input1"></span>
+                    </div>
+
+                    <div class="wrap-input1 validate-input" data-validate="Campo E-mail válido obrigatório: ex@abc.xyz">
+                        <input class="input1" type="text" name="email" placeholder="E-mail">
+                        <span class="shadow-input1"></span>
+                    </div>
+
+                    <div class="wrap-input1 validate-input" data-validate="Campo Assunto é obrigatório ">
+                        <input class="input1" type="text" name="assunto" placeholder="Assunto">
+                        <span class="shadow-input1"></span>
+                    </div>
+
+                    <div class="wrap-input1 validate-input" data-validate="Campo Mensagem é obrigatório">
+                        <textarea class="input1" name="mensagem" placeholder="Mensagem"></textarea>
+                        <span class="shadow-input1"></span>
+                    </div>
+
+                    <div class="container-contact1-form-btn mt-4 mb-5">
+                        <button class="contact1-form-btn" type="submit">
+                            <span>
+                                Enviar e-mail
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
