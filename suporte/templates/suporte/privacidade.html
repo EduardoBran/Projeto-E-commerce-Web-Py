@@ -1,9 +1,44 @@
 {% extends 'base.html' %}
 
-{% block titulo %}Privacidade | {% endblock %}
+{% block titulo %}Política de Privacidade | {% endblock %}
 
 {% block conteudo %}
 
-PRIVACIDADE
+<div class="mb-3">
+    <a href="{% url 'produto:home' %}" style="color: #262727;">
+        Página inicial</a><span style="color: #939393;">
+        <i class="fa-solid fa-2xs fa-angles-right"></i> Política de Privacidade
+    </span>
+</div>
+<div class="card shadow border ml-4 mr-4">
+    <div class="card-body" style="padding: 5px;">
+        <div class="row ">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="conteudo">
+                    <h4>POLÍTICA DE PRIVACIDADE</h4>
+                    <br>
+                    <h5>Política de privacidade</h5>
+
+                    <p>As informações pessoais recolhidas serão utilizadas para melhorar e tornar a visita no nosso site
+                        mais produtiva, assim. A Unique Store garante a confidencialidade dos dados pessoais utilizados
+                        em nosso site. As informações aqui coletadas podem incluir seu nome, e-mail, endereço, data de
+                        nascimento e outros. Utilizando o site https://storeunique.herokuapp.com,
+                        entendemos o aceite deste acordo de privacidade. A Unique Store se reserva o direito de alterar
+                        este acordo sem aviso prévio. Você pode consultar nossa política de privacidade com regularidade
+                        e identificar futuras atualizações.</p>
+
+                    <h5>Cookies e Web Beacons</h5>
+
+                    <p>Utilizamos cookies para armazenar informação, como suas preferências para melhorar sua
+                        experiência em nosso site. Isto inclui um popup ou uma ligação em vários serviços. Você detém o
+                        poder de desligar os seus cookies, nas opções do seu browser, ou efetuando alterações nas
+                        ferramentas de programas Anti-Virus. No entanto, isso poderá alterar a forma como interage com o
+                        nosso site.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
