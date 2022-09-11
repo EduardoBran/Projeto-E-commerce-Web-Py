@@ -1,0 +1,27 @@
+.logo-conteudo {
+    padding: 10px;
+}
+
+.logo-conteudo i {
+    color: #343a40;
+}
+
+.imagemLogo {
+    border-radius: 50%;
+    width: 90%;
+}
+
+.conteudo {
+    margin-top: 28px;
+    margin-bottom: 20px;
+    padding: 14px;
+}
+
+.conteudo p {
+    font-family: Garamond, Arial;
+    font-size: 20px;
+}
+
+.conteudo h2 {
+    font-family: Copperplate, Arial;
+}

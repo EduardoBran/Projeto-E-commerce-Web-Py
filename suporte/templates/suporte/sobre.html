@@ -1,9 +1,87 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block titulo %}Termos de Uso | {% endblock %}
 
 {% block conteudo %}
 
-SOBRE
+<script src="{% static 'js/tilt.jquery.min.js'%}"></script>
+
+
+
+<div class="mb-3">
+    <strong><a href="{% url 'produto:home' %}" style="color: black;">Página inicial</a></strong> <i
+        class="fa-solid fa-2xs fa-angles-right"></i> Quem Somos
+</div>
+<div class="card shadow border ml-4 mr-4">
+    <div class="row">
+        <div class="col-md-3 d-flex flex-column justify-content-center align-items-center"
+            style="background-color: #008b8b;">
+            <img src="https://i.postimg.cc/Vknyqz9v/logoTemp.png" alt="IMG" class="img-fluid js-tilt imagemLogo mt-4"
+                data-tilt>
+            <div class="text-center logo-conteudo mb-4">
+                <h3 class="text-center mt-4 mb-3">
+                    <strong>UNIQUE STORE</strong>
+                </h3>
+                <a href="#" class="text-reset instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="text-reset twitter" target="_blank" rel="noopener noreferrer">
+                    <i class="fa fa-twitter fa-lg"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'suporte:contato' %}" class="text-reset envelope">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="conteudo">
+                <h2 class="text-center">
+                    QUEM SOMOS
+                </h2>
+                <br>
+                <p class="text-center">
+                    Lorem ipsum blandit taciti consequat quam etiam nam, pretium suscipit curae neque senectus
+                    adipiscing per faucibus, dapibus velit primis convallis integer quisque.
+                    quis sapien scelerisque pharetra venenatis pellentesque orci praesent, turpis blandit tristique eu
+                    morbi accumsan augue, integer iaculis imperdiet vel varius condimentum.
+                </p>
+                <p>
+                    Diam faucibus duis rhoncus lacinia posuere tortor dictum venenatis, arcu massa pulvinar dapibus quis
+                    aenean porttitor, vulputate mi quisque vestibulum amet nec aenean.
+                </p>
+                <p>
+                    Ipsum varius lacus blandit a vivamus velit porttitor fames interdum, rutrum dui ligula mauris nisl
+                    nam pellentesque sem, ac elit felis gravida viverra cubilia fusce nulla.
+                    ultrices scelerisque accumsan habitasse tellus euismod ad tortor neque, faucibus ut rhoncus
+                    fermentum duis congue vehicula nisl commodo, interdum enim ante egestas lacus sed nisi.
+                </p>
+                <p>
+                    Blandit est eleifend habitant lobortis faucibus ornare turpis sit, sollicitudin porta pharetra purus
+                    tellus pulvinar turpis neque nam, velit aptent vel duis taciti facilisis tortor.
+                    vel nullam elementum auctor donec ligula facilisis eros metus, commodo laoreet vivamus eget eu
+                    rutrum fermentum mi, magna justo fermentum felis ligula potenti adipiscing.
+                </p>
+                <p>
+                    Nam curabitur rhoncus maecenas purus libero vehicula egestas fames convallis vulputate, blandit sed
+                    orci inceptos dapibus suscipit ultricies enim etiam, aenean habitant etiam placerat nec class
+                    torquent arcu ad.
+                </p>
+                <p>
+                    Risus id sollicitudin ultricies aptent, fringilla lectus.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EFEITO IMAGEM -->
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+
 
 {% endblock %}
