@@ -5,6 +5,154 @@
 
 {% block conteudo %}
 
-PERGUNTAS FREQUENTES
+<style>
+    .esconder {
+        display: none;
+    }
+</style>
+
+<div class="mb-3">
+    <a href="{% url 'produto:home' %}" style="color: #262727;">
+        Página inicial</a><span style="color: #939393;">
+        <i class="fa-solid fa-2xs fa-angles-right"></i> Perguntas frequentes
+    </span>
+</div>
+<div id="accordion">
+    <div class="card shadow border ml-2 mr-2">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-light text-left" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="false" aria-controls="collapseOne" id="btn1">
+                    <i class="fa-solid fa-angles-right fa-2xs" id="mostrar"></i>
+                    <i class="fa-solid fa-angles-down fa-2xs" id="esconder" style="display: none;"></i>
+                    Políticas de troca, devolução e garantia
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body mb-3">
+                <div class="text-right mb-1">
+                    <button type="button" aria-label="Close" onclick="fechar()">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                    </button>
+                </div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <div class="card shadow border ml-2 mr-2">
+        <div class="card-header" id="headingTwo">
+            <button class="btn btn-light text-left" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo" id="btn2">
+                <i class="fa-solid fa-angles-right fa-2xs" id="mostrar2"></i>
+                <i class="fa-solid fa-angles-down fa-2xs" id="esconder2" style="display: none;"></i>
+                Como faço para solicitar uma troca?
+            </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <div class="text-right mb-1">
+                    <button type="button" aria-label="Close" onclick="fechar()">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                    </button>
+                </div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <div class="card shadow border ml-2 mr-2">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-light text-left" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="false" aria-controls="collapseThree" id="btn3">
+                    <i class="fa-solid fa-angles-right fa-2xs" id="mostrar3"></i>
+                    <i class="fa-solid fa-angles-down fa-2xs" id="esconder3" style="display: none;"></i>
+                    Como faço para solicitar uma devolução?
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <div class="text-right mb-1">
+                    <button type="button" aria-label="Close" onclick="fechar()">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                    </button>
+                </div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <div class="card shadow border ml-2 mr-2">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn btn-light text-left" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="false" aria-controls="collapseFour" id="btn4">
+                    <i class="fa-solid fa-angles-right fa-2xs" id="mostrar4"></i>
+                    <i class="fa-solid fa-angles-down fa-2xs" id="esconder4" style="display: none;"></i>
+                    Como preparar o produto para envio após solicitação da troca ou devolução?
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="card-body">
+                <div class="text-right mb-1">
+                    <button type="button" aria-label="Close" onclick="fechar()">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                    </button>
+                </div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+    <div class="card shadow border ml-2 mr-2">
+        <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+                <button class="btn btn-light text-left" data-toggle="collapse" data-target="#collapseFive"
+                    aria-expanded="false" aria-controls="collapseFive" id="btn5">
+                    <i class="fa-solid fa-angles-right fa-2xs" id="mostrar5"></i>
+                    <i class="fa-solid fa-angles-down fa-2xs" id="esconder5" style="display: none;"></i>
+                    Quais são as opções de reembolso para uma devolução?
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+            <div class="card-body">
+                <div class="text-right mb-1">
+                    <button type="button" aria-label="Close" onclick="fechar()">
+                        <i class="fa-solid fa-xmark fa-lg"></i>
+                    </button>
+                </div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
