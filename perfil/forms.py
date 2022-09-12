@@ -54,7 +54,7 @@ class PerfilForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(
             attrs={'class': 'input1 form-control textinput textInput',
-                   'maxlength': 4}
+                   'maxlength': 25}
         ),
     )
     bairro = forms.CharField(
