@@ -18,7 +18,7 @@ class Perfil(models.Model):
     numero = models.CharField(max_length=5, verbose_name='Número')
     complemento = models.CharField(max_length=30, blank=True, null=True)
     bairro = models.CharField(max_length=30)
-    cep = models.CharField(max_length=10)
+    cep = models.CharField(max_length=20)
     cidade = models.CharField(max_length=30)
     estado = models.CharField(
         max_length=2,
