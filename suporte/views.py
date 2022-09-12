@@ -29,6 +29,10 @@ class Sobre(Privacidade):
     template_name = 'suporte/sobre.html'
 
 
+class Pergunta(Privacidade):
+    template_name = 'suporte/perguntas.html'
+
+
 def ContatoView(request):
     if str(request.method) == 'POST':
         form = ContatoForm(request.POST)
