@@ -36,7 +36,7 @@
                 {% for linha in pedido.itempedido_set.all %}
                 <tr>
                     <td class="d-none d-lg-block">
-                        <img class="cart-img" src="{% get_media_prefix %}{{ linha.imagem }}">
+                        <img class="cart-img" src="{{ linha.imagem }}">
                     </td>
                     <td>{{ linha.produto }}</td>
                     <td>{{ linha.variacao }}</td>
