@@ -43,7 +43,7 @@
             100%
     }
 
-    /* AQUI */
+    /* Banner-Info */
 
     .banner-info {
         background-color: #f1f1f1;
@@ -137,6 +137,22 @@
             margin-left: 7px;
             margin-right: 7px;
         } */
+    }
+
+    /* Colunas Categoria */
+
+    .containerHome img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+        transition: ease-in-out .3s;
+        box-shadow: 0 0 0 rgb(0 0 0 / 10%);
+    }
+
+    .containerHome a:hover img {
+        opacity: .9;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
 </style>
 
@@ -239,13 +255,20 @@
 <div class="containerHome">
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-            <img class="img-fluid" src="https://i.postimg.cc/QCKX6g7k/nossos-moletons.png" alt="Moletons">
+            <a href="{% url 'produto:categoria' 'Moletons' %}" name="buscar">
+                <img class="img-fluid shadow border" src="https://i.postimg.cc/QCKX6g7k/nossos-moletons.png"
+                    alt="Moletons">
+            </a>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-            <img class="img-fluid" src="https://i.postimg.cc/cHH13G4z/nossas-bermudas.png" alt="">
+            <a href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar">
+                <img class="img-fluid shadow border" src="https://i.postimg.cc/cHH13G4z/nossas-bermudas.png" alt="">
+            </a>
         </div>
         <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-            <img class="img-fluid" src="https://i.postimg.cc/xC4fypX1/nossas-camisas.png" alt="">
+            <a href="{% url 'produto:categoria' 'Camisas' %}" name="buscar">
+                <img class="img-fluid shadow border" src="https://i.postimg.cc/xC4fypX1/nossas-camisas.png" alt="">
+            </a>
         </div>
     </div>
 </div>
