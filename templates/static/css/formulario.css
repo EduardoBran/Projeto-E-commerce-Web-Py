@@ -231,6 +231,7 @@ iframe {
 @media (max-width: 1200px) {
     .contact1-pic {
         width: 27.5%;
+        height: 50%;
         margin-top: 10px;
     }
 
@@ -242,6 +243,7 @@ iframe {
 @media (max-width: 1100px) {
     .contact1-pic {
         width: 25%;
+        height: 50%;
         margin-top: 15px;
     }
 
@@ -257,6 +259,7 @@ iframe {
 
     .contact1-pic {
         width: 23%;
+        height: 50%;
         margin-top: 10px;
     }
 
