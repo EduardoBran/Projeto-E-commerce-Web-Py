@@ -230,7 +230,19 @@ iframe {
 
 @media (max-width: 1200px) {
     .contact1-pic {
-        width: 33.5%;
+        width: 27.5%;
+        margin-top: 10px;
+    }
+
+    .contact1-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .contact1-pic {
+        width: 25%;
+        margin-top: 15px;
     }
 
     .contact1-form {
@@ -244,7 +256,8 @@ iframe {
     }
 
     .contact1-pic {
-        width: 35%;
+        width: 23%;
+        margin-top: 10px;
     }
 
     .contact1-form {
