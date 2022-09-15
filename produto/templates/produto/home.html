@@ -3,9 +3,7 @@
 
 {% block titulo %}Home | {% endblock %}
 
-{% block conteudo %}
-
-<br><br>
+{% block conteudoHome %}
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -15,44 +13,31 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="https://i.postimg.cc/gkg9WXvw/H18340-1-removebg-preview-z-G1-M51g.png"
-                alt="First slide" width="220" height="250">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </div>
+            <a class="dropdown-item" href="{% url 'produto:categoria' 'Moletons' %}" name="buscar"
+                style="text-decoration:none">
+                <img class="d-block w-100" src="https://i.postimg.cc/5N7xbh07/caro1.png" alt="First slide">
+            </a>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100"
-                src="https://i.postimg.cc/J4x8zdWz/camisa-barcelona-nike-dri-fit-stad-js-masculina-img.png"
-                alt="First slide" width="220" height="250">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
+            <a class="dropdown-item" href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar"
+                style="text-decoration:none">
+                <img class="d-block w-100" src="https://i.postimg.cc/sgM3XTGV/caro2.png" alt="Second slide">
+            </a>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100"
-                src="https://i.postimg.cc/qvZd8hqf/camisa-manchester-city-i-21-22-puma-masculina-img.png"
-                alt="First slide" width="220" height="250">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </div>
+            <a class="dropdown-item" href="{% url 'produto:categoria' 'Camisas' %}" name="buscar"
+                style="text-decoration:none">
+                <img class="d-block w-100" src="https://i.postimg.cc/zXXzmzJH/caro3.png" alt="Third slide">
+            </a>
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span style="color: black; font-size: 50px;">
-            <strong>
-                < </strong></span>
+        <i class="fa-solid fa-chevron-left fa-lg" style="color: black; margin-left: 8px;"></i>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span style="color: black; font-size: 50px;"><strong>></strong></span>
+        <i class="fa-solid fa-chevron-right fa-lg" style="color: black; margin-right: 8px;"></i>
     </a>
 </div>
-
-<br><br>
-
 
 
 {% endblock %}
