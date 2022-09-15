@@ -74,7 +74,6 @@
     .banner-info .arrow .icon {
         width: 13px;
         height: 13px;
-        fill: var(--banner_info_color)
     }
 
     .banner-info .open_desk {
@@ -150,36 +149,33 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a class="dropdown-item" href="{% url 'produto:categoria' 'Moletons' %}" name="buscar"
-                style="text-decoration:none">
+            <a href="{% url 'produto:categoria' 'Moletons' %}" name="buscar">
                 <img class="d-block w-100" src="https://i.postimg.cc/5N7xbh07/caro1.png" alt="First slide">
             </a>
         </div>
         <div class="carousel-item">
-            <a class="dropdown-item" href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar"
-                style="text-decoration:none">
+            <a href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar">
                 <img class="d-block w-100" src="https://i.postimg.cc/sgM3XTGV/caro2.png" alt="Second slide">
             </a>
         </div>
         <div class="carousel-item">
-            <a class="dropdown-item" href="{% url 'produto:categoria' 'Camisas' %}" name="buscar"
-                style="text-decoration:none">
+            <a href="{% url 'produto:categoria' 'Camisas' %}" name="buscar">
                 <img class="d-block w-100" src="https://i.postimg.cc/zXXzmzJH/caro3.png" alt="Third slide">
             </a>
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <i class="fa-solid fa-chevron-left fa-lg" style="color: black; margin-left: 8px;"></i>
+        <i class="fa-solid fa-chevron-left fa-lg" style="color: black;"></i>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <i class="fa-solid fa-chevron-right fa-lg" style="color: black; margin-right: 8px;"></i>
+        <i class="fa-solid fa-chevron-right fa-lg" style="color: black;"></i>
     </a>
 </div>
 <!-- End Carousel Principal -->
 
 <!-- Banner-Info -->
 <div class="banner-info containerHome mt-1">
-    <div class="open_desk flexHome justify-betweenHome ">
+    <div class="open_desk flexHome justify-betweenHome">
         <div class="item">
             <div class="line flexHome justify-centerHome align-centerHome">
                 <img class="icon"
@@ -254,7 +250,5 @@
     </div>
 </div>
 <!-- End Colunas Categoria -->
-
-
 
 {% endblock %}
