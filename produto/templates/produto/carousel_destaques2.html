@@ -2,140 +2,12 @@
 {% load omfilters %}
 
 <style>
-    /* body */
-    .flexHome {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex
-    }
-
-    .justify-betweenHome {
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between
-    }
-
-    .justify-centerHome {
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center
-    }
-
-    .align-centerHome {
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center
-    }
-
     .containerHome {
         width: 100%;
         max-width: 1378px;
         margin: 0 auto;
         padding: 0 .938rem;
     }
-
-    .banner_lista img {
-        max-width:
-            100%
-    }
-
-    /* Banner-Info */
-
-    .banner-info {
-        background-color: #f1f1f1;
-    }
-
-    .banner-info .line {
-        height: 422px;
-        margin: 24px 0;
-    }
-
-    .banner-info .text {
-        font-size: .875rem;
-        line-height: 1.32
-    }
-
-    .banner-info .text .featured {
-        font-weight: 500;
-        font-style: normal;
-        font-size: 1rem
-    }
-
-    .banner-info .line .icon {
-        max-width: 62px;
-        max-height: 42px;
-        margin-right: 10px
-    }
-
-    .banner-info .arrow .icon {
-        width: 13px;
-        height: 13px;
-    }
-
-    .banner-info .open_desk {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center
-    }
-
-    .banner-info .open_desk .text .featured {
-        display: block;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 1rem;
-        text-transform: uppercase;
-        max-width: 230px;
-        white-space: unset;
-        overflow: hidden;
-        text-overflow: ellipsis
-    }
-
-    .banner-info .open_desk .line {
-        margin: 35px 0;
-        height: 40px
-    }
-
-    .banner-info .open_desk .item:not(:last-child) {
-        margin-right: 20px
-    }
-
-    .margin-top-none {
-        margin-top: 0 !important
-    }
-
-    @media (max-width:1024px) {
-        .banner-info .open_desk {
-            white-space: nowrap;
-            overflow: auto;
-        }
-    }
-
-    .banner-info .text {
-        font-size: .85rem;
-        line-height: 1.32;
-        max-width: 230px;
-        white-space: pre-line;
-        overflow: hidden;
-        display: block;
-        text-overflow: ellipsis;
-        font-weight: 700
-    }
-
-    @media (max-width: 767px) {
-        .banner-info .text {
-            font-size: .875rem;
-        }
-
-        /* .espaco {
-            margin-left: 7px;
-            margin-right: 7px;
-        } */
-    }
-
-    /* Colunas Categoria */
 
     .containerHome img {
         display: block;
@@ -151,152 +23,361 @@
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
 
-    .card img {
-        width: 200px;
-        height: 200px;
+    .gap-top-bottom {
+        padding: 70px 0;
     }
 
-    .card a:hover img {
-        opacity: .9;
-        transform: translateY(-4px);
-        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+    .img-box img {
+        width: 100%;
+    }
+
+    .text-box h4 {
+        font-size: 20px
+    }
+
+    /**sec2 style**/
+    .sec2 {
+        /* padding: 60px 0; */
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 0;
+        border-top: 1px solid #d9d9d9;
+        background-color: #f1f1f1;
+    }
+
+    .sec2 h1 {
+        color: black;
+    }
+
+    .item-img {
+        position: relative;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .item-img img {
+        width: 240px;
+        height: 240px;
+    }
+
+    .hover-box {
+        position: absolute;
+        bottom: -100%;
+        width: 100%;
+        height: 100%;
+        transition: all ease-in-out 0.5s;
+        opacity: 0;
+    }
+
+    .hover-box ul {
+        padding-left: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        transform: translateY(-50%);
+    }
+
+    .hover-box ul li {
+        color: gold;
+        font-size: 30px;
+    }
+
+    .text-box-2 h4 {
+        color: #28A745;
+    }
+
+    .text-box-2 p samp {
+        color: red;
+    }
+
+    /***hover**/
+    .item-box:hover .hover-box {
+        opacity: 1;
+        bottom: 0;
+
     }
 </style>
 
-<!-- Carousel Principal -->
-<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-                    {% for produto in produtos1 %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 
+<!-- section start here-->
 
-                    <div class="card">
-                        <a href="{% url 'produto:detalhe' produto.slug %}">
-                            <img src="{{ produto.imagem }}" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ produto.nome }}</h5>
-                            <p class="card-text">{{ produto.descricao_curta }}</p>
-
-                            <div class="container product-price-block text-center">
-
-                                {% if produto.preco_marketing_promocional %}
-                                <span class="product-price">
-                                    {{ produto.preco_marketing_promocional|formata_preco }}
-                                </span>
-                                <span class="product-old-price text-muted">
-                                    {{ produto.preco_marketing|formata_preco }}
-                                </span>
-                                {% else %}
-                                <span class="product-price">
-                                    {{ produto.preco_marketing|formata_preco }}
-                                </span>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="card-footer bg-transparent border-top-light-custom text-center">
-                            <a href="{% url 'produto:detalhe' produto.slug %}"
-                                class="btn btn-primary btn-sm m-1 btn-block">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                Comprar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                {% endfor %}
+<!-- section start here-->
+<section class="sec2">
+    <div class="containerHome">
+        <div class="row">
+            <div class="col-md text-center">
+                <h1>Multi Item slick Carousel for</h1>
+                <p>Show 3 Items In Desktop 2 In Tab And 1 In Mobile</p>
             </div>
-
-
         </div>
-        <div class="carousel-item">
+        <!--end row-->
 
-            {% for produto in produtos2 %}
-            <div class="card">
-                <a href="{% url 'produto:detalhe' produto.slug %}">
-                    <img src="{{ produto.imagem }}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title">{{ produto.nome }}</h5>
-                    <p class="card-text">{{ produto.descricao_curta }}</p>
-
-                    <div class="container product-price-block text-center">
-
-                        {% if produto.preco_marketing_promocional %}
-                        <span class="product-price">
-                            {{ produto.preco_marketing_promocional|formata_preco }}
-                        </span>
-                        <span class="product-old-price text-muted">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% else %}
-                        <span class="product-price">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% endif %}
+        <div class="row slider2">
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>Item Carousel</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                        <br>
                     </div>
                 </div>
-                <div class="card-footer bg-transparent border-top-light-custom text-center">
-                    <a href="{% url 'produto:detalhe' produto.slug %}" class="btn btn-primary btn-sm m-1 btn-block">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Comprar
-                    </a>
-                </div>
+                <!-- end item box-->
             </div>
-            {% endfor %}
+            <!--end col here-->
 
-        </div>
-        <div class="carousel-item">
-
-            {% for produto in produtos3 %}
-            <div class="card">
-                <a href="{% url 'produto:detalhe' produto.slug %}">
-                    <img src="{{ produto.imagem }}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                    <h5 class="card-title">{{ produto.nome }}</h5>
-                    <p class="card-text">{{ produto.descricao_curta }}</p>
-
-                    <div class="container product-price-block text-center">
-
-                        {% if produto.preco_marketing_promocional %}
-                        <span class="product-price">
-                            {{ produto.preco_marketing_promocional|formata_preco }}
-                        </span>
-                        <span class="product-old-price text-muted">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% else %}
-                        <span class="product-price">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% endif %}
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>Item Carousel</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
                     </div>
                 </div>
-                <div class="card-footer bg-transparent border-top-light-custom text-center">
-                    <a href="{% url 'produto:detalhe' produto.slug %}" class="btn btn-primary btn-sm m-1 btn-block">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Comprar
-                    </a>
-                </div>
+                <!-- end item box-->
             </div>
-            {% endfor %}
+            <!--end col here-->
 
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>Item Carousel</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
+
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>Item Carousel</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
+
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>Item Carousel</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
+
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>Item Carousel</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
+
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>This is demo</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
+
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>This is demo</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
+
+            <div class="col">
+                <div class="item-box">
+                    <div class="item-img">
+                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
+                        <div class="hover-box">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div><!-- end item img-->
+                    <div class="text-box-2 text-center">
+                        <h4>This is demo</h4>
+                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
+                        <button class="btn btn-info">Buy Now</button> <button class="btn btn-success">Add To
+                            Cart</button>
+                    </div>
+                </div>
+                <!-- end item box-->
+            </div>
+            <!--end col here-->
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-        <i class="fa-solid fa-chevron-left fa-lg" style="color: black;"></i>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-        <i class="fa-solid fa-chevron-right fa-lg" style="color: black;"></i>
-    </a>
-</div>
-<!-- End Carousel Principal -->
+    <!--container end-->
+</section>
+<!--section end-->
+
+
+<script>
+    /**slider 2 js **/
+    $('.slider2').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        autoplay: true,
+        speed: 300,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+
+
+</script>
