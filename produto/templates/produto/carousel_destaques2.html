@@ -2,6 +2,8 @@
 {% load omfilters %}
 
 <style>
+    /* body */
+
     .containerHome {
         width: 100%;
         max-width: 1378px;
@@ -23,29 +25,18 @@
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
 
-    .gap-top-bottom {
-        padding: 70px 0;
-    }
-
-    .img-box img {
-        width: 100%;
-    }
-
-    .text-box h4 {
-        font-size: 20px
-    }
-
     /**sec2 style**/
-    .sec2 {
-        /* padding: 60px 0; */
+
+    .sec {
         padding-left: 60px;
         padding-right: 60px;
         padding-top: 0;
+        /* padding: 60px 0; */
         /* border-top: 1px solid #d9d9d9; */
         background-color: #f1f1f1;
     }
 
-    .sec2 h1 {
+    .sec h1 {
         color: black;
     }
 
@@ -82,11 +73,11 @@
         font-size: 30px;
     }
 
-    .text-box-2 h4 {
+    .text-box h5 {
         color: #28A745;
     }
 
-    .text-box-2 p samp {
+    .text-box p samp {
         color: red;
     }
 
@@ -105,11 +96,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 
 <!-- section start here-->
-
-<!-- section start here-->
-<section class="sec2">
+<section class="sec">
     <div class="containerHome">
-        <div class="row  mt-5 mb-4">
+        <div class="row mt-5 mb-4">
             <div class="col-md">
                 <h1>Destaques</h1>
             </div>
@@ -117,221 +106,48 @@
         <!--end row-->
 
         <div class="row slider2">
+            {% for produto in produtosAll %}
             <div class="col">
                 <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">destaque!</i></li>
-                            </ul>
+                    <a href="{% url 'produto:detalhe' produto.slug %}">
+                        <div class="item-img">
+                            <img src="{{ produto.imagem }}" alt="">
+                            <div class="hover-box">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">destaque!</i></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>Item Carousel</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                        <br>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
+                    </a> <!-- end link item img -->
+                    <div class="text-box text-center">
+                        <h5>{{ produto.nome }}</h5>
 
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>Item Carousel</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
+                        {% if produto.preco_marketing_promocional %}
 
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>Item Carousel</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
+                        <p><strike>{{ produto.preco_marketing|formata_preco }}</strike>
+                            <samp>{{ produto.preco_marketing_promocional|formata_preco }}</samp>
+                        </p>
 
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>Item Carousel</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
+                        {% else %}
+                        <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
 
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>Item Carousel</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
+                        {% endif %}
+                        <a href="{% url 'produto:detalhe' produto.slug %}">
+                            <button class="btn btn-info">Buy Now</button>
+                        </a>
 
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>Item Carousel</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
                     </div>
+                    <!-- end text-box box-->
                 </div>
                 <!-- end item box-->
             </div>
             <!--end col here-->
-
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>This is demo</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
-
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>This is demo</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
-
-            <div class="col mb-4">
-                <div class="item-box">
-                    <div class="item-img">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg">
-                        <div class="hover-box">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div><!-- end item img-->
-                    <div class="text-box-2 text-center">
-                        <h4>This is demo</h4>
-                        <p><strike>$289.00</strike> <samp>$250.55</samp></p>
-                        <button class="btn btn-info">Buy Now</button>
-                    </div>
-                </div>
-                <!-- end item box-->
-            </div>
-            <!--end col here-->
+            {% endfor %}
         </div>
+        <!--end row-->
+
     </div>
-    <!--container end-->
+    <!--containerHome end-->
 </section>
 <!--section end-->
 
@@ -372,5 +188,4 @@
             // instead of a settings object
         ]
     });
-
 </script>
