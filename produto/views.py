@@ -10,6 +10,7 @@ from django.views.generic.list import ListView
 from perfil.models import Perfil
 
 from . import models
+from .models import Produto
 
 
 class ListaProdutos(ListView):
@@ -24,6 +25,19 @@ class ListaProdutos(ListView):
         context['categorias'] = Categoria.objects.all()
         context['categoria'] = self.kwargs.get('categoria', None)
         context['termo'] = self.request.GET.get('termo')
+        return context
+
+
+class Home(ListaProdutos):
+    template_name = 'produto/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['produtosAll'] = Produto.objects.all()
+        # context['produtos1'] = Produto.objects.all()[:3]
+        # context['produtos2'] = Produto.objects.all()[3:6]
+        # context['produtos3'] = Produto.objects.all()[6:9]
+
         return context
 
 
@@ -46,10 +60,6 @@ class Busca(ListaProdutos):
         self.request.session.save()
 
         return qs
-
-
-class Home(ListaProdutos):
-    template_name = 'produto/home.html'
 
 
 class ProdutoCategoria(ListaProdutos):

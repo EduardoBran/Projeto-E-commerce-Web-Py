@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load omfilters %}
 
 {% block titulo %}Home | {% endblock %}
 
@@ -154,45 +155,6 @@
         transform: translateY(-4px);
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
-
-    /* Carousel Pequeno Destaques */
-
-    .cards-wrapper {
-        display: flex;
-        justify-content: center;
-    }
-
-    .card img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .card {
-        margin: 0 0.5em;
-        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-        border: none;
-        border-radius: 0;
-    }
-
-    .carousel-inner {
-        padding: 1em;
-    }
-
-    .carousel-control-prev,
-    .carousel-control-next {
-        background-color: #e1e1e1;
-        width: 5vh;
-        height: 5vh;
-        border-radius: 50%;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    @media (min-width: 768px) {
-        .card img {
-            height: 11em;
-        }
-    }
 </style>
 
 <!-- Carousel Principal -->
@@ -314,126 +276,7 @@
 <!-- End Colunas Categoria -->
 
 <!-- Carousel Pequeno Destaques -->
-<div class="containerHome mt-5">
-
-    <h2>Destaques</h2> <!-- diminuir a letra quando a tela for menor -->
-    <br>
-
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="cards-wrapper">
-                    <div class="card">
-                        <img src="https://i.postimg.cc/4xbs10LT/moletom2.jpg" class="card-img-top" alt="..." width="380"
-                            height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card d-none d-md-block">
-                        <img src="https://i.postimg.cc/C1q97PSg/61-Kz-I5r-Fm-L-AC-SX569.jpg" class="card-img-top"
-                            alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card d-none d-md-block">
-                        <img src="https://i.postimg.cc/jSYLt5M6/61-KXrp-EIu6-L-AC-SX569.jpg" class="card-img-top"
-                            alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                    <div class="card">
-                        <img src="https://i.postimg.cc/6qym1Mdc/moletom3.jpg" class="card-img-top" alt="..." width="380"
-                            height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card d-none d-md-block">
-                        <img src="https://i.postimg.cc/Bntg0jyY/415-M8ksn-Th-L-AC-SX679.jpg" class="card-img-top"
-                            alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card d-none d-md-block">
-                        <img src="https://i.postimg.cc/mkKBdzFc/51f-Pvcn-KXXL-AC-SX569.jpg" class="card-img-top"
-                            alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                    <div class="card">
-                        <img src="https://i.postimg.cc/tTyp1ZKy/51n-L5-Cbo-Ev-L-AC-SX679.jpg" class="card-img-top"
-                            alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card d-none d-md-block">
-                        <img src="https://i.postimg.cc/J4x8zdWz/camisa-barcelona-nike-dri-fit-stad-js-masculina-img.png"
-                            class="card-img-top" alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card d-none d-md-block">
-                        <img src="https://i.postimg.cc/qvZd8hqf/camisa-manchester-city-i-21-22-puma-masculina-img.png"
-                            class="card-img-top" alt="..." width="380" height="380">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
+{% include 'produto/carousel_destaques.html' %}
 <!-- End Carousel Pequeno Destaques -->
 
 {% endblock %}
