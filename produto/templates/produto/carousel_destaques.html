@@ -2,52 +2,7 @@
 {% load omfilters %}
 
 <style>
-    .MultiCarousel {
-        float: left;
-        overflow: hidden;
-        /* padding: 15px; */
-        width: 100%;
-        position: relative;
-    }
-
-    .MultiCarousel .MultiCarousel-inner {
-        transition: 1s ease all;
-        float: left;
-    }
-
-    .MultiCarousel .MultiCarousel-inner .item {
-        float: left;
-    }
-
-    .MultiCarousel .MultiCarousel-inner .item>div {
-        text-align: center;
-        background: #f1f1f1;
-        padding: 5px;
-        margin: 5px;
-        color: #666;
-    }
-
-    .MultiCarousel .leftLst,
-    .MultiCarousel .rightLst {
-        position: absolute;
-        border-radius: 40%;
-        font-size: 40px;
-        top: calc(40% - 20px);
-    }
-
-    .MultiCarousel .leftLst {
-        left: 0;
-    }
-
-    .MultiCarousel .rightLst {
-        right: 0;
-    }
-
-    .MultiCarousel .leftLst.over,
-    .MultiCarousel .rightLst.over {
-        pointer-events: none;
-        background: #ccc;
-    }
+    /* body */
 
     .containerHome {
         width: 100%;
@@ -56,179 +11,181 @@
         padding: 0 .938rem;
     }
 
-    .card img {
-        width: 200px;
-        height: 200px;
+    .containerHome img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+        transition: ease-in-out .3s;
+        box-shadow: 0 0 0 rgb(0 0 0 / 10%);
     }
 
-    .card a:hover img {
+    .containerHome a:hover img {
         opacity: .9;
         transform: translateY(-4px);
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
+
+    /**sec2 style**/
+
+    .sec {
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 0;
+        /* padding: 60px 0; */
+        /* border-top: 1px solid #d9d9d9; */
+        background-color: #f1f1f1;
+    }
+
+    .sec h1 {
+        color: black;
+    }
+
+    .item-img {
+        position: relative;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .item-img img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hover-box {
+        position: absolute;
+        bottom: -100%;
+        width: 100%;
+        height: 100%;
+        transition: all ease-in-out 0.5s;
+        opacity: 0;
+    }
+
+    .hover-box ul {
+        padding-left: 0;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        transform: translateY(-50%);
+    }
+
+    .hover-box ul li {
+        color: gold;
+        font-size: 30px;
+    }
+
+    .text-box h5 {
+        color: #28A745;
+    }
+
+    .text-box p samp {
+        color: red;
+    }
+
+    /***hover**/
+    .item-box:hover .hover-box {
+        opacity: 1;
+        bottom: 0;
+
+    }
 </style>
 
-<div class="containerHome mt-4">
-    <h2 class="mb-3">Destaques</h2>
-    <div class="row">
-        <div class="MultiCarousel" data-items="1,2,3,4,5,6,7,8" data-slide="1" id="MultiCarousel" data-interval="1000">
-            <div class="MultiCarousel-inner">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-                {% for produto in produtosAll %}
-                <div class="item">
-                    <div class="pad15">
-                        <div class="card">
-                            <a href="{% url 'produto:detalhe' produto.slug %}">
-                                <img src="{{ produto.imagem }}" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ produto.nome }}</h5>
-                                <p class="card-text">{{ produto.descricao_curta }}</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 
-                                <div class="container product-price-block text-center">
+<!-- section start here-->
+<section class="sec">
+    <div class="containerHome">
+        <div class="row mt-5 mb-4">
+            <div class="col-md">
+                <h1>Destaques</h1>
+            </div>
+        </div>
+        <!--end row-->
 
-                                    {% if produto.preco_marketing_promocional %}
-                                    <span class="product-price">
-                                        {{ produto.preco_marketing_promocional|formata_preco }}
-                                    </span>
-                                    <span class="product-old-price text-muted">
-                                        {{ produto.preco_marketing|formata_preco }}
-                                    </span>
-                                    {% else %}
-                                    <span class="product-price">
-                                        {{ produto.preco_marketing|formata_preco }}
-                                    </span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="card-footer bg-transparent border-top-light-custom text-center">
-                                <a href="{% url 'produto:detalhe' produto.slug %}"
-                                    class="btn btn-primary btn-sm m-1 btn-block">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    Comprar
-                                </a>
+        <div class="row slider2">
+            {% for produto in produtosAll %}
+            <div class="col">
+                <div class="item-box">
+                    <a href="{% url 'produto:detalhe' produto.slug %}">
+                        <div class="item-img">
+                            <img src="{{ produto.imagem }}" alt="">
+                            <div class="hover-box">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">destaque!</i></li>
+                                </ul>
                             </div>
                         </div>
+                    </a> <!-- end link item img -->
+                    <div class="text-box text-center">
+                        <h5>{{ produto.nome }}</h5>
+
+                        {% if produto.preco_marketing_promocional %}
+
+                        <p><strike>{{ produto.preco_marketing|formata_preco }}</strike>
+                            <samp>{{ produto.preco_marketing_promocional|formata_preco }}</samp>
+                        </p>
+
+                        {% else %}
+                        <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
+
+                        {% endif %}
+                        <a href="{% url 'produto:detalhe' produto.slug %}">
+                            <button class="btn btn-info">Buy Now</button>
+                        </a>
+
                     </div>
+                    <!-- end text-box box-->
                 </div>
-                {% endfor %}
-
+                <!-- end item box-->
             </div>
-            <button class="btn btn-dark leftLst">
-                <strong>
-                    < </strong></button>
-            <button class="btn btn-dark rightLst"><strong>></strong></button>
+            <!--end col here-->
+            {% endfor %}
         </div>
-    </div>
-</div>
+        <!--end row-->
 
-<!-- <p>Settings</p>
-<p>Change data items for xs,sm,md and lg display items respectively. Ex:data-items="1,3,5,6"</p>
-<p>Change data slide for slides per click Ex:data-slide="1"</p> -->
+    </div>
+    <!--containerHome end-->
+</section>
+<!--section end-->
 
 <script>
-
-    $(document).ready(function () {
-        var itemsMainDiv = ('.MultiCarousel');
-        var itemsDiv = ('.MultiCarousel-inner');
-        var itemWidth = "";
-
-        $('.leftLst, .rightLst').click(function () {
-            var condition = $(this).hasClass("leftLst");
-            if (condition)
-                click(0, this);
-            else
-                click(1, this)
-        });
-
-        ResCarouselSize();
-
-        $(window).resize(function () {
-            ResCarouselSize();
-        });
-
-        //this function define the size of the items
-        function ResCarouselSize() {
-            var incno = 0;
-            var dataItems = ("data-items");
-            var itemClass = ('.item');
-            var id = 0;
-            var btnParentSb = '';
-            var itemsSplit = '';
-            var sampwidth = $(itemsMainDiv).width();
-            var bodyWidth = $('body').width();
-            $(itemsDiv).each(function () {
-                id = id + 1;
-                var itemNumbers = $(this).find(itemClass).length;
-                btnParentSb = $(this).parent().attr(dataItems);
-                itemsSplit = btnParentSb.split(',');
-                $(this).parent().attr("id", "MultiCarousel" + id);
-
-
-                if (bodyWidth >= 1200) {
-                    incno = itemsSplit[3];
-                    itemWidth = sampwidth / incno;
+    /**slider 2 js **/
+    $('.slider2').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        autoplay: true,
+        speed: 300,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
                 }
-                else if (bodyWidth >= 992) {
-                    incno = itemsSplit[2];
-                    itemWidth = sampwidth / incno;
+            },
+            {
+                breakpoint: 738,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
                 }
-                else if (bodyWidth >= 768) {
-                    incno = itemsSplit[1];
-                    itemWidth = sampwidth / incno;
-                }
-                else {
-                    incno = itemsSplit[0];
-                    itemWidth = sampwidth / incno;
-                }
-                $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
-                $(this).find(itemClass).each(function () {
-                    $(this).outerWidth(itemWidth);
-                });
-
-                $(".leftLst").addClass("over");
-                $(".rightLst").removeClass("over");
-
-            });
-        }
-
-        //this function used to move the items
-        function ResCarousel(e, el, s) {
-            var leftBtn = ('.leftLst');
-            var rightBtn = ('.rightLst');
-            var translateXval = '';
-            var divStyle = $(el + ' ' + itemsDiv).css('transform');
-            var values = divStyle.match(/-?[\d\.]+/g);
-            var xds = Math.abs(values[4]);
-            if (e == 0) {
-                translateXval = parseInt(xds) - parseInt(itemWidth * s);
-                $(el + ' ' + rightBtn).removeClass("over");
-
-                if (translateXval <= itemWidth / 2) {
-                    translateXval = 0;
-                    $(el + ' ' + leftBtn).addClass("over");
+            },
+            {
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
             }
-            else if (e == 1) {
-                var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
-                translateXval = parseInt(xds) + parseInt(itemWidth * s);
-                $(el + ' ' + leftBtn).removeClass("over");
-
-                if (translateXval >= itemsCondition - itemWidth / 2) {
-                    translateXval = itemsCondition;
-                    $(el + ' ' + rightBtn).addClass("over");
-                }
-            }
-            $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
-        }
-
-        //It is used to get some elements from btn
-        function click(ell, ee) {
-            var Parent = "#" + $(ee).parent().attr("id");
-            var slide = $(Parent).attr("data-slide");
-            ResCarousel(ell, Parent, slide);
-        }
-
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
     });
-
 </script>
