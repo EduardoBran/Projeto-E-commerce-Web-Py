@@ -90,7 +90,11 @@
     .item-box:hover .hover-box {
         opacity: 1;
         bottom: 0;
+        color: #f1f1f1;
+    }
 
+    .item-box:active {
+        background-color: #f1f1f1;
     }
 </style>
 
@@ -125,7 +129,9 @@
                     </div><!-- end item img -->
 
                     <div class="text-box text-center mt-2">
-                        <h5>{{ produto.nome }}</h5>
+                        <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
+                            <h5>{{ produto.nome }}</h5>
+                        </a>
 
                         {% if produto.preco_marketing_promocional %}
 
