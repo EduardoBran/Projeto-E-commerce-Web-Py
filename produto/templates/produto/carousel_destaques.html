@@ -106,10 +106,11 @@
         <!--end row-->
 
         <div class="row slider2">
+
             {% for produto in produtosAll %}
             <div class="col">
-                <div class="item-box">
-                    <a href="{% url 'produto:detalhe' produto.slug %}">
+                <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
+                    <div class="item-box mb-4">
                         <div class="item-img">
                             <img src="{{ produto.imagem }}" alt="">
                             <div class="hover-box">
@@ -117,35 +118,36 @@
                                     <li class="list-inline-item">destaque!</i></li>
                                 </ul>
                             </div>
+                        </div><!-- end item img -->
+
+                        <div class="text-box text-center mt-2">
+                            <h5>{{ produto.nome }}</h5>
+
+                            {% if produto.preco_marketing_promocional %}
+
+                            <p><strike>{{ produto.preco_marketing|formata_preco }}</strike>
+                                <samp>{{ produto.preco_marketing_promocional|formata_preco }}</samp>
+                            </p>
+
+                            {% else %}
+                            <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
+
+                            {% endif %}
+
+                            <button class="btn btn-info">Compre Aqui</button>
+
                         </div>
-                    </a> <!-- end link item img -->
-                    <div class="text-box text-center">
-                        <h5>{{ produto.nome }}</h5>
-
-                        {% if produto.preco_marketing_promocional %}
-
-                        <p><strike>{{ produto.preco_marketing|formata_preco }}</strike>
-                            <samp>{{ produto.preco_marketing_promocional|formata_preco }}</samp>
-                        </p>
-
-                        {% else %}
-                        <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
-
-                        {% endif %}
-                        <a href="{% url 'produto:detalhe' produto.slug %}">
-                            <button class="btn btn-info">Buy Now</button>
-                        </a>
-
+                        <!-- end text-box box-->
                     </div>
-                    <!-- end text-box box-->
-                </div>
-                <!-- end item box-->
+                    <!-- end item box-->
+                </a>
+                <!-- end tag <a>-->
             </div>
             <!--end col here-->
             {% endfor %}
+
         </div>
         <!--end row-->
-
     </div>
     <!--containerHome end-->
 </section>
