@@ -81,6 +81,11 @@
         color: red;
     }
 
+    .text-box span {
+        color: red;
+        font-weight: bold;
+    }
+
     /***hover**/
     .item-box:hover .hover-box {
         opacity: 1;
@@ -125,8 +130,9 @@
 
                             {% if produto.preco_marketing_promocional %}
 
-                            <p><strike>{{ produto.preco_marketing|formata_preco }}</strike>
-                                <samp>{{ produto.preco_marketing_promocional|formata_preco }}</samp>
+                            <p>
+                                <strike class="mr-2">{{ produto.preco_marketing|formata_preco }}</strike>
+                                <span>{{produto.preco_marketing_promocional|formata_preco }}</span>
                             </p>
 
                             {% else %}
