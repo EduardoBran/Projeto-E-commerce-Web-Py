@@ -129,9 +129,7 @@
                     </div><!-- end item img -->
 
                     <div class="text-box text-center mt-2">
-                        <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
-                            <h5>{{ produto.nome }}</h5>
-                        </a>
+                        <h5>{{ produto.nome }}</h5>
 
                         {% if produto.preco_marketing_promocional %}
 
