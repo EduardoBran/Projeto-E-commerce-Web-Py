@@ -33,10 +33,12 @@ class Home(ListaProdutos):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['produtosAll'] = Produto.objects.all()
-        context['produtos1'] = Produto.objects.all()[:3]
-        context['produtos2'] = Produto.objects.all()[3:6]
-        context['produtos3'] = Produto.objects.all()[6:9]
+        # context['produtos1'] = Produto.objects.all()[:3]
+        # context['produtos2'] = Produto.objects.all()[3:6]
+        # context['produtos3'] = Produto.objects.all()[6:9]
+
+        context['produtoDestaque'] = Produto.objects.filter(tipo='D')
+        context['produtoLancamento'] = Produto.objects.filter(tipo='L')
 
         return context
 
