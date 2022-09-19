@@ -150,6 +150,33 @@
             margin-right: 7px;
         } */
     }
+
+    /* banner-revenda */
+
+    .banner-revenda {
+        position: relative;
+    }
+
+    .banner-revenda img {
+        width: 100%;
+        max-width: 1378px;
+        display: block;
+        margin: auto;
+        border-radius: 6px;
+        box-shadow: 0 0 0 rgba(0, 0, 0, .1)
+    }
+
+    .banner-revenda img {
+        transition: ease-in-out .3s
+    }
+
+    /* banner-revenda responsivo */
+
+    @media (max-width: 480px) {
+        .banner-revenda {
+            margin: 20px 0
+        }
+    }
 </style>
 
 <!-- Carousel Principal -->
@@ -170,9 +197,11 @@
 {% include 'produto/homeCarousel_destaques.html' %}
 <!-- End Carousel Pequeno Destaques -->
 
-<!-- Banner-Revenda -->
-{% include 'produto/homeBanner_revenda.html' %}
-<!-- End Banner-Revenda -->
+<div class="containerHome">
+    <!-- Banner-Revenda -->
+    {% include 'produto/homeBanner_revenda.html' %}
+    <!-- End Banner-Revenda -->
+</div>
 
 <!-- Carousel Pequeno Lancamentos -->
 {% include 'produto/homeCarousel_lancamentos.html' %}
