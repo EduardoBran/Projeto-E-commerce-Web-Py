@@ -1,0 +1,32 @@
+{% load static %}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="{% url 'produto:categoria' 'Moletons' %}" name="buscar">
+                <img class="d-block w-100" src="https://i.postimg.cc/Y9Z95VGN/colecao-azul1.jpg" alt="First slide">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar">
+                <img class="d-block w-100" src="https://i.postimg.cc/NM6PydZ6/colecao-laranja2.jpg" alt="Second slide">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{% url 'produto:categoria' 'Camisas' %}" name="buscar">
+                <img class="d-block w-100" src="https://i.postimg.cc/xdbZQfRF/colecao-cinza.jpg" alt="Third slide">
+            </a>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <i class="fa-solid fa-chevron-left fa-lg" style="color: black;"></i>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <i class="fa-solid fa-chevron-right fa-lg" style="color: black;"></i>
+    </a>
+</div>

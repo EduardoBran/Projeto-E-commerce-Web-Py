@@ -8,6 +8,28 @@
 
 <style>
     /* body */
+
+    .containerHome {
+        width: 100%;
+        max-width: 1378px;
+        margin: 0 auto;
+        padding: 0 .938rem;
+    }
+
+    .containerHome img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+        transition: ease-in-out .3s;
+        box-shadow: 0 0 0 rgb(0 0 0 / 10%);
+    }
+
+    .containerHome a:hover img {
+        opacity: .9;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+    }
+
     .flexHome {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -32,16 +54,8 @@
         align-items: center
     }
 
-    .containerHome {
-        width: 100%;
-        max-width: 1378px;
-        margin: 0 auto;
-        padding: 0 .938rem;
-    }
-
     .banner_lista img {
-        max-width:
-            100%
+        max-width: 100%;
     }
 
     /* Banner-Info */
@@ -55,17 +69,6 @@
         margin: 24px 0;
     }
 
-    .banner-info .text {
-        font-size: .875rem;
-        line-height: 1.32
-    }
-
-    .banner-info .text .featured {
-        font-weight: 500;
-        font-style: normal;
-        font-size: 1rem
-    }
-
     .banner-info .line .icon {
         max-width: 62px;
         max-height: 42px;
@@ -75,6 +78,23 @@
     .banner-info .arrow .icon {
         width: 13px;
         height: 13px;
+    }
+
+    .banner-info .text {
+        font-size: .855rem;
+        line-height: 1.32;
+        max-width: 230px;
+        white-space: pre-line;
+        overflow: hidden;
+        display: block;
+        text-overflow: ellipsis;
+        font-weight: 700
+    }
+
+    .banner-info .text .featured {
+        font-weight: 500;
+        font-style: normal;
+        font-size: 1rem
     }
 
     .banner-info .open_desk {
@@ -111,22 +131,13 @@
         margin-top: 0 !important
     }
 
+    /* banner-info responsivo */
+
     @media (max-width:1024px) {
         .banner-info .open_desk {
             white-space: nowrap;
             overflow: auto;
         }
-    }
-
-    .banner-info .text {
-        font-size: .85rem;
-        line-height: 1.32;
-        max-width: 230px;
-        white-space: pre-line;
-        overflow: hidden;
-        display: block;
-        text-overflow: ellipsis;
-        font-weight: 700
     }
 
     @media (max-width: 767px) {
@@ -139,144 +150,32 @@
             margin-right: 7px;
         } */
     }
-
-    /* Colunas Categoria */
-
-    .containerHome img {
-        display: block;
-        max-width: 100%;
-        margin: auto;
-        transition: ease-in-out .3s;
-        box-shadow: 0 0 0 rgb(0 0 0 / 10%);
-    }
-
-    .containerHome a:hover img {
-        opacity: .9;
-        transform: translateY(-4px);
-        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
-    }
 </style>
 
 <!-- Carousel Principal -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <a href="{% url 'produto:categoria' 'Moletons' %}" name="buscar">
-                <img class="d-block w-100" src="https://i.postimg.cc/Y9Z95VGN/colecao-azul1.jpg" alt="First slide">
-            </a>
-        </div>
-        <div class="carousel-item">
-            <a href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar">
-                <img class="d-block w-100" src="https://i.postimg.cc/GtD2dQGW/colecao-laranja2.jpg" alt="Second slide">
-            </a>
-        </div>
-        <div class="carousel-item">
-            <a href="{% url 'produto:categoria' 'Camisas' %}" name="buscar">
-                <img class="d-block w-100" src="https://i.postimg.cc/xCc8FYCT/colecao-cinza.jpg" alt="Third slide">
-            </a>
-        </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <i class="fa-solid fa-chevron-left fa-lg" style="color: black;"></i>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <i class="fa-solid fa-chevron-right fa-lg" style="color: black;"></i>
-    </a>
-</div>
+{% include 'produto/homeCarousel_principal.html' %}
 <!-- End Carousel Principal -->
 
-<!-- Banner-Info -->
-<div class="banner-info containerHome mt-1">
-    <div class="open_desk flexHome justify-betweenHome">
-        <div class="item">
-            <div class="line flexHome justify-centerHome align-centerHome">
-                <img class="icon"
-                    src="https://images.tcdn.com.br/files/1033635/themes/25/img/settings/site-seguro-plkn.png?092216108a0503f7a65b9b8c1afbbe10"
-                    alt="Site seguro">
-                <span class="text"><span class="featured">
-                        Site seguro
-                    </span>
-                </span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="line flexHome justify-centerHome align-centerHome">
-                <img class="icon"
-                    src="https://images.tcdn.com.br/files/1033635/themes/25/img/settings/parcelamento-plkn.png?092216108a0503f7a65b9b8c1afbbe10"
-                    alt="Parcelamento">
-                <span class="text"><span class="featured">
-                        Parcelamentos
-                    </span>
-                </span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="line flexHome justify-centerHome align-centerHome">
-                <img class="icon"
-                    src="https://images.tcdn.com.br/files/1033635/themes/25/img/settings/entrega-rapida-plkn.png?092216108a0503f7a65b9b8c1afbbe10"
-                    alt="Entrega Rápida">
-                <span class="text"><span class="featured">
-                        Entrega Rápida
-                    </span>
-                </span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="line flexHome justify-centerHome align-centerHome">
-                <img class="icon"
-                    src="https://images.tcdn.com.br/files/1033635/themes/25/img/settings/atendimento-plkn.png?092216108a0503f7a65b9b8c1afbbe10"
-                    alt="Atendimento">
-                <span class="text"><span class="featured">
-                        Contato
-                    </span>
-                </span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="line flexHome justify-centerHome align-centerHome">
-                <img class="icon"
-                    src="https://images.tcdn.com.br/files/1033635/themes/25/img/settings/troca-segura-plkn.png?092216108a0503f7a65b9b8c1afbbe10"
-                    alt="Troca segura">
-                <span class="text"><span class="featured">
-                        Troca segura
-                    </span>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Banner-Info -->
-
-<!-- Colunas Categoria -->
 <div class="containerHome">
-    <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-            <a href="{% url 'produto:categoria' 'Moletons' %}" name="buscar">
-                <img class="img-fluid shadow border" src="https://i.postimg.cc/QCKX6g7k/nossos-moletons.png"
-                    alt="Moletons">
-            </a>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-            <a href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar">
-                <img class="img-fluid shadow border" src="https://i.postimg.cc/cHH13G4z/nossas-bermudas.png" alt="">
-            </a>
-        </div>
-        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center mt-3">
-            <a href="{% url 'produto:categoria' 'Camisas' %}" name="buscar">
-                <img class="img-fluid shadow border" src="https://i.postimg.cc/xC4fypX1/nossas-camisas.png" alt="">
-            </a>
-        </div>
-    </div>
+    <!-- Banner-Info -->
+    {% include 'produto/homeBanner_info.html' %}
+    <!-- End Banner-Info -->
+
+    <!-- Colunas Categoria -->
+    {% include 'produto/homeCards_categorias.html' %}
+    <!-- End Colunas Categoria -->
 </div>
-<!-- End Colunas Categoria -->
 
 <!-- Carousel Pequeno Destaques -->
-{% include 'produto/carousel_destaques.html' %}
+{% include 'produto/homeCarousel_destaques.html' %}
 <!-- End Carousel Pequeno Destaques -->
+
+<!-- Banner-Revenda -->
+{% include 'produto/homeBanner_revenda.html' %}
+<!-- End Banner-Revenda -->
+
+<!-- Carousel Pequeno Lancamentos -->
+{% include 'produto/homeCarousel_lancamentos.html' %}
+<!-- End Carousel Pequeno Lancamentos -->
 
 {% endblock %}
