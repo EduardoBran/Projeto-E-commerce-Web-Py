@@ -270,8 +270,6 @@
             font-size: 1.675rem;
         }
     }
-
-    /* banner final */
 </style>
 
 <!-- Carousel Principal -->
@@ -302,10 +300,10 @@
 {% include 'produto/homeCarousel_lancamentos.html' %}
 <!-- End Carousel Pequeno Lancamentos -->
 
-<!-- Banners-Final -->
-{% include 'produto/homeBanner_final.html' %}
-<!-- End Banners-Final -->
-
-
+<div class="containerHome mb-5">
+    <!-- Banners-Final -->
+    {% include 'produto/homeCards_final.html' %}
+    <!-- End Banners-Final -->
+</div>
 
 {% endblock %}
