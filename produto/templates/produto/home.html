@@ -201,6 +201,11 @@
         color: black;
     }
 
+    .item-box {
+        background-color: white;
+        padding: 5px;
+    }
+
     .item-img {
         position: relative;
         transition: all ease-in-out 0.5s;
@@ -256,6 +261,36 @@
         background-color: #f1f1f1;
     }
 
+    @media (max-width: 1000px) {
+        .hover-box {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 100%;
+            transition: all ease-in-out 0.5s;
+            opacity: 0;
+        }
+
+        .hover-box ul {
+            padding-left: 0;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+
+        .hover-box ul li {
+            color: yellow;
+            background-color: black;
+            font-size: 25px;
+        }
+
+        .text-box h5 {
+            font-size: 1.025rem;
+        }
+    }
+
     @media (max-width: 767px) {
         .sec {
             padding-left: 25px;
@@ -266,6 +301,10 @@
 
         .sec h1 {
             font-size: 1.675rem;
+        }
+
+        .text-box h5 {
+            font-size: 1.125rem;
         }
     }
 </style>
