@@ -189,4 +189,4 @@ class Logout(View):
             'Usuário foi deslogado com sucesso.'
         )
 
-        return redirect('produto:lista')
+        return redirect('produto:home')
