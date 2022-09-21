@@ -16,6 +16,7 @@
             {% for produto in produtoDestaque %}
             <div class="col">
                 <div class="item-box mb-4 shadow border">
+
                     <div class="item-img">
                         <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
                             <img src="{{ produto.imagem }}" alt="{{ produto.nome }}">
@@ -25,7 +26,8 @@
                                 </ul>
                             </div>
                         </a>
-                    </div><!-- end item img -->
+                    </div>
+                    <!-- end item img -->
 
                     <div class="text-box text-center mt-2">
                         <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
@@ -43,14 +45,48 @@
                         <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
 
                         {% endif %}
-
-                        <!-- <p><small>Tamanho:</small> bla bla bla</p> -->
-
-                        <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
-                            <button class="mt-2 btn btn-info">Compre aqui</button>
-                        </a>
                     </div>
                     <!-- end text-box box-->
+
+                    <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
+                        <div class="form-group text-center">
+                            <label>Tamanho: </label>
+                            <select class="form-select form-select-sm ml-2" aria-label=".form-select-sm example"
+                                id="select-variacoes" name="vid">
+
+                                {% for variacao in produto.variacao_set.all %}
+                                {% if variacao.preco_promocional %}
+                                <option data-preco="{{ variacao.preco|formata_preco }}"
+                                    data-preco-promocional="{{ variacao.preco_promocional|formata_preco }}"
+                                    value="{{ variacao.id }}">
+                                    {% if variacao.nome %}
+                                    {{ variacao.nome }}
+                                    {% else %}
+                                    {{ variacao }}
+                                    {% endif %}
+                                </option>
+                                {% else %}
+                                <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
+                                    {% if variacao.nome %}
+                                    {{ variacao.nome }}
+                                    {% else %}
+                                    {{ variacao }}
+                                    {% endif %}
+                                </option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+
+                            <button type="submit" class="mt-2 btn btn-info">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                Adicionar ao carrinho
+                            </button>
+
+                        </div>
+                        <!-- end form-group text-center -->
+                    </form>
+                    <!-- end form add carrinho-->
+
                 </div>
                 <!-- end item box-->
             </div>
@@ -92,7 +128,7 @@
                 }
             },
             {
-                breakpoint: 880,
+                breakpoint: 980,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1
