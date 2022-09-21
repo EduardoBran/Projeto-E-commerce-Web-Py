@@ -37,8 +37,10 @@ class Home(ListaProdutos):
         # context['produtos2'] = Produto.objects.all()[3:6]
         # context['produtos3'] = Produto.objects.all()[6:9]
 
-        context['produtoDestaque'] = Produto.objects.filter(tipo='D')
-        context['produtoLancamento'] = Produto.objects.filter(tipo='L')
+        context['produtoDestaque'] = Produto.objects.filter(
+            tipo='D').order_by('?')
+        context['produtoLancamento'] = Produto.objects.filter(
+            tipo='L').order_by('?')
 
         return context
 
