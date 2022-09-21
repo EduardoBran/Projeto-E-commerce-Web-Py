@@ -26,7 +26,9 @@
                     </div><!-- end item img -->
 
                     <div class="text-box text-center mt-2">
-                        <h5>{{ produto.nome }}</h5>
+                        <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
+                            <h5>{{ produto.nome }}</h5>
+                        </a>
 
                         {% if produto.preco_marketing_promocional %}
 
