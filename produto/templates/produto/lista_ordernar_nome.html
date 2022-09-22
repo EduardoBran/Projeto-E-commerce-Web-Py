@@ -2,6 +2,8 @@
 {% load static %}
 {% load omfilters %}
 
+{% block titulo %}Produtos Ord Nome | {% endblock %}
+
 {% block subtitulo %}
 <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left mb-3">
@@ -9,7 +11,7 @@
             Página inicial</a><span style="color: #939393;">
             <i class="fa-solid fa-2xs fa-angles-right"></i> Produtos
         </span><span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> {{categoria}}
+            <i class="fa-solid fa-2xs fa-angles-right"></i> Ordenar por nome
         </span>
     </div>
 </div>
@@ -17,11 +19,11 @@
 
 {% block ordernarSelect %}
 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mb-3">
-    <span>Ordenar por: TO AQUI</span>
+    <span>Ordenar por: </span>
     <select class="form-select ml-2" aria-label="Default select example" onchange="location.href=this.value">
 
-        <option selected>Lançamento</option>
-        <option value="{% url 'produto:categoria_ord_nome' categoria %}">Nome</option>
+        <option selected>Nome</option>
+        <option value="{% url 'produto:ord_nome' %}">Nome</option>
         <option value="#">Menor preço</option>
         <option value="#">Maior preço</option>
         <option value="#">Destaque</option>
@@ -29,6 +31,3 @@
     </select>
 </div>
 {% endblock %}
-
-<!--  Primeiro nome do select -->
-{% block produtoSelect %} {{categoria}} {% endblock %}

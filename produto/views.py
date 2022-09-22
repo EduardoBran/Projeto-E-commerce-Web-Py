@@ -18,7 +18,6 @@ class ListaProdutos(ListView):
     template_name = 'produto/lista.html'
     context_object_name = 'produtos'
     paginate_by = 6
-    ordering = ['-id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,6 +25,21 @@ class ListaProdutos(ListView):
         context['categoria'] = self.kwargs.get('categoria', None)
         context['termo'] = self.request.GET.get('termo')
         return context
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('?')
+        return qs
+
+
+class ListaProdutosOrdernarNome(ListaProdutos):
+    template_name = 'produto/lista_ordernar_nome.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('nome')
+        return qs
 
 
 class Home(ListaProdutos):
@@ -78,7 +92,18 @@ class ProdutoCategoria(ListaProdutos):
             return qs
 
         qs = qs.filter(categoria_produto__nome_cat__iexact=categoria)
+        qs = qs.order_by('?')
 
+        return qs
+
+
+class ListaProdutosCategoriaOrdernarNome(ProdutoCategoria):
+    template_name = 'produto/lista_cat_ordernar_nome.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('nome')
         return qs
 
 

@@ -1,63 +1,149 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load omfilters %}
 
 {% block titulo %}Produtos | {% endblock %}
 
 {% block conteudo %}
 
+<style>
+    /* produtos */
+
+    /* body */
+    .card-columns img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+        transition: ease-in-out .3s;
+        box-shadow: 0 0 0 rgb(0 0 0 / 10%);
+    }
+
+    .card-columns a:hover img {
+        opacity: .9;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+    }
+
+
+    .form-select {
+        width: 150px;
+        text-align: center;
+    }
+
+
+    .ladoMobile {
+        text-align: right;
+    }
+
+
+    @media (max-width: 769px) {
+        .ladoMobile {
+            text-align: left;
+        }
+
+        .espacoMobile {
+            margin-right: 20px;
+        }
+    }
+</style>
+
+{% block subtitulo %}
 <div class="row">
-    <div class="col-lg-12">
-        <div class="card-columns">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left mb-3">
+        <a href="{% url 'produto:home' %}" style="color: #262727;">
+            Página inicial</a><span style="color: #939393;">
+            <i class="fa-solid fa-2xs fa-angles-right"></i> Produtos
+        </span>
+    </div>
+</div>
+{% endblock %}
+
+<div class="row mt-2">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mb-3">
+        <span class="espacoMobile">Categoria: </span>
+        <select class="form-select espacoMobile ml-2" aria-label="Default select example"
+            onchange="location.href=this.value">
+
+            <option selected>{% block produtoSelect %}Todos{% endblock %}</option>
+
+            <option value="{% url 'produto:categoria' 'Bermudas' %}">Bermudas</option>
+
+            <option value="{% url 'produto:categoria' 'Camisas' %}">Camisa</option>
+            <option value="{% url 'produto:categoria' 'Moletons' %}">Moletom</option>
+            <option value="{% url 'produto:lista' %}">Todos</option>
+        </select>
+    </div>
+    {% block ordernarSelect %}
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mb-3">
+        <span>Ordenar por: </span>
+        <select class="form-select ml-2" aria-label="Default select example" onchange="location.href=this.value">
+
+            <option selected>{% block ordernarSelectTipo %}Lançamento{% endblock %}</option>
+            <option value="{% url 'produto:ord_nome' %}">Nome</option>
+            <option value="#">Menor preço</option>
+            <option value="#">Maior preço</option>
+            <option value="#">Destaque</option>
+            <option value="#">Lançamento</option>
+        </select>
+    </div>
+    {% endblock %}
+</div>
+
+<div class="card" style="background-color: #f1f1f1; border: none;">
+    <div class="card-body">
+        <div class="row">
 
             {% for produto in produtos %}
+            <div class="col-sm-12 col-md-6 col-lg-4 col-md-4 col-xl-4">
+                <div class="card shadow border mt-2">
 
-            <div class="card">
-
-                {% if produto.imagem %}
-                <a href="{% url 'produto:detalhe' produto.slug %}">
-                    <img class="card-img-top" src="{{ produto.imagem }}" alt="{{ produto.nome }}" width="400"
-                        height="400">
-                </a>
-                {% endif %}
-
-
-                <div class="card-body">
-                    <h5 class="card-title">{{ produto.nome }}</h5>
-                    <p class="card-text">{{ produto.descricao_curta }}</p>
-                    <div class="container product-price-block text-center">
-
-                        {% if produto.preco_marketing_promocional %}
-                        <span class="product-price">
-                            {{ produto.preco_marketing_promocional|formata_preco }}
-                        </span>
-                        <span class="product-old-price text-muted">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% else %}
-                        <span class="product-price">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="card-footer bg-transparent border-top-light-custom text-center">
-                    <a href="{% url 'produto:detalhe' produto.slug %}" class="btn btn-primary btn-sm m-1 btn-block">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Comprar
+                    {% if produto.imagem %}
+                    <a href="{% url 'produto:detalhe' produto.slug %}">
+                        <img class="card-img-top" src="{{ produto.imagem }}" alt="{{ produto.nome }}" width="400"
+                            height="400">
                     </a>
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produto.nome }}</h5>
+                        <p class="card-text">{{ produto.descricao_curta }}</p>
+                        <div class="container product-price-block text-center">
+
+                            {% if produto.preco_marketing_promocional %}
+                            <span class="product-price">
+                                {{ produto.preco_marketing_promocional|formata_preco }}
+                            </span>
+                            <span class="product-old-price text-muted">
+                                {{ produto.preco_marketing|formata_preco }}
+                            </span>
+                            {% else %}
+                            <span class="product-price">
+                                {{ produto.preco_marketing|formata_preco }}
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-top-light-custom text-center">
+                        <a href="{% url 'produto:detalhe' produto.slug %}" class="btn btn-primary btn-sm m-1 btn-block">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Comprar
+                        </a>
+                    </div>
+
                 </div>
             </div>
-
             {% endfor %}
 
         </div>
+
+        <div class="row mt-3">
+            <div class="col">
+                {% include 'parciais/_pagination.html' %}
+            </div>
+        </div>
+
     </div>
 </div>
 
-<div class="row mt-3">
-    <div class="col">
-        {% include 'parciais/_pagination.html' %}
-    </div>
-</div>
-
-{% endblock%}
+{% endblock %}
