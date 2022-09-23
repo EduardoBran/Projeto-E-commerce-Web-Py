@@ -9,13 +9,15 @@
             Página inicial
         </a>
         <span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> Produtos
+            <i class="fa-solid fa-2xs fa-angles-right"></i>
+            <a href="{% url 'produto:lista' %}" style="color: #262727;">
+                Produtos</a>
         </span>
         <span style="color: #939393;">
             <i class="fa-solid fa-2xs fa-angles-right"></i> {{categoria}}
         </span>
         <span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> Ordernar por nome
+            <i class="fa-solid fa-2xs fa-angles-right"></i> Nome
         </span>
     </div>
 </div>
