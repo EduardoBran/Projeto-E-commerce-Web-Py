@@ -41,7 +41,7 @@
         }
 
         .espacoMobile {
-            margin-right: 20px;
+            margin-right: 3.5px;
         }
     }
 </style>
@@ -65,8 +65,7 @@
 <div class="row mt-2">
     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mb-2">
         <span class="espacoMobile">Categoria: </span>
-        <select class="form-select espacoMobile ml-2" aria-label="Default select example"
-            onchange="location.href=this.value">
+        <select class="form-select ml-4" aria-label="Default select example" onchange="location.href=this.value">
 
             <option selected>{% block produtoSelect %}Todos{% endblock %}</option>
             {% for categoria in categorias %}
