@@ -80,7 +80,7 @@ class Busca(ListaProdutos):
 
 
 class ProdutoCategoria(ListaProdutos):
-    template_name = 'produto/produto_categoria.html'
+    template_name = 'produto/lista_categoria.html'
 
     def get_queryset(self):
         qs = super().get_queryset()
