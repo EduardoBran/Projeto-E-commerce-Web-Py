@@ -31,5 +31,7 @@ urlpatterns = [
          views.ListaProdutosCategoriaOrdernarPrecoMaior.as_view(), name='categoria_ord_preco_maior'),
     path('produtos/<str:categoria>/ord_preco_menor',
          views.ListaProdutosCategoriaOrdernarPrecoMenor.as_view(), name='categoria_ord_preco_menor'),
+    path('produtos/<str:categoria>/ord_destaque',
+         views.ListaProdutosCategoriaOrdernarDestaque.as_view(), name='categoria_ord_destaque'),
 
 ]
