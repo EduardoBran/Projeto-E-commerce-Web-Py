@@ -1,4 +1,4 @@
-{% extends 'produto/lista.html' %}
+{% extends 'produto/lista_categoria.html' %}
 {% load static %}
 {% load omfilters %}
 
@@ -16,23 +16,18 @@
             <i class="fa-solid fa-2xs fa-angles-right"></i> {{categoria}}
         </span>
         <span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> Lançamento
+            <i class="fa-solid fa-2xs fa-angles-right"></i> Menor Preço
         </span>
     </div>
 </div>
 {% endblock %}
-
-
-<!--  Primeiro nome do select categoria -->
-{% block produtoSelect %} {{categoria}} {% endblock %}
-
 
 {% block ordernarSelect %}
 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mb-2">
     <span>Ordenar por: </span>
     <select class="form-select ml-2" aria-label="Default select example" onchange="location.href=this.value">
 
-        <option selected>Lançamento</option>
+        <option selected>Menor preço</option>
         <option value="{% url 'produto:categoria_ord_nome' categoria %}">Nome</option>
         <option value="{% url 'produto:categoria_ord_preco_menor' categoria %}">Menor preço</option>
         <option value="{% url 'produto:categoria_ord_preco_maior' categoria %}">Maior preço</option>
