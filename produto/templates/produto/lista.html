@@ -7,9 +7,19 @@
 {% block conteudo %}
 
 <style>
-    /* produtos */
+    /* page produtos */
 
-    /* body */
+    /* selects */
+    .form-select {
+        width: 150px;
+        text-align: center;
+    }
+
+    .ladoMobile {
+        text-align: right;
+    }
+
+    /* cards */
     .card-columns img {
         display: block;
         max-width: 100%;
@@ -24,18 +34,7 @@
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
 
-
-    .form-select {
-        width: 150px;
-        text-align: center;
-    }
-
-
-    .ladoMobile {
-        text-align: right;
-    }
-
-
+    /* selects mobile*/
     @media (max-width: 769px) {
         .ladoMobile {
             text-align: left;
@@ -51,42 +50,49 @@
 <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left mb-3">
         <a href="{% url 'produto:home' %}" style="color: #262727;">
-            Página inicial</a><span style="color: #939393;">
+            Página inicial
+        </a>
+        <span style="color: #939393;">
             <i class="fa-solid fa-2xs fa-angles-right"></i> Produtos
+        </span>
+        <span style="color: #939393;">
+            <i class="fa-solid fa-2xs fa-angles-right"></i> Ordernar por lançamento
         </span>
     </div>
 </div>
 {% endblock %}
 
 <div class="row mt-2">
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mb-3">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mb-2">
         <span class="espacoMobile">Categoria: </span>
         <select class="form-select espacoMobile ml-2" aria-label="Default select example"
             onchange="location.href=this.value">
 
             <option selected>{% block produtoSelect %}Todos{% endblock %}</option>
-
             <option value="{% url 'produto:categoria' 'Bermudas' %}">Bermudas</option>
-
-            <option value="{% url 'produto:categoria' 'Camisas' %}">Camisa</option>
-            <option value="{% url 'produto:categoria' 'Moletons' %}">Moletom</option>
+            <option value="{% url 'produto:categoria' 'Camisas' %}">Camisas</option>
+            <option value="{% url 'produto:categoria' 'Moletons' %}">Moletons</option>
             <option value="{% url 'produto:lista' %}">Todos</option>
+
         </select>
     </div>
+
     {% block ordernarSelect %}
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mb-3">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mb-2">
         <span>Ordenar por: </span>
         <select class="form-select ml-2" aria-label="Default select example" onchange="location.href=this.value">
 
-            <option selected>{% block ordernarSelectTipo %}Lançamento{% endblock %}</option>
+            <option selected>Lançamento</option>
             <option value="{% url 'produto:ord_nome' %}">Nome</option>
             <option value="#">Menor preço</option>
             <option value="#">Maior preço</option>
             <option value="#">Destaque</option>
-            <option value="#">Lançamento</option>
+            <option value="{% url 'produto:lista' %}">Lançamento</option>
+
         </select>
     </div>
     {% endblock %}
+
 </div>
 
 <div class="card" style="background-color: #f1f1f1; border: none;">

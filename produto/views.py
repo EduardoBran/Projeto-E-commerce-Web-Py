@@ -28,13 +28,12 @@ class ListaProdutos(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.order_by('?')
+        qs = qs.order_by('-id')
         return qs
 
 
 class ListaProdutosOrdernarNome(ListaProdutos):
     template_name = 'produto/lista_ordernar_nome.html'
-    paginate_by = 6
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -92,14 +91,13 @@ class ProdutoCategoria(ListaProdutos):
             return qs
 
         qs = qs.filter(categoria_produto__nome_cat__iexact=categoria)
-        qs = qs.order_by('?')
+        qs = qs.order_by('-id')
 
         return qs
 
 
 class ListaProdutosCategoriaOrdernarNome(ProdutoCategoria):
     template_name = 'produto/lista_cat_ordernar_nome.html'
-    paginate_by = 6
 
     def get_queryset(self):
         qs = super().get_queryset()

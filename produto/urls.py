@@ -19,7 +19,7 @@ urlpatterns = [
          views.ProdutoCategoria.as_view(), name='categoria'),
     path('produtos/ord_nome',
          views.ListaProdutosOrdernarNome.as_view(), name='ord_nome'),
-    path('produtos/ord_nome/<str:categoria>',
+    path('produtos/<str:categoria>/ord_nome',
          views.ListaProdutosCategoriaOrdernarNome.as_view(), name='categoria_ord_nome'),
 
 ]
