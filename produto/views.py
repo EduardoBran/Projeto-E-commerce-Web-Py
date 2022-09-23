@@ -114,6 +114,15 @@ class ListaProdutosCategoriaOrdernarNome(ProdutoCategoria):
         return qs
 
 
+class ListaProdutosCategoriaOrdernarPrecoMaior(ProdutoCategoria):
+    template_name = 'produto/lista_cat_ordernar_precoMaior.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('-preco_marketing_promocional')
+        return qs
+
+
 class DetalheProduto(DetailView):
     model = models.Produto
     template_name = 'produto/detalhe.html'
