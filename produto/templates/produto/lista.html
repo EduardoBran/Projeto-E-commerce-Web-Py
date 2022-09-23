@@ -69,9 +69,9 @@
             onchange="location.href=this.value">
 
             <option selected>{% block produtoSelect %}Todos{% endblock %}</option>
-            <option value="{% url 'produto:categoria' 'Bermudas' %}">Bermudas</option>
-            <option value="{% url 'produto:categoria' 'Camisas' %}">Camisas</option>
-            <option value="{% url 'produto:categoria' 'Moletons' %}">Moletons</option>
+            {% for categoria in categorias %}
+            <option value="{% url 'produto:categoria' categoria.nome_cat %}">{{ categoria.nome_cat }}</option>
+            {% endfor %}
             <option value="{% url 'produto:lista' %}">Todos</option>
 
         </select>
