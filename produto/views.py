@@ -50,6 +50,15 @@ class ListaProdutosOrdernarPrecoMaior(ListaProdutos):
         return qs
 
 
+class ListaProdutosOrdernarPrecoMenor(ListaProdutos):
+    template_name = 'produto/lista_ordernar_precoMenor.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('preco_marketing_promocional')
+        return qs
+
+
 class Home(ListaProdutos):
     template_name = 'produto/home.html'
 

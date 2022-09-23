@@ -26,7 +26,7 @@
 
         <option selected>Maior preço</option>
         <option value="{% url 'produto:ord_nome' %}">Nome</option>
-        <option value="#">Menor preço</option>
+        <option value="{% url 'produto:ord_preco_menor' %}">Menor preço</option>
         <option value="{% url 'produto:ord_preco_maior' %}">Maior preço</option>
         <option value="#">Destaque</option>
         <option value="{% url 'produto:lista' %}">Lançamento</option>

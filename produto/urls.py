@@ -21,6 +21,8 @@ urlpatterns = [
          views.ListaProdutosOrdernarNome.as_view(), name='ord_nome'),
     path('produtos/ord_preco_maior',
          views.ListaProdutosOrdernarPrecoMaior.as_view(), name='ord_preco_maior'),
+    path('produtos/ord_preco_menor',
+         views.ListaProdutosOrdernarPrecoMenor.as_view(), name='ord_preco_menor'),
     path('produtos/<str:categoria>/ord_nome',
          views.ListaProdutosCategoriaOrdernarNome.as_view(), name='categoria_ord_nome'),
     path('produtos/<str:categoria>/ord_preco_maior',
