@@ -9,8 +9,8 @@
 <style>
     /* page produtos */
 
-    /* selects */
-    .form-select {
+    /* selects inicio */
+    .form-selectSelect {
         width: 150px;
         text-align: center;
     }
@@ -19,16 +19,19 @@
         text-align: right;
     }
 
-    /* cards */
-    .card-columns img {
+    /* cards img */
+    .card img {
         display: block;
         max-width: 100%;
         margin: auto;
         transition: ease-in-out .3s;
         box-shadow: 0 0 0 rgb(0 0 0 / 10%);
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-top: 5px;
     }
 
-    .card-columns a:hover img {
+    .card a:hover img {
         opacity: .9;
         transform: translateY(-4px);
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
@@ -44,11 +47,54 @@
             margin-right: 2px;
         }
     }
+
+    /* carousel pequeno */
+
+    .text-box h5 {
+        color: #076B6B;
+        font-weight: bold;
+    }
+
+    .text-box span {
+        color: red;
+        font-weight: bold;
+    }
+
+    /* select carrinho */
+    .form-group label {
+        color: #1D1D1E;
+        font-style: italic;
+    }
+
+    .form-group button {
+        border-radius: 12px;
+    }
+
+    .form-selectCarrinho {
+        background-color: #f1f1f1;
+        border-radius: 10px;
+        width: 60px;
+        text-align: center;
+    }
+
+    /** responsivo **/
+
+    @media (max-width: 1000px) {
+        .text-box h5 {
+            font-size: 1.025rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .text-box h5 {
+            font-size: 1.125rem;
+        }
+    }
 </style>
 
 {% block subtitulo %}
 <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left mb-3">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
         <a href="{% url 'produto:home' %}" style="color: #262727;">
             Página inicial</a>
         <span style="color: #939393;">
@@ -61,10 +107,12 @@
 </div>
 {% endblock %}
 
-<div class="row mt-2">
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mb-2">
+<div class="row mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
         <span class="espacoMobile">Categoria: </span>
-        <select class="form-select ml-4" aria-label="Default select example" onchange="location.href=this.value">
+
+        <select class="form-select form-selectSelect ml-4" aria-label="Default select example"
+            onchange="location.href=this.value">
 
             <option selected>{% block produtoSelect %}Todos{% endblock %}</option>
             {% for categoria in categorias %}
@@ -73,12 +121,14 @@
             <option value="{% url 'produto:lista' %}">Todos</option>
 
         </select>
+
     </div>
 
     {% block ordernarSelect %}
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mb-2">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile">
         <span>Ordenar por: </span>
-        <select class="form-select ml-2" aria-label="Default select example" onchange="location.href=this.value">
+        <select class="form-select form-selectSelect ml-2" aria-label="Default select example"
+            onchange="location.href=this.value">
 
             <option selected>Lançamento</option>
             <option value="{% url 'produto:ord_nome' %}">Nome</option>
@@ -99,42 +149,75 @@
 
             {% for produto in produtos %}
             <div class="col-sm-12 col-md-6 col-lg-4 col-md-4 col-xl-4">
-                <div class="card shadow border mt-2">
+                <div class="card shadow border mt-2" style="border-radius: 15px;">
 
                     {% if produto.imagem %}
                     <a href="{% url 'produto:detalhe' produto.slug %}">
-                        <img class="card-img-top" src="{{ produto.imagem }}" alt="{{ produto.nome }}" width="400"
-                            height="400">
+                        <img class="card-img-top mt-4" src="{{ produto.imagem }}" alt="{{ produto.nome }}" width="350"
+                            height="350">
                     </a>
                     {% endif %}
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ produto.nome }}</h5>
-                        <p class="card-text">{{ produto.descricao_curta }}</p>
-                        <div class="container product-price-block text-center">
+                        <div class="text-box text-center">
+                            <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
+                                <h5>{{ produto.nome }}</h5>
+                            </a>
 
                             {% if produto.preco_marketing_promocional %}
-                            <span class="product-price">
-                                {{ produto.preco_marketing_promocional|formata_preco }}
-                            </span>
-                            <span class="product-old-price text-muted">
-                                {{ produto.preco_marketing|formata_preco }}
-                            </span>
+
+                            <p>
+                                <strike class="mr-2">{{ produto.preco_marketing|formata_preco }}</strike>
+                                <span>{{produto.preco_marketing_promocional|formata_preco }}</span>
+                            </p>
+
                             {% else %}
-                            <span class="product-price">
-                                {{ produto.preco_marketing|formata_preco }}
-                            </span>
+                            <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
+
                             {% endif %}
                         </div>
-                    </div>
+                        <!-- end text-box box-->
 
-                    <div class="card-footer bg-transparent border-top-light-custom text-center">
-                        <a href="{% url 'produto:detalhe' produto.slug %}" class="btn btn-primary btn-sm m-1 btn-block">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            Comprar
-                        </a>
-                    </div>
+                        <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
+                            <div class="form-group text-center">
+                                <label>Tamanho: </label>
+                                <select class="form-select form-selectCarrinho form-select-sm ml-2"
+                                    aria-label=".form-select-sm example" id="select-variacoes" name="vid">
 
+                                    {% for variacao in produto.variacao_set.all %}
+                                    {% if variacao.preco_promocional %}
+                                    <option data-preco="{{ variacao.preco|formata_preco }}"
+                                        data-preco-promocional="{{ variacao.preco_promocional|formata_preco }}"
+                                        value="{{ variacao.id }}">
+                                        {% if variacao.nome %}
+                                        {{ variacao.nome }}
+                                        {% else %}
+                                        {{ variacao }}
+                                        {% endif %}
+                                    </option>
+                                    {% else %}
+                                    <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
+                                        {% if variacao.nome %}
+                                        {{ variacao.nome }}
+                                        {% else %}
+                                        {{ variacao }}
+                                        {% endif %}
+                                    </option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+
+                                <button type="submit" class="mt-3 btn btn-info">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Adicionar ao carrinho
+                                </button>
+
+                            </div>
+                            <!-- end form-group text-center -->
+                        </form>
+                        <!-- end form add carrinho-->
+
+                    </div>
                 </div>
             </div>
             {% endfor %}
