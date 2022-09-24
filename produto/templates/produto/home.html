@@ -157,13 +157,13 @@
         } */
     }
 
-    /* banner-revenda */
+    /* banner-produtos */
 
-    .banner-revenda {
+    .banner-horizontal {
         position: relative;
     }
 
-    .banner-revenda img {
+    .banner-horizontal img {
         width: 100%;
         max-width: 1378px;
         display: block;
@@ -172,14 +172,14 @@
         box-shadow: 0 0 0 rgba(0, 0, 0, .1)
     }
 
-    .banner-revenda img {
+    .banner-horizontal img {
         transition: ease-in-out .3s
     }
 
-    /* banner-revenda responsivo */
+    /* banner-produtos responsivo */
 
     @media (max-width: 480px) {
-        .banner-revenda {
+        .banner-horizontal {
             margin: 20px 0
         }
     }
@@ -353,9 +353,9 @@
 <!-- End Carousel Pequeno Lancamentos -->
 
 <div class="containerHome">
-    <!-- Banner-Revenda -->
-    {% include 'produto/homeBanner_revenda.html' %}
-    <!-- End Banner-Revenda -->
+    <!-- Banner-Produtos -->
+    {% include 'produto/homeBanner_produtos.html' %}
+    <!-- End Banner-Produtos -->
 </div>
 
 <!-- Carousel Pequeno Destaques -->
@@ -363,9 +363,9 @@
 <!-- End Carousel Pequeno Destaques -->
 
 <div class="containerHome mb-5">
-    <!-- Cards-Final -->
-    {% include 'produto/homeCards_final.html' %}
-    <!-- End Cards-Final -->
+    <!-- Banner-Final -->
+    {% include 'produto/homeBanner_final.html' %}
+    <!-- End Banner-Final -->
 </div>
 
 {% endblock %}
