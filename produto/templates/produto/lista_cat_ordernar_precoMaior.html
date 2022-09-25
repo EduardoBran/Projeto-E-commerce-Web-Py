@@ -7,13 +7,8 @@
 {% block subtitulo %}
 <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
-        <a href="{% url 'produto:home' %}" style="color: #262727;">
-            Página inicial</a>
-        <span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i>
-            <a href="{% url 'produto:lista' %}" style="color: #262727;">
-                Produtos</a>
-        </span>
+        <a href="{% url 'produto:lista' %}" style="color: #262727;">
+            Produtos</a>
         <span style="color: #939393;">
             <i class="fa-solid fa-2xs fa-angles-right"></i> {{categoria}}
         </span>
