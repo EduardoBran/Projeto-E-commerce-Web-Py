@@ -4,34 +4,6 @@
 
 {% block titulo %}{{ categoria }} em destaque | {% endblock %}
 
-{% block subtitulo %}
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
-        <a href="{% url 'produto:lista' %}" style="color: #262727;">
-            Produtos</a>
-        <span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> {{categoria}}
-        </span>
-        <span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> Destaque
-        </span>
-    </div>
-</div>
-{% endblock %}
+{% block subtituloNomePagina %}Destaque{% endblock %}
 
-{% block ordernarSelect %}
-<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mt-2">
-    <span>Ordenar por: </span>
-    <select class="form-select form-selectSelect ml-2" aria-label="Default select example"
-        onchange="location.href=this.value">
-
-        <option selected>Destaque</option>
-        <option value="{% url 'produto:categoria_ord_nome' categoria %}">Nome</option>
-        <option value="{% url 'produto:categoria_ord_preco_menor' categoria %}">Menor preço</option>
-        <option value="{% url 'produto:categoria_ord_preco_maior' categoria %}">Maior preço</option>
-        <option value="{% url 'produto:categoria_ord_destaque' categoria %}">Destaque</option>
-        <option value="{% url 'produto:categoria' categoria %}">Lançamento</option>
-
-    </select>
-</div>
-{% endblock %}
+{% block ordenarSelect %}Destaque{% endblock %}

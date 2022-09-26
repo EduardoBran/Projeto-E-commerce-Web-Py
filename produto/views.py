@@ -118,7 +118,7 @@ class ProdutoCategoria(ListaProdutos):
             return qs
 
         qs = qs.filter(categoria_produto__nome_cat__iexact=categoria)
-        qs = qs.order_by('-id')
+        qs = qs.order_by('-id')  # lançamento
 
         return qs
 
