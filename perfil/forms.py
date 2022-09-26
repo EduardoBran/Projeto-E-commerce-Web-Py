@@ -1,5 +1,3 @@
-from cProfile import label
-
 from django import forms
 from django.contrib.auth.models import User
 
@@ -192,7 +190,7 @@ class UserForm(forms.ModelForm):
         error_msg_user_exists = 'Usuário já existe.'
         error_msg_email_exists = 'E-mail já existe.'
         error_msg_password_match = 'As duas senhas não conferem.'
-        error_msg_password_short = 'Sua senha precisa de pelo menos 6 caracters.'
+        error_msg_password_short = 'Sua senha precisa de pelo menos 6 caracteres.'
         error_msg_require_field = 'Este campo é obrigatório.'
 
         # Usuários logados: atualização

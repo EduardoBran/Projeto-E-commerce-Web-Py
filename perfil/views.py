@@ -23,7 +23,7 @@ class BasePerfil(View):
 
         self.perfil = None
 
-        if self.request.user.is_authenticated:
+        if self.request.user.is_authenticated:  # verifica se o usuario esta logado e seleciona qual é o usuário
             self.perfil = models.Perfil.objects.filter(
                 usuario=self.request.user
             ).first()
@@ -37,7 +37,9 @@ class BasePerfil(View):
                 'perfilform': forms.PerfilForm(
                     data=self.request.POST or None,
                     instance=self.perfil
-                )
+                ),
+                'categorias': Categoria.objects.all(),
+                'categoria': self.kwargs.get('categoria', None)
             }
         else:
             self.contexto = {
