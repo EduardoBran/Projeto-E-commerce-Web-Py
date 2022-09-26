@@ -10,9 +10,9 @@
     /* page produtos */
 
     /* selects inicio */
-    .form-selectSelect {
-        width: 150px;
-        text-align: center;
+    .spanFiltro {
+        font-style: italic;
+        font-weight: bold;
     }
 
     .ladoMobile {
@@ -44,7 +44,7 @@
         }
 
         .espacoMobile {
-            margin-right: 2px;
+            margin-right: 34px;
         }
     }
 
@@ -110,12 +110,11 @@
 <!-- end subtitulo com nome da pagina e anterior -->
 
 <!-- select com categoria e ordenar por -->
-<div class="row mt-4">
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mt-2">
-        <span class="espacoMobile">Categoria: </span>
+<div class="row mt-2">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left mt-4">
+        <span class="spanFiltro">Categoria:</span>
 
-        <select class="form-select form-selectSelect ml-4" aria-label="Default select example"
-            onchange="location.href=this.value">
+        <select class="selectpicker ml-2" data-style="btn-info" data-width="140px" onchange="location.href=this.value">
 
             <option selected>{% block produtoSelect %}Todos{% endblock %}</option>
             {% for categoria in categorias %}
@@ -127,10 +126,9 @@
 
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mt-2">
-        <span>Ordenar por: </span>
-        <select class="form-select form-selectSelect ml-2" aria-label="Default select example"
-            onchange="location.href=this.value">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 ladoMobile mt-4">
+        <span class="spanFiltro espacoMobile">Filtro: </span>
+        <select class="selectpicker ml-2" data-style="btn-info" data-width="140px" onchange="location.href=this.value">
 
             {% block ordernarLinkCategoria %}
             <option selected>{% block ordenarSelect %}Lançamento{% endblock %}</option>
