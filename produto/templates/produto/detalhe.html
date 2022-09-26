@@ -5,6 +5,14 @@
 
 {% block conteudo %}
 
+<style>
+    @media (max-width: 990px) {
+        .mobileDetalheImg {
+            height: 538px;
+        }
+    }
+</style>
+
 <div class="row">
     <div class="col-lg">
         <div class="row no-gutters">
@@ -17,17 +25,12 @@
                 {% if produto.imagem2 %}
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="{% url 'produto:categoria' 'Moletons' %}" name="buscar">
-                                <img class="d-block w-100" src="{{ produto.imagem }}" alt="First slide">
-                            </a>
+                            <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem }}" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <a href="{% url 'produto:categoria' 'Bermudas' %}" name="buscar">
-                                <img class="d-block w-100" src="{{ produto.imagem2 }}" alt="Second slide">
-                            </a>
+                            <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem2 }}" alt="Second slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
