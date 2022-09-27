@@ -100,6 +100,13 @@
     </div>
     <div class="col-lg">
         <div class="mt-4">
+            {% if produto.tipo == 'L' %}
+            <h5>Lançamento</h5>
+            {% endif %}
+            {% if produto.tipo == 'D' %}
+            <h5>Destaque</h5>
+            {% endif %}
+
             <h1 class="h2">{{ produto.nome }}</h1>
             <p class="lead">{{ produto.descricao_curta }}</p>
             <p class="lead">
