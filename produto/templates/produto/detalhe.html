@@ -11,6 +11,20 @@
         height: 570px;
     }
 
+    .conteudoMobile {
+        margin-left: 35px;
+    }
+
+    .botaoCarrinhoMobile {
+        margin-top: 70px;
+        height: 70px;
+    }
+
+    .texto-carrinho {
+        font-weight: 500;
+        font-size: large;
+    }
+
     @media (max-width: 990px) {
         .mobileDetalheImg {
             width: 50%;
@@ -19,6 +33,14 @@
             padding-left: 70px;
             padding-top: 10px;
             padding-bottom: 50px;
+        }
+
+        .conteudoMobile {
+            margin-left: 0px;
+        }
+
+        .botaoMobile {
+            margin-top: 20px;
         }
     }
 
@@ -104,32 +126,23 @@
         </div>
     </div>
     <div class="col-lg">
-        <div class="mt-4">
+        <div class="conteudoMobile">
             {% if produto.tipo == 'L' %}
-            <h5>Lançamento</h5>
+            <small>Lançamento</small>
             {% endif %}
             {% if produto.tipo == 'D' %}
-            <h5>Destaque</h5>
+            <small>Destaque</small>
             {% endif %}
 
-            <h1 class="h2">{{ produto.nome }}</h1>
-            <p class="lead">{{ produto.descricao_curta }}</p>
-            <p class="lead">
+            <h1 class="h2 mt-4">{{ produto.nome }}</h1>
 
-                {% if produto.preco_marketing_promocional %}
-                <span id="variation-preco-promocional" class="lead product-price">
-                    {{ produto.preco_marketing_promocional|formata_preco }}
-                </span>
-                <span id="variation-preco" class="lead product-old-price text-muted">
-                    {{ produto.preco_marketing|formata_preco }}
-                </span>
-                {% else %}
-                <span id="variation-preco" class="lead product-price">
-                    {{ produto.preco_marketing|formata_preco }}
-                </span>
-                {% endif %}
-
+            <p class="lead mt-1"> Categoria:
+                <a href="{% url 'produto:categoria' produto.categoria_produto %}" style="color: #262727;">
+                    {{ produto.categoria_produto }}
+                </a>
             </p>
+
+            <p class="mt-5">Escolha o tamanho:</p>
 
             <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
                 <div class="form-group">
@@ -159,10 +172,27 @@
                     </select>
                 </div>
 
+                <p class="lead mt-5">
+
+                    {% if produto.preco_marketing_promocional %}
+                    <span id="variation-preco-promocional" class="lead product-price">
+                        {{ produto.preco_marketing_promocional|formata_preco }}
+                    </span>
+                    <span id="variation-preco" class="lead product-old-price text-muted">
+                        {{ produto.preco_marketing|formata_preco }}
+                    </span>
+                    {% else %}
+                    <span id="variation-preco" class="lead product-price">
+                        {{ produto.preco_marketing|formata_preco }}
+                    </span>
+                    {% endif %}
+
+                </p>
+                <br />
                 <div class="text-left">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Adicionar ao carrinho
+                    <button type="submit" class="btn btn-primary btn-lg btn-block botaoCarrinhoMobile">
+                        <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+                        <span class="texto-carrinho ml-2">Adicionar ao carrinho</span>
                     </button>
                 </div>
 
@@ -175,7 +205,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="mt-5 mb-5">
-            <h2 class="text-center">{{ produto.nome }}</h2>
+            <h2 class="text-left">Descrição</h2>
+            <p class="lead">{{ produto.descricao_curta }}</p>
+            <h2 class="text-left mt-5">Informações</h2>
             {{ produto.descricao_longa|linebreaks }}
         </div>
     </div>
