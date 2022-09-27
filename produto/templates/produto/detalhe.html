@@ -8,7 +8,22 @@
 <style>
     @media (max-width: 990px) {
         .mobileDetalheImg {
-            height: 538px;
+            height: 700px;
+            padding: 40px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .mobileDetalheImg {
+            height: 540px;
+            padding: 5px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .mobileDetalheImg {
+            height: 520px;
+            padding: 5px;
         }
     }
 </style>
@@ -25,6 +40,10 @@
                 {% if produto.imagem2 %}
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem }}" alt="First slide">
@@ -55,7 +74,7 @@
         </div>
     </div>
     <div class="col-lg">
-        <div class="mt-4 mt-lg-0">
+        <div class="mt-4">
             <h1 class="h2">{{ produto.nome }}</h1>
             <p class="lead">{{ produto.descricao_curta }}</p>
             <p class="lead">
