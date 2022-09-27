@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load omfilters %}
 
 {% block titulo %}{{ produto.nome }} | {% endblock %}
@@ -6,16 +7,25 @@
 {% block conteudo %}
 
 <style>
-    .subtituloMobile {
-        display: inline;
-        margin-bottom: 20px;
+    /* conteúdo */
+    .conteudoMobile {
+        margin-top: 0px;
+        margin-left: 35px;
     }
 
+    /* subtitulo */
+    .subtituloMobile {
+        display: inline;
+        margin-bottom: 25px;
+    }
+
+    /* imagem */
     .mobileDetalheImg {
         width: 330px;
         height: 570px;
     }
 
+    /* botao carrinho */
     .botaoCarrinhoMobile {
         margin-top: 70px;
         height: 70px;
@@ -26,11 +36,7 @@
         font-size: large;
     }
 
-    .conteudoMobile {
-        margin-top: 0px;
-        margin-left: 35px;
-    }
-
+    /* responsividade */
     @media (max-width: 990px) {
         .mobileDetalheImg {
             width: 50%;
@@ -70,7 +76,7 @@
     }
 </style>
 
-<div class="row mb-2">
+<div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left subtituloMobile">
         <a href="{% url 'produto:home' %}" style="color: #262727;">
             Pág. Inicial</a>
@@ -87,7 +93,7 @@
 <div class="row">
     <div class="col-lg">
         <div class="row no-gutters">
-            <div class="col-lg-12">
+            <div class="col-lg-12 shadow border">
 
                 <!--  necessario para verificar se existe imagem no bd e nao aparecer ícone erro ao renderizar -->
                 {% if produto.imagem %}
@@ -208,7 +214,7 @@
                 </p>
                 <br />
                 <div class="text-left">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block botaoCarrinhoMobile">
+                    <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile">
                         <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
                         <span class="texto-carrinho ml-2">Adicionar ao carrinho</span>
                     </button>
