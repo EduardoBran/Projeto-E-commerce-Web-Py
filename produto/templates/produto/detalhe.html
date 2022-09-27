@@ -17,7 +17,7 @@
     /* conteúdo */
     .conteudoMobile {
         margin-top: 0px;
-        margin-left: 35px;
+        margin-left: 34px;
     }
 
     /* subtitulo */
@@ -28,8 +28,7 @@
 
     /* imagens */
     .mobileDetalheImg {
-        width: 330px;
-        height: 570px;
+        height: 528px;
     }
 
     /* imagem carousel */
@@ -169,7 +168,7 @@
 
                     {% else %}
                     <div class="text-center">
-                        <img class="img-fluid" src="{{ produto.imagem }}">
+                        <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem }}">
                     </div>
 
                     {% endif %}
@@ -177,7 +176,8 @@
 
                     {% else %}
                     <div class="text-center">
-                        <img class="img-fluid" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+                        <img class="d-block w-100 mobileDetalheImg"
+                            src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
                     </div>
 
                     {% endif %}
