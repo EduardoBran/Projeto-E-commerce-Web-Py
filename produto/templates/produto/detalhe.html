@@ -47,7 +47,7 @@
     }
 
     /* texto conteudo */
-    .categoriaConteudo {
+    .conteudoTipo {
         color: whitesmoke;
         background-color: black;
         border-radius: 6px;
@@ -59,8 +59,41 @@
         text-transform: uppercase;
     }
 
-    .categoriaConteudo:hover {
+    .conteudoTipo:hover {
         color: whitesmoke;
+    }
+
+    .conteudoNome {
+        font-size: 1.70rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        word-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .conteudoNome {
+        font-size: 1.70rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        word-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    .conteudoCategoria {
+        color: whitesmoke;
+        background-color: #17a2b8;
+        border-radius: 6px;
+        font-size: .8rem;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 2px;
+        padding-bottom: 3px;
+        text-transform: uppercase;
+        margin-left: 5px;
+    }
+
+    .conteudoCategoria:hover {
+        color: black;
     }
 
     /* botao carrinho */
@@ -101,14 +134,14 @@
         }
 
         .mobileDetalheImg {
-            height: 520px;
+            height: 500px;
             padding: 5px;
         }
     }
 
     @media (max-width: 500px) {
         .mobileDetalheImg {
-            height: 500px;
+            height: 480px;
             padding: 5px;
         }
     }
@@ -190,23 +223,24 @@
             <div class="conteudoMobile">
                 {% if produto.tipo == 'L' %}
                 <span>
-                    <a class="categoriaConteudo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
+                    <a class="conteudoTipo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
                         Lançamento
                     </a>
                 </span>
                 {% endif %}
                 {% if produto.tipo == 'D' %}
                 <span>
-                    <a class="categoriaConteudo" href="{% url 'produto:ord_destaque' %}" style="text-decoration: none;">
+                    <a class="conteudoTipo" href="{% url 'produto:ord_destaque' %}" style="text-decoration: none;">
                         Destaque
                     </a>
                 </span>
                 {% endif %}
 
-                <h1 class="h2 mt-3">{{ produto.nome }}</h1>
+                <h1 class="conteudoNome mt-3">{{ produto.nome }}</h1>
 
-                <p class="lead mt-1"> Categoria:
-                    <a href="{% url 'produto:categoria' produto.categoria_produto %}" style="color: #262727;">
+                <p class="mt-3" style="font-size: .9rem;"> Categoria:
+                    <a class="conteudoCategoria" href="{% url 'produto:categoria' produto.categoria_produto %}"
+                        style="text-decoration: none;">
                         {{ produto.categoria_produto }}
                     </a>
                 </p>
