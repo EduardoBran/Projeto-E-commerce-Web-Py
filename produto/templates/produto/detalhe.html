@@ -8,8 +8,12 @@
 <style>
     @media (max-width: 990px) {
         .mobileDetalheImg {
-            height: 700px;
-            padding: 40px;
+            width: 50%;
+            height: 50%;
+            padding-right: 70px;
+            padding-left: 70px;
+            padding-top: 50px;
+            padding-bottom: 50px;
         }
     }
 
@@ -61,14 +65,20 @@
                 </div>
 
                 {% else %}
+                <div class="text-center">
+                    <img class="img-fluid" src="{{ produto.imagem }}">
+                </div>
 
-                <img class="img-fluid" src="{{ produto.imagem }}">
-
-                <!-- end if exibicao carousel -->
                 {% endif %}
+                <!-- end if exibicao carousel caso tenha mais de 1 foto -->
 
+                {% else %}
+                <div class="text-center">
+                    <img class="img-fluid" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+                </div>
+
+                {% endif %}
                 <!-- end if nao aparecer ícone erro ao renderizar -->
-                {% endif %}
 
             </div>
         </div>
