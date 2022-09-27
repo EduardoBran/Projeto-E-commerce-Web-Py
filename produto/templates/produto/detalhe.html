@@ -32,6 +32,7 @@
         height: 570px;
     }
 
+    /* imagem carousel */
     .sec img {
         display: block;
         max-width: 100%;
@@ -44,6 +45,23 @@
         opacity: .9;
         transform: translateY(-4px);
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+    }
+
+    /* texto conteudo */
+    .categoriaConteudo {
+        color: whitesmoke;
+        background-color: black;
+        border-radius: 6px;
+        font-size: .775rem;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        text-transform: uppercase;
+    }
+
+    .categoriaConteudo:hover {
+        color: whitesmoke;
     }
 
     /* botao carrinho */
@@ -171,21 +189,21 @@
         <div class="col-lg">
             <div class="conteudoMobile">
                 {% if produto.tipo == 'L' %}
-                <small>
-                    <a href="{% url 'produto:lista' %}" style="color: #262727;">
+                <span>
+                    <a class="categoriaConteudo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
                         Lançamento
                     </a>
-                </small>
+                </span>
                 {% endif %}
                 {% if produto.tipo == 'D' %}
-                <small>
-                    <a href="{% url 'produto:ord_destaque' %}" style="color: #262727;">
+                <span>
+                    <a class="categoriaConteudo" href="{% url 'produto:ord_destaque' %}" style="text-decoration: none;">
                         Destaque
                     </a>
-                </small>
+                </span>
                 {% endif %}
 
-                <h1 class="h2 mt-4">{{ produto.nome }}</h1>
+                <h1 class="h2 mt-3">{{ produto.nome }}</h1>
 
                 <p class="lead mt-1"> Categoria:
                     <a href="{% url 'produto:categoria' produto.categoria_produto %}" style="color: #262727;">
