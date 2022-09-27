@@ -169,6 +169,8 @@ class DetalheProduto(DetailView):
         context = super().get_context_data(**kwargs)
         context['categorias'] = Categoria.objects.all()
         context['categoria'] = self.kwargs.get('categoria', None)
+        context['produtoDestaque'] = Produto.objects.filter(
+            tipo='D').order_by('?')
         return context
 
 
