@@ -171,6 +171,39 @@ class DetalheProduto(DetailView):
         context['categoria'] = self.kwargs.get('categoria', None)
         context['produtoDestaque'] = Produto.objects.filter(
             tipo='D').order_by('?')
+
+        print('\n************************\n')
+
+        # recuperando slug do produto via URL
+        slug = self.request.get_full_path()
+        slug = slug.split('/')
+        slug = slug.pop()
+
+        # filtrando produto através do slug recuperado
+        contexto = Produto.objects.filter(
+            slug=slug).values('preco_marketing_promocional')
+        print(f'PRINT contexto -> {contexto}')
+
+        # percorrendo contexto para virar um dicionario
+        for c in contexto:
+            precoFor = c
+        print(f'Preco FOR -> {precoFor}')
+
+        # recuperando valor do preco
+        preco = precoFor['preco_marketing_promocional']
+        print(f'Preco -> {preco}')
+
+        # condicao pra verificar valor de preço
+        if preco >= 100:
+            preco = preco / 4
+            print(f'Preco / 4 -> {preco}')
+        else:
+            preco = preco / 2
+            print(f'Preco / 2 -> {preco}')
+
+        print('\n************************\n')
+
+        context['preco'] = preco
         return context
 
 
