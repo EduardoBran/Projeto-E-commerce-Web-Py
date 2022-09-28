@@ -356,8 +356,6 @@
                     </a>
                 </p>
 
-                <!-- {{ preco }} -->
-
                 {% if produto.preco_marketing_promocional %}
                 <div style="margin-top: 30px;">
 
@@ -439,5 +437,32 @@
 <!-- Carousel Pequeno Veja mais -->
 {% include 'produto/detalheCarousel_vejamais.html' %}
 <!-- End Carousel Pequeno Lancamentos -->
+
+<!-- <br><br>
+<h4><u>Testes de Javascript</u></h4>
+<br>
+<span id="valorAdicionado"></span>
+<br><br> -->
+
+<script>
+    let valor = document.getElementById('variation-preco-promocional').innerText
+    let valorAdicionado = document.getElementById('valorAdicionado')
+    let formatado
+
+    // console.log(valor)
+    // console.log(typeof (valor))
+
+    valor = valor.replace("R$ ", "")
+    valor = valor.replace(",", ".")
+    valor = parseFloat(valor)
+    valor = valor / 2
+
+    // console.log(valor)
+
+    formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    valorAdicionado.innerHTML = formatado
+    // console.log(formatado)
+</script>
 
 {% endblock %}
