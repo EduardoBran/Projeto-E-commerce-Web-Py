@@ -72,7 +72,7 @@
     }
 
     .conteudoNome {
-        font-size: 1.70rem;
+        font-size: 1.80rem;
         font-weight: 400;
         letter-spacing: 2px;
         word-spacing: 0.8px;
@@ -94,6 +94,25 @@
 
     .conteudoCategoria:hover {
         color: black;
+    }
+
+    .produto-preco-antigo {
+        color: #303030;
+        font-size: 15px;
+        font-weight: normal;
+        text-decoration: line-through;
+        font-family: "Montserrat", sans-serif;
+        line-height: 1;
+        font-style: normal
+    }
+
+    .produto-preco {
+        color: red;
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        line-height: normal;
+        font-style: normal;
+        font-size: 28px;
     }
 
     /* botao carrinho */
@@ -236,14 +255,35 @@
                 </span>
                 {% endif %}
 
-                <h1 class="conteudoNome mt-3">{{ produto.nome }}</h1>
+                <h1 class="conteudoNome mt-4">{{ produto.nome }}</h1>
 
-                <p class="mt-3" style="font-size: .9rem;"> Categoria:
+                <p class="mt-2 ml-2" style="font-size: .9rem;"> Categoria:
                     <a class="conteudoCategoria" href="{% url 'produto:categoria' produto.categoria_produto %}"
                         style="text-decoration: none;">
                         {{ produto.categoria_produto }}
                     </a>
                 </p>
+
+                {% if produto.preco_marketing_promocional %}
+                <div style="margin-top: 40px;">
+                    <span id="variation-preco" class="produto-preco-antigo">
+                        {{ produto.preco_marketing|formata_preco }}
+                    </span>
+
+                    <p class="mt-0">
+                        <span id="variation-preco-promocional" class="produto-preco">
+                            {{ produto.preco_marketing_promocional|formata_preco }}
+                        </span>
+                    </p>
+                    {% else %}
+                    <p class="mt-5">
+                        <span id="variation-preco" class="produto-preco">
+                            {{ produto.preco_marketing|formata_preco }}
+                        </span>
+                        {% endif %}
+                    </p>
+                </div>
+
 
                 <p class="mt-5">Escolha o tamanho:</p>
 
@@ -275,23 +315,6 @@
                         </select>
                     </div>
 
-                    <p class="lead mt-5">
-
-                        {% if produto.preco_marketing_promocional %}
-                        <span id="variation-preco-promocional" class="lead product-price">
-                            {{ produto.preco_marketing_promocional|formata_preco }}
-                        </span>
-                        <span id="variation-preco" class="lead product-old-price text-muted">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% else %}
-                        <span id="variation-preco" class="lead product-price">
-                            {{ produto.preco_marketing|formata_preco }}
-                        </span>
-                        {% endif %}
-
-                    </p>
-                    <br />
                     <div class="text-left">
                         <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile">
                             <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
