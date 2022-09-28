@@ -172,38 +172,30 @@ class DetalheProduto(DetailView):
         context['produtoDestaque'] = Produto.objects.filter(
             tipo='D').order_by('?')
 
-        print('\n************************\n')
-
         # recuperando slug do produto via URL
-        slug = self.request.get_full_path()
-        slug = slug.split('/')
-        slug = slug.pop()
+        # slug = self.request.get_full_path()
+        # slug = slug.split('/')
+        # slug = slug.pop()
 
-        # filtrando produto através do slug recuperado
-        contexto = Produto.objects.filter(
-            slug=slug).values('preco_marketing_promocional')
-        print(f'PRINT contexto -> {contexto}')
+        # # filtrando produto através do slug recuperado
+        # contexto = Produto.objects.filter(
+        #     slug=slug).values('preco_marketing_promocional')
 
-        # percorrendo contexto para virar um dicionario
-        for c in contexto:
-            precoFor = c
-        print(f'Preco FOR -> {precoFor}')
+        # # percorrendo contexto para virar um dicionario
+        # for c in contexto:
+        #     precoFor = c
 
-        # recuperando valor do preco
-        preco = precoFor['preco_marketing_promocional']
-        print(f'Preco -> {preco}')
+        # # recuperando valor do preco
+        # preco = precoFor['preco_marketing_promocional']
 
-        # condicao pra verificar valor de preço
-        if preco >= 100:
-            preco = preco / 4
-            print(f'Preco / 4 -> {preco}')
-        else:
-            preco = preco / 2
-            print(f'Preco / 2 -> {preco}')
+        # # condicao pra verificar valor de preço
+        # if preco >= 100:
+        #     preco = preco / 4
+        # else:
+        #     preco = preco / 2
 
-        print('\n************************\n')
+        # context['preco'] = preco
 
-        context['preco'] = preco
         return context
 
 
