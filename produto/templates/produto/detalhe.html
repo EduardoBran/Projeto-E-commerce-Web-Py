@@ -20,18 +20,23 @@
         margin-left: 34px;
     }
 
+    .fonteConteudo a,
+    p {
+        font-family: 'Roboto', sans-serif;
+    }
+
     /* subtitulo */
     .subtituloMobile {
         display: inline;
         margin-bottom: 25px;
     }
 
-    /* imagens */
-    .mobileDetalheImg {
-        height: 528px;
+    /* imagem produto */
+    .img-page-detalhe {
+        height: 548px;
     }
 
-    /* imagem carousel */
+    /* imagens carousel */
     .sec img {
         display: block;
         max-width: 100%;
@@ -64,22 +69,17 @@
     }
 
     .conteudoNome {
-        font-size: 1.70rem;
-        font-weight: 400;
-        letter-spacing: 2px;
-        word-spacing: 0.8px;
-        text-transform: uppercase;
-    }
-
-    .conteudoNome {
-        font-size: 1.80rem;
-        font-weight: 400;
-        letter-spacing: 2px;
-        word-spacing: 0.8px;
-        text-transform: uppercase;
+        font-size: 2.2rem;
+        font-weight: 750;
+        letter-spacing: 1.2px;
     }
 
     .conteudoCategoria {
+        color: #303030;
+        margin-left: 2px;
+    }
+
+    .conteudoCategoriaLink {
         color: whitesmoke;
         background-color: #17a2b8;
         border-radius: 6px;
@@ -89,35 +89,37 @@
         padding-top: 2px;
         padding-bottom: 3px;
         text-transform: uppercase;
-        margin-left: 5px;
+        margin-left: 4px;
     }
 
-    .conteudoCategoria:hover {
+    .conteudoCategoriaLink:hover {
         color: black;
     }
 
     .produto-preco-antigo {
         color: #303030;
-        font-size: 15px;
-        font-weight: normal;
+        font-size: 17px;
+        font-weight: -100;
         text-decoration: line-through;
-        font-family: "Montserrat", sans-serif;
         line-height: 1;
         font-style: normal
     }
 
     .produto-preco {
-        color: red;
-        font-family: "Montserrat", sans-serif;
+        color: #ed1b30;
         font-weight: bold;
         line-height: normal;
         font-style: normal;
-        font-size: 28px;
+        font-size: 31px;
+    }
+
+    .conteudoVariacao {
+        margin-top: 30px;
     }
 
     /* botao carrinho */
     .botaoCarrinhoMobile {
-        margin-top: 70px;
+        margin-top: 90px;
         height: 70px;
     }
 
@@ -128,7 +130,7 @@
 
     /* responsividade */
     @media (max-width: 990px) {
-        .mobileDetalheImg {
+        .img-page-detalhe {
             width: 50%;
             height: 40%;
             padding-right: 70px;
@@ -142,8 +144,34 @@
             margin-top: 10px;
         }
 
+        .conteudoTipo {
+            font-size: .745rem;
+        }
+
+        .conteudoNome {
+            font-size: 2.6rem;
+        }
+
+        .conteudoCategoria {
+            font-size: 1.05rem;
+        }
+
+        .conteudoCategoriaLink {
+            font-size: .95rem;
+        }
+
+        .produto-preco-antigo {
+            font-size: 19px;
+            letter-spacing: -0.4px;
+        }
+
+        .produto-preco {
+            font-size: 35px;
+            letter-spacing: -0.6px;
+        }
+
         .botaoCarrinhoMobile {
-            margin-top: 5px;
+            margin-top: 30px;
         }
     }
 
@@ -152,16 +180,79 @@
             display: none;
         }
 
-        .mobileDetalheImg {
-            height: 500px;
+        .img-page-detalhe {
+            height: 490px;
             padding: 5px;
+        }
+
+        .conteudoTipo {
+            font-size: .645rem;
+        }
+
+        .conteudoNome {
+            font-size: 1.8rem;
+        }
+
+        .conteudoCategoria {
+            font-size: .9rem;
+        }
+
+        .conteudoCategoriaLink {
+            font-size: .8rem;
+        }
+
+        .produto-preco-antigo {
+            font-size: 17px;
+            letter-spacing: -0.3px;
+        }
+
+        .produto-preco {
+            font-size: 30px;
+            letter-spacing: -0.7px;
+        }
+
+        .botaoCarrinhoMobile {
+            margin-top: 30px;
         }
     }
 
     @media (max-width: 500px) {
-        .mobileDetalheImg {
-            height: 480px;
-            padding: 5px;
+        .img-page-detalhe {
+            height: 470px;
+            padding: 3px;
+        }
+
+        .conteudoTipo {
+            font-size: .645rem;
+        }
+
+        .conteudoNome {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1.0px;
+            letter-spacing: -0.8px;
+        }
+
+        .conteudoCategoria {
+            font-size: .8rem;
+        }
+
+        .conteudoCategoriaLink {
+            font-size: .7rem;
+        }
+
+        .produto-preco-antigo {
+            font-size: 16px;
+            letter-spacing: -0.4px;
+        }
+
+        .produto-preco {
+            font-size: 28px;
+            letter-spacing: -0.7px;
+        }
+
+        .botaoCarrinhoMobile {
+            margin-top: 44px;
         }
     }
 </style>
@@ -200,11 +291,11 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem }}"
+                                <img class="d-block w-100 img-page-detalhe" src="{{ produto.imagem }}"
                                     alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem2 }}"
+                                <img class="d-block w-100 img-page-detalhe" src="{{ produto.imagem2 }}"
                                     alt="Second slide">
                             </div>
                         </div>
@@ -220,7 +311,7 @@
 
                     {% else %}
                     <div class="text-center">
-                        <img class="d-block w-100 mobileDetalheImg" src="{{ produto.imagem }}">
+                        <img class="d-block w-100 img-page-detalhe" src="{{ produto.imagem }}">
                     </div>
 
                     {% endif %}
@@ -228,7 +319,7 @@
 
                     {% else %}
                     <div class="text-center">
-                        <img class="d-block w-100 mobileDetalheImg"
+                        <img class="d-block w-100 img-page-detalhe"
                             src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
                     </div>
 
@@ -238,7 +329,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg">
+        <div class="col-lg fonteConteudo">
             <div class="conteudoMobile">
                 {% if produto.tipo == 'L' %}
                 <span>
@@ -255,37 +346,39 @@
                 </span>
                 {% endif %}
 
-                <h1 class="conteudoNome mt-4">{{ produto.nome }}</h1>
+                <h1 class="conteudoNome mt-3">{{ produto.nome }}</h1>
 
-                <p class="mt-2 ml-2" style="font-size: .9rem;"> Categoria:
-                    <a class="conteudoCategoria" href="{% url 'produto:categoria' produto.categoria_produto %}"
+                <p class="mt-2" style="font-size: .9rem;">
+                    <span class="conteudoCategoria">Categoria:</span>
+                    <a class="conteudoCategoriaLink" href="{% url 'produto:categoria' produto.categoria_produto %}"
                         style="text-decoration: none;">
                         {{ produto.categoria_produto }}
                     </a>
                 </p>
 
                 {% if produto.preco_marketing_promocional %}
-                <div style="margin-top: 40px;">
+                <div style="margin-top: 30px;">
+
                     <span id="variation-preco" class="produto-preco-antigo">
                         {{ produto.preco_marketing|formata_preco }}
                     </span>
-
                     <p class="mt-0">
                         <span id="variation-preco-promocional" class="produto-preco">
                             {{ produto.preco_marketing_promocional|formata_preco }}
                         </span>
                     </p>
+
                     {% else %}
-                    <p class="mt-5">
+                    <p class="mt-2">
                         <span id="variation-preco" class="produto-preco">
                             {{ produto.preco_marketing|formata_preco }}
                         </span>
                         {% endif %}
                     </p>
+
                 </div>
 
-
-                <p class="mt-5">Escolha o tamanho:</p>
+                <p class="conteudoVariacao">Escolha o tamanho:</p>
 
                 <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
                     <div class="form-group">
