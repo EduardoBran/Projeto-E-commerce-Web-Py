@@ -102,7 +102,7 @@
         font-weight: -100;
         text-decoration: line-through;
         line-height: 1;
-        font-style: normal
+        font-style: normal;
     }
 
     .produto-preco {
@@ -270,12 +270,13 @@
         .msgBotaoDesativado {
             line-height: 0.1;
             font-size: 12.5px;
+            margin-left: 2px;
         }
     }
 </style>
 
+{% include 'parciais/_messages.html' %}
 <main class="container mt-4 mb-4">
-    {% include 'parciais/_messages.html' %}
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left subtituloMobile">
             <a href="{% url 'produto:home' %}" style="color: #262727;">
@@ -456,10 +457,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="mt-5 mb-5">
-                <h2 class="text-left">Descrição</h2>
-                <p class="lead">{{ produto.descricao_curta }}</p>
-                <h2 class="text-left mt-5">Informações</h2>
-                {{ produto.descricao_longa|linebreaks }}
+                <h2 class="text-left"><strong>Descrição</strong></h2>
+                <p class="lead">{{ produto.descricao_curta}}</p>
+                <h2 class="text-left mt-4"><strong>Informações</strong></h2>
+                <p>{{ produto.descricao_longa|linebreaks }}</p>
             </div>
         </div>
     </div>
@@ -492,7 +493,7 @@
     formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     valorAdicionado.innerHTML = formatado
 
-    // validação selecione tamanho BOTÃO javaScript
+    // validação selecione tamanho + ativação BOTÃO javaScript
     function validacao() {
         let tamanhoTexto = document.getElementById('conteudo-variacao')
         let tamanhoEscolhido = document.getElementById('exibir-tamanho')
