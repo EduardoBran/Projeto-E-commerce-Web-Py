@@ -206,7 +206,8 @@ class AdicionarAoCarrinho(View):
             'HTTP_REFERER',
             reverse('produto:lista')
         )
-        variacao_id = self.request.GET.get('vid')
+        variacao_id = self.request.GET.get(
+            'select-variacoes')  # valor vindo do form
 
         if not variacao_id:  # vid=?
             messages.error(
