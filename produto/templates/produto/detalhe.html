@@ -121,6 +121,7 @@
     .botaoCarrinhoMobile {
         margin-top: 60px;
         height: 70px;
+        border-radius: 12px;
     }
 
     .botaoCarrinhoMobile:disabled {
@@ -403,7 +404,7 @@
 
                 </div>
 
-                <p class="conteudoVariacao">Escolha o tamanho:</p>
+                <p class="conteudoVariacao" id="conteudo-variacao">Tamanho:</p>
 
                 <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
                     <div class="form-group">
@@ -417,8 +418,7 @@
                                 data-preco-promocional="{{ variacao.preco_promocional|formata_preco }}"
                                 value="{{ variacao.id }}">
                                 {% if variacao.nome %}
-                                {{ variacao.nome }} (estoque - {{variacao.estoque}})
-                                <!--  RECUPERAR ESSE VALOR COM JS E COLOCAR EM OUTRO LUGAR NO TEMPLATE -->
+                                {{ variacao.nome }}
                                 {% else %}
                                 {{ variacao }}
                                 {% endif %}
@@ -492,31 +492,47 @@
     formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     valorAdicionado.innerHTML = formatado
 
-    // validação selecione tamanho javaScript
+    // validação selecione tamanho BOTÃO javaScript
     function validacao() {
+        let tamanhoTexto = document.getElementById('conteudo-variacao')
+        let tamanhoEscolhido = document.getElementById('exibir-tamanho')
         let select = document.getElementById('select-variacoes');
         let option = select.options[select.selectedIndex];
         let button = document.querySelector(".botaoCarrinhoMobile");
         let msgBotaoDesativado = document.querySelector(".msgBotaoDesativado");
-        button.disabled = true;
 
-        console.log(msgBotaoDesativado)
+        button.disabled = true;
 
         let outro = document.getElementById('value').value = option.value;
         let outroiNNERtEXT = document.getElementById('value').value = option.innerText;
-        // console.log('TAMANHO -> ' + outro.length)
+
+        outroiNNERtEXT = outroiNNERtEXT.replace(' ', '')
+        outroiNNERtEXT = outroiNNERtEXT.trim()
+        outroiNNERtEXT = outroiNNERtEXT.split('');
+
+        let ante = outroiNNERtEXT[outroiNNERtEXT.length - 3]
+        let penultimo = outroiNNERtEXT[outroiNNERtEXT.length - 2]
+        let ultimo = outroiNNERtEXT[outroiNNERtEXT.length - 1]
+
+        if (ante === undefined) {
+            ante = ''
+        }
+        if (penultimo === undefined) {
+            penultimo = ''
+        }
 
         if (outro.length > 4) {
             button.disabled = true;
         }
         else {
             button.disabled = false;
+            tamanhoTexto.innerHTML = 'Tamanho escolhido: <label style="color: whitesmoke; background-color: #17a2b8; border-radius: 6px; padding: 4px 8px; margin-left: 5px; font-size: 1.2rem;">' + ante + penultimo + ultimo + '</label>';
             msgBotaoDesativado.setAttribute('style', 'display: none');
         }
     }
     validacao();
 
-    // validação selecione tamanho jQuery 
+    // validação selecione tamanho BOTÃO jQuery 
     // $("#select-variacoes").change(function () {
     //     // verifica se o valor selecionado possui data atribuido
     //     if (typeof $(this).find(':selected').data("preco-promocional") !== 'undefined') {
