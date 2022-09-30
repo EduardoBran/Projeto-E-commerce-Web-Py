@@ -15,14 +15,15 @@
 
 <style>
     /* conteúdo */
-    .conteudoMobile {
-        margin-top: 21px;
-        margin-left: 34px;
-    }
-
     .fonteConteudo a,
     p {
         font-family: 'Roboto', sans-serif;
+    }
+
+    .conteudoMobile {
+        margin-top: 19px;
+        margin-left: 0px;
+        margin-right: 70px;
     }
 
     /* subtitulo */
@@ -32,6 +33,10 @@
     }
 
     /* imagem produto */
+    .imagemMarginMobile {
+        margin-left: 70px;
+    }
+
     .img-page-detalhe {
         height: 548px;
     }
@@ -117,6 +122,11 @@
         margin-top: 50px;
     }
 
+    /* select */
+    .form-control {
+        border-radius: 10px;
+    }
+
     /* botao carrinho */
     .botaoCarrinhoMobile {
         margin-top: 60px;
@@ -142,6 +152,10 @@
 
     /* responsividade */
     @media (max-width: 990px) {
+        .imagemMarginMobile {
+            margin-left: 0px;
+        }
+
         .img-page-detalhe {
             width: 50%;
             height: 40%;
@@ -154,6 +168,7 @@
         .conteudoMobile {
             margin-left: 0px;
             margin-top: 10px;
+            margin-right: 0px;
         }
 
         .conteudoTipo {
@@ -188,13 +203,13 @@
     }
 
     @media (max-width: 767px) {
-        .subtituloMobile {
-            display: none;
-        }
-
         .img-page-detalhe {
             height: 490px;
             padding: 5px;
+        }
+
+        .subtituloMobile {
+            display: none;
         }
 
         .conteudoTipo {
@@ -276,7 +291,7 @@
 </style>
 
 {% include 'parciais/_messages.html' %}
-<main class="container mt-4 mb-4">
+<main class="containerHome mt-4 mb-4">
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left subtituloMobile">
             <a href="{% url 'produto:home' %}" style="color: #262727;">
@@ -295,7 +310,7 @@
     <div class="row">
         <div class="col-lg">
             <div class="row no-gutters">
-                <div class="col-lg-12 shadow border">
+                <div class="col-lg-10 col-xl-9 shadow border imagemMarginMobile">
 
                     <!--  necessario para verificar se existe imagem no bd e nao aparecer ícone erro ao renderizar -->
                     {% if produto.imagem %}
