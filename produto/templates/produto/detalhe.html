@@ -75,7 +75,7 @@
     }
 
     .conteudoNome {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         font-weight: 750;
         letter-spacing: 1.2px;
     }
@@ -367,6 +367,8 @@
         </div>
         <div class="col-lg fonteConteudo">
             <div class="conteudoMobile">
+
+                <!-- tipo (Lançamento ou Destaque) -->
                 {% if produto.tipo == 'L' %}
                 <span>
                     <a class="conteudoTipo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
@@ -382,8 +384,13 @@
                 </span>
                 {% endif %}
 
-                <h1 class="conteudoNome mt-3">{{ produto.nome }}</h1>
+                <!-- nome do produto -->
+                <h1 class="conteudoNome mt-3">{{ produto.nome }}
+                    <i class="fas fa-share-alt fa-2xs" href="{{ request.build_absolute_uri }}" onclick="copyURI(event)"
+                        style="cursor: pointer;"></i>
+                </h1>
 
+                <!-- categoria do produto -->
                 <p class="mt-2" style="font-size: .9rem;">
                     <span class="conteudoCategoria">Categoria:</span>
                     <a class="conteudoCategoriaLink" href="{% url 'produto:categoria' produto.categoria_produto %}"
@@ -392,6 +399,7 @@
                     </a>
                 </p>
 
+                <!-- preço do produto -->
                 {% if produto.preco_marketing_promocional %}
                 <div style="margin-top: 30px;">
 
@@ -422,6 +430,7 @@
 
                 </div>
 
+                <!-- selecionando o tamanho do produto -->
                 <p class="conteudoVariacao" id="conteudo-variacao">Tamanho:</p>
 
                 <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
@@ -455,6 +464,7 @@
                         </select>
                     </div>
 
+                    <!-- botão adicionar ao carrinho -->
                     <div class="text-left">
                         <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile">
                             <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
@@ -467,9 +477,9 @@
 
                 </form>
 
-            </div>
-        </div>
-    </div>
+            </div> <!--  conteudoMobile -->
+        </div> <!--  fonteConteudo -->
+    </div><!-- row -->
 
     <div class="row">
         <div class="col-lg-12 fonteConteudo">
@@ -493,7 +503,17 @@
 <!-- End Carousel Pequeno Lancamentos -->
 
 <script>
-    // valor parcelado
+    // funcao copiar link
+    function copyURI(evt) {
+        evt.preventDefault();
+        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+            alert('Link copiado com sucesso!');
+        }, () => {
+            alert('Oooops... parece que ocorreu um erro ao copiar o link.');
+        });
+    }
+
+    // exibindo valor parcelado de acordo com o preço
     let valor = document.getElementById('variation-preco-promocional').innerText
     let valorAdicionado = document.getElementById('valorAdicionado')
     let qtd = document.getElementById('qtd')
@@ -514,7 +534,7 @@
     formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     valorAdicionado.innerHTML = formatado
 
-    // validação selecione tamanho + ativação BOTÃO javaScript
+    // validandoo a ativação BOTÃO somente após selecionar o tamanho com javaScript puro
     function validacao() {
         let tamanhoTexto = document.getElementById('conteudo-variacao')
         let tamanhoEscolhido = document.getElementById('exibir-tamanho')
@@ -554,7 +574,7 @@
     }
     validacao();
 
-    // validação selecione tamanho BOTÃO jQuery 
+    // validandoo a ativação BOTÃO somente após selecionar o tamanho com jQuery
     // $("#select-variacoes").change(function () {
     //     // verifica se o valor selecionado possui data atribuido
     //     if (typeof $(this).find(':selected').data("preco-promocional") !== 'undefined') {
