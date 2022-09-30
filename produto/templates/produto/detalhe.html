@@ -80,6 +80,10 @@
         letter-spacing: 1.2px;
     }
 
+    .iconeCopiarURL {
+        cursor: pointer;
+    }
+
     .conteudoCategoria {
         color: #303030;
         margin-left: 2px;
@@ -262,6 +266,10 @@
             letter-spacing: -0.8px;
         }
 
+        .iconeCopiarURL {
+            margin-left: 5px;
+        }
+
         .conteudoCategoria {
             font-size: .8rem;
         }
@@ -386,8 +394,8 @@
 
                 <!-- nome do produto -->
                 <h1 class="conteudoNome mt-3">{{ produto.nome }}
-                    <i class="fas fa-share-alt fa-2xs" href="{{ request.build_absolute_uri }}" onclick="copyURI(event)"
-                        style="cursor: pointer;"></i>
+                    <i class="fas fa-share-alt fa-2xs iconeCopiarURL" href="{{ request.build_absolute_uri }}"
+                        onclick="copyURI(event)"></i>
                 </h1>
 
                 <!-- categoria do produto -->
