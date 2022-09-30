@@ -16,7 +16,8 @@
 <style>
     /* conteúdo */
     .fonteConteudo a,
-    p {
+    p,
+    h2 {
         font-family: 'Roboto', sans-serif;
     }
 
@@ -148,6 +149,7 @@
         line-height: 0.1;
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
+        margin-left: 1px;
     }
 
     /* responsividade */
@@ -470,12 +472,16 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12">
-            <div class="mt-5 mb-5">
+        <div class="col-lg-12 fonteConteudo">
+            <div class="mt-5 mb-4">
                 <h2 class="text-left"><strong>Descrição</strong></h2>
-                <p class="lead">{{ produto.descricao_curta}}</p>
-                <h2 class="text-left mt-4"><strong>Informações</strong></h2>
-                <p>{{ produto.descricao_longa|linebreaks }}</p>
+                <p class="lead mt-4" style="font-size: 16px; color: #505050; font-weight: 500;">
+                    {{ produto.descricao_curta}}
+                </p>
+                <h2 class="text-left mt-5"><strong>Informações</strong></h2>
+                <p class="mt-4">
+                    {{ produto.descricao_longa|linebreaks }}
+                </p>
             </div>
         </div>
     </div>
