@@ -279,7 +279,7 @@ class AdicionarAoCarrinho(View):
 
         messages.success(
             self.request,
-            f'Produto {produto_nome} {variacao_nome} adicionado ao seu '
+            f'Produto {produto_nome} (Tam: {variacao_nome}) adicionado ao seu '
             f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
         )
 
@@ -307,7 +307,7 @@ class RemoverDoCarrinho(View):
 
         messages.success(
             self.request,
-            f'Produto {carrinho["produto_nome"]} {carrinho["variacao_nome"]} '
+            f'Produto {carrinho["produto_nome"]} (Tam: {carrinho["variacao_nome"]}) '
             f'removido do seu carrinho.'
         )
 
