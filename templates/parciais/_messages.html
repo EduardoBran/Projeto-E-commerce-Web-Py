@@ -1,9 +1,45 @@
 {% if messages %}
 {% for message in messages %}
+
+{% if message.tags == 'alert-success' %}
+<script>
+    alertify.set('notifier', 'position', 'bottom-right');
+    alertify.success('{{ message }}');
+</script>
+{% endif %}
+
+{% if message.tags == 'alert-warning' %}
+<script>
+    alertify.set('notifier', 'position', 'bottom-right');
+    alertify.warning('{{ message }}');
+</script>
+{% endif %}
+
+{% if message.tags == 'alert-danger' %}
+<script>
+    alertify.set('notifier', 'position', 'bottom-right');
+    alertify.error('{{ message }}');
+</script>
+{% endif %}
+
+{% if message.tags == 'alert-info' %}
+<script>
+    alertify.set('notifier', 'position', 'bottom-right');
+    alertify.notify('{{ message }}');
+</script>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+<!-- codigo antigo com mensagem padrão do bootstrap -->
+
+<!-- {% if messages %}
+{% for message in messages %}
 <div class="text-center mt-3">
     <div class="alert {{ message.tags }}" role="alert">
         {{ message }}
     </div>
 </div>
 {% endfor %}
-{% endif %}
+{% endif %} -->
