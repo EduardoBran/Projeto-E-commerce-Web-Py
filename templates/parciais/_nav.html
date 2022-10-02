@@ -17,7 +17,8 @@
         <!-- carrinho mobile -->
         <ul class="navbar-nav ml-auto d-block d-md-none">
             <li class="nav-item">
-                <a class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                <a class="btn btn-link btn-linkBackground" type="button" data-toggle="modal"
+                    data-target="#exampleModalCenter">
                     <i class="fas fa-shopping-cart" style="color: #fff;"></i>
                     {% if request.session.carrinho %}
                     <span class="badge badge-dark">{{ request.session.carrinho|qtd_total_carrinho }}</span>
@@ -81,7 +82,8 @@
                 </li>
                 <!-- carrinho tela grande -->
                 <li class="nav-item">
-                    <a class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                    <a class="btn btn-link btn-linkBackground" type="button" data-toggle="modal"
+                        data-target="#exampleModalCenter">
                         {% if request.user.is_authenticated %}
                         <i class="fas fa-shopping-cart fa-lg mr-1" style=" color: #fff; margin-top: 10px;"></i>
                         {% else %}

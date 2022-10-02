@@ -1,15 +1,16 @@
-a:link {text-decoration: none;}
-
-a:hover {text-decoration: underline;}
-
-.btn-link {
-    background-color: #4b8c8a; 
+a:link {
+    background-color: #008b8b !important;
+    text-decoration: none;
 }
 
-.nav-item{
-    background-color: #4b8c8a; 
+a:hover {
+    background-color: #008b8b !important;
+    text-decoration: underline;
 }
 
+.btn-linkBackground {
+    background-color: #008b8b !important; 
+}
 
 .btn .bx {
     vertical-align: inherit;
