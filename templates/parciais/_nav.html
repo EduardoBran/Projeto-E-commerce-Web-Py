@@ -115,6 +115,14 @@
             <div class="modal-body">
                 {% include 'produto/carrinhoModal.html' %}
             </div>
+
+
+            <div class="modal-footer justify-content-center">
+                <a href="{% url 'produto:carrinho' %}" style="text-decoration: none; width:200px;">
+                    <button type="button" class="btn btn-lg btn-block btn-primary">Ver carrinho</button>
+                </a>
+            </div>
+
         </div>
     </div>
 </div>

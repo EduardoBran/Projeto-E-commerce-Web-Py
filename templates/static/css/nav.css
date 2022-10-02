@@ -1,3 +1,7 @@
+a:link {text-decoration: none;}
+
+a:hover {text-decoration: underline;}
+
 .btn .bx {
     vertical-align: inherit;
     margin-top: -3px;
