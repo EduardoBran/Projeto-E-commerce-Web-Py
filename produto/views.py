@@ -295,6 +295,7 @@ class RemoverDoCarrinho(View):
             'HTTP_REFERER',
             reverse('produto:lista')
         )
+        # valor vindo de _carrinho.html
         variacao_id = self.request.GET.get('vid')
 
         if not variacao_id:  # vid=?
@@ -308,7 +309,7 @@ class RemoverDoCarrinho(View):
 
         carrinho = self.request.session['carrinho'][variacao_id]
 
-        messages.success(
+        messages.warning(
             self.request,
             f'Produto {carrinho["produto_nome"]} (Tam: {carrinho["variacao_nome"]}) '
             f'removido do seu carrinho.'
