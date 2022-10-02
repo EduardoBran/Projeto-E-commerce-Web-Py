@@ -58,6 +58,7 @@
                         <a class="dropdown-item" href="{% url 'perfil:logout' %}">Sair</a>
                     </div>
                 </li>
+
                 {% else %}
                 <li class="nav-item">
                     <a href="#" target="_blank" title=""><i class="fa-regular fa-circle-user fa-2x mr-2 mt-3"
@@ -81,7 +82,8 @@
                 </li>
                 <!-- carrinho tela grande -->
                 <li class="nav-item">
-                    <a class="btn btn-link btn-linkBackground" data-toggle="modal" data-target="#exampleModalCenter">
+                    <a class="btn btn-link btn-linkBackground" type="button" data-toggle="modal"
+                        data-target="#exampleModalCenter">
                         {% if request.user.is_authenticated %}
                         <i class="fas fa-shopping-cart fa-lg mr-1" style=" color: #fff; margin-top: 10px;"></i>
                         {% else %}
@@ -107,7 +109,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {% if request.user.is_authenticated %}
+                    Olá <strong>{{request.user}}</strong>
+                    {% else %}
+                    Seus items
+                    {% endif %}
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -115,7 +123,6 @@
             <div class="modal-body">
                 {% include 'produto/carrinhoModal.html' %}
             </div>
-
 
             <div class="modal-footer justify-content-center">
                 <a href="{% url 'produto:carrinho' %}" style="text-decoration: none; width:200px;">
