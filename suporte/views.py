@@ -18,6 +18,7 @@ class Privacidade(TemplateView):
         context['categorias'] = Categoria.objects.all()
         context['categoria'] = self.kwargs.get('categoria', None)
         context['termo'] = self.request.GET.get('termo')
+        context['carrinho'] = self.request.session.get('carrinho', {})
         return context
 
 

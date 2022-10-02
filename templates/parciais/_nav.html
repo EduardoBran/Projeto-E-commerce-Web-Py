@@ -14,9 +14,10 @@
             <h4 class="font-weight-bold" style="color: white;">UNIQUE</h4>
         </a>
 
+        <!-- carrinho mobile -->
         <ul class="navbar-nav ml-auto d-block d-md-none">
             <li class="nav-item">
-                <a class="btn btn-link" href="{% url 'produto:carrinho' %}">
+                <a class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                     <i class="fas fa-shopping-cart" style="color: #fff;"></i>
                     {% if request.session.carrinho %}
                     <span class="badge badge-dark">{{ request.session.carrinho|qtd_total_carrinho }}</span>
@@ -78,8 +79,9 @@
                     {% endif %}
                 </li>
                 </li>
+                <!-- carrinho tela grande -->
                 <li class="nav-item">
-                    <a class="btn btn-link" href="{% url 'produto:carrinho' %}">
+                    <a class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModalCenter">
                         {% if request.user.is_authenticated %}
                         <i class="fas fa-shopping-cart fa-lg mr-1" style=" color: #fff; margin-top: 10px;"></i>
                         {% else %}
@@ -96,9 +98,26 @@
                 </li>
             </ul>
         </div>
-
     </div>
 </nav>
+
+<!-- modal exibindo carrinho -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% include 'produto/carrinhoModal.html' %}
+            </div>
+        </div>
+    </div>
+</div>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light sub-menu">
     <div class="container">

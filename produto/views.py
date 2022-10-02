@@ -24,6 +24,7 @@ class ListaProdutos(ListView):
         context['categorias'] = Categoria.objects.all()
         context['categoria'] = self.kwargs.get('categoria', None)
         context['termo'] = self.request.GET.get('termo')
+        context['carrinho'] = self.request.session.get('carrinho', {})
         return context
 
     def get_queryset(self):
@@ -171,6 +172,8 @@ class DetalheProduto(DetailView):
         context['categoria'] = self.kwargs.get('categoria', None)
         context['produtoDestaque'] = Produto.objects.filter(
             tipo='D').order_by('?')
+
+        context['carrinho'] = self.request.session.get('carrinho', {})
 
         # recuperando slug do produto via URL
         # slug = self.request.get_full_path()
