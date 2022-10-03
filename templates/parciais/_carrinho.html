@@ -52,6 +52,11 @@
         font-size: 1.1rem;
     }
 
+    .preco-produto-tabela .preco-antigo-tabela {
+        font-size: 0.95rem;
+        margin-right: 2px;
+    }
+
     .preco-produto-tabela .preco-atual-tabela {
         color: #047272;
     }
@@ -117,13 +122,15 @@
                             <span>Tamanho - {{ linha_carrinho.variacao_nome }} </span>
                         </div>
                         <div class="preco-produto-tabela" style="font-weight: 600;">
+                            {% block tamanhoPreco %}
                             {% if linha_carrinho.preco_unitario_promocional %}
                             <span class="preco-antigo-tabela">
                                 <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
                             <span class="preco-atual-tabela"> R$ {{linha_carrinho.preco_unitario_promocional}}</span>
                             {% else %}
-                            {{ linha_carrinho.preco_unitario }}
+                            <span class="preco-atual-tabela">R$ {{ linha_carrinho.preco_unitario }}</span>
                             {% endif %}
+                            {% endblock %}
                         </div>
                     </div>
                 </div>

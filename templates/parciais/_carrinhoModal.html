@@ -28,9 +28,23 @@
 {% endblock %}
 
 {% block tamanhoLetraNome %}
+
 <div class="info-produto-tabel2">
     <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
         style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem;">
         {{ linha_carrinho.produto_nome }}</a>
+
+    {% endblock %}
+
+    {% block tamanhoPreco %}
+
+    {% if linha_carrinho.preco_unitario_promocional %}
+    <span class="preco-antigo-tabela" style="font-size: 0.75rem;">
+        <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
+    <span class="preco-atual-tabela" style="font-size: 0.9rem;"> R$
+        {{linha_carrinho.preco_unitario_promocional}}</span>
+    {% else %}
+    <span class="preco-atual-tabela" style="font-size: 0.95rem;"> R$ {{ linha_carrinho.preco_unitario }}</span>
+    {% endif %}
 
     {% endblock %}
