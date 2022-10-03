@@ -130,7 +130,8 @@
                             {% if linha_carrinho.preco_unitario_promocional %}
                             <span class="preco-antigo-tabela">
                                 <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
-                            <span class="preco-atual-tabela"> R$ {{linha_carrinho.preco_unitario_promocional}}</span>
+                            <span class="preco-atual-tabela"> R$
+                                {{linha_carrinho.preco_unitario_promocional}}</span>
                             {% else %}
                             <span class="preco-atual-tabela">R$ {{ linha_carrinho.preco_unitario }}</span>
                             {% endif %}
