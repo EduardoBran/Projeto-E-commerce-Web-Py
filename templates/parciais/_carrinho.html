@@ -3,18 +3,40 @@
 
 <style>
     /* conteúdo tabela */
+    .posIconeExcluir {
+        background-color: #fff;
+        border: 1px solid #cfcfcf;
+        border-radius: 100%;
+        box-shadow: 4px 4px 4px -2px rgb(145 145 145 / 55%);
+        cursor: pointer;
+        height: 30px;
+        left: 2px;
+        padding: 7px;
+        position: absolute;
+        width: 30px;
+
+        z-index: 9;
+    }
+
+    .iconeExcluir {
+        color: #343a40;
+        margin: 0;
+        overflow: hidden;
+    }
+
     .tamanho-imagem-carrinho {
         width: 120px;
         height: 140px;
         margin-left: 20px;
     }
 
+    /* quantidade e preço totla produto */
     .info-margin-top {
         margin-top: 60px;
     }
 
     .info-produto-tabela {
-        margin-top: 20px;
+        margin-top: 24px;
         margin-left: 24px;
         font-size: 1.29rem;
     }
@@ -31,7 +53,7 @@
     }
 
     .preco-produto-tabela .preco-atual-tabela {
-        color: red;
+        color: #047272;
     }
 
     @media (max-width: 767px) {
@@ -55,6 +77,10 @@
             font-size: 0.9rem;
             margin-top: 2px;
         }
+
+        .preco-produto-tabela {
+            font-size: 0.95rem;
+        }
     }
 </style>
 
@@ -71,11 +97,12 @@
         <tr>
             <td>
                 <div class="row">
-                    {% block posicaoImagemTabela %}
-                    <a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
-                        <i class="fas fa-times-circle text-danger fa-sm" aria-hidden="true"></i>
+                    <a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}"
+                        style="margin-right:-20px;">
+                        <i class="fa-solid fa-trash-can posIconeExcluir iconeExcluir" aria-hidden="true"></i>
                     </a>
-                    <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
+                    {% block posicaoImagemTabela %}
+                    <img class="img-fluid tamanho-imagem-carrinho mt-1" src="{{ linha_carrinho.imagem }}">
                     {% endblock %}
 
                     {% block tamanhoLetraNome %}
@@ -89,7 +116,7 @@
                         <div class="tamanho-produto-tabela">
                             <span>Tamanho - {{ linha_carrinho.variacao_nome }} </span>
                         </div>
-                        <div class="preco-produto-tabela">
+                        <div class="preco-produto-tabela" style="font-weight: 600;">
                             {% if linha_carrinho.preco_unitario_promocional %}
                             <span class="preco-antigo-tabela">
                                 <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>

@@ -8,24 +8,22 @@
     .tamanho-imagem-carrinho-modal2 {
         width: 120px;
         height: 140px;
+        margin-left: 30px;
     }
 
     .info-produto-tabel2 {
         margin-left: 5px;
-        margin-top: 9px;
+        margin-top: 10px;
     }
 
     @media (max-width: 500px) {
-        .tamanho-imagem-carrinho {
-            margin-left: 10px;
+        .tamanho-imagem-carrinho-modal2 {
+            margin-left: 30px;
         }
     }
 </style>
 
-<a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
-    <i class="fas fa-times-circle text-danger fa-sm" aria-hidden="true"></i>
-</a>
-<img class="img-fluid tamanho-imagem-carrinho-modal2" src="{{ linha_carrinho.imagem }}">
+<img class="img-fluid tamanho-imagem-carrinho-modal2 mt-1" src="{{ linha_carrinho.imagem }}">
 
 {% endblock %}
 
