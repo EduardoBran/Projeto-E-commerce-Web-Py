@@ -31,7 +31,7 @@
 
 <div class="info-produto-tabel2">
     <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
-        style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem;">
+        style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem; font-weight: 500;">
         {{ linha_carrinho.produto_nome }}</a>
 
     {% endblock %}
@@ -41,10 +41,12 @@
     {% if linha_carrinho.preco_unitario_promocional %}
     <span class="preco-antigo-tabela" style="font-size: 0.75rem;">
         <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
-    <span class="preco-atual-tabela" style="font-size: 0.9rem;"> R$
+    <span class="preco-atual-tabela" style="font-size: 0.9rem; font-weight: bold;"> R$
         {{linha_carrinho.preco_unitario_promocional}}</span>
     {% else %}
-    <span class="preco-atual-tabela" style="font-size: 0.95rem;"> R$ {{ linha_carrinho.preco_unitario }}</span>
+    <span class="preco-atual-tabela" style="font-size: 0.95rem; font-weight: bold;">
+        R$ {{ linha_carrinho.preco_unitario }}
+    </span>
     {% endif %}
 
     {% endblock %}
