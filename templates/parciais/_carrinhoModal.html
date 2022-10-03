@@ -2,8 +2,6 @@
 {% load static %}
 {% load omfilters %}
 
-
-
 {% block posicaoImagemTabela %}
 
 <style>
@@ -24,6 +22,9 @@
     }
 </style>
 
+<a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
+    <i class="fas fa-times-circle text-danger fa-sm" aria-hidden="true"></i>
+</a>
 <img class="img-fluid tamanho-imagem-carrinho-modal2" src="{{ linha_carrinho.imagem }}">
 
 {% endblock %}

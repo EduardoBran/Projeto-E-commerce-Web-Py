@@ -72,6 +72,9 @@
             <td>
                 <div class="row">
                     {% block posicaoImagemTabela %}
+                    <a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
+                        <i class="fas fa-times-circle text-danger fa-sm" aria-hidden="true"></i>
+                    </a>
                     <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
                     {% endblock %}
 
@@ -81,10 +84,6 @@
                             style="color: #262727; text-decoration: underline;">
                             {{ linha_carrinho.produto_nome }}</a>
                         {% endblock %}
-                        <a class="ml-1"
-                            href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
-                            <i class="fas fa-times-circle text-danger fa-xs" aria-hidden="true"></i>
-                        </a>
 
                         <br />
                         <div class="tamanho-produto-tabela">
@@ -94,7 +93,7 @@
                             {% if linha_carrinho.preco_unitario_promocional %}
                             <span class="preco-antigo-tabela">
                                 <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
-                            <span class="preco-atual-tabela"> R$ {{ linha_carrinho.preco_unitario_promocional }}</span>
+                            <span class="preco-atual-tabela"> R$ {{linha_carrinho.preco_unitario_promocional}}</span>
                             {% else %}
                             {{ linha_carrinho.preco_unitario }}
                             {% endif %}
