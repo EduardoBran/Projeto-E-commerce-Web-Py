@@ -1,48 +1,143 @@
 {% load static %}
 {% load omfilters %}
 
+<style>
+    /* conteúdo tabela */
+    .tamanho-imagem-carrinho {
+        width: 120px;
+        height: 140px;
+        margin-left: 20px;
+    }
+
+    .info-margin-top {
+        margin-top: 60px;
+    }
+
+    .info-produto-tabela {
+        margin-top: 20px;
+        margin-left: 30px;
+        font-size: 1.29rem;
+    }
+
+    .tamanho-produto-tabela {
+        margin-left: 1px;
+        color: #656565;
+        font-size: 1rem;
+    }
+
+    .preco-produto-tabela {
+        margin-left: 1px;
+        font-size: 1.1rem;
+    }
+
+    .preco-produto-tabela .preco-atual-tabela {
+        color: red;
+    }
+
+    @media (max-width: 990px) {
+        .mobileTitulos {
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .info-produto-tabela {
+            margin-left: 20px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .tamanho-imagem-carrinho {
+            margin-left: 20px;
+        }
+
+        .info-produto-tabela {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            margin-left: 20px;
+        }
+
+        .tamanho-produto-tabela {
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .mobileTitulos {
+            display: none;
+        }
+    }
+</style>
+
 <div class="table-responsive">
     <table class="table">
         <tr>
-            <th class="d-none d-lg-block">Imagem</th>
             <th>Produto</th>
-            <th>V.</th>
-            <th>QTD.</th>
-            <th>Total</th>
+            <th>Qtd.</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;Total</th>
         </tr>
 
         {% for linha_carrinho in carrinho.values %}
 
         <tr>
-            <td class="d-none d-lg-block">
-                <img class="cart-img" src="{{ linha_carrinho.imagem }}">
-            </td>
             <td>
-                <a href="{% url 'produto:detalhe' linha_carrinho.slug %}">
-                    {{ linha_carrinho.produto_nome }}
-                </a>
-                <a class="ml-3" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
-                    <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
-                </a>
-            </td>
-            <td>{{ linha_carrinho.variacao_nome }}</td>
-            <td>
-                {{ linha_carrinho.quantidade }} x
-                {% if linha_carrinho.preco_unitario_promocional %}
-                {{ linha_carrinho.preco_unitario_promocional }}
-                {% else %}
-                {{ linha_carrinho.preco_unitario }}
-                {% endif %}
+                <div class="row">
+                    {% block posicaoImagemTabela %}
+                    <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
+                    {% endblock %}
 
+                    {% block tamanhoLetraNome %}
+                    <div class="info-produto-tabela">
+                        <a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+                            style="color: #262727; text-decoration: underline;">
+                            {{ linha_carrinho.produto_nome }}</a>
+                        {% endblock %}
+                        <a class="ml-1"
+                            href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
+                            <i class="fas fa-times-circle text-danger fa-xs" aria-hidden="true"></i>
+                        </a>
+
+                        <br />
+                        <div class="tamanho-produto-tabela">
+                            <span>Tamanho - {{ linha_carrinho.variacao_nome }} </span>
+                        </div>
+                        <div class="preco-produto-tabela">
+                            {% if linha_carrinho.preco_unitario_promocional %}
+                            <span class="preco-antigo-tabela">
+                                <strike>{{ linha_carrinho.preco_unitario }}</strike></span>
+                            <span class="preco-atual-tabela"> {{ linha_carrinho.preco_unitario_promocional }}</span>
+                            {% else %}
+                            {{ linha_carrinho.preco_unitario }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div class="info-margin-top">
+                    &nbsp;&nbsp;&nbsp;<span class="info-qtd">{{ linha_carrinho.quantidade }}</span>
+                </div>
             </td>
 
             {% if linha_carrinho.preco_quantitativo_promocional %}
 
-            <td>{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}</td>
+            <td style="width: 100px;">
+                <div class="info-margin-top">
+                    <span class="info-preco-total-produto">
+                        &nbsp;{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
+                    </span>
+                </div>
+            </td>
 
             {% else %}
 
-            <td>{{ linha_carrinho.preco_quantitativo|formata_preco }}</td>
+            <td style="width: 100px;">
+                <div class="info-margin-top">
+                    <span class="info-preco-total-produto">
+                        &nbsp;&nbsp;{{ linha_carrinho.preco_quantitativo|formata_preco }}
+                    </span>
+                </div>
+            </td>
 
             {% endif %}
         </tr>
@@ -51,3 +146,52 @@
 
     </table>
 </div>
+
+
+<!-- <div class="row mobileTitulos">
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+        Produto
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+        Qtd.
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+        Total
+    </div>
+</div>
+
+<div class="row" style="border: 1px solid black;">
+    {% for linha_carrinho in carrinho.values %}
+    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+
+        <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
+        <a href="{% url 'produto:detalhe' linha_carrinho.slug %}" style="color: #262727; text-decoration: underline;">
+            {{ linha_carrinho.produto_nome }}</a>
+        <a class="ml-3" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
+            <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
+        </a>
+        <span>Tamanho - {{ linha_carrinho.variacao_nome }} </span>
+
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2" style="border: 1px solid red;">
+        {{ linha_carrinho.quantidade }} x
+        {% if linha_carrinho.preco_unitario_promocional %}
+        {{ linha_carrinho.preco_unitario_promocional }}
+        {% else %}
+        {{ linha_carrinho.preco_unitario }}
+        {% endif %}
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2" style="border: 1px solid green;">
+        {% if linha_carrinho.preco_quantitativo_promocional %}
+
+        {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
+
+        {% else %}
+
+        {{ linha_carrinho.preco_quantitativo|formata_preco }}
+
+        {% endif %}
+    </div>
+    {% endfor %}
+</div> -->

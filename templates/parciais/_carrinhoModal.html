@@ -1,0 +1,26 @@
+{% extends 'parciais/_carrinho.html' %}
+
+{% block posicaoImagemTabela %}
+
+<style>
+    .tamanho-imagem-carrinho {
+        width: 120px;
+        height: 140px;
+        margin-left: 70px;
+    }
+</style>
+
+<img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
+
+{% endblock %}
+
+{% block tamanhoLetraNome %}
+
+
+
+<div class="info-produto-tabela">
+    <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+        style="color: #262727; text-decoration: underline; margin-top: 5px; font-size: 1.1rem;">
+        {{ linha_carrinho.produto_nome }}</a>
+
+    {% endblock %}
