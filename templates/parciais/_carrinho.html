@@ -15,7 +15,7 @@
 
     .info-produto-tabela {
         margin-top: 20px;
-        margin-left: 30px;
+        margin-left: 7px;
         font-size: 1.29rem;
     }
 
@@ -34,15 +34,9 @@
         color: red;
     }
 
-    @media (max-width: 990px) {
-        .mobileTitulos {
-            display: none;
-        }
-    }
-
     @media (max-width: 767px) {
         .info-produto-tabela {
-            margin-left: 20px;
+            margin-left: 5px;
         }
     }
 
@@ -54,16 +48,12 @@
         .info-produto-tabela {
             margin-top: 10px;
             font-size: 1.1rem;
-            margin-left: 20px;
+            margin-left: 5px;
         }
 
         .tamanho-produto-tabela {
             font-size: 0.9rem;
             margin-top: 2px;
-        }
-
-        .mobileTitulos {
-            display: none;
         }
     }
 </style>
@@ -85,8 +75,8 @@
                     <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
                     {% endblock %}
 
-                    {% block tamanhoLetraNome %}
                     <div class="info-produto-tabela">
+                        {% block tamanhoLetraNome %}
                         <a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
                             style="color: #262727; text-decoration: underline;">
                             {{ linha_carrinho.produto_nome }}</a>
@@ -143,55 +133,5 @@
         </tr>
 
         {% endfor %}
-
     </table>
 </div>
-
-
-<!-- <div class="row mobileTitulos">
-    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
-        Produto
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-        Qtd.
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-        Total
-    </div>
-</div>
-
-<div class="row" style="border: 1px solid black;">
-    {% for linha_carrinho in carrinho.values %}
-    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-
-        <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
-        <a href="{% url 'produto:detalhe' linha_carrinho.slug %}" style="color: #262727; text-decoration: underline;">
-            {{ linha_carrinho.produto_nome }}</a>
-        <a class="ml-3" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}">
-            <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
-        </a>
-        <span>Tamanho - {{ linha_carrinho.variacao_nome }} </span>
-
-    </div>
-
-    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2" style="border: 1px solid red;">
-        {{ linha_carrinho.quantidade }} x
-        {% if linha_carrinho.preco_unitario_promocional %}
-        {{ linha_carrinho.preco_unitario_promocional }}
-        {% else %}
-        {{ linha_carrinho.preco_unitario }}
-        {% endif %}
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2" style="border: 1px solid green;">
-        {% if linha_carrinho.preco_quantitativo_promocional %}
-
-        {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
-
-        {% else %}
-
-        {{ linha_carrinho.preco_quantitativo|formata_preco }}
-
-        {% endif %}
-    </div>
-    {% endfor %}
-</div> -->

@@ -3,14 +3,19 @@
 {% block posicaoImagemTabela %}
 
 <style>
-    .tamanho-imagem-carrinho {
+    .tamanho-imagem-carrinho-modal2 {
         width: 120px;
         height: 140px;
-        margin-left: 70px;
+    }
+
+    @media (max-width: 500px) {
+        .tamanho-imagem-carrinho {
+            margin-left: 10px;
+        }
     }
 </style>
 
-<img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
+<img class="img-fluid tamanho-imagem-carrinho-modal2" src="{{ linha_carrinho.imagem }}">
 
 {% endblock %}
 
@@ -18,9 +23,8 @@
 
 
 
-<div class="info-produto-tabela">
-    <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
-        style="color: #262727; text-decoration: underline; margin-top: 5px; font-size: 1.1rem;">
-        {{ linha_carrinho.produto_nome }}</a>
+<a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+    style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem;">
+    {{ linha_carrinho.produto_nome }}</a>
 
-    {% endblock %}
+{% endblock %}
