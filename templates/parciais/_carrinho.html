@@ -15,7 +15,7 @@
 
     .info-produto-tabela {
         margin-top: 20px;
-        margin-left: 7px;
+        margin-left: 24px;
         font-size: 1.29rem;
     }
 
@@ -75,8 +75,8 @@
                     <img class="img-fluid tamanho-imagem-carrinho" src="{{ linha_carrinho.imagem }}">
                     {% endblock %}
 
+                    {% block tamanhoLetraNome %}
                     <div class="info-produto-tabela">
-                        {% block tamanhoLetraNome %}
                         <a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
                             style="color: #262727; text-decoration: underline;">
                             {{ linha_carrinho.produto_nome }}</a>
@@ -93,8 +93,8 @@
                         <div class="preco-produto-tabela">
                             {% if linha_carrinho.preco_unitario_promocional %}
                             <span class="preco-antigo-tabela">
-                                <strike>{{ linha_carrinho.preco_unitario }}</strike></span>
-                            <span class="preco-atual-tabela"> {{ linha_carrinho.preco_unitario_promocional }}</span>
+                                <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
+                            <span class="preco-atual-tabela"> R$ {{ linha_carrinho.preco_unitario_promocional }}</span>
                             {% else %}
                             {{ linha_carrinho.preco_unitario }}
                             {% endif %}

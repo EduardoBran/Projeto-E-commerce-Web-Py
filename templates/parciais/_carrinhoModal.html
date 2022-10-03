@@ -1,4 +1,8 @@
 {% extends 'parciais/_carrinho.html' %}
+{% load static %}
+{% load omfilters %}
+
+
 
 {% block posicaoImagemTabela %}
 
@@ -6,6 +10,11 @@
     .tamanho-imagem-carrinho-modal2 {
         width: 120px;
         height: 140px;
+    }
+
+    .info-produto-tabel2 {
+        margin-left: 5px;
+        margin-top: 9px;
     }
 
     @media (max-width: 500px) {
@@ -20,11 +29,9 @@
 {% endblock %}
 
 {% block tamanhoLetraNome %}
+<div class="info-produto-tabel2">
+    <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+        style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem;">
+        {{ linha_carrinho.produto_nome }}</a>
 
-
-
-<a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
-    style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem;">
-    {{ linha_carrinho.produto_nome }}</a>
-
-{% endblock %}
+    {% endblock %}
