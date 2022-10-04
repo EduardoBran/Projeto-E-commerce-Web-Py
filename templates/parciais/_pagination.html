@@ -1,16 +1,17 @@
 {% if is_paginated %}
 
-<div class="col mt-3 mb-3">
+<div class="col mt-3">
     <div class="row">
 
         <div class="pagination">
             <ul class="pagination">
                 {% if page_obj.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page=1">&laquo;</a>
+                    <a class="page-link" href="?page=1" style="color: black;">&laquo;</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+                        style="color: black;">&lsaquo;</a>
                 </li>
                 {% endif %}
 
@@ -18,10 +19,11 @@
 
                 {% if page_obj.number == num %}
                 <li class="page-item active">
-                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    <a class="page-link" href="?page={{ num }}" style="background-color: black; border: black;">
+                        {{ num }}</a>
                 </li>
                 {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <li class="page-item">
-                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    <a class="page-link" href="?page={{ num }}" style="color: black;">{{ num }}</a>
                     </li>
                     {% endif %}
 
@@ -29,10 +31,12 @@
 
                     {% if page_obj.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}"
+                            style="color: black;">&rsaquo;</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"
+                            style="color: black;">&raquo;</a>
                     </li>
                     {% endif %}
             </ul>
