@@ -6,7 +6,23 @@
 
 {% block conteudo %}
 
-<div class="card shadow border ml-2 mr-2">
+<!-- subtitulo com nome da pagina e anterior -->
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
+        <a href="{% url 'produto:home' %}" style="color: #262727;">
+            Pág. inicial</a>
+        <span style="color: #939393;">
+            <i class="fa-solid fa-2xs fa-angles-right"></i> <a href="{% url 'perfil:entrar' %}" style="color: #939393;">
+                Login</a>
+        </span>
+        <span style="color: #939393;">
+            <i class="fa-solid fa-2xs fa-angles-right"></i> {% block subtitulocadastro %}Cadastro{% endblock %}
+        </span>
+    </div>
+</div>
+<!-- end subtitulo com nome da pagina e anterior -->
+
+<div class="card shadow border ml-2 mr-2 mt-3">
     <div class="card-body" style="padding: 5px;">
         <div class="row ">
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-6 mx-auto">
