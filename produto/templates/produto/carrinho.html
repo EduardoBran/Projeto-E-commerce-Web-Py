@@ -13,6 +13,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 
+
+<style>
+    .btnContinuarComprando {
+        font-size: .8rem;
+        width: 144px;
+        height: 28px;
+        float: right;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 500px) {
+        .btnContinuarComprando {
+            float: none;
+            margin-top: 17px;
+            margin-left: 0;
+        }
+    }
+</style>
+
 {% if carrinho %}
 
 <div class="" id="loading" style="display: block">
@@ -23,8 +45,12 @@
 
     <div class="row mt-3">
         <div class="col">
-            <h3>Carrinho de compras</h3>
-            <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
+            <h3 class="mt-2">Carrinho de compras <span class="ml-5"></span>
+                <a class="linkContinuarComprando mt-2" href="{% url 'produto:lista' %}">
+                    <button class="btn btn-dark btn-sm text-center btnContinuarComprando">
+                        Continuar comprando</button></a>
+            </h3>
+            <p class=" lead">Os produtos, quantidades e preços que você escolheu.</p>
 
             {% include 'parciais/_carrinho.html' %}
         </div>
