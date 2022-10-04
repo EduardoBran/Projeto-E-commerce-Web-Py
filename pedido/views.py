@@ -1,13 +1,13 @@
-from django.shortcuts import render, redirect, reverse
-from django.views.generic import ListView, DetailView
-from django.views import View
-from django.http import HttpResponse
+from categoria.models import Categoria
 from django.contrib import messages
-
+from django.http import HttpResponse
+from django.shortcuts import redirect, render, reverse
+from django.views import View
+from django.views.generic import DetailView, ListView
 from produto.models import Variacao
-from .models import Pedido, ItemPedido
-
 from utils import utils
+
+from .models import ItemPedido, Pedido
 
 
 class DispatchLoginRequiredMixin(View):
@@ -16,6 +16,14 @@ class DispatchLoginRequiredMixin(View):
             return redirect('perfil:criar')
 
         return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = Categoria.objects.all()
+        context['categoria'] = self.kwargs.get('categoria', None)
+        context['termo'] = self.request.GET.get('termo')
+        context['carrinho'] = self.request.session.get('carrinho', {})
+        return context
 
     def get_queryset(self, *args, **kwargs):
         qs = super().get_queryset(*args, **kwargs)
