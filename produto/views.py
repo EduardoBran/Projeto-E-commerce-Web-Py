@@ -354,6 +354,8 @@ class ResumoDaCompra(View):
         contexto = {
             'usuario': self.request.user,
             'carrinho': self.request.session['carrinho'],
+            'categorias': Categoria.objects.all(),
+            'categoria': self.kwargs.get('categoria', None)
         }
 
         return render(self.request, 'produto/resumodacompra.html', contexto)
