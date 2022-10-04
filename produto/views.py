@@ -82,6 +82,8 @@ class Home(ListaProdutos):
             tipo='D').order_by('?')
         context['produtoLancamento'] = Produto.objects.filter(
             tipo='L').order_by('?')
+        context['produtoMaisVendidos'] = Produto.objects.filter(
+            tipo='V').order_by('?')
 
         return context
 
