@@ -325,7 +325,10 @@ class RemoverDoCarrinho(View):
 class Carrinho(View):
     def get(self, *args, **kwargs):
         contexto = {
-            'carrinho': self.request.session.get('carrinho', {})
+            'carrinho': self.request.session.get('carrinho', {}),
+            'produtoMaisVendidos': Produto.objects.filter(
+                tipo='V').order_by('?')
+
         }
         return render(self.request, 'produto/carrinho.html', contexto)
 
