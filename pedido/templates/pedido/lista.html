@@ -6,9 +6,12 @@
 
 {% block conteudo %}
 
+
+
 <div class="row">
     <div class="col">
         <h3 class="mb-4">Pedidos de {{ user }}</h3>
+        {% if pedidos %}
         <p>Abaixo todos os seus pedidos realizados na loja.</p>
 
         <div class="table-responsive">
@@ -41,5 +44,11 @@
 </div>
 
 {% include 'parciais/_pagination.html' %}
+
+{% else %}
+
+<p class="lead text-center" style="font-weight: 350;">Você ainda não pediu com a gente :(</p>
+
+{% endif %}
 
 {% endblock %}
