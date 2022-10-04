@@ -300,6 +300,7 @@
     }
 </style>
 
+<!-- subtítulos da pagina -->
 <main class="containerHome mt-4 mb-4">
     <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left subtituloMobile">
@@ -391,7 +392,7 @@
                 </span>
                 {% endif %}
 
-                <!-- nome do produto -->
+                <!-- nome do produto + copiar link -->
                 <h1 class="conteudoNome mt-3">{{ produto.nome }}
                     <i class="fas fa-share-alt fa-2xs iconeCopiarURL" href="{{ request.build_absolute_uri }}"
                         onclick="copyURI(event)"></i>
@@ -514,9 +515,11 @@
     function copyURI(evt) {
         evt.preventDefault();
         navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
-            alert('Link copiado com sucesso!');
+            alertify.set('notifier', 'position', 'bottom-right');
+            alertify.success('Link copiado com sucesso!');
         }, () => {
-            alert('Oooops... parece que ocorreu um erro ao copiar o link.');
+            alertify.set('notifier', 'position', 'bottom-right');
+            alertify.error('Ooops... parece que ocorreu um erro ao copiar o link.');
         });
     }
 
