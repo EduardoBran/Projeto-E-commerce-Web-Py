@@ -1,31 +1,154 @@
 {% load static %}
 
+<style>
+    /* estrutura */
+    .site-footer {
+        background: #008B8B !important;
+        padding: 32px 0px;
+        font-size: 1.02rem;
+        line-height: 30px;
+        box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    /* hr */
+    .site-footer hr {
+        border-top-color: #bbb;
+        opacity: 0.5
+    }
+
+    .site-footer hr.small {
+        margin: 20px 0
+    }
+
+    /* texto */
+    .site-footer h6 {
+        color: #fff;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+
+    .site-footer a {
+        color: white;
+    }
+
+    .site-footer a:hover {
+        text-decoration: none;
+    }
+
+    .footer-links {
+        list-style: none
+    }
+
+    .footer-links li {
+        display: block
+    }
+
+    .footer-links a {
+        color: #F0F0F0;
+    }
+
+    .footer-links a:active,
+    .footer-links a:focus,
+    .footer-links a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .footer-links.inline li {
+        display: inline-block
+    }
+
+    .copyright-text {
+        margin: 0;
+    }
+
+    .copyright-text label {
+        font-size: 1.4rem;
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    /* icone rede social */
+    .copyright-text a {
+        font-size: 1.25rem;
+        color: #fff;
+        margin: 0px 7px;
+    }
+
+    .copyright-text a:active,
+    .copyright-text a:focus,
+    .copyright-text a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    /* responsivo */
+    @media (max-width:991px) {
+        .site-footer [class^=col-] {
+            margin-bottom: 30px
+        }
+    }
+
+    @media (max-width:767px) {
+        .site-footer {
+            padding-bottom: 0
+        }
+
+        .site-footer .copyright-text {
+            text-align: center
+        }
+    }
+
+    @media (max-width:500px) {
+        .site-footer {
+            padding: 10px 0px;
+            font-size: 1.1rem;
+        }
+
+        .site-footer h6 {
+            font-size: 1.45rem;
+            margin-left: 9px;
+        }
+
+        .footer-linksMobile {
+            margin-left: 12px;
+        }
+
+        .copyright-text label {
+            font-size: 1.2rem;
+        }
+
+        .copyright-text a {
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0px 7px;
+        }
+    }
+</style>
+
 <!-- Site footer -->
 <footer class="site-footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <h6>Sobre</h6>
-                <p class="text-justify" style="color: #DCDCDC;">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam,
-                    eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                    Nemo enim ipsam voluptatem
-                    quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                    voluptatem sequi nesciunt.
-                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-                    quia non numquam eius modi
-                    tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                </p>
+
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                <div class="text-center mt-4">
+                    <a href="/">
+                        <img src="https://i.postimg.cc/wxPRYSxk/LOGO-SOBRE.jpg" height="200" />
+                    </a>
+                </div>
             </div>
 
-            <div class="col-xs-6 col-md-3">
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
                 <h6>Categorias</h6>
                 <ul class="footer-links">
                     {% for categoria in categorias %}
-                    <li>
-                        <a class="dropdown-item" href="{% url 'produto:categoria' categoria.nome_cat %}" name="buscar"
-                            style="color: #DCDCDC;">
+                    <li class="mt-2">
+                        <a class="dropdown-item mt-2" href="{% url 'produto:categoria' categoria.nome_cat %}"
+                            name="buscar">
                             {{ categoria.nome_cat }}
                         </a>
                     </li>
@@ -33,57 +156,59 @@
                 </ul>
             </div>
 
-            <div class="col-xs-6 col-md-3">
-                <h6>Quick Links</h6>
-                <ul class="footer-links">
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <h6>Links Rápidos</h6>
+                <ul class="footer-links footer-linksMobile">
                     <li>
-                        <a href="/" style="color: #DCDCDC;">Home</a>
+                        <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="{% url 'produto:lista' %}" style="color: #DCDCDC;">Produtos</a>
+                        <a href="{% url 'produto:lista' %}">Produtos</a>
                     </li>
                     <li>
-                        <a href="{% url 'suporte:privacidade' %}" style="color: #DCDCDC;">Política de Privacidade</a>
+                        <a href="{% url 'produto:carrinho' %}">Carrinho</a>
                     </li>
                     <li>
-                        <a href="{% url 'suporte:termos' %}" style="color: #DCDCDC;">Termos de Uso</a>
+                        <a href="{% url 'suporte:privacidade' %}">Política de Privacidade</a>
                     </li>
                     <li>
-                        <a href="{% url 'suporte:perguntas' %}" style="color: #DCDCDC;">Perguntas frequentes</a>
+                        <a href="{% url 'suporte:termos' %}">Termos de Uso</a>
                     </li>
                     <li>
-                        <a href="{% url 'suporte:contato' %}" style="color: #DCDCDC;">Contato</a>
+                        <a href="{% url 'suporte:perguntas' %}">Perguntas frequentes</a>
                     </li>
                     <li>
-                        <a href="{% url 'suporte:sobre' %}" style="color: #DCDCDC;">Sobre</a>
+                        <a href="{% url 'suporte:contato' %}">Contato</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'suporte:sobre' %}">Sobre</a>
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <div class="text-center">
-                    <a href="/">
-                        <img src="https://i.postimg.cc/wxPRYSxk/LOGO-SOBRE.jpg" height="200" />
-                    </a>
-                </div>
 
-            </div>
-        </div>
-        <hr>
-    </div>
+        </div> <!--  end row -->
+        <hr> <!-- hr -->
+    </div> <!-- end container -->
+
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 37px;">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <p class="copyright-text text-center" style="color: #fff;">
-                    Unique
-                    <a href="https://www.linkedin.com/in/eduardombrandao/" style="color: #fff;">
-
+                    <label>Unique</label>
+                    <a href="#" target="_blank" title="">
+                        <i class="fa-brands fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="#" target="_blank" title="">
+                        <i class="fa-brands fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="{% url 'suporte:contato' %}" title="">
+                        <i class="fa-solid fa-envelope fa-lg"></i>
                     </a>
                 </p>
             </div>
         </div>
     </div>
+
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

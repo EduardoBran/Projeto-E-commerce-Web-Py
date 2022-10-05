@@ -1,0 +1,102 @@
+{% load static %}
+
+<style>
+    /* estrutura */
+    .site-footer {
+        background: #008B8B !important;
+        padding: 15px 0px;
+        font-size: 1.02rem;
+        line-height: 30px;
+        box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .mTop {
+        margin-top: 5px;
+    }
+
+    /* texto */
+    .copyright-text {
+        margin: 0;
+    }
+
+    .copyright-text label {
+        font-size: 1.4rem;
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    /* icone rede social */
+    .copyright-text a {
+        font-size: 1.25rem;
+        color: #fff;
+        margin: 0px 7px;
+    }
+
+    .copyright-text a:active,
+    .copyright-text a:focus,
+    .copyright-text a:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    /* responsivo */
+    @media (max-width:991px) {
+        .site-footer [class^=col-] {
+            margin-bottom: 30px
+        }
+    }
+
+    @media (max-width:767px) {
+        .site-footer {
+            padding-bottom: 0
+        }
+
+        .site-footer .copyright-text {
+            text-align: center
+        }
+    }
+
+    @media (max-width:500px) {
+        .site-footer {
+            padding-top: 2px;
+            font-size: 1.1rem;
+        }
+
+        .mTop {
+            margin-top: 28px;
+        }
+
+        .copyright-text label {
+            font-size: 1.2rem;
+        }
+
+        .copyright-text a {
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0px 7px;
+        }
+    }
+</style>
+
+<footer class="site-footer">
+
+    <div class="container">
+        <div class="row mTop">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="copyright-text text-center" style="color: #fff;">
+                    <label>Unique</label>
+                    <a href="#" target="_blank" title="">
+                        <i class="fa-brands fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="#" target="_blank" title="">
+                        <i class="fa-brands fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="{% url 'suporte:contato' %}" title="">
+                        <i class="fa-solid fa-envelope fa-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
