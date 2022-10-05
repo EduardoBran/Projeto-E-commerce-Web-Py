@@ -166,7 +166,7 @@
                     {% endif %}
 
                     <div class="card-body">
-                        <div class="text-box text-center">
+                        <div class="text-box text-center product-price-block">
                             <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
                                 <h5>{{ produto.nome }}</h5>
                             </a>
@@ -174,12 +174,15 @@
                             {% if produto.preco_marketing_promocional %}
 
                             <p>
-                                <strike class="mr-2">{{ produto.preco_marketing|formata_preco }}</strike>
-                                <span>{{produto.preco_marketing_promocional|formata_preco }}</span>
+                                <strike class="mr-2 product-old-price">
+                                    {{ produto.preco_marketing|formata_preco }}</strike>
+                                <span class="product-price">
+                                    {{produto.preco_marketing_promocional|formata_preco }}</span>
                             </p>
 
                             {% else %}
-                            <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
+                            <p><span class="product-price">{{ produto.preco_marketing|formata_preco }}</span>
+                            </p>
 
                             {% endif %}
                         </div>

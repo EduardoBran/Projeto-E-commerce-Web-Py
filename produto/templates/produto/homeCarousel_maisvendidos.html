@@ -33,7 +33,7 @@
                     </div>
                     <!-- end item img -->
 
-                    <div class="text-box text-center mt-2">
+                    <div class="text-box text-center mt-2 product-price-block">
                         <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
                             <h5 class="mt-3">{{ produto.nome }}</h5>
                         </a>
@@ -41,12 +41,13 @@
                         {% if produto.preco_marketing_promocional %}
 
                         <p>
-                            <strike class="mr-2">{{ produto.preco_marketing|formata_preco }}</strike>
-                            <span>{{produto.preco_marketing_promocional|formata_preco }}</span>
+                            <strike class="mr-2 product-old-price">{{ produto.preco_marketing|formata_preco }}</strike>
+                            <span class="product-price">{{produto.preco_marketing_promocional|formata_preco }}</span>
                         </p>
 
                         {% else %}
-                        <p><strike>{{ produto.preco_marketing_promocional|formata_preco }}</strike></p>
+                        <p><span class="product-price">{{ produto.preco_marketing|formata_preco }}</span>
+                        </p>
 
                         {% endif %}
                     </div>
