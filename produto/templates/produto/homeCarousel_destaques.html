@@ -1,6 +1,17 @@
 {% load static %}
 {% load omfilters %}
 
+<style>
+    .text-box h5 {
+        color: #5e17eb;
+        font-weight: bold;
+    }
+
+    .btnCarouselPequeno {
+        background-color: #008b8b;
+    }
+</style>
+
 <!-- section start here-->
 <section class="sec">
     <div class="containerHome">
@@ -82,7 +93,7 @@
                                 {% endfor %}
                             </select>
 
-                            <button type="submit" class="mt-3 btn btn-info">
+                            <button type="submit" class="mt-3 btn btn-info btnCarouselPequeno">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 Adicionar ao carrinho
                             </button>
