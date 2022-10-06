@@ -326,6 +326,8 @@ class Carrinho(View):
     def get(self, *args, **kwargs):
         contexto = {
             'carrinho': self.request.session.get('carrinho', {}),
+            'categorias': Categoria.objects.all(),
+            'categoria': self.kwargs.get('categoria', None),
             'produtoMaisVendidos': Produto.objects.filter(
                 tipo='V').order_by('?')
 
