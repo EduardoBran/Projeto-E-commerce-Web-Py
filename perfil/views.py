@@ -37,18 +37,14 @@ class BasePerfil(View):
                 'perfilform': forms.PerfilForm(
                     data=self.request.POST or None,
                     instance=self.perfil
-                ),
-                'categorias': Categoria.objects.all(),
-                'categoria': self.kwargs.get('categoria', None)
+                )
             }
         else:
             self.contexto = {
                 'userform': forms.UserForm(
                     data=self.request.POST or None),
                 'perfilform': forms.PerfilForm(
-                    data=self.request.POST or None),
-                'categorias': Categoria.objects.all(),
-                'categoria': self.kwargs.get('categoria', None)
+                    data=self.request.POST or None)
             }
 
         self.userform = self.contexto['userform']
