@@ -1,3 +1,20 @@
+<style>
+    .iconMobile {
+        display: none;
+    }
+
+    @media (max-width:995px) {
+        .iconMobile {
+            display: inline;
+        }
+
+        ul {
+            margin-top: 10px;
+            line-height: 30px;
+        }
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,15 +23,17 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item mr-3">
-                <a class="nav-link" href="/" style="font-weight: 550;">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/" style="font-weight: 550;">
+                    <span class="iconMobile"><i class="fa-solid fa-house mr-2"></i></span>Home</a>
             </li>
             <li class="nav-item ml-3 mr-3">
-                <a class="nav-link" href="{% url 'produto:lista' %}">Produtos</a>
+                <a class="nav-link" href="{% url 'produto:lista' %}">
+                    <span class="iconMobile"><i class="fa-solid fa-briefcase mr-2"></i></span>Produtos</a>
             </li>
             <li class="nav-item dropdown ml-3 mr-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="false" aria-expanded="false">
-                    Suporte
+                    <span class="iconMobile"><i class="fa-solid fa-circle-question mr-2"></i></span>Suporte
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'suporte:privacidade' %}">Política de Privacidade</a>
@@ -23,10 +42,12 @@
                 </div>
             </li>
             <li class="nav-item ml-3 mr-3">
-                <a class="nav-link" href="{% url 'suporte:contato' %}">Contato</a>
+                <a class="nav-link" href="{% url 'suporte:contato' %}">
+                    <span class="iconMobile"><i class="fa-solid fa-envelope mr-2"></i></span>Contato</a>
             </li>
             <li class="nav-item ml-3">
-                <a class="nav-link" href="{% url 'suporte:sobre' %}">Sobre</a>
+                <a class="nav-link" href="{% url 'suporte:sobre' %}">
+                    <span class="iconMobile"><i class="fa-regular fa-face-smile mr-2"></i></span>Sobre</a>
             </li>
         </ul>
     </div>
