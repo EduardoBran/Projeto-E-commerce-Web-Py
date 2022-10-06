@@ -17,9 +17,9 @@
         {% block conteudo %}{% endblock %}
     </main>
 
-    {% block carouselPequeno %}{% endblock %}
+    {% block carouselPequeno %}{% endblock %} <!-- necessário para caraousel ficar fora da div container -->
 
-    {% include 'parciais/_footer.html'%}
+    {% block footer %}{% include 'parciais/_footer.html'%}{% endblock %}
     
     <!-- Go to Top Link -->
     {% include 'parciais/_gototop.html' %}
