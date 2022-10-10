@@ -242,11 +242,19 @@ class AdicionarAoCarrinho(View):
 
         valor_quantidade = int(valor_quantidade)
 
-        if valor_quantidade <= 0 or valor_quantidade > 10:
+        if valor_quantidade <= 0:
             messages.error(
                 self.request,
-                f'O Produto não foi adicionado.'
-                f'O valor deve ser maior ou igual a 1 e menor ou igual a 10.'
+                f'Nenhum produto foi adicionado ao carrinho.'
+                f'O valor deve ser maior ou igual a 1.'
+            )
+            return redirect(http_referer)
+
+        if valor_quantidade >= 100:
+            messages.error(
+                self.request,
+                f'Nenhum produto foi adicionado ao carrinho.'
+                f'O valor deve ser menor ou igual a 99.'
             )
             return redirect(http_referer)
 
