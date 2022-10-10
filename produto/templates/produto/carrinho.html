@@ -74,13 +74,11 @@
 
         <div class="col-lg mt-auto">
             {% if request.user.is_authenticated %}
-            <a class="btn btn-lg btn-block btn-primary" href="{% url 'produto:resumodacompra' %}" style="background-color: #17a2b8;
-        border-color: #17a2b8;">
+            <a class="btn btn-info btn-lg btn-block" href="{% url 'produto:resumodacompra' %}">
                 Comprar
             </a>
             {% else %}
-            <a class="btn btn-lg btn-block btn-primary" href="{% url 'perfil:criar' %}" style="background-color: #17a2b8;
-        border-color: #17a2b8;">
+            <a class="btn btn-info btn-lg btn-block" href="{% url 'perfil:criar' %}">
                 Entrar ou cadastrar e comprar
             </a>
             {% endif %}
