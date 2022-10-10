@@ -493,8 +493,8 @@
 
                         <!-- selecionando a quantidade do produto -->
                         <p class="textoQtd">Quantidade:</p>
-                        <input class="form-control form-controlQtd" type="number" placeholder="1" name="valor" min="1"
-                            max="10" />
+                        <input class="form-control form-controlQtd" type="text" placeholder="1" name="valor"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
 
                     </div>
 
