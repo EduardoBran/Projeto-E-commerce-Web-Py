@@ -189,16 +189,13 @@ class DetalheProduto(DetailView):
         context['carrinho'] = self.request.session.get('carrinho', {})
 
         # recuperando slug do produto via URL
-        slug = self.request.get_full_path()
-        slug = slug.split('/')
-        slug = slug.pop()
+        # slug = self.request.get_full_path()
+        # slug = slug.split('/')
+        # slug = slug.pop()
 
         # # filtrando produto através do slug recuperado
-        contexto = Produto.objects.filter(
-            slug=slug)
-
-        context['bla'] = Produto.objects.filter(tipo='V')
-        print(context['bla'])
+        # contexto = Produto.objects.filter(
+        #     slug=slug)
 
         # # percorrendo contexto para virar um dicionario
         # for c in contexto:
@@ -237,6 +234,14 @@ class AdicionarAoCarrinho(View):
 
         variacao = get_object_or_404(models.Variacao, id=variacao_id)
 
+        # valor da qtd vindo do form
+        valor_quantidade = self.request.GET.get('valor')
+
+        if valor_quantidade == '':
+            valor_quantidade = 1
+
+        valor_quantidade = int(valor_quantidade)
+
         variacao_estoque = variacao.estoque
         produto = variacao.produto
 
@@ -245,7 +250,7 @@ class AdicionarAoCarrinho(View):
         variacao_nome = variacao.nome or ''
         preco_unitario = variacao.preco
         preco_unitario_promocional = variacao.preco_promocional
-        quantidade = 1
+        quantidade = valor_quantidade
         slug = produto.slug
         imagem = produto.imagem
 
@@ -264,7 +269,7 @@ class AdicionarAoCarrinho(View):
 
         if variacao_id in carrinho:
             quantidade_carrinho = carrinho[variacao_id]['quantidade']
-            quantidade_carrinho += 1
+            quantidade_carrinho += quantidade
 
             if variacao_estoque < quantidade_carrinho:
                 messages.warning(
@@ -288,9 +293,9 @@ class AdicionarAoCarrinho(View):
                 'variacao_id': variacao_id,
                 'preco_unitario': preco_unitario,
                 'preco_unitario_promocional': preco_unitario_promocional,
-                'preco_quantitativo': preco_unitario,
-                'preco_quantitativo_promocional': preco_unitario_promocional,
-                'quantidade': 1,
+                'preco_quantitativo': preco_unitario * quantidade,
+                'preco_quantitativo_promocional': preco_unitario_promocional * quantidade,
+                'quantidade': quantidade,
                 'slug': slug,
                 'imagem': imagem,
             }

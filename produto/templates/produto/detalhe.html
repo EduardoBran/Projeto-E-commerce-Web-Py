@@ -22,7 +22,7 @@
     }
 
     .conteudoMobile {
-        margin-top: 19px;
+        margin-top: 0px;
         margin-left: 0px;
         margin-right: 70px;
     }
@@ -78,6 +78,7 @@
         font-size: 2.1rem;
         font-weight: 750;
         letter-spacing: 1.2px;
+        margin-top: 26px;
     }
 
     .iconeCopiarURL {
@@ -106,6 +107,10 @@
         color: black;
     }
 
+    .textoPrecos {
+        margin-top: 30px;
+    }
+
     .produto-preco-antigo {
         color: #303030;
         font-size: 17px;
@@ -120,21 +125,35 @@
         font-weight: bold;
         line-height: normal;
         font-style: normal;
-        font-size: 31px;
+        font-size: 30px;
     }
 
-    .conteudoVariacao {
-        margin-top: 50px;
+    .textoTamanho {
+        margin-top: 35px;
+        margin-bottom: 5px;
+    }
+
+    .textoQtd {
+        margin-top: 20px;
+        margin-bottom: 5px;
     }
 
     /* select */
     .form-control {
         border-radius: 10px;
+        height: 45px;
+    }
+
+    /* input quantidade */
+    .form-controlQtd {
+        width: 75px;
+        text-align: center;
+        height: 40px;
     }
 
     /* botao carrinho */
     .botaoCarrinhoMobile {
-        margin-top: 60px;
+        margin-top: 34px;
         height: 70px;
         border-radius: 12px;
     }
@@ -243,10 +262,6 @@
             font-size: 30px;
             letter-spacing: -0.7px;
         }
-
-        .botaoCarrinhoMobile {
-            margin-top: 30px;
-        }
     }
 
     @media (max-width: 500px) {
@@ -297,6 +312,12 @@
             font-size: 12.5px;
             margin-left: 2px;
         }
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 </style>
 
@@ -392,13 +413,13 @@
                 </span>
 
                 <!-- nome do produto + copiar link -->
-                <h1 class="conteudoNome mt-3">{{ produto.nome }}
+                <h1 class="conteudoNome">{{ produto.nome }}
                     <i class="fas fa-share-alt fa-2xs iconeCopiarURL" href="{{ request.build_absolute_uri }}"
                         onclick="copyURI(event)"></i>
                 </h1>
 
                 <!-- categoria do produto -->
-                <p class="mt-2" style="font-size: .9rem;">
+                <p style="font-size: .9rem;">
                     <span class="conteudoCategoria">Categoria:</span>
                     <a class="conteudoCategoriaLink" href="{% url 'produto:categoria' produto.categoria_produto %}"
                         style="text-decoration: none;">
@@ -408,7 +429,7 @@
 
                 <!-- preço do produto -->
                 {% if produto.preco_marketing_promocional %}
-                <div style="margin-top: 30px;">
+                <div class="textoPrecos">
 
                     <span id="variation-preco" class="produto-preco-antigo">
                         {{ produto.preco_marketing|formata_preco }}
@@ -438,7 +459,7 @@
                 </div>
 
                 <!-- selecionando o tamanho do produto -->
-                <p class="conteudoVariacao" id="conteudo-variacao">Tamanho:</p>
+                <p class="textoTamanho" id="conteudo-variacao">Tamanho:</p>
 
                 <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
                     <div class="form-group">
@@ -469,6 +490,12 @@
                             {% endfor %}
 
                         </select>
+
+                        <!-- selecionando a quantidade do produto -->
+                        <p class="textoQtd">Quantidade:</p>
+                        <input class="form-control form-controlQtd" type="number" placeholder="1" name="valor"
+                            min="1" />
+
                     </div>
 
                     <!-- botão adicionar ao carrinho -->
