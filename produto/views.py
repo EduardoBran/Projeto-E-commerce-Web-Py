@@ -47,16 +47,27 @@ class ListaProdutosOrdernarPrecoMaior(ListaProdutos):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.order_by('-preco_marketing_promocional')
+        qs = qs.order_by('-preco_marketing')
         return qs
 
 
 class ListaProdutosOrdernarPrecoMenor(ListaProdutos):
     template_name = 'produto/lista_ordernar_precoMenor.html'
+    condicao = False
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.order_by('preco_marketing_promocional')
+        qs = qs.order_by('preco_marketing')
+
+        # for v in qs.values('preco_marketing_promocional'):
+        #     if v['preco_marketing_promocional'] == 0:
+        #         self.condicao = True
+
+        # if self.condicao:
+        #     qs = qs.order_by('preco_marketing')
+        # else:
+        #     qs = qs.order_by('preco_marketing_promocional')
+
         return qs
 
 
@@ -140,7 +151,7 @@ class ListaProdutosCategoriaOrdernarPrecoMaior(ProdutoCategoria):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.order_by('-preco_marketing_promocional')
+        qs = qs.order_by('-preco_marketing')
         return qs
 
 
@@ -149,7 +160,7 @@ class ListaProdutosCategoriaOrdernarPrecoMenor(ProdutoCategoria):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.order_by('preco_marketing_promocional')
+        qs = qs.order_by('preco_marketing')
         return qs
 
 
@@ -178,13 +189,16 @@ class DetalheProduto(DetailView):
         context['carrinho'] = self.request.session.get('carrinho', {})
 
         # recuperando slug do produto via URL
-        # slug = self.request.get_full_path()
-        # slug = slug.split('/')
-        # slug = slug.pop()
+        slug = self.request.get_full_path()
+        slug = slug.split('/')
+        slug = slug.pop()
 
         # # filtrando produto através do slug recuperado
-        # contexto = Produto.objects.filter(
-        #     slug=slug).values('preco_marketing_promocional')
+        contexto = Produto.objects.filter(
+            slug=slug)
+
+        context['bla'] = Produto.objects.filter(tipo='V')
+        print(context['bla'])
 
         # # percorrendo contexto para virar um dicionario
         # for c in contexto:

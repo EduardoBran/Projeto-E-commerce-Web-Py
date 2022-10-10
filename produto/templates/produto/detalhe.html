@@ -377,20 +377,19 @@
             <div class="conteudoMobile">
 
                 <!-- tipo (Lançamento ou Destaque) -->
-                {% if produto.tipo == 'L' %}
                 <span>
                     <a class="conteudoTipo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
+                        {% if produto.tipo == 'L' %}
                         Lançamento
-                    </a>
-                </span>
-                {% endif %}
-                {% if produto.tipo == 'D' %}
-                <span>
-                    <a class="conteudoTipo" href="{% url 'produto:ord_destaque' %}" style="text-decoration: none;">
+                        {% endif %}
+                        {% if produto.tipo == 'V' %}
+                        Mais Vendido
+                        {% endif %}
+                        {% if produto.tipo == 'D' %}
                         Destaque
+                        {% endif %}
                     </a>
                 </span>
-                {% endif %}
 
                 <!-- nome do produto + copiar link -->
                 <h1 class="conteudoNome mt-3">{{ produto.nome }}
