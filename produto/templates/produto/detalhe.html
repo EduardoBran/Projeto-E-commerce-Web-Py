@@ -138,17 +138,42 @@
         margin-bottom: 5px;
     }
 
-    /* select */
+    /* select tamanho*/
     .form-control {
         border-radius: 10px;
         height: 45px;
+        border: 1px solid #adadad;
     }
 
     /* input quantidade */
-    .form-controlQtd {
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .quantidade {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid #adadad;
+        border-radius: 8px;
+        height: 100%;
+        line-height: normal;
+        font-style: normal;
+        width: 100px;
+    }
+
+    .quantidade input {
         width: 75px;
-        text-align: center;
         height: 40px;
+        background-color: #ffffff;
+        text-align: center;
+    }
+
+    .sub,
+    .add {
+        padding: 4px;
+        color: #303030;
     }
 
     /* botao carrinho */
@@ -312,12 +337,6 @@
             font-size: 12.5px;
             margin-left: 2px;
         }
-    }
-
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
     }
 </style>
 
@@ -493,13 +512,19 @@
 
                         <!-- selecionando a quantidade do produto -->
                         <p class="textoQtd">Quantidade:</p>
-                        <input class="form-control form-controlQtd" type="text" placeholder="1" name="valor"
-                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
-
+                        <div class="quantidade mt-2">
+                            <button type="button" id="sub" class="sub"><i class="fas fa-minus"></i></button>
+                            <input type="text" id="1" value="1" name="valor"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2"
+                                size="2" />
+                            <button type="button" id="add" class="add"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <!-- <input class="form-control form-controlQtd" type="text" placeholder="1" name="valor"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" /> -->
                     </div>
 
                     <!-- botão adicionar ao carrinho -->
-                    <div class="text-left">
+                    <div class="text-left mt-2">
                         <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile">
                             <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
                             <span class="texto-carrinho ml-2">Adicionar ao carrinho</span>
@@ -570,7 +595,7 @@
     formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     valorAdicionado.innerHTML = formatado
 
-    // validandoo a ativação BOTÃO somente após selecionar o tamanho com javaScript puro
+    // validando a ativação BOTÃO somente após selecionar o tamanho com javaScript puro
     function validacao() {
         let tamanhoTexto = document.getElementById('conteudo-variacao')
         let tamanhoEscolhido = document.getElementById('exibir-tamanho')
@@ -624,6 +649,15 @@
     //         console.log('SEM DADOS')
     //     }
     // });
+
+    // input quantidade funcao botao + e -
+    $('.add').click(function () {
+        if ($(this).prev().val() < 10) $(this).prev().val(+$(this).prev().val() + 1); // max 10
+        // $(this).prev().val(+$(this).prev().val() + 1);
+    });
+    $('.sub').click(function () {
+        if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1); // min 1
+    });
 </script>
 
 {% endblock %}
