@@ -237,7 +237,12 @@ class AdicionarAoCarrinho(View):
         # valor da qtd vindo do form
         valor_quantidade = self.request.GET.get('valor')
 
+        # necessário caso o usuário nao modifique o valor do input
         if valor_quantidade == '':
+            valor_quantidade = 1
+
+        # necessário para o carousel pequeno que nao possui input com qtd
+        if valor_quantidade == None:
             valor_quantidade = 1
 
         valor_quantidade = int(valor_quantidade)
@@ -326,6 +331,97 @@ class AdicionarAoCarrinho(View):
         return redirect(http_referer)
 
 
+class AdicionarAoCarrinhoModal(View):
+    def get(self, *args, **kwargs):
+        # última pág do usuário
+        http_referer = self.request.META.get(
+            'HTTP_REFERER',
+            reverse('produto:lista')
+        )
+        variacao_id = self.request.GET.get(
+            'vid')  # valor vindo do form
+
+        print('\n*************\n')
+        print(variacao_id)
+        print('\n*************\n')
+
+        if not variacao_id:  # vid=?
+            messages.error(
+                self.request,
+                'Produto não existe.'
+            )
+            return redirect(http_referer)
+
+        variacao = get_object_or_404(models.Variacao, id=variacao_id)
+
+        variacao_estoque = variacao.estoque
+        produto = variacao.produto
+
+        produto_id = produto.id
+        produto_nome = produto.nome
+        variacao_nome = variacao.nome or ''
+        preco_unitario = variacao.preco
+        preco_unitario_promocional = variacao.preco_promocional
+        quantidade = 1
+        slug = produto.slug
+        imagem = produto.imagem
+
+        if variacao.estoque < 1:
+            messages.error(
+                self.request,
+                'Estoque insuficiente.'
+            )
+            return redirect(http_referer)
+
+        if not self.request.session.get('carrinho'):
+            self.request.session['carrinho'] = {}
+            self.request.session.save()
+
+        carrinho = self.request.session['carrinho']
+
+        if variacao_id in carrinho:
+            quantidade_carrinho = carrinho[variacao_id]['quantidade']
+            quantidade_carrinho += 1
+
+            if variacao_estoque < quantidade_carrinho:
+                messages.warning(
+                    self.request,
+                    f'Estoque insuficiente para {quantidade_carrinho}x no produto "{produto_nome}". '
+                    f'Adicionamos {variacao_estoque}x no seu carrinho.'
+                )
+                quantidade_carrinho = variacao_estoque
+
+            carrinho[variacao_id]['quantidade'] = quantidade_carrinho
+            carrinho[variacao_id]['preco_quantitativo'] = preco_unitario * \
+                quantidade_carrinho
+            carrinho[variacao_id]['preco_quantitativo_promocional'] = preco_unitario_promocional * \
+                quantidade_carrinho
+
+        else:
+            carrinho[variacao_id] = {
+                'produto_id': produto_id,
+                'produto_nome': produto_nome,
+                'variacao_nome': variacao_nome,
+                'variacao_id': variacao_id,
+                'preco_unitario': preco_unitario,
+                'preco_unitario_promocional': preco_unitario_promocional,
+                'preco_quantitativo': preco_unitario,
+                'preco_quantitativo_promocional': preco_unitario_promocional,
+                'quantidade': 1,
+                'slug': slug,
+                'imagem': imagem,
+            }
+        self.request.session.save()
+
+        messages.success(
+            self.request,
+            f'Produto {produto_nome} (Tam: {variacao_nome}) adicionado ao seu '
+            f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
+        )
+
+        return redirect(http_referer)
+
+
 class RemoverDoCarrinho(View):
     def get(self, *args, **kwargs):
         http_referer = self.request.META.get(
@@ -354,6 +450,114 @@ class RemoverDoCarrinho(View):
 
         del self.request.session['carrinho'][variacao_id]
         self.request.session.save()
+        return redirect(http_referer)
+
+
+class RemoverDoCarrinhoModal(View):
+
+    def get(self, *args, **kwargs):
+        # última pág do usuário
+        http_referer = self.request.META.get(
+            'HTTP_REFERER',
+            reverse('produto:lista')
+        )
+        variacao_id = self.request.GET.get(
+            'vid')  # valor vindo do form
+
+        print('\n*************\n')
+        print(variacao_id)
+        print('\n*************\n')
+
+        if not variacao_id:  # vid=?
+            messages.error(
+                self.request,
+                'Produto não existe.'
+            )
+            return redirect(http_referer)
+
+        variacao = get_object_or_404(models.Variacao, id=variacao_id)
+
+        variacao_estoque = variacao.estoque
+        produto = variacao.produto
+
+        produto_id = produto.id
+        produto_nome = produto.nome
+        variacao_nome = variacao.nome or ''
+        preco_unitario = variacao.preco
+        preco_unitario_promocional = variacao.preco_promocional
+        quantidade = 1
+        slug = produto.slug
+        imagem = produto.imagem
+
+        if variacao.estoque < 1:
+            messages.error(
+                self.request,
+                'Estoque insuficiente.'
+            )
+            return redirect(http_referer)
+
+        if not self.request.session.get('carrinho'):
+            self.request.session['carrinho'] = {}
+            self.request.session.save()
+
+        carrinho = self.request.session['carrinho']
+
+        if variacao_id in carrinho:
+            quantidade_carrinho = carrinho[variacao_id]['quantidade']
+            quantidade_carrinho -= 1
+
+            if variacao_estoque < quantidade_carrinho:
+                messages.warning(
+                    self.request,
+                    f'Estoque insuficiente para {quantidade_carrinho}x no produto "{produto_nome}". '
+                    f'Adicionamos {variacao_estoque}x no seu carrinho.'
+                )
+                quantidade_carrinho = variacao_estoque
+
+            carrinho[variacao_id]['quantidade'] = quantidade_carrinho
+            carrinho[variacao_id]['preco_quantitativo'] = preco_unitario * \
+                quantidade_carrinho
+            carrinho[variacao_id]['preco_quantitativo_promocional'] = preco_unitario_promocional * \
+                quantidade_carrinho
+
+        else:
+            carrinho[variacao_id] = {
+                'produto_id': produto_id,
+                'produto_nome': produto_nome,
+                'variacao_nome': variacao_nome,
+                'variacao_id': variacao_id,
+                'preco_unitario': preco_unitario,
+                'preco_unitario_promocional': preco_unitario_promocional,
+                'preco_quantitativo': preco_unitario,
+                'preco_quantitativo_promocional': preco_unitario_promocional,
+                'quantidade': 1,
+                'slug': slug,
+                'imagem': imagem,
+            }
+
+        if self.request.session['carrinho'][variacao_id]['quantidade'] <= 0:
+            messages.success(
+                self.request,
+                f'Produto {produto_nome} (Tam: {variacao_nome}) COMPLETAMENTE removido do seu '
+                f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
+            )
+            del self.request.session['carrinho'][variacao_id]
+            self.request.session.save()
+            return redirect(http_referer)
+
+        self.request.session.save()
+
+        messages.success(
+            self.request,
+            f'Produto {produto_nome} (Tam: {variacao_nome}) removido do seu '
+            f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
+        )
+
+        # tamanho = self.request.session['carrinho'][variacao_id]['quantidade']
+        # print('\n***********\n')
+        # print(tamanho)
+        # print('\n***********\n')
+
         return redirect(http_referer)
 
 

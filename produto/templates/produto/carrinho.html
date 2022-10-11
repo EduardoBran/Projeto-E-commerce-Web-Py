@@ -108,6 +108,15 @@
         document.getElementById("conteudo").style.display = "inline";
 
     }, 2000);
+
+    // input quantidade funcao botao + e -
+    $('.add').click(function () {
+        if ($(this).prev().val() < 10) $(this).prev().val(+$(this).prev().val() + 1); // max 10
+        // $(this).prev().val(+$(this).prev().val() + 1);
+    });
+    $('.sub').click(function () {
+        if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1); // min 1
+    });
 </script>
 
 {% endblock %}

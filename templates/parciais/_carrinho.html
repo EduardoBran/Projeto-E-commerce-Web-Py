@@ -29,9 +29,13 @@
         margin-left: 20px;
     }
 
-    /* quantidade e preço totla produto */
-    .info-margin-top {
-        margin-top: 60px;
+    /* quantidade e preço total produto */
+    .info-qtd {
+        margin-top: 59px;
+    }
+
+    .info-preco-total-produto {
+        margin-top: 52px;
     }
 
     .info-produto-tabela {
@@ -61,13 +65,44 @@
         font-weight: 700;
     }
 
+    .posMobileTituloTabela {
+        margin-left: 35px;
+    }
+
+    input {
+        width: 75px;
+        height: 40px;
+        background-color: #ffffff;
+        text-align: center;
+        border: 1px solid #adadad;
+        border-radius: 8px;
+        width: 55px;
+    }
+
+    .sub,
+    .add {
+        color: #303030;
+    }
+
     @media (max-width: 767px) {
+        .tamMobileTabelaProduto {
+            width: 200px;
+        }
+
         .info-produto-tabela {
             margin-left: 5px;
+        }
+
+        .info-qtd {
+            font-size: 1rem;
         }
     }
 
     @media (max-width: 500px) {
+        .tamMobileTabelaProduto {
+            width: 150px;
+        }
+
         .tamanho-imagem-carrinho {
             margin-left: 28px;
         }
@@ -78,10 +113,15 @@
             margin-left: 5px;
         }
 
+        .info-preco-total-produto {
+            margin-top: 51px;
+        }
+
         .tamanho-produto-tabela {
             font-size: 0.9rem;
             margin-top: 2px;
         }
+
 
         .preco-produto-tabela {
             font-size: 0.95rem;
@@ -91,20 +131,47 @@
             left: 8px;
         }
     }
+
+    @media (max-width: 428px) {
+
+        .info-qtd {
+            margin-top: 30px;
+        }
+
+        .tamMobileTabelaProduto {
+            width: 210px;
+        }
+
+        .info-qtd {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .info-preco-total-produto {
+            margin-top: 45px;
+        }
+
+        .posMobileTituloTabela {
+            margin-left: 10px;
+        }
+
+    }
 </style>
 
 <div class="table-responsive">
     <table class="table">
         <tr>
             <th>Produto</th>
-            <th>Qtd.</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;Total</th>
+            <th><span class="posMobileTituloTabela">Qtd. </span></th>
+            <th>&nbsp;Total</th>
         </tr>
 
         {% for linha_carrinho in carrinho.values %}
 
         <tr>
-            <td>
+            {% block tamMobileTabelaProduto %}
+            <td class="tamMobileTabelaProduto">
+                {% endblock %}
                 <div class="row">
                     <a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}"
                         style="margin-right:-20px;">
@@ -141,25 +208,37 @@
                 </div>
             </td>
 
+            {% block quantidade %}
             <td>
                 <div class="info-margin-top">
-                    &nbsp;&nbsp;&nbsp;<span class="info-qtd">{{ linha_carrinho.quantidade }}</span>
+                    <div class="info-qtd">
+                        <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
+                            style="text-decoration: none;">
+                            <button type="button" id="sub" class="sub"><i class="fas fa-minus"></i></button>
+                        </a>
+                        <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
+                        <a href="{% url 'produto:adicionaraocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}">
+                            <button type="button" id="add" class="add"><i class="fas fa-plus"></i></button>
+                        </a>
+                    </div>
                 </div>
             </td>
+            {% endblock %}
 
             {% if linha_carrinho.preco_quantitativo_promocional %}
 
-            <td style="width: 100px;">
+            <td style="width: 110px;">
                 <div class="info-margin-top">
-                    <span class="info-preco-total-produto">
-                        &nbsp;{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
-                    </span>
+                    <div class="info-preco-total-produto">
+                        &nbsp;&nbsp;{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
+                    </div>
                 </div>
             </td>
 
             {% else %}
 
-            <td style="width: 100px;">
+            <td style="width: 110px;">
                 <div class="info-margin-top">
                     <span class="info-preco-total-produto">
                         &nbsp;&nbsp;{{ linha_carrinho.preco_quantitativo|formata_preco }}

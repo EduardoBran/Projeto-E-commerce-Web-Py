@@ -5,6 +5,10 @@
 {% block posicaoImagemTabela %}
 
 <style>
+    .tamMobileTabelaProdutoModal {
+        width: 180px;
+    }
+
     .tamanho-imagem-carrinho-modal2 {
         width: 120px;
         height: 140px;
@@ -16,9 +20,83 @@
         margin-top: 10px;
     }
 
+    @media (max-width: 767px) {
+        .tamMobileTabelaProduto {
+            width: 200px;
+        }
+
+        .info-produto-tabela {
+            margin-left: 5px;
+        }
+
+        .info-qtd {
+            font-size: 1rem;
+        }
+    }
+
     @media (max-width: 500px) {
         .tamanho-imagem-carrinho-modal2 {
             margin-left: 30px;
+        }
+
+        .tamMobileTabelaProduto {
+            width: 150px;
+        }
+
+        .tamanho-imagem-carrinho {
+            margin-left: 28px;
+        }
+
+        .info-produto-tabela {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            margin-left: 5px;
+        }
+
+        .info-preco-total-produto {
+            margin-top: 51px;
+        }
+
+        .tamanho-produto-tabela {
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+
+        .preco-produto-tabela {
+            font-size: 0.95rem;
+        }
+
+        .posIconeExcluir {
+            left: 8px;
+        }
+    }
+
+    @media (max-width: 428px) {
+
+        .info-qtd {
+            margin-top: 30px;
+        }
+
+        .tamMobileTabelaProduto {
+            width: 210px;
+        }
+
+        .info-qtd {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .info-preco-total-produto {
+            margin-top: 45px;
+        }
+
+        .posMobileTituloTabela {
+            margin-left: 10px;
+        }
+
+        input {
+            width: 35px;
         }
     }
 </style>
@@ -27,26 +105,48 @@
 
 {% endblock %}
 
-{% block tamanhoLetraNome %}
-
-<div class="info-produto-tabel2">
-    <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
-        style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem; font-weight: 500;">
-        {{ linha_carrinho.produto_nome }}</a>
-
+{% block tamMobileTabelaProduto %}
+<td class="tamMobileTabelaProdutoModal">
     {% endblock %}
 
-    {% block tamanhoPreco %}
+    {% block tamanhoLetraNome %}
 
-    {% if linha_carrinho.preco_unitario_promocional %}
-    <span class="preco-antigo-tabela" style="font-size: 0.75rem;">
-        <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
-    <span class="preco-atual-tabela" style="font-size: 0.9rem; font-weight: bold;"> R$
-        {{linha_carrinho.preco_unitario_promocional}}</span>
-    {% else %}
-    <span class="preco-atual-tabela" style="font-size: 0.95rem; font-weight: bold;">
-        R$ {{ linha_carrinho.preco_unitario }}
-    </span>
-    {% endif %}
+    <div class="info-produto-tabel2">
+        <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+            style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem; font-weight: 500;">
+            {{ linha_carrinho.produto_nome }}</a>
 
-    {% endblock %}
+        {% endblock %}
+
+        {% block tamanhoPreco %}
+
+        {% if linha_carrinho.preco_unitario_promocional %}
+        <span class="preco-antigo-tabela" style="font-size: 0.75rem;">
+            <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
+        <span class="preco-atual-tabela" style="font-size: 0.9rem; font-weight: bold;"> R$
+            {{linha_carrinho.preco_unitario_promocional}}</span>
+        {% else %}
+        <span class="preco-atual-tabela" style="font-size: 0.95rem; font-weight: bold;">
+            R$ {{ linha_carrinho.preco_unitario }}
+        </span>
+        {% endif %}
+
+        {% endblock %}
+
+        {% block quantidade %}
+<td>
+    <div class="info-margin-top">
+        <div class="info-qtd">
+            <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
+                style="text-decoration: none;">
+                <button type="button" id="sub" class="sub"><i class="fas fa-minus"></i></button>
+            </a>
+            <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
+            <a href="{% url 'produto:adicionaraocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}">
+                <button type="button" id="add" class="add"><i class="fas fa-plus"></i></button>
+            </a>
+        </div>
+    </div>
+</td>
+{% endblock %}
