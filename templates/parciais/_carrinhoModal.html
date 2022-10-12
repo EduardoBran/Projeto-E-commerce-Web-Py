@@ -29,7 +29,8 @@
             margin-left: 5px;
         }
 
-        .info-qtd {
+        .info-qtd2 {
+            margin-top: 55px;
             font-size: 1rem;
         }
     }
@@ -49,54 +50,66 @@
 
         .info-produto-tabela {
             margin-top: 10px;
-            font-size: 1.1rem;
-            margin-left: 5px;
-        }
-
-        .info-preco-total-produto {
-            margin-top: 51px;
-        }
-
-        .tamanho-produto-tabela {
-            font-size: 0.9rem;
-            margin-top: 2px;
-        }
-
-
-        .preco-produto-tabela {
-            font-size: 0.95rem;
-        }
-
-        .posIconeExcluir {
-            left: 8px;
-        }
-    }
-
-    @media (max-width: 428px) {
-
-        .info-qtd {
-            margin-top: 30px;
+            font-size: 1rem;
+            margin-left: 2px;
         }
 
         .tamMobileTabelaProduto {
-            width: 210px;
+            width: 150px;
         }
 
-        .info-qtd {
+        .info-qtd2 {
+            margin-top: 35px;
             text-align: center;
-            margin-bottom: 50px;
+            font-size: 1rem;
         }
 
         .info-preco-total-produto {
             margin-top: 45px;
+            font-size: .9rem;
         }
 
         .posMobileTituloTabela {
-            margin-left: 10px;
+            margin-left: 25px;
+        }
+
+        .tamTabelaQtd {
+            width: 140px;
         }
 
         input {
-            width: 35px;
+            margin-top: 7px;
+            width: 30px;
+        }
+    }
+
+    @media (max-width: 431px) {
+        .tamanho-imagem-carrinho-modal2 {
+            margin-left: 30px;
+        }
+
+        .tamMobileTabelaProduto {
+            width: 150px;
+        }
+
+        .tamanho-imagem-carrinho {
+            margin-left: 28px;
+        }
+
+        .info-produto-tabela {
+            margin-top: 10px;
+            font-size: 1rem;
+            margin-left: 2px;
+        }
+
+        .info-qtd2 {
+            margin-top: 45px;
+            text-align: center;
+            font-size: .9rem;
+        }
+
+        .tamanho2 {
+            font-size: .4rem;
         }
     }
 </style>
@@ -134,18 +147,20 @@
         {% endblock %}
 
         {% block quantidade %}
-<td>
+<td class="tamTabelaQtd">
     <div class="info-margin-top">
-        <div class="info-qtd">
-            <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
-                style="text-decoration: none;">
-                <button type="button" id="sub" class="sub"><i class="fas fa-minus"></i></button>
-            </a>
-            <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
-            <a href="{% url 'produto:adicionaraocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}">
-                <button type="button" id="add" class="add"><i class="fas fa-plus"></i></button>
-            </a>
+        <div class="info-qtd2 text-center">
+            {{ linha_carrinho.quantidade }}
+        </div>
+    </div>
+</td>
+{% endblock %}
+
+{% block precoProduto %}
+<td class="tamTabelaPreco tamanho2" style="width: 110px;">
+    <div class="info-margin-top">
+        <div class="info-preco-total-produto">
+            {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
         </div>
     </div>
 </td>

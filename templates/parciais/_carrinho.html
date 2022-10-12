@@ -35,7 +35,8 @@
     }
 
     .info-preco-total-produto {
-        margin-top: 52px;
+        margin-top: 62px;
+        float: right;
     }
 
     .info-produto-tabela {
@@ -70,7 +71,6 @@
     }
 
     input {
-        width: 75px;
         height: 40px;
         background-color: #ffffff;
         text-align: center;
@@ -114,7 +114,7 @@
         }
 
         .info-preco-total-produto {
-            margin-top: 51px;
+            margin-top: 65px;
         }
 
         .tamanho-produto-tabela {
@@ -130,40 +130,62 @@
         .posIconeExcluir {
             left: 8px;
         }
+
+        input {
+            width: 45px;
+        }
     }
 
-    @media (max-width: 428px) {
+    @media (max-width: 431px) {
 
-        .info-qtd {
-            margin-top: 30px;
+        .info-produto-tabela {
+            margin-top: 10px;
+            font-size: 1rem;
+            margin-left: 2px;
         }
 
         .tamMobileTabelaProduto {
-            width: 210px;
+            width: 150px;
         }
 
         .info-qtd {
+            margin-top: 30px;
             text-align: center;
-            margin-bottom: 50px;
+            font-size: .7rem;
         }
 
         .info-preco-total-produto {
             margin-top: 45px;
+            font-size: .8rem;
         }
 
         .posMobileTituloTabela {
-            margin-left: 10px;
+            margin-left: 25px;
         }
 
+        .tamTabelaQtd {
+            width: 140px;
+        }
+
+        input {
+            margin-top: 7px;
+            width: 25px;
+        }
+    }
+
+    @media (max-width: 358px) {
+        .tamMobileTabelaProduto img {
+            width: 70%;
+        }
     }
 </style>
 
 <div class="table-responsive">
     <table class="table">
         <tr>
-            <th>Produto</th>
+            <th><span class="ml-4"></span>Produto</th>
             <th><span class="posMobileTituloTabela">Qtd. </span></th>
-            <th>&nbsp;Total</th>
+            <th><span class="ml-3"></span>Total</th>
         </tr>
 
         {% for linha_carrinho in carrinho.values %}
@@ -209,7 +231,7 @@
             </td>
 
             {% block quantidade %}
-            <td>
+            <td class="tamTabelaQtd">
                 <div class="info-margin-top">
                     <div class="info-qtd">
                         <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
@@ -228,13 +250,15 @@
 
             {% if linha_carrinho.preco_quantitativo_promocional %}
 
-            <td style="width: 110px;">
+            {% block precoProduto %}
+            <td class="tamTabelaPreco" style="width: 110px;">
                 <div class="info-margin-top">
                     <div class="info-preco-total-produto">
-                        &nbsp;&nbsp;{{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
+                        {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
                     </div>
                 </div>
             </td>
+            {% endblock %}
 
             {% else %}
 
