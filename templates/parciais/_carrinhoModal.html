@@ -2,13 +2,35 @@
 {% load static %}
 {% load omfilters %}
 
+{% block tituloTabelaModal %}
+
+<style>
+    .posMobileTituloTabela {
+        margin-right: 80px;
+    }
+
+    @media (max-width: 790px) {
+        .posMobileTituloTabela {
+            margin-right: 70px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .posMobileTituloTabela {
+            margin-right: 10px;
+        }
+    }
+</style>
+
+<th>Produto</th>
+<th><span class="posMobileTituloTabela">Qtd. </span></th>
+<th class="mr-3" style="float: right;">Total</th>
+{% endblock %}
+
+
 {% block posicaoImagemTabela %}
 
 <style>
-    .tamMobileTabelaProdutoModal {
-        width: 180px;
-    }
-
     .tamanho-imagem-carrinho-modal2 {
         width: 120px;
         height: 140px;
@@ -20,96 +42,18 @@
         margin-top: 10px;
     }
 
-    @media (max-width: 767px) {
-        .tamMobileTabelaProduto {
-            width: 200px;
-        }
-
-        .info-produto-tabela {
-            margin-left: 5px;
-        }
-
-        .info-qtd2 {
-            margin-top: 55px;
-            font-size: 1rem;
-        }
-    }
-
     @media (max-width: 500px) {
         .tamanho-imagem-carrinho-modal2 {
+            width: 100px;
+            height: 120px;
             margin-left: 30px;
-        }
-
-        .tamMobileTabelaProduto {
-            width: 150px;
-        }
-
-        .tamanho-imagem-carrinho {
-            margin-left: 28px;
-        }
-
-        .info-produto-tabela {
-            margin-top: 10px;
-            font-size: 1rem;
-            margin-left: 2px;
-        }
-
-        .tamMobileTabelaProduto {
-            width: 150px;
-        }
-
-        .info-qtd2 {
-            margin-top: 35px;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .info-preco-total-produto {
-            margin-top: 45px;
-            font-size: .9rem;
-        }
-
-        .posMobileTituloTabela {
-            margin-left: 25px;
-        }
-
-        .tamTabelaQtd {
-            width: 140px;
-        }
-
-        input {
-            margin-top: 7px;
-            width: 30px;
         }
     }
 
-    @media (max-width: 431px) {
+    @media (max-width: 400px) {
         .tamanho-imagem-carrinho-modal2 {
-            margin-left: 30px;
-        }
-
-        .tamMobileTabelaProduto {
-            width: 150px;
-        }
-
-        .tamanho-imagem-carrinho {
-            margin-left: 28px;
-        }
-
-        .info-produto-tabela {
-            margin-top: 10px;
-            font-size: 1rem;
-            margin-left: 2px;
-        }
-
-        .info-qtd2 {
-            margin-top: 45px;
-            text-align: center;
-            font-size: .9rem;
-        }
-
-        .tamanho2 {
-            font-size: .4rem;
+            width: 70px;
+            height: 90px;
         }
     }
 </style>
@@ -118,50 +62,108 @@
 
 {% endblock %}
 
-{% block tamMobileTabelaProduto %}
-<td class="tamMobileTabelaProdutoModal">
+{% block tamanhoLetraNome %}
+
+<div class="info-produto-tabel2">
+    <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+        style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem; font-weight: 500;">
+        {{ linha_carrinho.produto_nome }}</a>
+
     {% endblock %}
 
-    {% block tamanhoLetraNome %}
 
-    <div class="info-produto-tabel2">
-        <a class="nome-produto-modal" href="{% url 'produto:detalhe' linha_carrinho.slug %}"
-            style="color: #262727; text-decoration: underline; margin-top: 0px; font-size: 1.1rem; font-weight: 500;">
-            {{ linha_carrinho.produto_nome }}</a>
+    {% block quantidadePreco %}
+    <style>
+        .info-qtdModal {
+            margin-top: 40px;
+        }
 
-        {% endblock %}
+        .info-preco-total-produtoModal {
+            margin-top: 35px;
+            font-size: 1.1rem;
+        }
 
-        {% block tamanhoPreco %}
+        @media (max-width: 500px) {
+            .info-qtdModal {
+                text-align: center;
+                font-size: .8rem;
+            }
 
-        {% if linha_carrinho.preco_unitario_promocional %}
-        <span class="preco-antigo-tabela" style="font-size: 0.75rem;">
-            <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
-        <span class="preco-atual-tabela" style="font-size: 0.9rem; font-weight: bold;"> R$
-            {{linha_carrinho.preco_unitario_promocional}}</span>
-        {% else %}
-        <span class="preco-atual-tabela" style="font-size: 0.95rem; font-weight: bold;">
-            R$ {{ linha_carrinho.preco_unitario }}
+            .info-preco-total-produtoModal {
+                margin-top: 37px;
+                font-size: .9rem;
+            }
+
+            .info-qtdModal input {
+                width: 30px;
+            }
+
+            .tamMobileColunaQtdModal {
+                width: 250px;
+                padding: auto 0;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .info-qtdModal {
+                padding: 0;
+            }
+
+            .info-qtd input {
+                width: 20px;
+            }
+        }
+    </style>
+    <td class="text-center tamMobileColunaQtdModal">
+
+        <div class="info-qtdModal">
+            <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
+                style="text-decoration: none;">
+                <button type="button" id="sub" class="sub"><i class="fas fa-minus"></i></button>
+            </a>
+            <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
+            <a href="{% url 'produto:adicionaraocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}">
+                <button type="button" id="add" class="add"><i class="fas fa-plus"></i></button>
+            </a>
+
+        </div>
+    </td>
+
+
+    {% if linha_carrinho.preco_quantitativo_promocional %}
+
+    <td>
+        <div class="info-margin-top">
+            <div class="info-preco-total-produtoModal">
+                {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
+            </div>
+        </div>
+    </td>
+
+    {% else %}
+
+    <td>
+        <span class="info-preco-total-produtoModal">
+            {{ linha_carrinho.preco_quantitativo|formata_preco }}
         </span>
-        {% endif %}
+    </td>
 
-        {% endblock %}
+    {% endif %}
+    </tr>
+    {% endblock %}
 
-        {% block quantidade %}
-<td class="tamTabelaQtd">
-    <div class="info-margin-top">
-        <div class="info-qtd2 text-center">
-            {{ linha_carrinho.quantidade }}
-        </div>
-    </div>
-</td>
-{% endblock %}
+    {% block tamanhoPreco %}
 
-{% block precoProduto %}
-<td class="tamTabelaPreco tamanho2" style="width: 110px;">
-    <div class="info-margin-top">
-        <div class="info-preco-total-produto">
-            {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
-        </div>
-    </div>
-</td>
-{% endblock %}
+    {% if linha_carrinho.preco_unitario_promocional %}
+    <span class="preco-antigo-tabela" style="font-size: 0.75rem;">
+        <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
+    <span class="preco-atual-tabela" style="font-size: 0.9rem; font-weight: bold;"> R$
+        {{linha_carrinho.preco_unitario_promocional}}</span>
+    {% else %}
+    <span class="preco-atual-tabela" style="font-size: 0.95rem; font-weight: bold;">
+        R$ {{ linha_carrinho.preco_unitario }}
+    </span>
+    {% endif %}
+
+    {% endblock %}

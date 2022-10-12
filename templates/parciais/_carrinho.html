@@ -29,6 +29,10 @@
         margin-left: 20px;
     }
 
+    .tamMobileColunaQtd {
+        padding: auto 0;
+    }
+
     /* quantidade e preço total produto */
     .info-qtd {
         margin-top: 59px;
@@ -67,7 +71,7 @@
     }
 
     .posMobileTituloTabela {
-        margin-left: 35px;
+        margin-left: 95px;
     }
 
     input {
@@ -96,6 +100,14 @@
         .info-qtd {
             font-size: 1rem;
         }
+
+        .info-preco-total-produto {
+            margin-top: 68px;
+        }
+
+        .posMobileTituloTabela {
+            margin-left: 60px;
+        }
     }
 
     @media (max-width: 500px) {
@@ -113,15 +125,65 @@
             margin-left: 5px;
         }
 
+        .tamanho-produto-tabela {
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .preco-produto-tabela {
+            font-size: 0.95rem;
+        }
+
         .info-preco-total-produto {
-            margin-top: 65px;
+            margin-top: 61px;
+        }
+
+        .posIconeExcluir {
+            left: 8px;
+        }
+
+        .posMobileTituloTabela {
+            margin-left: 34px;
+        }
+
+        .tamMobileColunaQtd {
+            width: 120px;
+            padding: auto 0;
+        }
+
+        .info-qtd {
+            text-align: center;
+            font-size: .8rem;
+        }
+
+        .info-qtd input {
+            width: 30px;
+        }
+    }
+
+    @media (max-width: 428px) {
+        .tamMobileTabelaProduto {
+            width: 150px;
+        }
+
+        .tamanho-imagem-carrinho {
+            margin-left: 28px;
+        }
+
+        .info-produto-tabela {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            margin-left: 5px;
+        }
+
+        .info-preco-total-produto {
+            margin-top: 64px;
         }
 
         .tamanho-produto-tabela {
             font-size: 0.9rem;
             margin-top: 2px;
         }
-
 
         .preco-produto-tabela {
             font-size: 0.95rem;
@@ -131,51 +193,73 @@
             left: 8px;
         }
 
-        input {
-            width: 45px;
+        .posMobileTituloTabela {
+            margin-left: 34px;
+        }
+
+        .tamMobileColunaQtd {
+            width: 120px;
+            padding: auto 0;
+        }
+
+        .info-qtd {
+            text-align: center;
+            font-size: .8rem;
+        }
+
+        .info-qtd input {
+            width: 30px;
         }
     }
 
-    @media (max-width: 431px) {
-
-        .info-produto-tabela {
-            margin-top: 10px;
-            font-size: 1rem;
-            margin-left: 2px;
-        }
-
+    @media (max-width: 400px) {
         .tamMobileTabelaProduto {
             width: 150px;
         }
 
-        .info-qtd {
-            margin-top: 30px;
-            text-align: center;
-            font-size: .7rem;
+        .tamanho-imagem-carrinho {
+            margin-left: 28px;
+        }
+
+        .info-produto-tabela {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            margin-left: 5px;
         }
 
         .info-preco-total-produto {
-            margin-top: 45px;
-            font-size: .8rem;
+            margin-top: 51px;
+        }
+
+        .tamanho-produto-tabela {
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .preco-produto-tabela {
+            font-size: 0.95rem;
+        }
+
+        .posIconeExcluir {
+            left: 8px;
         }
 
         .posMobileTituloTabela {
-            margin-left: 25px;
+            margin-left: 34px;
         }
 
-        .tamTabelaQtd {
-            width: 140px;
+        .tamMobileColunaQtd {
+            width: 120px;
+            padding: auto 0;
         }
 
-        input {
-            margin-top: 7px;
-            width: 25px;
+        .info-qtd {
+            text-align: center;
+            font-size: .8rem;
         }
-    }
 
-    @media (max-width: 358px) {
-        .tamMobileTabelaProduto img {
-            width: 70%;
+        .info-qtd input {
+            width: 30px;
         }
     }
 </style>
@@ -183,17 +267,16 @@
 <div class="table-responsive">
     <table class="table">
         <tr>
-            <th><span class="ml-4"></span>Produto</th>
+            {% block tituloTabelaModal %}
+            <th>Produto</th>
             <th><span class="posMobileTituloTabela">Qtd. </span></th>
-            <th><span class="ml-3"></span>Total</th>
+            <th class="mr-3" style="float: right;">Total</th>
+            {% endblock %}
         </tr>
 
         {% for linha_carrinho in carrinho.values %}
-
         <tr>
-            {% block tamMobileTabelaProduto %}
             <td class="tamMobileTabelaProduto">
-                {% endblock %}
                 <div class="row">
                     <a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}"
                         style="margin-right:-20px;">
@@ -230,8 +313,8 @@
                 </div>
             </td>
 
-            {% block quantidade %}
-            <td class="tamTabelaQtd">
+            {% block quantidadePreco %}
+            <td class="text-center tamMobileColunaQtd">
                 <div class="info-margin-top">
                     <div class="info-qtd">
                         <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
@@ -246,32 +329,30 @@
                     </div>
                 </div>
             </td>
-            {% endblock %}
 
             {% if linha_carrinho.preco_quantitativo_promocional %}
 
-            {% block precoProduto %}
-            <td class="tamTabelaPreco" style="width: 110px;">
+            <td>
                 <div class="info-margin-top">
                     <div class="info-preco-total-produto">
                         {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
                     </div>
                 </div>
             </td>
-            {% endblock %}
 
             {% else %}
 
-            <td style="width: 110px;">
+            <td>
                 <div class="info-margin-top">
                     <span class="info-preco-total-produto">
-                        &nbsp;&nbsp;{{ linha_carrinho.preco_quantitativo|formata_preco }}
+                        {{ linha_carrinho.preco_quantitativo|formata_preco }}
                     </span>
                 </div>
             </td>
 
             {% endif %}
         </tr>
+        {% endblock %}
 
         {% endfor %}
     </table>
