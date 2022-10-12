@@ -6,7 +6,7 @@
 
 <style>
     .posMobileTituloTabela {
-        margin-right: 80px;
+        margin-right: 90px;
     }
 
     @media (max-width: 790px) {
@@ -25,8 +25,8 @@
 <th>Produto</th>
 <th><span class="posMobileTituloTabela">Qtd. </span></th>
 <th class="mr-3" style="float: right;">Total</th>
-{% endblock %}
 
+{% endblock %}
 
 {% block posicaoImagemTabela %}
 
@@ -83,6 +83,17 @@
             font-size: 1.1rem;
         }
 
+        .sub,
+        .add {
+            color: #303030;
+            padding-right: 2px;
+            padding-left: 2px;
+        }
+
+        .info-qtdModal input {
+            width: 35px;
+        }
+
         @media (max-width: 500px) {
             .info-qtdModal {
                 text-align: center;
@@ -109,8 +120,8 @@
                 padding: 0;
             }
 
-            .info-qtd input {
-                width: 20px;
+            .info-qtdModal input {
+                width: 25px;
             }
         }
     </style>
