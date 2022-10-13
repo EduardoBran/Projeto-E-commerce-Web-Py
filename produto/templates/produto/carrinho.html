@@ -4,7 +4,7 @@
 
 {% block titulo %}Carrinho | {% endblock %}
 
-{% block conteudo %}
+{% block carrinho %}
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/pageHome.css'%}">
@@ -13,24 +13,52 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 
-
 <style>
-    .btnContinuarComprando {
-        font-size: .8rem;
-        width: 144px;
-        height: 28px;
-        float: right;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 0;
-        border-radius: 10px;
+    .tituloh3 {
+        margin-top: 20px;
+        margin-left: 20px;
     }
 
-    @media (max-width: 500px) {
-        .btnContinuarComprando {
-            float: none;
-            margin-top: 17px;
-            margin-left: 0;
+    .btn-continuar-comprando {
+        font-size: .9rem;
+        width: 168px;
+        height: 37px;
+        border-radius: 10px;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+    }
+
+    .lead {
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .margin-conteudo-total-do-pedido {
+        margin-right: 80px;
+    }
+
+    @media (max-width: 999px) {
+        .tituloh3 {
+            margin-left: 10px;
+        }
+
+        .btn-continuar-comprando {
+            float: left;
+            margin-top: 10px;
+            margin-left: 11px;
+        }
+
+        .lead {
+            margin-left: 10px;
+        }
+
+        .conteudo-total-do-pedido {
+            text-align: center;
+        }
+
+        .margin-conteudo-total-do-pedido {
+            margin-right: 10px;
         }
     }
 </style>
@@ -43,60 +71,76 @@
 
 <div id="conteudo" style="display: none">
 
-    <div class="row mt-3">
-        <div class="col">
-            <h3 class="mt-2">Carrinho de compras <span class="ml-5"></span>
-                <a class="linkContinuarComprando mt-2" href="{% url 'produto:lista' %}">
-                    <button class="btn btn-dark btn-sm text-center btnContinuarComprando">
-                        Continuar comprando</button></a>
-            </h3>
-            <p class=" lead">Os produtos, quantidades e preços que você escolheu.</p>
+    <div class="containerHome">
+        <div class="row">
 
-            {% include 'parciais/_carrinho.html' %}
-        </div>
-    </div>
-
-    <hr />
-
-    <div class="row mt-3">
-        <div class="col-lg">
-            <p class='lead'>Total do pedido</p>
-
-            <div class='table-responsive'>
-                <table class="table">
-                    <tr>
-                        <td class="font-weight-bold">Total</td>
-                        <td>{{ carrinho|total_carrinho|formata_preco }}</td>
-                    </tr>
-                </table>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <h3 class="tituloh3">Carrinho de compras</h3>
             </div>
-        </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <a href="{% url 'produto:lista' %}">
+                    <button class="btn btn-dark btn-sm btn-continuar-comprando">
+                        Continuar comprando</button></a>
+            </div>
+            <div class="col-12">
+                <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
+            </div>
 
-        <div class="col-lg mt-auto">
-            {% if request.user.is_authenticated %}
-            <a class="btn btn-info btn-lg btn-block" href="{% url 'produto:resumodacompra' %}">
-                Comprar
-            </a>
-            {% else %}
-            <a class="btn btn-info btn-lg btn-block" href="{% url 'perfil:criar' %}">
-                Entrar ou cadastrar e comprar
-            </a>
-            {% endif %}
-        </div>
+        </div> <!--  end row -->
+        <hr />
+    </div> <!--  end containerHome -->
+
+    <div class="container">
+        {% include 'parciais/_carrinho.html' %}
     </div>
 
-    {% else %}
+    <div class="containerHome">
+        <hr />
+        <div class="row mt-3">
+            <div class="col-12 mb-4">
+                <div class="text-left">
+                    <p class='lead conteudo-total-do-pedido' style="font-size: 1.5rem;">
+                        Total do pedido
+                        <hr />
+                    </p>
+                </div>
+            </div>
 
-    <div class="row mt-3">
-        <div class="col">
-            <h3>Carrinho vazio</h3>
-            <p class="lead">Não há produtos no seu carrinho.</p>
-        </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-2">
+                <p class="conteudo-total-do-pedido">
+                    <span class="font-weight-bold margin-conteudo-total-do-pedido lead">Total:</span>
+                    <span class="lead">{{ carrinho|total_carrinho|formata_preco }}</span>
+                </p>
+            </div>
+
+            <div class=" col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-2">
+                {% if request.user.is_authenticated %}
+                <a class="btn btn-info btn-lg btn-block" href="{% url 'produto:resumodacompra' %}">
+                    Comprar
+                </a>
+                {% else %}
+                <a class="btn btn-info btn-lg btn-block" href="{% url 'perfil:criar' %}">
+                    Entrar ou cadastrar e comprar
+                </a>
+                {% endif %}
+            </div>
+
+
+        </div> <!-- end row-->
+    </div> <!--  end containerHome -->
+
+</div> <!--  end conteudo -->
+
+{% else %}
+
+<div class="row mt-3">
+    <div class="col">
+        <h3>Carrinho vazio</h3>
+        <p class="lead">Não há produtos no seu carrinho.</p>
     </div>
-
-    {% endif %}
-
 </div>
+
+{% endif %}
 
 <script>
     // funcao pre loader
@@ -119,10 +163,8 @@
     });
 </script>
 
-{% endblock %}
-
-{% block carouselPequeno %}
 <!-- Carousel Pequeno Mais Vendidos -->
 {% include 'produto/homeCarousel_maisvendidos.html' %}
 <!-- End Carousel Mais Vendidos -->
+
 {% endblock %}

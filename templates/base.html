@@ -11,13 +11,14 @@
     {% block nav %}{% include 'parciais/_nav.html' %}{% endblock %}
     {% block conteudoHome %}{% endblock %}
     {% block conteudoPageDetalhe %}{% endblock %}
+    {% block carrinho %}{% endblock %}
     
     <main class="container mt-4 mb-4">
         {% include 'parciais/_messages.html' %}
         {% block conteudo %}{% endblock %}
     </main>
 
-    {% block carouselPequeno %}{% endblock %} <!-- necessário para caraousel ficar fora da div container -->
+    {% block carouselPequeno %}{% endblock %} <!-- necessário para carousel ficar fora da div container -->
 
     {% block footer %}{% include 'parciais/_footer.html'%}{% endblock %}
     

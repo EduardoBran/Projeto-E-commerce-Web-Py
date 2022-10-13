@@ -2,7 +2,70 @@
 {% load static %}
 {% load omfilters %}
 
-{% block tituloTabelaModal %}
+{% block titulo-modal %}
+<div class="col-5">
+    <span class="texto-titulo-carrinho lead font-weight-bold">Produto</span>
+</div>
+<div class="col-5">
+
+    <span class="texto-titulo-carrinho texto-titulo-carrinho-qtd lead font-weight-bold">&nbsp;Qtd.</span>
+</div>
+<div class="col-2 pos-titulo-preco-carrinho-total">
+    <span class="texto-titulo-preco-carrinho-total lead font-weight-bold mr-4">Total <span class="mr-2"></span></span>
+</div>
+{% endblock %}
+
+{% block conteudo-modal %}
+<style></style>
+<div class="col-5 mt-3">
+    <div class="info-produto">
+
+        <a class="" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}"
+            style="margin-right:-20px;">
+            <i class=" fa-solid fa-trash-can posIconeExcluir iconeExcluir" aria-hidden="true"></i>
+        </a>
+        <img class="img-fluid imagem-produto-carrinho" src="{{ linha_carrinho.imagem }}">
+
+        <span class="nome-produto" style="margin-left: 0px;"><a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+                style="color: #262727; text-decoration: underline;">
+                {{ linha_carrinho.produto_nome }}</a>
+        </span>
+
+        <p class="tamanho-produto-carrinho">Tamanho - {{ linha_carrinho.variacao_nome }}</p>
+        <p class="preco-produto-carrinho">
+            {% if linha_carrinho.preco_unitario_promocional %}
+            <span class="preco-antigo-carrinho">
+                <strike>R$ {{ linha_carrinho.preco_unitario }}</strike></span>
+            <span class="preco-atual-carrinho"> R$
+                {{linha_carrinho.preco_unitario_promocional}}</span>
+            {% else %}
+            <span class="preco-atual-carrinho">R$ {{ linha_carrinho.preco_unitario }}</span>
+            {% endif %}
+        </p>
+
+    </div> <!-- end info-produto -->
+</div> <!-- end col-6 -->
+
+<div class="col-5 mt-3">
+    {% endblock %}
+
+    {% block info-preco %}
+    <div class="col-2 mt-3">
+        <div class="info-preco">
+
+            <span class="info-preco-total" style="float: right;">
+                {% if linha_carrinho.preco_quantitativo_promocional %}
+                {{ linha_carrinho.preco_quantitativo_promocional|formata_preco }}
+                {% else %}
+                {{ linha_carrinho.preco_quantitativo|formata_preco }}
+                {% endif %}
+            </span>
+
+        </div> <!-- end info-preco -->
+    </div> <!-- end col-2 -->
+    {% endblock %}
+
+    <!-- {% block tituloTabelaModal %}
 
 <style>
     .posMobileTituloTabela {
@@ -190,4 +253,4 @@
     </span>
     {% endif %}
 
-    {% endblock %}
+    {% endblock %} -->
