@@ -60,6 +60,8 @@
     .info-quantidade {
         margin-top: 38px;
         text-align: left;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .info-quantidade input {
@@ -132,22 +134,22 @@
 
     @media (max-width: 400px) {
         .info-quantidade {
-            font-size: .85rem;
+            font-size: .75rem;
         }
 
         .info-quantidade input {
             width: 35px;
-            font-size: .9rem;
+            font-size: .8rem;
         }
     }
 </style>
 
 <div class="row">
     {% block titulo-modal %}
-    <div class="col-6">
+    <div class="col-5">
         <span class="texto-titulo-carrinho lead font-weight-bold">Produto</span>
     </div>
-    <div class="col-4">
+    <div class="col-5">
 
         <span class="texto-titulo-carrinho texto-titulo-carrinho-qtd lead font-weight-bold">&nbsp;Qtd.</span>
     </div>
@@ -159,7 +161,7 @@
     {% for linha_carrinho in carrinho.values %}
 
     {% block conteudo-modal %}
-    <div class="col-6 mt-3">
+    <div class="col-5 mt-3">
         <div class="info-produto">
 
             <a class="ml-1" href="{% url 'produto:removerdocarrinho' %}?vid={{ linha_carrinho.variacao_id }}"
@@ -188,7 +190,7 @@
         </div> <!-- end info-produto -->
     </div> <!-- end col-6 -->
 
-    <div class="col-4 mt-3">
+    <div class="col-5 mt-3">
         {% endblock %}
         <div class="info-quantidade">
             <a href="{% url 'produto:removerdocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}"
