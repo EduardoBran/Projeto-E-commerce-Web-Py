@@ -106,11 +106,13 @@
         }
 
         .sub {
-            padding-right: 2px;
+            padding-top: 2px;
+            padding-right: 3px;
         }
 
         .add {
-            padding-left: 2px;
+            padding-top: 2px;
+            padding-left: 3px;
         }
     }
 
@@ -209,7 +211,7 @@
             </a>
             {% block qtd-modal %}
             <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" />
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" readonly />
             {% endblock %}
             <a href="{% url 'produto:adicionaraocarrinhomodal' %}?vid={{ linha_carrinho.variacao_id }}">
                 <button type="button" id="add" class="add"><i class="fas fa-plus"></i></button>

@@ -53,7 +53,8 @@
 
     {% block qtd-modal %}
     <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
-        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" style="width: 31px;" />
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" style="width: 31px;"
+        readonly />
     {% endblock %}
 
 
