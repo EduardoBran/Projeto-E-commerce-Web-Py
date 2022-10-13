@@ -49,6 +49,14 @@
 <div class="col-5 mt-3">
     {% endblock %}
 
+
+
+    {% block qtd-modal %}
+    <input type="text" id="1" value="{{ linha_carrinho.quantidade }}" name="valor"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" style="width: 25px;" />
+    {% endblock %}
+
+
     {% block info-preco %}
     <div class="col-2 mt-3">
         <div class="info-preco">
