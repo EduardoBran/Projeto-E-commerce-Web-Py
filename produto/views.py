@@ -96,6 +96,8 @@ class Home(ListaProdutos):
         context['produtoMaisVendidos'] = Produto.objects.filter(
             tipo='V').order_by('?')
 
+        context['carrinho'] = self.request.session.get('carrinho', {})
+
         return context
 
 

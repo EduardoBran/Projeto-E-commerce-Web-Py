@@ -124,9 +124,15 @@
             </div>
 
             <div class="modal-footer justify-content-center">
+                {% if carrinho %}
                 <a href="{% url 'produto:carrinho' %}" style="text-decoration: none; width:200px;">
                     <button type="button" class="btn btn-info btn-lg btn-block">Ver carrinho</button>
                 </a>
+                {% else %}
+                <a href="{% url 'produto:lista' %}" style="text-decoration: none; width:200px;">
+                    <button type="button" class="btn btn-info btn-lg btn-block">Ver produtos</button>
+                </a>
+                {% endif %}
             </div>
 
         </div>
