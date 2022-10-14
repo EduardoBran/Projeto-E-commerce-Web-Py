@@ -2,6 +2,17 @@
 {% load omfilters %}
 
 <style>
+    .barra-horizontal-carrinho {
+        height: 8px;
+        background-color: #17a2b8;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .texto-titulo-carrinho-qtd {
+        margin-left: 20px;
+    }
+
     .texto-titulo-preco-carrinho-total {
         float: right;
         margin-top: 0;
@@ -31,6 +42,7 @@
         width: 120px;
         height: 140px;
         margin-left: 20px;
+        margin-top: 10px;
     }
 
     .nome-produto {
@@ -58,7 +70,7 @@
     }
 
     .info-quantidade {
-        margin-top: 38px;
+        margin-top: 10px;
         text-align: left;
         padding-left: 0px;
         padding-right: 0px;
@@ -74,7 +86,7 @@
     }
 
     .info-preco {
-        margin-top: 42px;
+        margin-top: 12px;
     }
 
     @media (max-width: 1000px) {
@@ -84,7 +96,7 @@
         }
 
         .texto-titulo-carrinho-qtd {
-            padding-left: 11px;
+            margin-left: 18px;
         }
     }
 
@@ -102,7 +114,7 @@
 
     @media (max-width: 768px) {
         .info-preco {
-            margin-top: 38px;
+            margin-top: 8px;
         }
 
         .sub {
@@ -127,8 +139,12 @@
             font-size: 1rem;
         }
 
+        .texto-titulo-carrinho-prod {
+            margin-left: 15px;
+        }
+
         .texto-titulo-carrinho-qtd {
-            padding-left: 15px;
+            margin-left: 11px;
         }
 
         .imagem-produto-carrinho {
@@ -144,6 +160,11 @@
             width: 40px;
             font-size: .9rem;
         }
+
+        .preco-produto-carrinho .preco-antigo-carrinho {
+            display: block;
+        }
+
     }
 
     @media (max-width: 400px) {
@@ -158,22 +179,27 @@
     }
 </style>
 
-<div class="row">
+<div class="row mt-4">
     {% block titulo-modal %}
     <div class="col-5">
-        <span class="texto-titulo-carrinho lead font-weight-bold">Produto</span>
+        <span class="texto-titulo-carrinho texto-titulo-carrinho-prod font-weight-bold">Produto</span>
     </div>
     <div class="col-5">
 
-        <span class="texto-titulo-carrinho texto-titulo-carrinho-qtd lead font-weight-bold">&nbsp;&nbsp;Qtd.</span>
+        <span class="texto-titulo-carrinho texto-titulo-carrinho-qtd font-weight-bold">&nbsp;&nbsp;&nbsp;Qtd.</span>
     </div>
     <div class="col-2 pos-titulo-preco-carrinho-total">
-        <span class="texto-titulo-preco-carrinho-total lead font-weight-bold">Total<span class="mr-2"></span></span>
+        <span class="texto-titulo-preco-carrinho-total font-weight-bold">Total<span class="mr-2"></span></span>
     </div>
     {% endblock %}
+</div>
+
+<div class="row">
 
     {% for linha_carrinho in carrinho.values %}
-
+    <div class="col-12">
+        <hr />
+    </div>
     {% block conteudo-modal %}
     <div class="col-5 mt-3">
         <div class="info-produto">
