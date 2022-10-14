@@ -65,8 +65,10 @@
 
 {% if carrinho %}
 
-<div class="" id="loading" style="display: block">
+<div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
     {% include 'parciais/_carregamento.html' %}
+    <i class="fas fa-shopping-cart fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
+    <p class="lead">Carregando seu carrinho</p>
 </div>
 
 <div id="conteudo" style="display: none">
@@ -153,7 +155,7 @@
         document.getElementById("loading").style.display = "none";
         document.getElementById("conteudo").style.display = "inline";
 
-    }, 2000);
+    }, 2500);
 
     // input quantidade funcao botao + e -
     $('.add').click(function () {
