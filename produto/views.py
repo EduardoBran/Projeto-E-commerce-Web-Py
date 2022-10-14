@@ -417,8 +417,8 @@ class AdicionarAoCarrinhoModal(View):
 
         messages.success(
             self.request,
-            f'Produto {produto_nome} (Tam: {variacao_nome}) adicionado ao seu '
-            f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
+            f'Foi adicionado mais um 1x {produto_nome} (Tam: {variacao_nome}) '
+            f'ao seu carrinho.'
         )
 
         return redirect(http_referer)
@@ -491,30 +491,11 @@ class RemoverDoCarrinhoModal(View):
         slug = produto.slug
         imagem = produto.imagem
 
-        if variacao.estoque < 1:
-            messages.error(
-                self.request,
-                'Estoque insuficiente.'
-            )
-            return redirect(http_referer)
-
-        if not self.request.session.get('carrinho'):
-            self.request.session['carrinho'] = {}
-            self.request.session.save()
-
         carrinho = self.request.session['carrinho']
 
         if variacao_id in carrinho:
             quantidade_carrinho = carrinho[variacao_id]['quantidade']
             quantidade_carrinho -= 1
-
-            if variacao_estoque < quantidade_carrinho:
-                messages.warning(
-                    self.request,
-                    f'Estoque insuficiente para {quantidade_carrinho}x no produto "{produto_nome}". '
-                    f'Adicionamos {variacao_estoque}x no seu carrinho.'
-                )
-                quantidade_carrinho = variacao_estoque
 
             carrinho[variacao_id]['quantidade'] = quantidade_carrinho
             carrinho[variacao_id]['preco_quantitativo'] = preco_unitario * \
@@ -538,10 +519,10 @@ class RemoverDoCarrinhoModal(View):
             }
 
         if self.request.session['carrinho'][variacao_id]['quantidade'] <= 0:
-            messages.success(
+            messages.warning(
                 self.request,
-                f'Produto {produto_nome} (Tam: {variacao_nome}) COMPLETAMENTE removido do seu '
-                f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
+                f'Produto {carrinho["produto_nome"]} (Tam: {carrinho["variacao_nome"]}) '
+                f'removido do seu carrinho.'
             )
             del self.request.session['carrinho'][variacao_id]
             self.request.session.save()
@@ -549,10 +530,10 @@ class RemoverDoCarrinhoModal(View):
 
         self.request.session.save()
 
-        messages.success(
+        messages.warning(
             self.request,
-            f'Produto {produto_nome} (Tam: {variacao_nome}) removido do seu '
-            f'carrinho {carrinho[variacao_id]["quantidade"]}x.'
+            f'Foi removido 1x {produto_nome} (Tam: {variacao_nome}) '
+            f'do seu carrinho.'
         )
 
         # tamanho = self.request.session['carrinho'][variacao_id]['quantidade']
