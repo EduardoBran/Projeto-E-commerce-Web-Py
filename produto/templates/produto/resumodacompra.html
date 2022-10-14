@@ -13,87 +13,109 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 
-<div class="row mb-4">
-    <div class="col-lg">
-        <h2>Resumo da sua compra</h2>
 
-        <hr />
-
-        <p class="lead mt-4" style="font-weight: 400;">Dados do usuário</p>
-        <p>Caso precise editar, <a href="{% url 'perfil:criar' %}"
-                style="color: #262727; text-decoration: underline;">clique aqui</a></p>
-        <dl class="row">
-            <dt class="col-lg-2">Nome:</dt>
-            <dd class="col-lg-4">{{ usuario.first_name }}</dd>
-            <dt class="col-lg-2">Sobrenome:</dt>
-            <dd class="col-lg-4">{{ usuario.last_name }}</dd>
-
-            <dt class="col-lg-2">Idade:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.idade }}</dd>
-            <dt class="col-lg-2">Nascimento:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.data_nascimento }}</dd>
-
-            <dt class="col-lg-2">CPF:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.cpf }}</dd>
-            <dt class="col-lg-2">E-mail:</dt>
-            <dd class="col-lg-4">{{ usuario.email }}</dd>
-        </dl>
-
-        <hr />
-
-        <p class="lead" style="font-weight: 400;">Dados de endereço</p>
-        <p>Caso precise editar, <a href="{% url 'perfil:criar' %}"
-                style="color: #262727; text-decoration: underline;">clique aqui</a></p>
-        <dl class="row">
-            <dt class="col-lg-2">Endereço:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.endereco }}</dd>
-            <dt class="col-lg-2">Número:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.numero }}</dd>
-
-            <dt class="col-lg-2">Complemento:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.complemento }}</dd>
-            <dt class="col-lg-2">Bairro:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.bairro }}</dd>
-
-            <dt class="col-lg-2">Cidade:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.cidade }}</dd>
-            <dt class="col-lg-2">Estado:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.estado }}</dd>
-
-            <dt class="col-lg-2">CEP:</dt>
-            <dd class="col-lg-4">{{ usuario.perfil.cep }}</dd>
-        </dl>
-    </div>
+<div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
+    {% include 'parciais/_carregamento.html' %}
+    <i class="fas fa-clipboard-list fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
+    <p class="lead mt-2">Carregando o resumo da sua compra</p>
 </div>
 
-<hr />
+<div id="conteudo" style="display: none">
+    <div class="row mb-4">
+        <div class="col-lg">
+            <h2>Resumo da sua compra</h2>
 
-<div class="row mt-2">
-    <div class="col">
-        <h3>Resumo do carrinho</h3>
-        <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
+            <hr />
 
-        {% include 'parciais/_carrinho.html' %}
+            <p class="lead mt-4" style="font-weight: 400;">Dados do usuário</p>
+            <p>Caso precise editar, <a href="{% url 'perfil:criar' %}"
+                    style="color: #262727; text-decoration: underline;">clique aqui</a></p>
+            <dl class="row">
+                <dt class="col-lg-2">Nome:</dt>
+                <dd class="col-lg-4">{{ usuario.first_name }}</dd>
+                <dt class="col-lg-2">Sobrenome:</dt>
+                <dd class="col-lg-4">{{ usuario.last_name }}</dd>
+
+                <dt class="col-lg-2">Idade:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.idade }}</dd>
+                <dt class="col-lg-2">Nascimento:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.data_nascimento }}</dd>
+
+                <dt class="col-lg-2">CPF:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.cpf }}</dd>
+                <dt class="col-lg-2">E-mail:</dt>
+                <dd class="col-lg-4">{{ usuario.email }}</dd>
+            </dl>
+
+            <hr />
+
+            <p class="lead" style="font-weight: 400;">Dados de endereço</p>
+            <p>Caso precise editar, <a href="{% url 'perfil:criar' %}"
+                    style="color: #262727; text-decoration: underline;">clique aqui</a></p>
+            <dl class="row">
+                <dt class="col-lg-2">Endereço:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.endereco }}</dd>
+                <dt class="col-lg-2">Número:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.numero }}</dd>
+
+                <dt class="col-lg-2">Complemento:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.complemento }}</dd>
+                <dt class="col-lg-2">Bairro:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.bairro }}</dd>
+
+                <dt class="col-lg-2">Cidade:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.cidade }}</dd>
+                <dt class="col-lg-2">Estado:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.estado }}</dd>
+
+                <dt class="col-lg-2">CEP:</dt>
+                <dd class="col-lg-4">{{ usuario.perfil.cep }}</dd>
+            </dl>
+        </div>
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col">
-        <p class="lead text-center">
-            <span class="font-weight-bold mr-2">
-                Total do carrinho:
-            </span>
-            {{ carrinho|total_carrinho|formata_preco }}
-        </p>
+
+    <hr />
+
+    <div class="row mt-2">
+        <div class="col">
+            <h3>Resumo do carrinho</h3>
+            <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
+
+            {% include 'parciais/_carrinho.html' %}
+        </div>
     </div>
+    <div class="row mt-3">
+        <div class="col">
+            <p class="lead text-center">
+                <span class="font-weight-bold mr-2">
+                    Total do carrinho:
+                </span>
+                {{ carrinho|total_carrinho|formata_preco }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-2" style="margin-bottom: 35px;">
+        <div class="col">
+            <a class="btn btn-info btn-lg btn-block" href="{% url 'pedido:salvarpedido' %}">
+                Realizar pedido e pagar
+            </a>
+        </div>
+    </div>
+
 </div>
 
-<div class="row mt-2" style="margin-bottom: 35px;">
-    <div class="col">
-        <a class="btn btn-info btn-lg btn-block" href="{% url 'pedido:salvarpedido' %}">
-            Realizar pedido e pagar
-        </a>
-    </div>
-</div>
+<script>
+    // funcao pre loader
+    var i = setInterval(function () {
+
+        clearInterval(i);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("conteudo").style.display = "inline";
+
+    }, 2500);
+</script>
 
 {% endblock %}
 
