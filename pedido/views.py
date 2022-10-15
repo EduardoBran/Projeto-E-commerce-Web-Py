@@ -1,3 +1,5 @@
+import datetime
+
 from categoria.models import Categoria
 from django.contrib import messages
 from django.http import HttpResponse
@@ -36,6 +38,41 @@ class Pagar(DispatchLoginRequiredMixin, DetailView):
     model = Pedido
     pk_url_kwarg = 'pk'
     context_object_name = 'pedido'
+
+
+class GerarBoleto(DispatchLoginRequiredMixin, ListView):
+    model = Pedido
+    context_object_name = 'pedidos'
+    template_name = 'pedido/gerarBoleto.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        valor_total = Pedido.objects.values('total').last()
+        valor_total = valor_total['total']
+        valor_total = str(valor_total)
+
+        # print('\n**************\n')
+        # print(valor_total)
+        # print('\n**************\n')
+
+        context['valor_total'] = valor_total
+
+        current_time = datetime.datetime.now()
+
+        dia = current_time.day
+        mes = current_time.month
+        ano = current_time.year
+
+        dia = str(dia)
+        mes = str(mes)
+        ano = str(ano)
+
+        data_hoje = dia + '/' + mes + '/' + ano
+
+        context['data_hoje'] = data_hoje
+
+        return context
 
 
 class SalvarPedido(View):
