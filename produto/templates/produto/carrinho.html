@@ -75,8 +75,13 @@
 
 {% if carrinho %}
 
+<div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
+    {% include 'parciais/_carregamento.html' %}
+    <i class="fas fa-shopping-cart fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
+    <p class="lead">Carregando seu carrinho</p>
+</div>
 
-<div id="conteudo">
+<div id="conteudo" style="display: none">
 
     <div class="containerHome">
         <div class="row">
