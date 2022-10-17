@@ -223,8 +223,8 @@
                 if ($this.attr('id') == idDiv) {
 
                     if (idDiv == 'div1') {
-                        tag.setAttribute('href', '{% url "produto:home" %}')
-                        tag2.setAttribute('href', '{% url "produto:home" %}')
+                        tag.setAttribute('href', '{% url "pedido:resumopagar" pedido.id %}')
+                        tag2.setAttribute('href', '{% url "pedido:resumopagar" pedido.id %}')
                         $('tag').prop('disabled', false);
                         $('tag2').prop('disabled', false);
                         $('button').prop('disabled', false);

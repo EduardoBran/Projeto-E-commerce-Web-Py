@@ -40,10 +40,18 @@ class Pagar(DispatchLoginRequiredMixin, DetailView):
     context_object_name = 'pedido'
 
 
-class GerarBoleto(DispatchLoginRequiredMixin, ListView):
+class ResumoPagar(DispatchLoginRequiredMixin, DetailView):
+    template_name = 'pedido/resumopagamento.html'
     model = Pedido
-    context_object_name = 'pedidos'
+    pk_url_kwarg = 'pk'
+    context_object_name = 'pedido'
+
+
+class GerarBoleto(DispatchLoginRequiredMixin, ListView):
     template_name = 'pedido/gerarBoleto.html'
+    model = Pedido
+    pk_url_kwarg = 'pk'
+    context_object_name = 'pedidos'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

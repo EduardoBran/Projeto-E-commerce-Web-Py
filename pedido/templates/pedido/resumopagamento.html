@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Resumo Pagamento | {% endblock %}
+
+{% load omfilters %}
+{% load static %}
+
+{% block conteudo %}
+
+<h2 class="mt-5">CRIAR LAYOUT PARA RESUMO PAGAR!!</h2>
+
+<p class="mt-5"><a href="{% url 'pedido:gerarboleto' pedido.id %}">CLIQUE AQUI PARA GERAR SEU BOLETO</a></p>
+
+<div class="mt-5">
+    {% include 'parciais/_pedido.html' %}
+</div>
+
+<div class="row mt-4">
+    <div class="col-6">
+        <a href="{% url 'produto:home' %}">
+            <button class="btn btn-info btn-lg btn-block">Realizar nova compra</button></a>
+    </div>
+    <div class="col-6">
+        <a href="{% url 'pedido:lista' %}">
+            <button class="btn btn-info btn-lg btn-block">Ir para meus pedidos</button></a>
+    </div>
+    <div class="col-6"></div>
+
+</div>
+
+{% endblock %}
