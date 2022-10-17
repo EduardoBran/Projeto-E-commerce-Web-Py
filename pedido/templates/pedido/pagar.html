@@ -7,6 +7,76 @@
 
 {% block conteudo %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<style>
+    .btnPagar {
+        display: none;
+    }
+
+    .btnEstilo {
+        height: 60px;
+        border-radius: 12px;
+        font-size: large;
+    }
+
+    .btnEstilo:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+    }
+
+    .conteudo-pix-image {
+        -webkit-text-size-adjust: 100%;
+        display: flex;
+        height: 50px;
+        width: 135px;
+        background-image: url('https://io.vtex.com.br/checkout-ui/v5.45.0/img/payment-pix-head.svg');
+        background-repeat: no-repeat;
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .conteudo-pix-text-number {
+        margin-top: 15px;
+        width: 34px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #4BB8A9;
+        /* border: 1px solid #E3E4E6;
+        border-radius: 50%; */
+    }
+
+    .conteudo-pix-text {
+        margin-top: 10px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    @media (max-width: 999px) {
+        .inputsMobile {
+            margin-left: 40%;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .inputsMobile {
+            margin-left: 35%;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .inputsMobile {
+            margin-left: 25%;
+        }
+    }
+
+    a[disabled="disabled"] {
+        pointer-events: none;
+    }
+</style>
+
 <div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
     {% include 'parciais/_carregamento.html' %}
     <i class="fa-regular fa-credit-card fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
@@ -14,35 +84,95 @@
 </div>
 
 <div id="conteudo" style="display: none">
-
-    <div class="row">
-        <div class="col mt-2 text-center">
+    <div class="row mb-5">
+        <div class="col-12 mt-2 text-center">
             <h3>Escolha o método de pagamento</h3>
-            <br>
+        </div>
 
-            <img class="img-fluid"
-                src="https://www.ufpb.br/dcx/contents/imagens/figuras/output_zvmmKf.gif/@@images/image.gif">
-            <br><br><br>
+        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5"></div>
+        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mt-3 inputsMobile">
 
-            <p>Criar layout para escolha de pagamento...</p>
-
-            <br><br>
-
-            <a href="{% url 'pedido:gerarBoleto' %}" target="_blank" rel="noopener noreferrer">Clique para gerar seu
-                boleto</a>
-
-            <br><br><br>
+            <form>
+                <input type="radio" data-div="div1" name="consulta[]" value="1" /> Boleto Bancário<br />
+                <input type="radio" data-div="div2" name="consulta[]" value="2" /> Pix<br />
+                <input type="radio" data-div="div3" name="consulta[]" value="3" /> Cartão de Crédito<br />
+            </form>
 
         </div>
-    </div>
+        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2"></div>
 
-    {% include 'parciais/_pedido.html' %}
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4"></div>
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-4">
 
-    <div class="row mt-4">
-        <div class="col">
-            <a href="#" class="btn btn-info btn-lg btn-block">Pagar</a>
+            <div id="div1" class="div-radiobox" style="display:none">
+                <div class="conteudo-boleto">
+                    <ul class="">
+                        <li>Pagamento somente à vista</li>
+                        <li>O boleto vence em 3 dias corridos</li>
+                        <li>É necessário imprimir o boleto ou utilizar o código de barras do mesmo para fazer o
+                            pagamento
+                        </li>
+                        <li>Imprima o boleto após a finalização da compra</li>
+                        <li>O boleto não será enviado para o seu endereço físico</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="div2" class="div-radiobox" style="display:none">
+                <div class="conteudo-pix-image text-center"></div>
+
+                <div class="row">
+                    <div class="col-6 text-center conteudo-pix-text-number">1</div>
+                    <div class="col-6 text-center conteudo-pix-text-number">2</div>
+                </div>
+                <div class="row">
+                    <div class="col-6 conteudo-pix-text">
+                        Aperte em Finalizar compra para gerar o código QR
+                    </div>
+                    <div class="col-6 conteudo-pix-text">
+                        Confira os dados e realize o pagamento pelo app do seu banco
+                    </div>
+                    <div class="col-12 mt-3">
+                        <p class="lead text-danger text-center">Indisponível no momento</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="div3" class="div-radiobox" style="display:none">
+                <div class="conteudo-cartao-credito">
+                    Adicionar tabela inputs com os campos para add cartão DESATIVADOS
+                    <p class="lead text-danger text-center mt-3">Indisponível no momento</p>
+                </div>
+            </div>
+
         </div>
+        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4"></div>
+
+        <div class="col text-center btnPagar" id="displayNone">
+            <a class="linkAtivo" href="#" style="color: #262727; text-decoration: none;" title="realizar pagamento">
+                <button class="btn btn-info btn-lg btnEstilo btnAtivo mt-3" style="padding: 0 50px;">
+                    <i class="fa-regular fa-credit-card fa-lg mr-3" aria-hidden="true"></i>
+                    Realizar pagamento
+                </button>
+            </a>
+        </div>
+
+    </div> <!--  end div row -->
+</div> <!--  end div conteudo -->
+
+{% include 'parciais/_pedido.html' %}
+
+<div class="row mt-4">
+    <div class="col">
+        <a class="linkAtivo2" href="#" style="color: #262727; text-decoration: none;" title="realizar pagamento">
+            <button class="btn btn-info btn-lg btn-block btnEstilo btnAtivo2">
+                <i class="fa-regular fa-credit-card fa-lg mr-3" aria-hidden="true"></i>
+                Realizar pagamento
+            </button>
+        </a>
     </div>
+</div>
 
 </div>
 
@@ -56,6 +186,75 @@
         document.getElementById("conteudo").style.display = "inline";
 
     }, 2500);
+
+    // funcao JQuery exibicao das informaçoes do pagamento escolhido e ativação dos botões
+    let tag = document.querySelector(".linkAtivo");
+    let tag2 = document.querySelector(".linkAtivo2");
+    let button = document.querySelector(".btnAtivo");
+    let button2 = document.querySelector(".btnAtivo2");
+
+    tag.removeAttribute('href')
+    tag2.removeAttribute('href')
+    tag.disabled = true;
+    tag2.disabled = true;
+    button.disabled = true;
+    button2.disabled = true;
+
+    var viewDivs = {
+        init: function () {
+            var that = this;
+
+            //Elementos
+            that.inputs = $('input:radio');
+            that.divs = $('.div-radiobox');
+
+            //Eventos
+            that.inputs.change(function () {
+                that.render();
+            });
+        },
+
+        render: function () {
+            //input selecionado
+            var idDiv = this.inputs.filter(':checked').attr('data-div');
+
+            this.divs.each(function () {
+                var $this = $(this);
+                if ($this.attr('id') == idDiv) {
+
+                    if (idDiv == 'div1') {
+                        tag.setAttribute('href', '{% url "produto:home" %}')
+                        tag2.setAttribute('href', '{% url "produto:home" %}')
+                        $('tag').prop('disabled', false);
+                        $('tag2').prop('disabled', false);
+                        $('button').prop('disabled', false);
+                        $('button2').prop('disabled', false);
+                    }
+                    if (idDiv == 'div2') {
+                        $('tag').prop('disabled', true);
+                        $('tag2').prop('disabled', true);
+                        $('button').prop('disabled', true);
+                        $('button2').prop('disabled', true);
+                    }
+                    if (idDiv == 'div3') {
+                        $('tag').prop('disabled', true);
+                        $('tag2').prop('disabled', true);
+                        $('button').prop('disabled', true);
+                        $('button2').prop('disabled', true);
+                    }
+
+                    $this.show();
+                    $('#displayNone').removeClass('btnPagar'); // exibindo botao para pagar
+
+                } else {
+                    $this.hide();
+                }
+            })
+        }
+    }
+
+    viewDivs.init();
+
 </script>
 
 {% endblock %}
