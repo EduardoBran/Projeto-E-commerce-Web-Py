@@ -27,19 +27,31 @@
 
             <hr />
 
-            <p class="lead mt-4" style="font-weight: 400;">Dados do usuário</p>
-            <p>Caso precise editar, <a href="{% url 'perfil:criar' %}"
-                    style="color: #262727; text-decoration: underline;">clique aqui</a></p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="lead mt-1" style="font-weight: 400;"><i class="fa-solid fa-user-large fa-sm mr-2"></i>
+                        Identificação
+                    </p>
+                </div>
+                <div class="col-6">
+                    <div class="text-right mt-1">
+                        <a href="{% url 'perfil:criar' %}" style="color: #262727; text-decoration: underline;"
+                            title="alterar">
+                            <i class="fa-regular fa-pen-to-square fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <p>Caso precise editar,
+                <a href="{% url 'perfil:criar' %}" style="color: #262727; text-decoration: underline;">clique aqui</a>
+            </p>
+
             <dl class="row">
                 <dt class="col-lg-2">Nome:</dt>
                 <dd class="col-lg-4">{{ usuario.first_name }}</dd>
                 <dt class="col-lg-2">Sobrenome:</dt>
                 <dd class="col-lg-4">{{ usuario.last_name }}</dd>
-
-                <dt class="col-lg-2">Idade:</dt>
-                <dd class="col-lg-4">{{ usuario.perfil.idade }}</dd>
-                <dt class="col-lg-2">Nascimento:</dt>
-                <dd class="col-lg-4">{{ usuario.perfil.data_nascimento }}</dd>
 
                 <dt class="col-lg-2">CPF:</dt>
                 <dd class="col-lg-4">{{ usuario.perfil.cpf }}</dd>
@@ -49,9 +61,26 @@
 
             <hr />
 
-            <p class="lead" style="font-weight: 400;">Dados de endereço</p>
-            <p>Caso precise editar, <a href="{% url 'perfil:criar' %}"
-                    style="color: #262727; text-decoration: underline;">clique aqui</a></p>
+            <div class="row">
+                <div class="col-6">
+                    <p class="lead" style="font-weight: 400;"><i class="fa-solid fa-house fa-sm mr-2"></i>
+                        Entrega
+                    </p>
+                </div>
+                <div class="col-6">
+                    <div class="text-right">
+                        <a href="{% url 'perfil:criar' %}" style="color: #262727; text-decoration: underline;"
+                            title="alterar">
+                            <i class="fa-regular fa-pen-to-square fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <p>Caso precise editar,
+                <a href="{% url 'perfil:criar' %}" style="color: #262727; text-decoration: underline;">clique aqui</a>
+            </p>
+
             <dl class="row">
                 <dt class="col-lg-2">Endereço:</dt>
                 <dd class="col-lg-4">{{ usuario.perfil.endereco }}</dd>
@@ -71,6 +100,7 @@
                 <dt class="col-lg-2">CEP:</dt>
                 <dd class="col-lg-4">{{ usuario.perfil.cep }}</dd>
             </dl>
+
         </div>
     </div>
 
@@ -84,6 +114,7 @@
             {% include 'parciais/_carrinho.html' %}
         </div>
     </div>
+
     <div class="row mt-3">
         <div class="col">
             <p class="lead text-center">
