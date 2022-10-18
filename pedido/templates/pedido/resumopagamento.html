@@ -90,7 +90,12 @@
     }
 
     .btnBoleto button {
-        height: 40px;
+        height: 44px;
+        border-radius: 10px;
+    }
+
+    .btnFinal {
+        border-radius: 10px;
     }
 
     .btnBoleto button:disabled {
@@ -121,8 +126,7 @@
 
         .conteudo-info-endereco,
         .conteudo-info-resumo,
-        .conteudo-info-pagamento,
-        .btnBoleto {
+        .conteudo-info-pagamento {
             padding-left: 11px;
         }
 
@@ -136,11 +140,6 @@
             text-align: right;
             padding-right: 25px;
         }
-
-        .btnBoleto {
-            text-align: left;
-        }
-
     }
 
     @media (max-width: 700px) {
@@ -201,8 +200,8 @@
             </div>
             <div class="btnBoleto mt-4">
                 <a href="{% url 'pedido:gerarboleto' pedido.id %}" target="_blank" rel="noopener noreferrer"
-                    title="Clique para visualizar seu boleto em uma nova aba"><button
-                        class="btn-secondary mr-3">Visualizar
+                    title="Clique para visualizar seu boleto em uma nova aba"
+                    style="color: #262727; text-decoration: none;"><button class="btn-secondary mr-3">Visualizar
                         Boleto</button></a>
                 <button class="btn-secondary" title="Indisponível no momento" disabled>Imprimir Boleto</button>
             </div>
@@ -256,12 +255,12 @@
 
 <div class="row mt-4 mb-5">
     <div class="col-6">
-        <a href="{% url 'produto:home' %}">
-            <button class="btn btn-info btn-lg btn-block">Realizar nova compra</button></a>
+        <a href="{% url 'produto:home' %}" style="color: #262727; text-decoration: none;">
+            <button class="btn btn-info btn-lg btn-block btnFinal">Realizar nova compra</button></a>
     </div>
     <div class="col-6">
-        <a href="{% url 'pedido:lista' %}">
-            <button class="btn btn-info btn-lg btn-block">Ir para meus pedidos</button></a>
+        <a href="{% url 'pedido:lista' %}" style="color: #262727; text-decoration: none;">
+            <button class="btn btn-info btn-lg btn-block btnFinal">Ir para meus pedidos</button></a>
     </div>
     <div class="col-6"></div>
 </div>
