@@ -54,21 +54,38 @@
         word-break: break-word;
     }
 
+    #div1,
+    #div2,
+    #div3 {
+        padding-left: 10px;
+    }
+
+    input[type=radio] {
+        all: unset;
+    }
+
     @media (max-width: 999px) {
-        .inputsMobile {
-            margin-left: 40%;
+
+        #div1,
+        #div2,
+        #div3 {
+            padding-left: 0px;
         }
     }
 
-    @media (max-width: 700px) {
-        .inputsMobile {
-            margin-left: 35%;
+    /* @media (max-width: 700px) {
         }
     }
 
     @media (max-width: 500px) {
-        .inputsMobile {
-            margin-left: 25%;
+    } */
+
+    @media (max-width: 400px) {
+        .form-check-inline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
         }
     }
 
@@ -84,29 +101,39 @@
 </div>
 
 <div id="conteudo" style="display: none">
-    <div class="row mb-5">
+    <div class="row">
         <div class="col-12 mt-2 text-center">
             <h3>Escolha o método de pagamento</h3>
         </div>
+    </div> <!-- end row -->
 
-        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5"></div>
-        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 mt-3 inputsMobile">
-
-            <form>
-                <input type="radio" data-div="div1" name="consulta[]" value="1" /> Boleto Bancário<br />
-                <input type="radio" data-div="div2" name="consulta[]" value="2" /> Pix<br />
-                <input type="radio" data-div="div3" name="consulta[]" value="3" /> Cartão de Crédito<br />
-            </form>
-
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 text-center">
+            <div class="form-check form-check-inline">
+                <input class="btn-check" type="radio" data-div="div1" name="consulta[]" id="inlineCheckbox1"
+                    value="1" />
+                <label class="btn btn-secondary" style="width: 160px;" for="inlineCheckbox1">Boleto Bancário</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="btn-check" type="radio" data-div="div2" id="inlineCheckbox2" name="consulta[]"
+                    value="2" />
+                <label class="btn btn-secondary" style="width: 160px;" for="inlineCheckbox2">Pix</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="btn-check" type="radio" data-div="div3" id="inlineCheckbox3" name="consulta[]"
+                    value="3" />
+                <label class="btn btn-secondary" style="width: 160px;" for="inlineCheckbox3">Cartão de Crédito</label>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2"></div>
+    </div> <!-- end row -->
 
+    <div class="row mt-1 mb-5">
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4"></div>
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 mt-4">
 
             <div id="div1" class="div-radiobox" style="display:none">
                 <div class="conteudo-boleto">
-                    <ul class="">
+                    <ul>
                         <li>Pagamento somente à vista</li>
                         <li>O boleto vence em 3 dias corridos</li>
                         <li>É necessário imprimir o boleto ou utilizar o código de barras do mesmo para fazer o
@@ -116,12 +143,11 @@
                         <li>O boleto não será enviado para o seu endereço físico</li>
                     </ul>
                 </div>
-            </div>
+            </div> <!-- end div1 -->
 
             <div id="div2" class="div-radiobox" style="display:none">
-                <div class="conteudo-pix-image text-center"></div>
-
-                <div class="row">
+                <div class="conteudo-pix-image text-center"></div> <!-- imagem pix -->
+                <div class="row text-center" style="padding-right: 15px;">
                     <div class="col-6 text-center conteudo-pix-text-number">1</div>
                     <div class="col-6 text-center conteudo-pix-text-number">2</div>
                 </div>
@@ -129,24 +155,24 @@
                     <div class="col-6 conteudo-pix-text">
                         Aperte em Finalizar compra para gerar o código QR
                     </div>
-                    <div class="col-6 conteudo-pix-text">
+                    <div class="col-6 conteudo-pix-text" style="padding: 0 10px;">
                         Confira os dados e realize o pagamento pelo app do seu banco
                     </div>
                     <div class="col-12 mt-3">
-                        <p class="lead text-danger text-center">Indisponível no momento</p>
+                        <p class="lead text-danger text-center mt-3">Indisponível no momento</p>
                     </div>
                 </div>
-
-            </div>
+            </div> <!-- end div2 -->
 
             <div id="div3" class="div-radiobox" style="display:none">
                 <div class="conteudo-cartao-credito">
                     Adicionar tabela inputs com os campos para add cartão DESATIVADOS
                     <p class="lead text-danger text-center mt-3">Indisponível no momento</p>
                 </div>
-            </div>
+            </div> <!-- end div3 -->
 
         </div>
+
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4"></div>
 
         <div class="col text-center btnPagar" id="displayNone">
@@ -172,8 +198,6 @@
             </button>
         </a>
     </div>
-</div>
-
 </div>
 
 <script>
