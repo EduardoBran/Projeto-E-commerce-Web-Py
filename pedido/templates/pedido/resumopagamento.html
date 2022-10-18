@@ -7,32 +7,42 @@
 
 {% block conteudo %}
 
-<h2 class="mt-5">CRIAR LAYOUT PARA RESUMO PAGAR!!</h2>
+<div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
+    {% include 'parciais/_carregamento.html' %}
+    <i class="fa-solid fa-barcode fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
+    <p class="lead mt-2">Gerando seu boleto...</p>
+</div>
 
-<p class="mt-5"><a href="{% url 'pedido:gerarboleto' pedido.id %}">CLIQUE AQUI PARA GERAR SEU BOLETO</a></p>
+<div id="conteudo" style="display: none">
 
-<ul class="mt-4">
-    <li>
-        <small>
-            Adicionar tela de loading na page pagar escrito "Estamos gerando seu boleto"
-        </small>
-    </li>
-    <br />
-    <li>
-        <small class="mt-1">Adicionar opções de imprimir/ visualizar / fazer o download do boleto</small>
-    </li>
-    <br />
-    <li><small class="mt-1">
-            Após clicar no boleto, mostrar uma mensagem com "assim que seu pagamento for confirmado,
-            enviaremos os detalhes do seu pedido para o seu e-mail.
-        </small>
-    </li>
-    <br />
-    <li><small class="mt-1">
-            Antes de pedido adicionar um resumo com endereço, forma de pagamento escolhida e resumo (total a pagar)
-        </small>
-    </li>
-</ul>
+    <h2 class="mt-5">CRIAR LAYOUT PARA RESUMO PAGAR!!</h2>
+
+    <p class="mt-5"><a href="{% url 'pedido:gerarboleto' pedido.id %}">CLIQUE AQUI PARA GERAR SEU BOLETO</a></p>
+
+    <ul class="mt-4">
+        <li>
+            <small>
+                Adicionar tela de loading na page pagar escrito "Estamos gerando seu boleto"
+            </small>
+        </li>
+        <br />
+        <li>
+            <small class="mt-1">Adicionar opções de imprimir/ visualizar / fazer o download do boleto</small>
+        </li>
+        <br />
+        <li><small class="mt-1">
+                Após clicar no boleto, mostrar uma mensagem com "assim que seu pagamento for confirmado,
+                enviaremos os detalhes do seu pedido para o seu e-mail.
+            </small>
+        </li>
+        <br />
+        <li><small class="mt-1">
+                Antes de pedido adicionar um resumo com endereço, forma de pagamento escolhida e resumo (total a pagar)
+            </small>
+        </li>
+    </ul>
+
+</div> <!--  end div conteudo -->
 
 <div class="mt-5">
     {% include 'parciais/_pedido.html' %}
@@ -49,5 +59,18 @@
     </div>
     <div class="col-6"></div>
 </div>
+
+
+<script>
+    // funcao pre loader
+    var i = setInterval(function () {
+
+        clearInterval(i);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("conteudo").style.display = "inline";
+
+    }, 2500);
+</script>
 
 {% endblock %}
