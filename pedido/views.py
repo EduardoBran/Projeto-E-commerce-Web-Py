@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render, reverse
 from django.views import View
 from django.views.generic import DetailView, ListView
+from perfil.models import Perfil
 from produto.models import Variacao
 from utils import utils
 
@@ -45,6 +46,25 @@ class ResumoPagar(DispatchLoginRequiredMixin, DetailView):
     model = Pedido
     pk_url_kwarg = 'pk'
     context_object_name = 'pedido'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if not self.request.user.is_authenticated:
+            return redirect('perfil:criar')
+
+        perfil = Perfil.objects.filter(usuario=self.request.user).exists()
+
+        if not perfil:
+            messages.error(
+                self.request,
+                'Usuário sem perfil.'
+            )
+            return redirect('perfil:criar')
+
+        context['usuario'] = self.request.user
+
+        return context
 
 
 class GerarBoleto(DispatchLoginRequiredMixin, ListView):
