@@ -10,7 +10,7 @@ from django.views.generic.list import ListView
 from perfil.models import Perfil
 
 from . import models
-from .models import Produto
+from .models import Favorito, ItemFavorito, Produto
 
 
 class ListaProdutos(ListView):
@@ -215,6 +215,100 @@ class DetalheProduto(DetailView):
         # context['preco'] = preco
 
         return context
+
+
+class AdicionarAoFavorito(DetalheProduto):
+    # model = models.Produto
+    template_name = 'produto/detalhe.html'
+    # context_object_name = 'produto'
+    # slug_url_kwarg = 'slug'  # o slug vem da urls.py
+
+    def get(self, *args, **kwargs):
+        # última pág do usuário
+        http_referer = self.request.META.get(
+            'HTTP_REFERER',
+            reverse('produto:lista')
+        )
+
+        # verificando se usuário está logado
+        if not self.request.user.is_authenticated:
+            messages.error(
+                self.request,
+                'Você precisa fazer o login para adicionar favorito!'
+            )
+            return redirect(http_referer)
+
+        # recuperando slug do produto via URL
+        slug = self.request.get_full_path()
+        slug = slug.split('/')
+        slug = slug.pop()
+
+        # filtrando produto através do slug recuperado
+        produto = get_object_or_404(Produto, slug=slug)
+
+        # verificando se produto existe
+        if not produto.id or not produto.slug:
+            messages.error(
+                self.request,
+                'Produto não existe.'
+            )
+            return redirect(http_referer)
+
+        produto_id = produto.id
+        produto_nome = produto.nome
+        preco_unitario = produto.preco_marketing
+        preco_unitario_promocional = produto.preco_marketing_promocional
+        slug = produto.slug
+        imagem = produto.imagem
+
+        # verificando se o usuario ja está criado na tabela favorito
+        if Favorito.objects.filter(usuario=self.request.user).exists():
+            print('usuario com perfil criado em favoritos')
+        else:
+            print('esse usuario ainda nao esta criado')
+            Favorito.objects.create(
+                usuario=self.request.user
+            )
+
+        tabela_favorito_get_object = get_object_or_404(
+            Favorito, usuario=self.request.user)
+
+        # verificar se o produto ja existe na tabela de cada usuário
+        lista_fav_por_usuario = ItemFavorito.objects.filter(
+            favorito=tabela_favorito_get_object).values_list()
+
+        lista_fav_por_usuario = list(lista_fav_por_usuario)
+        lista_fav_por_usuario = str(lista_fav_por_usuario)
+
+        slug_novo = f"'"+slug+"'"
+
+        if slug_novo in lista_fav_por_usuario:
+            print('tem')
+            messages.warning(
+                self.request,
+                'Produto JÁ FAVORITADO!!!.'
+            )
+            return redirect(http_referer)
+        else:
+            print('nao tem')
+
+        # criando produto favorito no banco
+        ItemFavorito.objects.create(
+            favorito=tabela_favorito_get_object,
+            produto=produto_nome,
+            produto_id=produto_id,
+            preco=preco_unitario,
+            preco_promocional=preco_unitario_promocional,
+            slug=slug,
+            imagem=imagem or ''
+        )
+
+        messages.success(
+            self.request,
+            'Produto adicionado aos seus favoritos!!! AEE PORRAAA!'
+        )
+
+        return redirect(http_referer)
 
 
 class AdicionarAoCarrinho(View):

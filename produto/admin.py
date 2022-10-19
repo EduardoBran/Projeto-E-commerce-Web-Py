@@ -23,5 +23,21 @@ class ProdutoAdmin(admin.ModelAdmin):
     ]
 
 
+class ItemFavoritoInline(admin.TabularInline):
+    model = models.ItemFavorito
+    extra = 1
+
+
+class FavoritoAdmin(admin.ModelAdmin):
+    list_display = ['usuario', ]
+    inlines = [
+        ItemFavoritoInline
+    ]
+
+
+admin.site.register(models.Favorito, FavoritoAdmin)
+admin.site.register(models.ItemFavorito)
+
+
 admin.site.register(models.Produto, ProdutoAdmin)
 admin.site.register(models.Variacao)

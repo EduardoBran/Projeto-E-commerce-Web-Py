@@ -18,6 +18,9 @@ urlpatterns = [
     path('removerdocarrinhomodal/', views.RemoverDoCarrinhoModal.as_view(),
          name='removerdocarrinhomodal'),
 
+    path('adicionarfavorito/<slug>',  views.AdicionarAoFavorito.as_view(),
+         name='adicionarfavorito'),
+
     path('carrinho/', views.Carrinho.as_view(), name='carrinho'),
     path('resumodacompra/', views.ResumoDaCompra.as_view(), name='resumodacompra'),
     path('busca/', views.Busca.as_view(), name='busca'),

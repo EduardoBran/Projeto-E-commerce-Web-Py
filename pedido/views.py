@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render, reverse
 from django.views import View
 from django.views.generic import DetailView, ListView
 from perfil.models import Perfil
-from produto.models import Variacao
+from produto.models import Favorito, ItemFavorito, Variacao
 from utils import utils
 
 from .models import ItemPedido, Pedido
@@ -26,6 +26,11 @@ class DispatchLoginRequiredMixin(View):
         context['categoria'] = self.kwargs.get('categoria', None)
         context['termo'] = self.request.GET.get('termo')
         context['carrinho'] = self.request.session.get('carrinho', {})
+
+        # necessário para filtrar lista de favoritos por usuário
+        context['favoritos'] = Favorito.objects.all().filter(
+            usuario=self.request.user)
+
         return context
 
     def get_queryset(self, *args, **kwargs):
@@ -216,3 +221,11 @@ class Lista(DispatchLoginRequiredMixin, ListView):
     template_name = 'pedido/lista.html'
     paginate_by = 5
     ordering = ['-id']
+
+
+class Favoritos(DispatchLoginRequiredMixin, DetailView):
+    template_name = 'pedido/favoritos.html'
+    model = Favorito
+    pk_url_kwarg = 'pk'
+    context_object_name = 'produto_favorito'
+    paginate_by = 5
