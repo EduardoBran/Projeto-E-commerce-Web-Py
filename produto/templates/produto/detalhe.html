@@ -172,7 +172,7 @@
 
     /* botao carrinho */
     .botaoCarrinhoMobile {
-        margin-top: 34px;
+        margin-top: 28px;
         height: 70px;
         border-radius: 12px;
     }
@@ -189,9 +189,10 @@
 
     .msgBotaoDesativado {
         line-height: 0.1;
-        font-size: 14px;
+        font-size: .8rem;
         font-family: 'Roboto', sans-serif;
         margin-left: 1px;
+        margin-top: 10px;
     }
 
     /* responsividade */
@@ -244,6 +245,11 @@
         .botaoCarrinhoMobile {
             margin-top: 30px;
         }
+
+        .msgBotaoDesativado {
+            font-size: 1.4rem;
+            margin-top: 15px;
+        }
     }
 
     @media (max-width: 767px) {
@@ -280,6 +286,10 @@
         .produto-preco {
             font-size: 30px;
             letter-spacing: -0.7px;
+        }
+
+        .msgBotaoDesativado {
+            font-size: 1.2rem;
         }
     }
 
@@ -323,12 +333,12 @@
         }
 
         .botaoCarrinhoMobile {
-            margin-top: 44px;
+            margin-top: 30px;
         }
 
         .msgBotaoDesativado {
             line-height: 0.1;
-            font-size: 12.5px;
+            font-size: 1.05rem;
             margin-left: 2px;
         }
     }
@@ -452,10 +462,10 @@
                             {{ produto.preco_marketing_promocional|formata_preco }}
                         </span>
                     </p>
-                    <p style="line-height: 0.1; font-size: 12px;">
+                    <!-- <p style="line-height: 0.1; font-size: 12px;">
                         <span>Pode dividir em até </span><span id="qtd"></span>x de
                         <span id="valorAdicionado"></span> reais.
-                    </p>
+                    </p> -->
 
                     {% else %}
                     <p class="mt-2">
@@ -463,10 +473,10 @@
                             {{ produto.preco_marketing|formata_preco }}
                         </span>
                     </p>
-                    <p style="line-height: 0.1; font-size: 12px;">
+                    <!-- <p style="line-height: 0.1; font-size: 12px;">
                         <span>Pode dividir em até </span><span id="qtd"></span>x de
                         <span id="valorAdicionado"></span> reais.
-                    </p>
+                    </p> -->
                     {% endif %}
 
                 </div>
@@ -518,22 +528,33 @@
                     </div>
 
                     <!-- botão adicionar ao carrinho -->
-                    <div class="text-left mt-2">
-                        <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile">
-                            <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-                            <span class="texto-carrinho ml-2">Adicionar ao carrinho</span>
-                        </button>
-                        <span class="msgBotaoDesativado">
-                            Informe um tamanho para poder adicionar ao carrinho.
-                        </span>
+                    <div class="text-left">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile"
+                                    title="adicionar produto ao carrinho">
+                                    <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+                                    <span class="texto-carrinho ml-2">Adicionar ao carrinho</span>
+                                </button>
+                                <p class="msgBotaoDesativado">
+                                    Informe um tamanho para adicionar ao carrinho.
+                                </p>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <a href="{% url 'produto:adicionarfavorito' produto.slug %}"
+                                    style="text-decoration: none; color: #fff;"><button type="button"
+                                        class="btn btn-info btn-lg btn-block botaoCarrinhoMobile"
+                                        title="adicionar produto aos favoritos">
+                                        <i class="fa-solid fa-heart-circle-plus fa-lg" aria-hidden="true"></i>
+                                        <span class="texto-carrinho ml-2">Adicionar aos favoritos</a></span>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
-                </form>
 
-                <br><br><br>
-                <a href="{% url 'produto:adicionarfavorito' produto.slug %}">
-                    <button class="btn btn-info">Favorito</a></button>
-                <br><br><br>
+                </form>
 
             </div> <!--  conteudoMobile -->
         </div> <!--  fonteConteudo -->
@@ -573,26 +594,26 @@
         });
     }
 
-    // exibindo valor parcelado de acordo com o preço
-    let valor = document.getElementById('variation-preco-promocional').innerText
-    let valorAdicionado = document.getElementById('valorAdicionado')
-    let qtd = document.getElementById('qtd')
-    let formatado
+    // // exibindo valor parcelado de acordo com o preço
+    // let valor = document.getElementById('variation-preco-promocional').innerText
+    // let valorAdicionado = document.getElementById('valorAdicionado')
+    // let qtd = document.getElementById('qtd')
+    // let formatado
 
-    valor = valor.replace("R$ ", "")
-    valor = valor.replace(",", ".")
-    valor = parseFloat(valor)
+    // valor = valor.replace("R$ ", "")
+    // valor = valor.replace(",", ".")
+    // valor = parseFloat(valor)
 
-    if (valor >= 100) {
-        valor = valor / 4
-        qtd.innerHTML = 4
-    }
-    else {
-        valor = valor / 2
-        qtd.innerHTML = 2
-    }
-    formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    valorAdicionado.innerHTML = formatado
+    // if (valor >= 100) {
+    //     valor = valor / 4
+    //     qtd.innerHTML = 4
+    // }
+    // else {
+    //     valor = valor / 2
+    //     qtd.innerHTML = 2
+    // }
+    // formatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    // valorAdicionado.innerHTML = formatado
 
     // validando a ativação BOTÃO somente após selecionar o tamanho com javaScript puro
     function validacao() {
