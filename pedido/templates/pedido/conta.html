@@ -7,12 +7,15 @@
 
 {% block conteudo %}
 
+<h1 class="mt-1 mb-4">Layout em construção...</h1>
+
 <a href="{% url 'pedido:lista' %}"><button class="btn btn-info">Meus pedidos</button></a>
+
 {% if favoritos %}
 {% for favorito in favoritos %}
 
 <a href="{% url 'pedido:favoritos' favorito.id %}">
-    <button class="btn btn-info">Favorito</a></button>
+    <button class="btn btn-info">Favorito</button></a>
 
 {% endfor %}
 {% else %}

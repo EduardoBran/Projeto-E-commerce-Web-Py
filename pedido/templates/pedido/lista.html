@@ -49,20 +49,4 @@
 
 {% endif %}
 
-
-{% if favoritos %}
-{% for favorito in favoritos %}
-
-<br><br><br>
-<a href="{% url 'pedido:favoritos' favorito.id %}">
-    <button class="btn btn-info">Favorito</a></button>
-<br><br><br>
-
-{% endfor %}
-{% else %}
-
-<p class="lead mt-5 text-danger">Você ainda não favoritou nenhum produto!</p>
-{% endif %}
-
-
 {% endblock %}

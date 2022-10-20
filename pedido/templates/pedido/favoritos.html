@@ -6,31 +6,52 @@
 
 {% block conteudo %}
 
+<style>
+    @media (max-width: 500px) {
+        .cart-img {
+            width: 95px;
+            height: 115px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .cart-img {
+            width: 85px;
+            height: 105px;
+        }
+    }
+</style>
+
 <div class="row">
     <div class="col">
         <h3 class="mb-4">Favoritos de {{ user }}</h3>
-        {% if produto_favorito %}
         <p>Abaixo todos os seus produtos favoritos adicionados na loja.</p>
 
         <div class="table-responsive mt-3">
             <table class="table">
                 <tr>
-                    <th class="d-none d-lg-block">Imagem</th>
+                    <th>Imagem</th>
                     <th>Produto</th>
                     <th>Preço</th>
-                    <th>Preço Promocional</th>
+                    <th>Preço Promo</th>
                 </tr>
-
+                {% if produto_favorito %}
                 {% for linha in produto_favorito.itemfavorito_set.all %}
                 <tr>
-                    <td class="d-none d-lg-block">
+                    <td>
+                        <a class="ml-1" href="#" style="margin-right:-20px;">
+                            <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir"
+                                aria-hidden="true"></i>
+                        </a>
                         <img class="cart-img" src="{{ linha.imagem }}">
-                        <button class="btn btn-info" title="em breve..." diabled>Excluir (desativado)</button>
                     </td>
-                    <td>{{ linha.produto }}</td>
+                    <td>
+                        <a href="{% url 'produto:detalhe' linha.slug %}"
+                            style="color: #262727; text-decoration: underline;">{{ linha.produto }}
+                        </a>
+                    </td>
                     <td>{{ linha.preco }}</td>
                     <td>{{ linha.preco_promocional }}</td>
-
                 </tr>
                 {% endfor %}
 

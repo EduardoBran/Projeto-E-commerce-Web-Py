@@ -208,11 +208,8 @@ class SalvarPedido(View):
         )
 
 
-class Detalhe(DispatchLoginRequiredMixin, DetailView):
-    template_name = 'pedido/detalhe.html'
-    model = Pedido
-    pk_url_kwarg = 'pk'
-    context_object_name = 'pedido'
+class Conta(DispatchLoginRequiredMixin, TemplateView):
+    template_name = 'pedido/conta.html'
 
 
 class Lista(DispatchLoginRequiredMixin, ListView):
@@ -223,13 +220,16 @@ class Lista(DispatchLoginRequiredMixin, ListView):
     ordering = ['-id']
 
 
+class Detalhe(DispatchLoginRequiredMixin, DetailView):
+    template_name = 'pedido/detalhe.html'
+    model = Pedido
+    pk_url_kwarg = 'pk'
+    context_object_name = 'pedido'
+
+
 class Favoritos(DispatchLoginRequiredMixin, DetailView):
     template_name = 'pedido/favoritos.html'
     model = Favorito
     pk_url_kwarg = 'pk'
     context_object_name = 'produto_favorito'
     paginate_by = 5
-
-
-class Conta(DispatchLoginRequiredMixin, TemplateView):
-    template_name = 'pedido/conta.html'
