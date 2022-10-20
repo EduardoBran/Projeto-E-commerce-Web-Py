@@ -20,6 +20,8 @@ urlpatterns = [
 
     path('adicionarfavorito/<slug>',  views.AdicionarAoFavorito.as_view(),
          name='adicionarfavorito'),
+    path('removerfavorito/<slug>',  views.RemoverFavorito.as_view(),
+         name='removerfavorito'),
 
     path('carrinho/', views.Carrinho.as_view(), name='carrinho'),
     path('resumodacompra/', views.ResumoDaCompra.as_view(), name='resumodacompra'),

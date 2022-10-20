@@ -218,11 +218,6 @@ class DetalheProduto(DetailView):
 
 
 class AdicionarAoFavorito(DetalheProduto):
-    # model = models.Produto
-    template_name = 'produto/detalhe.html'
-    # context_object_name = 'produto'
-    # slug_url_kwarg = 'slug'  # o slug vem da urls.py
-
     def get(self, *args, **kwargs):
         # última pág do usuário
         http_referer = self.request.META.get(
@@ -270,6 +265,7 @@ class AdicionarAoFavorito(DetalheProduto):
                 usuario=self.request.user
             )
 
+        # buscando a tabela do usuário logado
         tabela_favorito_get_object = get_object_or_404(
             Favorito, usuario=self.request.user)
 
@@ -306,6 +302,57 @@ class AdicionarAoFavorito(DetalheProduto):
         messages.success(
             self.request,
             'Produto adicionado aos seus favoritos!!! AEE PORRAAA!'
+        )
+
+        return redirect(http_referer)
+
+
+class RemoverFavorito(DetalheProduto):
+    def get(self, *args, **kwargs):
+        # última pág do usuário
+        http_referer = self.request.META.get(
+            'HTTP_REFERER',
+            reverse('produto:lista')
+        )
+
+        # verificando se usuário está logado
+        if not self.request.user.is_authenticated:
+            messages.error(
+                self.request,
+                'Você precisa fazer o login para realizar esta ação.'
+            )
+            return redirect(http_referer)
+
+        # recuperando slug do produto via URL
+        slug = self.request.get_full_path()
+        slug = slug.split('/')
+        slug = slug.pop()
+
+        # filtrando produto através do slug recuperado
+        produto = get_object_or_404(Produto, slug=slug)
+
+        # verificando se produto existe
+        if not produto.id or not produto.slug:
+            messages.error(
+                self.request,
+                'Produto não existe.'
+            )
+            return redirect(http_referer)
+
+        # buscando a tabela do usuário logado
+        tabela_favorito_get_object = get_object_or_404(
+            Favorito, usuario=self.request.user)
+
+        # listando os produtos do usuário logado
+        lista_fav_por_usuario = ItemFavorito.objects.filter(
+            favorito=tabela_favorito_get_object, slug=slug)
+
+        # excluindo produto selecionado
+        lista_fav_por_usuario.delete()
+
+        messages.warning(
+            self.request,
+            'Produto removido da sua lista de favoritos.'
         )
 
         return redirect(http_referer)

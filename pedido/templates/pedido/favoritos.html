@@ -7,15 +7,20 @@
 {% block conteudo %}
 
 <style>
+    .img-produto-favorito {
+        width: 130px;
+        height: 150px;
+    }
+
     @media (max-width: 500px) {
-        .cart-img {
+        .img-produto-favorito {
             width: 95px;
             height: 115px;
         }
     }
 
     @media (max-width: 400px) {
-        .cart-img {
+        .img-produto-favorito {
             width: 85px;
             height: 105px;
         }
@@ -35,15 +40,15 @@
                     <th>Preço</th>
                     <th>Preço Promo</th>
                 </tr>
-                {% if produto_favorito %}
                 {% for linha in produto_favorito.itemfavorito_set.all %}
                 <tr>
                     <td>
-                        <a class="ml-1" href="#" style="margin-right:-20px;">
+                        <a class="ml-1" href="{% url 'produto:removerfavorito' linha.slug %}"
+                            style="margin-right:-20px;">
                             <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir"
                                 aria-hidden="true"></i>
                         </a>
-                        <img class="cart-img" src="{{ linha.imagem }}">
+                        <img class="cart-img img-produto-favorito" src="{{ linha.imagem }}">
                     </td>
                     <td>
                         <a href="{% url 'produto:detalhe' linha.slug %}"
@@ -61,11 +66,5 @@
 </div>
 
 {% include 'parciais/_pagination.html' %}
-
-{% else %}
-
-<p class="lead text-center" style="font-weight: 350;">Você ainda não tem produtos favoritados :(</p>
-
-{% endif %}
 
 {% endblock %}
