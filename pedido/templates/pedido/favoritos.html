@@ -7,12 +7,36 @@
 {% block conteudo %}
 
 <style>
+    .posIconeExcluir {
+        background-color: #fff;
+        border: 1px solid #cfcfcf;
+        border-radius: 100%;
+        box-shadow: 4px 4px 4px -2px rgb(145 145 145 / 55%);
+        cursor: pointer;
+        height: 30px;
+        left: 2px;
+        padding: 7px;
+        position: absolute;
+        width: 30px;
+        z-index: 9;
+    }
+
+    .iconeExcluir {
+        color: #343a40;
+        margin: 0;
+        overflow: hidden;
+    }
+
     .img-produto-favorito {
         width: 130px;
         height: 150px;
     }
 
     @media (max-width: 500px) {
+        .posIconeExcluir {
+            left: 6px;
+        }
+
         .img-produto-favorito {
             width: 95px;
             height: 115px;
@@ -23,6 +47,10 @@
         .img-produto-favorito {
             width: 85px;
             height: 105px;
+        }
+
+        .posIconeExcluir {
+            left: 2px;
         }
     }
 </style>
