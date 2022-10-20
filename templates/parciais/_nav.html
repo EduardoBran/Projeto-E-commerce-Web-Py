@@ -54,7 +54,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'perfil:criar' %}">Editar meus dados</a>
-                        <a class="dropdown-item" href="{% url 'pedido:lista' %}">Meus pedidos</a>
+                        <a class="dropdown-item" href="{% url 'pedido:conta' %}">Minha conta</a>
                         <a class="dropdown-item" href="{% url 'perfil:logout' %}">Sair</a>
                     </div>
                 </li>
@@ -181,7 +181,7 @@
             <div class="row mt-3">
                 <div class="col-12 text-center">
                     <button class="btn btn-dark botaoSidebar tamanhoBotao border border-dark">
-                        <a href="{% url 'pedido:lista' %}" style="color: white;">Pedidos</a>
+                        <a href="{% url 'pedido:conta' %}" style="color: white;">Conta</a>
                     </button>
 
                     <button class="btn btn-light botaoSidebar2 tamanhoBotao border border-dark">

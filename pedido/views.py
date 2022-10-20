@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, reverse
 from django.views import View
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from perfil.models import Perfil
 from produto.models import Favorito, ItemFavorito, Variacao
 from utils import utils
@@ -229,3 +229,7 @@ class Favoritos(DispatchLoginRequiredMixin, DetailView):
     pk_url_kwarg = 'pk'
     context_object_name = 'produto_favorito'
     paginate_by = 5
+
+
+class Conta(DispatchLoginRequiredMixin, TemplateView):
+    template_name = 'pedido/conta.html'
