@@ -212,7 +212,11 @@
                 style="margin-right:-20px;">
                 <i class=" fa-solid fa-trash-can posIconeExcluir iconeExcluir" aria-hidden="true"></i>
             </a>
+            {% if linha_carrinho.imagem %}
             <img class="img-fluid imagem-produto-carrinho" src="{{ linha_carrinho.imagem }}">
+            {% else %}
+            <img class="img-fluid imagem-produto-carrinho" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+            {% endif %}
 
             <span class="nome-produto"><a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
                     style="color: #262727; text-decoration: underline;">

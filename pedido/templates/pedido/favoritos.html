@@ -48,7 +48,12 @@
                             <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir"
                                 aria-hidden="true"></i>
                         </a>
+                        {% if linha.imagem %}
                         <img class="cart-img img-produto-favorito" src="{{ linha.imagem }}">
+                        {% else %}
+                        <img class="cart-img img-produto-favorito"
+                            src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+                        {% endif %}
                     </td>
                     <td>
                         <a href="{% url 'produto:detalhe' linha.slug %}"
