@@ -6,6 +6,13 @@
 
 {% block conteudo %}
 
+<div class="mb-3">
+    <a href="{% url 'pedido:conta' %}" style="color: #262727;">
+        Início</a><span style="color: #939393;">
+        <i class="fa-solid fa-2xs fa-angles-right"></i> Pedidos
+    </span>
+</div>
+
 <div class="row">
     <div class="col">
         <h3 class="mb-4">Pedidos de {{ user }}</h3>

@@ -38,10 +38,20 @@
         border-right: 5px solid #f1f1f1;
     }
 
+    .coluna-baloes-esq a {
+        color: #262727;
+        text-decoration: none;
+    }
+
     .coluna-baloes-dir {
         background-color: white;
         border-radius: 20px;
         border-left: 5px solid #f1f1f1;
+    }
+
+    .coluna-baloes-dir a {
+        color: #262727;
+        text-decoration: none;
     }
 
     .conteudo-baloes {
@@ -73,9 +83,6 @@
     <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
 
         <div class="conteudo-menu">
-            <p class="lead text-center texto-menu">Início</p>
-        </div>
-        <div class="conteudo-menu">
             <a href="{% url 'pedido:lista' %}">
                 <p class="lead text-center texto-menu">Pedidos</p>
             </a>
@@ -93,8 +100,13 @@
             </a>
         </div>
         <div class="conteudo-menu">
-            <a href="{% url 'perfil:criar' %}">
+            <a href="{% url 'suporte:perguntas' %}">
                 <p class="lead text-center texto-menu">Perguntas</p>
+            </a>
+        </div>
+        <div class="conteudo-menu">
+            <a href="{% url 'suporte:privacidade' %}">
+                <p class="lead text-center texto-menu">Privacidade</p>
             </a>
         </div>
         <div class="conteudo-menu">
@@ -104,133 +116,104 @@
         </div>
 
     </div>
+
     <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
 
     <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 padding-baloes">
-
         <div class="row">
-
             <div class="col-6 coluna-baloes-esq">
-                <div class="row conteudo-baloes">
-                    <div class="col-12 mt-3 mb-3">
-                        <a href="{% url 'pedido:lista' %}">
-                            <i class="fa-solid fa-magnifying-glass fa-2xl" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="col-12">
-                        <a href=" {% url 'pedido:lista' %}">
+                <a href="{% url 'pedido:lista' %}" title="clique para ver seus pedidos">
+                    <div class="row conteudo-baloes">
+                        <div class="col-12 mt-3 mb-3">
+                            <i class="fa-regular fa-file-lines fa-2xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-12">
                             <span class="texto-baloes">PEDIDOS</span>
-                        </a>
-                        <a href="{% url 'pedido:lista' %}">
                             <p><small>clique para ver lista de favoritos</small></p>
-                        </a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-
             <div class="col-6 coluna-baloes-dir">
-                <div class="row conteudo-baloes">
-                    <div class="col-12 mt-3 mb-3">
-                        {% for favorito in favoritos %}
-                        <a href="{% url 'pedido:favoritos' favorito.id %}">
-                            <i class="fa-solid fa-heart fa-lg fa-2xl" aria-hidden="true"></i>
-                        </a>
-                        {% endfor %}
-                    </div>
-                    <div class="col-12">
-                        {% for favorito in favoritos %}
-                        <a href="{% url 'pedido:favoritos' favorito.id %}">
+                {% for favorito in favoritos %}
+                <a href="{% url 'pedido:favoritos' favorito.id %}" title="clique para ver seus favoritos">
+                    <div class="row conteudo-baloes">
+                        <div class="col-12 mt-3 mb-3">
+                            <i class="fa-regular fa-heart fa-lg fa-2xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-12">
                             <span class="texto-baloes">FAVORITOS</span>
-                        </a>
-                        <a href="{% url 'pedido:favoritos' favorito.id %}">
                             <p><small>clique para ver lista de favoritos</small></p>
-                        </a>
-                        {% endfor %}
+                        </div>
                     </div>
-                </div>
+                </a>
+                {% endfor %}
             </div>
-
         </div>
+        <!--end row 1 baloes-->
 
         <div class="row mt-3">
-
             <div class="col-6 coluna-baloes-esq">
-                <div class="row conteudo-baloes">
-                    <div class="col-12 mt-3 mb-3">
-                        <a href="{% url 'perfil:criar' %}">
+                <a href="{% url 'perfil:criar' %}" title="clique para alterar seus dados">
+                    <div class="row conteudo-baloes">
+                        <div class="col-12 mt-3 mb-3">
                             <i class="fa-regular fa-pen-to-square fa-2xl" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="col-12 conteudo-baloes">
-                        <a href="{% url 'perfil:criar' %}">
+                        </div>
+                        <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">CADASTRO</span>
-                        </a>
-                        <a href="{% url 'perfil:criar' %}">
                             <p><small>clique para alterar seus dados</small></p>
-                        </a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-
             <div class="col-6 coluna-baloes-dir">
-                <div class="row conteudo-baloes">
-                    <div class="col-12 mt-3 mb-3">
-                        <a href="{% url 'perfil:criar' %}">
+                <a href="{% url 'perfil:criar' %}" title="clique para alterar seus dados de endereço">
+                    <div class="row conteudo-baloes">
+                        <div class="col-12 mt-3 mb-3">
                             <i class="fa-solid fa-location-dot fa-2xl" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="col-12 conteudo-baloes">
-                        <a href="{% url 'perfil:criar' %}">
+                        </div>
+                        <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">ENDEREÇO</span>
-                        </a>
-                        <a href="{% url 'perfil:criar' %}">
                             <p><small>clique para alterar seu endereço</small></p>
-                        </a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
+        <!--end row 2 baloes-->
 
         <div class="row mt-3">
-
             <div class="col-6 coluna-baloes-esq">
-                <div class="row conteudo-baloes">
-                    <div class="col-12 mt-3 mb-3">
-                        <a href="{% url 'suporte:perguntas' %}">
+                <a href="{% url 'suporte:perguntas' %}" title="clique para ver perguntas e respostas">
+                    <div class="row conteudo-baloes">
+                        <div class="col-12 mt-3 mb-3">
                             <i class="fa-regular fa-circle-question fa-2xl" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="col-12 conteudo-baloes">
-                        <a href="{% url 'suporte:perguntas' %}">
+                        </div>
+                        <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">PERGUNTAS</span>
-                        </a>
-                        <a href="{% url 'suporte:perguntas' %}">
                             <p><small>clique para ver perguntas e respotas</small></p>
-                        </a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6 coluna-baloes-dir">
-                <div class="row conteudo-baloes">
-                    <div class="col-12 mt-3 mb-3">
-                        <a href="{% url 'suporte:privacidade' %}">
-                            <i class="fa-solid fa-shield fa-lg fa-2xl" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="col-12 conteudo-baloes">
-                        <a href="{% url 'suporte:privacidade' %}">
+                <a href="{% url 'suporte:privacidade' %}" title="clique para ver sobre política de privacidade">
+                    <div class="row conteudo-baloes">
+                        <div class="col-12 mt-3 mb-3">
+                            <i class="fa-solid fa-shield-halved fa-lg fa-2xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">PRIVACIDADE</span>
-                        </a>
-                        <a href="{% url 'suporte:privacidade' %}">
                             <p><small>clique para ver política de privacidade</small></p>
-                        </a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
-
+        <!--end row 3 baloes-->
     </div>
-
+    <!--col todos baloes-->
 </div>
+<!--end row todos baloes-->
 
 {% endblock %}

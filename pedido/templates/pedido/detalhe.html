@@ -7,6 +7,14 @@
 
 {% block conteudo %}
 
+<div class="mb-3">
+    <a href="{% url 'pedido:lista' %}" style="color: #262727;">
+        Pedidos</a>
+    <span style="color: #939393;">
+        <i class="fa-solid fa-2xs fa-angles-right"></i> Pedido {{ pedido.id }}
+    </span>
+</div>
+
 {% include 'parciais/_pedido.html' %}
 
 {% endblock %}
