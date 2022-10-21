@@ -269,24 +269,22 @@ class AdicionarAoFavorito(DetalheProduto):
         tabela_favorito_get_object = get_object_or_404(
             Favorito, usuario=self.request.user)
 
-        # verificar se o produto ja existe na tabela de cada usuário
+        # buscando a lista dos produtos favoritos do usuario
         lista_fav_por_usuario = ItemFavorito.objects.filter(
             favorito=tabela_favorito_get_object).values_list()
 
+        # verificando se o produto ja existe na tabela de cada usuário
         lista_fav_por_usuario = list(lista_fav_por_usuario)
         lista_fav_por_usuario = str(lista_fav_por_usuario)
 
-        slug_novo = f"'"+slug+"'"
+        slug_para_verificacao = f"'"+slug+"'"
 
-        if slug_novo in lista_fav_por_usuario:
-            print('tem')
+        if slug_para_verificacao in lista_fav_por_usuario:
             messages.warning(
                 self.request,
-                'Produto JÁ FAVORITADO!!!.'
+                f'O produto {produto_nome} já está na sua lista de favoritos.'
             )
             return redirect(http_referer)
-        else:
-            print('nao tem')
 
         # criando produto favorito no banco
         ItemFavorito.objects.create(
@@ -301,7 +299,7 @@ class AdicionarAoFavorito(DetalheProduto):
 
         messages.success(
             self.request,
-            'Produto adicionado aos seus favoritos!!! AEE PORRAAA!'
+            f'O produto {produto_nome} foi adicionado a sua lista de favoritos.'
         )
 
         return redirect(http_referer)
