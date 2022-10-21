@@ -73,8 +73,8 @@
                     <td>
                         <a class="ml-1" href="{% url 'produto:removerfavorito' linha.slug %}"
                             style="margin-right:-20px;">
-                            <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir"
-                                aria-hidden="true"></i>
+                            <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir" aria-hidden="true"
+                                title="remover produto"></i>
                         </a>
                         {% if linha.imagem %}
                         <img class="cart-img img-produto-favorito" src="{{ linha.imagem }}">

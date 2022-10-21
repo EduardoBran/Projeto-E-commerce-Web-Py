@@ -7,20 +7,230 @@
 
 {% block conteudo %}
 
-<h1 class="mt-1 mb-4">Layout em construção...</h1>
+<style>
+    .conteudo-menu {
+        padding: 12px;
+        background-color: white;
+        margin-top: 14px;
+        margin-bottom: 14px;
+        border-radius: 20px;
+    }
 
-<a href="{% url 'pedido:lista' %}"><button class="btn btn-info">Meus pedidos</button></a>
+    .conteudo-menu,
+    .conteudo-baloes a {
+        color: #262727;
+    }
 
-{% if favoritos %}
-{% for favorito in favoritos %}
+    .texto-menu {
+        margin: auto;
+        font-weight: 400;
+        color: #262727;
+    }
 
-<a href="{% url 'pedido:favoritos' favorito.id %}">
-    <button class="btn btn-info">Favorito</button></a>
+    .padding-baloes {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
 
-{% endfor %}
-{% else %}
+    .coluna-baloes-esq {
+        background-color: white;
+        border-radius: 20px;
+        border-right: 5px solid #f1f1f1;
+    }
 
-<p class="lead mt-5 text-danger">Você ainda não favoritou nenhum produto!</p>
-{% endif %}
+    .coluna-baloes-dir {
+        background-color: white;
+        border-radius: 20px;
+        border-left: 5px solid #f1f1f1;
+    }
+
+    .conteudo-baloes {
+        text-align: center;
+
+    }
+
+    @media (max-width: 999px) {
+        .texto-titulo-conta {
+            text-align: center;
+        }
+    }
+
+    /* @media (max-width: 700px) {
+        .texto-titulo-conta {
+            text-align: center;
+        }
+    } */
+</style>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <h2 class="texto-titulo-conta">Sua conta</h2>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+        <div class="conteudo-menu">
+            <p class="lead text-center texto-menu">Início</p>
+        </div>
+        <div class="conteudo-menu">
+            <a href="{% url 'pedido:lista' %}">
+                <p class="lead text-center texto-menu">Pedidos</p>
+            </a>
+        </div>
+        <div class="conteudo-menu">
+            {% for favorito in favoritos %}
+            <a href="{% url 'pedido:favoritos' favorito.id %}">
+                <p class="lead text-center texto-menu">Favoritos</p>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="conteudo-menu">
+            <a href="{% url 'perfil:criar' %}">
+                <p class="lead text-center texto-menu">Cadastro</p>
+            </a>
+        </div>
+        <div class="conteudo-menu">
+            <a href="{% url 'perfil:criar' %}">
+                <p class="lead text-center texto-menu">Perguntas</p>
+            </a>
+        </div>
+        <div class="conteudo-menu">
+            <a href="{% url 'perfil:logout' %}">
+                <p class="lead text-center texto-menu">Logout</p>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
+
+    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 padding-baloes">
+
+        <div class="row">
+
+            <div class="col-6 coluna-baloes-esq">
+                <div class="row conteudo-baloes">
+                    <div class="col-12 mt-3 mb-3">
+                        <a href="{% url 'pedido:lista' %}">
+                            <i class="fa-solid fa-magnifying-glass fa-2xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <a href=" {% url 'pedido:lista' %}">
+                            <span class="texto-baloes">PEDIDOS</span>
+                        </a>
+                        <a href="{% url 'pedido:lista' %}">
+                            <p><small>clique para ver lista de favoritos</small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 coluna-baloes-dir">
+                <div class="row conteudo-baloes">
+                    <div class="col-12 mt-3 mb-3">
+                        {% for favorito in favoritos %}
+                        <a href="{% url 'pedido:favoritos' favorito.id %}">
+                            <i class="fa-solid fa-heart fa-lg fa-2xl" aria-hidden="true"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    <div class="col-12">
+                        {% for favorito in favoritos %}
+                        <a href="{% url 'pedido:favoritos' favorito.id %}">
+                            <span class="texto-baloes">FAVORITOS</span>
+                        </a>
+                        <a href="{% url 'pedido:favoritos' favorito.id %}">
+                            <p><small>clique para ver lista de favoritos</small></p>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-6 coluna-baloes-esq">
+                <div class="row conteudo-baloes">
+                    <div class="col-12 mt-3 mb-3">
+                        <a href="{% url 'perfil:criar' %}">
+                            <i class="fa-regular fa-pen-to-square fa-2xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-12 conteudo-baloes">
+                        <a href="{% url 'perfil:criar' %}">
+                            <span class="texto-baloes">CADASTRO</span>
+                        </a>
+                        <a href="{% url 'perfil:criar' %}">
+                            <p><small>clique para alterar seus dados</small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 coluna-baloes-dir">
+                <div class="row conteudo-baloes">
+                    <div class="col-12 mt-3 mb-3">
+                        <a href="{% url 'perfil:criar' %}">
+                            <i class="fa-solid fa-location-dot fa-2xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-12 conteudo-baloes">
+                        <a href="{% url 'perfil:criar' %}">
+                            <span class="texto-baloes">ENDEREÇO</span>
+                        </a>
+                        <a href="{% url 'perfil:criar' %}">
+                            <p><small>clique para alterar seu endereço</small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-6 coluna-baloes-esq">
+                <div class="row conteudo-baloes">
+                    <div class="col-12 mt-3 mb-3">
+                        <a href="{% url 'suporte:perguntas' %}">
+                            <i class="fa-regular fa-circle-question fa-2xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-12 conteudo-baloes">
+                        <a href="{% url 'suporte:perguntas' %}">
+                            <span class="texto-baloes">PERGUNTAS</span>
+                        </a>
+                        <a href="{% url 'suporte:perguntas' %}">
+                            <p><small>clique para ver perguntas e respotas</small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 coluna-baloes-dir">
+                <div class="row conteudo-baloes">
+                    <div class="col-12 mt-3 mb-3">
+                        <a href="{% url 'suporte:privacidade' %}">
+                            <i class="fa-solid fa-shield fa-lg fa-2xl" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-12 conteudo-baloes">
+                        <a href="{% url 'suporte:privacidade' %}">
+                            <span class="texto-baloes">PRIVACIDADE</span>
+                        </a>
+                        <a href="{% url 'suporte:privacidade' %}">
+                            <p><small>clique para ver política de privacidade</small></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}
