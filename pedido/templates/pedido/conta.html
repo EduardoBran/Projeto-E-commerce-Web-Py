@@ -60,7 +60,25 @@
 
     .conteudo-baloes {
         text-align: center;
+    }
 
+    .texto-baloes {
+        font-family: inherit;
+        font-weight: bold;
+        text-rendering: optimizelegibility;
+        box-sizing: border-box;
+        letter-spacing: .25em;
+        line-height: 1;
+        color: #555;
+        text-transform: uppercase;
+        font-size: .975rem;
+    }
+
+    .texto-baloes-small {
+        font-family: inherit;
+        text-rendering: optimizelegibility;
+        box-sizing: border-box;
+        line-height: 1;
     }
 
     @media (max-width: 999px) {
@@ -84,45 +102,47 @@
 
 <div class="row mb-5">
 
+    <!-- menu -->
     <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
-
-        <div class="conteudo-menu">
-            <a href="{% url 'pedido:lista' %}">
+        <a href="{% url 'pedido:lista' %}" style="text-decoration: none;">
+            <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Pedidos</p>
-            </a>
-        </div>
-        <div class="conteudo-menu">
-            {% for favorito in favoritos %}
-            <a href="{% url 'pedido:favoritos' favorito.id %}">
+            </div>
+        </a>
+        {% for favorito in favoritos %}
+        <a href="{% url 'pedido:favoritos' favorito.id %}" style="text-decoration: none;">
+            <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Favoritos</p>
-            </a>
-            {% endfor %}
-        </div>
-        <div class="conteudo-menu">
-            <a href="{% url 'perfil:criar' %}">
+            </div>
+        </a>
+        {% endfor %}
+        <a href="{% url 'perfil:criar' %}" style="text-decoration: none;">
+            <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Cadastro</p>
-            </a>
-        </div>
-        <div class="conteudo-menu">
-            <a href="{% url 'suporte:perguntas' %}">
+            </div>
+        </a>
+        <a href="{% url 'suporte:perguntas' %}" style="text-decoration: none;">
+            <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Perguntas</p>
-            </a>
-        </div>
-        <div class="conteudo-menu">
-            <a href="{% url 'suporte:privacidade' %}">
+            </div>
+        </a>
+        <a href="{% url 'suporte:privacidade' %}" style="text-decoration: none;">
+            <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Privacidade</p>
-            </a>
-        </div>
-        <div class="conteudo-menu">
-            <a href="{% url 'perfil:logout' %}">
+            </div>
+        </a>
+        <a href="{% url 'perfil:logout' %}" style="text-decoration: none;">
+            <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Logout</p>
-            </a>
-        </div>
-
+            </div>
+        </a>
     </div>
+    <!--end menu-->
 
+    <!-- espaçamento -->
     <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
 
+    <!-- balões -->
     <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 padding-baloes">
         <div class="row">
             <div class="col-6 coluna-baloes-esq">
@@ -133,7 +153,7 @@
                         </div>
                         <div class="col-12">
                             <span class="texto-baloes">PEDIDOS</span>
-                            <p><small>clique para ver lista de favoritos</small></p>
+                            <p><small class="texto-baloes-small">clique para ver lista de favoritos</small></p>
                         </div>
                     </div>
                 </a>
@@ -147,7 +167,7 @@
                         </div>
                         <div class="col-12">
                             <span class="texto-baloes">FAVORITOS</span>
-                            <p><small>clique para ver lista de favoritos</small></p>
+                            <p><small class="texto-baloes-small">clique para ver lista de favoritos</small></p>
                         </div>
                     </div>
                 </a>
@@ -165,7 +185,7 @@
                         </div>
                         <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">CADASTRO</span>
-                            <p><small>clique para alterar seus dados</small></p>
+                            <p><small class="texto-baloes-small">clique para alterar seus dados</small></p>
                         </div>
                     </div>
                 </a>
@@ -178,7 +198,7 @@
                         </div>
                         <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">ENDEREÇO</span>
-                            <p><small>clique para alterar seu endereço</small></p>
+                            <p><small class="texto-baloes-small">clique para alterar seu endereço</small></p>
                         </div>
                     </div>
                 </a>
@@ -195,7 +215,7 @@
                         </div>
                         <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">PERGUNTAS</span>
-                            <p><small>clique para ver perguntas e respotas</small></p>
+                            <p><small class="texto-baloes-small">clique para ver perguntas e respotas</small></p>
                         </div>
                     </div>
                 </a>
@@ -208,7 +228,7 @@
                         </div>
                         <div class="col-12 conteudo-baloes">
                             <span class="texto-baloes">PRIVACIDADE</span>
-                            <p><small>clique para ver política de privacidade</small></p>
+                            <p><small class="texto-baloes-small">clique para ver política de privacidade</small></p>
                         </div>
                     </div>
                 </a>
@@ -216,7 +236,7 @@
         </div>
         <!--end row 3 baloes-->
     </div>
-    <!--col todos baloes-->
+    <!-- end col baloes-->
 </div>
 <!--end row todos baloes-->
 
