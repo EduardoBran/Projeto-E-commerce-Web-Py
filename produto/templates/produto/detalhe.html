@@ -135,7 +135,7 @@
     }
 
     .textoQtd {
-        margin-top: 20px;
+        margin-top: 28px;
         margin-bottom: 5px;
     }
 
@@ -189,7 +189,7 @@
 
     .msgBotaoDesativado {
         line-height: 0.1;
-        font-size: .8rem;
+        font-size: .75rem;
         font-family: 'Roboto', sans-serif;
         margin-left: 1px;
         margin-top: 10px;
@@ -527,9 +527,11 @@
                             onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="2" size="2" /> -->
                     </div>
 
-                    <!-- botão adicionar ao carrinho -->
+                    <!-- botôes -->
                     <div class="text-left">
                         <div class="row">
+
+                            <!-- botão adicionar ao carrinho -->
                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                                 <button type="submit" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile"
                                     title="adicionar produto ao carrinho">
@@ -540,19 +542,32 @@
                                     Informe um tamanho para adicionar ao carrinho.
                                 </p>
                             </div>
+
+                            <!-- botão adicionar aos favoritos -->
                             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                {% if request.user.is_authenticated %}
                                 <a href="{% url 'produto:adicionarfavorito' produto.slug %}"
-                                    style="text-decoration: none; color: #fff;"><button type="button"
-                                        class="btn btn-info btn-lg btn-block botaoCarrinhoMobile"
+                                    style="text-decoration: none; color: #fff;">
+                                    <button type="button" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile"
                                         title="adicionar produto aos favoritos">
                                         <i class="fa-solid fa-heart-circle-plus fa-lg" aria-hidden="true"></i>
-                                        <span class="texto-carrinho ml-2">Adicionar aos favoritos</a></span>
+                                        <span class="texto-carrinho ml-2">Adicionar aos favoritos</span>
+                                    </button>
+                                </a>
+                                {% else %}
+                                <button type="button" class="btn btn-info btn-lg btn-block botaoCarrinhoMobile"
+                                    title="adicionar produto aos favoritos" disabled>
+                                    <i class="fa-solid fa-heart-circle-plus fa-lg" aria-hidden="true"></i>
+                                    <span class="texto-carrinho ml-2">Adicionar aos favoritos</span>
                                 </button>
+                                <p class="msgBotaoDesativado">
+                                    Faça o login para adicionar a sua lista de favoritos.
+                                </p>
+                                {% endif %}
                             </div>
-                        </div>
 
+                        </div> <!-- end row botoes -->
                     </div>
-
 
                 </form>
 
