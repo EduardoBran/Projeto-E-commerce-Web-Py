@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
+from produto.models import Favorito
 
 from . import forms, models
 
@@ -121,6 +122,12 @@ class Criar(BasePerfil):
         self.request.session['carrinho'] = self.carrinho
         self.request.session.save()
 
+        # necessário para criar model favorito para o usuário cadastrado
+        if not Favorito.objects.filter(usuario=self.request.user).exists():
+            Favorito.objects.create(
+                usuario=self.request.user
+            )
+
         messages.success(
             self.request,
             'Seu cadastro foi criado ou atualizado com sucesso.'
@@ -129,6 +136,7 @@ class Criar(BasePerfil):
             self.request,
             'Você fez login e pode concluir sua compra.'
         )
+
         return redirect('produto:carrinho')
 
 
@@ -161,6 +169,12 @@ class Login(View):
             return redirect('perfil:entrar')
 
         login(self.request, user=usuario)
+
+        # necessário para usuários já cadastrados e não foram criados no bd de favoritos
+        if not Favorito.objects.filter(usuario=self.request.user).exists():
+            Favorito.objects.create(
+                usuario=self.request.user
+            )
 
         messages.success(
             self.request,

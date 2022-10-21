@@ -256,11 +256,8 @@ class AdicionarAoFavorito(DetalheProduto):
         slug = produto.slug
         imagem = produto.imagem
 
-        # verificando se o usuario ja está criado na tabela favorito
-        if Favorito.objects.filter(usuario=self.request.user).exists():
-            print('usuario com perfil criado em favoritos')
-        else:
-            print('esse usuario ainda nao esta criado')
+        # verificando se o usuario ja está criado na tabela favorito (se nao existir, ele cria)
+        if not Favorito.objects.filter(usuario=self.request.user).exists():
             Favorito.objects.create(
                 usuario=self.request.user
             )
