@@ -338,7 +338,7 @@ class RemoverFavorito(DetalheProduto):
         tabela_favorito_get_object = get_object_or_404(
             Favorito, usuario=self.request.user)
 
-        # listando os produtos do usuário logado
+        # listando o produto do usuário pra excluir
         lista_fav_por_usuario = ItemFavorito.objects.filter(
             favorito=tabela_favorito_get_object, slug=slug)
 
@@ -479,10 +479,6 @@ class AdicionarAoCarrinhoModal(View):
         variacao_id = self.request.GET.get(
             'vid')  # valor vindo do form
 
-        print('\n*************\n')
-        print(variacao_id)
-        print('\n*************\n')
-
         if not variacao_id:  # vid=?
             messages.error(
                 self.request,
@@ -602,10 +598,6 @@ class RemoverDoCarrinhoModal(View):
         variacao_id = self.request.GET.get(
             'vid')  # valor vindo do form
 
-        print('\n*************\n')
-        print(variacao_id)
-        print('\n*************\n')
-
         if not variacao_id:  # vid=?
             messages.error(
                 self.request,
@@ -654,6 +646,7 @@ class RemoverDoCarrinhoModal(View):
                 'imagem': imagem,
             }
 
+        # condicao para remover todos os produtos
         if self.request.session['carrinho'][variacao_id]['quantidade'] <= 0:
             messages.warning(
                 self.request,
