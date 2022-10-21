@@ -122,7 +122,7 @@ class Criar(BasePerfil):
         self.request.session['carrinho'] = self.carrinho
         self.request.session.save()
 
-        # necessário para criar model favorito para o usuário cadastrado
+        # necessário para criar model favorito para o usuário cadastrado para aparecer na page conta
         if not Favorito.objects.filter(usuario=self.request.user).exists():
             Favorito.objects.create(
                 usuario=self.request.user

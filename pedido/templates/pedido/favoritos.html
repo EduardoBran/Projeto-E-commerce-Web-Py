@@ -7,6 +7,15 @@
 {% block conteudo %}
 
 <style>
+    .texto-titulo {
+        font-weight: 400;
+        font-size: 2.2rem;
+    }
+
+    .texto-sub-titulo {
+        font-size: 1.2rem;
+    }
+
     .posIconeExcluir {
         background-color: #fff;
         border: 1px solid #cfcfcf;
@@ -14,15 +23,15 @@
         box-shadow: 4px 4px 4px -2px rgb(145 145 145 / 55%);
         cursor: pointer;
         height: 30px;
-        left: 2px;
         padding: 7px;
         position: absolute;
         width: 30px;
         z-index: 9;
+
     }
 
     .iconeExcluir {
-        color: #343a40;
+        color: #262727;
         margin: 0;
         overflow: hidden;
     }
@@ -32,7 +41,27 @@
         height: 150px;
     }
 
+    .msgSemProdutos {
+        display: none;
+    }
+
+    .msgSemProdutos .lead {
+        color: red;
+        font-size: 1.4rem;
+    }
+
     @media (max-width: 500px) {
+
+        .texto-titulo {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .texto-sub-titulo {
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
         .posIconeExcluir {
             left: 6px;
         }
@@ -40,6 +69,10 @@
         .img-produto-favorito {
             width: 95px;
             height: 115px;
+        }
+
+        .msgSemProdutos .lead {
+            font-size: 1.1rem;
         }
     }
 
@@ -51,6 +84,10 @@
 
         .posIconeExcluir {
             left: 2px;
+        }
+
+        .msgSemProdutos .lead {
+            font-size: 1rem;
         }
     }
 </style>
@@ -64,10 +101,11 @@
 
 <div class="row">
     <div class="col">
-        <h3 class="mb-4">Favoritos de {{ user }}</h3>
-        <p>Abaixo todos os seus produtos favoritos adicionados na loja.</p>
+        <p class="lead mb-4 texto-titulo">Olá <span style="text-decoration: underline;">{{ user.first_name }}</span>
+        </p>
+        <p class="lead mb-4 texto-sub-titulo">Aqui está a lista com todos os seus produtos favoritos.</p>
 
-        <div class="table-responsive mt-3">
+        <div class="table-responsive text-center mt-3">
             <table class="table">
                 <tr>
                     <th>Imagem</th>
@@ -76,10 +114,10 @@
                     <th>Preço Promo</th>
                 </tr>
                 {% for linha in produto_favorito.itemfavorito_set.all %}
-                <tr>
+                <tr id="conteudo-tabela-favoritos">
                     <td>
-                        <a class="ml-1" href="{% url 'produto:removerfavorito' linha.slug %}"
-                            style="margin-right:-20px;">
+                        <a class="" href="{% url 'produto:removerfavorito' linha.slug %}">
+                            <!-- style="margin-right:-20px;"> -->
                             <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir" aria-hidden="true"
                                 title="remover produto"></i>
                         </a>
@@ -103,8 +141,27 @@
             </table>
         </div>
     </div>
+    <div class="col-12 mt-2">
+        <div class="text-center msgSemProdutos">
+            <p class="lead">Você não possui produtos na sua lista de favoritos.</p>
+        </div>
+    </div>
 </div>
 
 {% include 'parciais/_pagination.html' %}
+
+
+<script>
+
+    let tabela = document.getElementById('conteudo-tabela-favoritos')
+    let msg_sem_produtos = document.querySelector(".msgSemProdutos"); //setAttribute apenas com querySelector
+
+    if (tabela == null) {
+        console.log('tabela vazia')
+        msg_sem_produtos.setAttribute('style', 'display: inline');
+    }
+
+</script>
+
 
 {% endblock %}
