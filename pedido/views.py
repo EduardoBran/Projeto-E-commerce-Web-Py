@@ -191,7 +191,7 @@ class SalvarPedido(View):
                     preco=v['preco_quantitativo'],
                     preco_promocional=v['preco_quantitativo_promocional'],
                     quantidade=v['quantidade'],
-                    imagem=v['imagem'],
+                    imagem=v['imagem'] or '',
                 ) for v in carrinho.values()
             ]
         )

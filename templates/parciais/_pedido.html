@@ -36,7 +36,11 @@
                 {% for linha in pedido.itempedido_set.all %}
                 <tr>
                     <td class="d-none d-lg-block">
+                        {% if linha.imagem %}
                         <img class="cart-img" src="{{ linha.imagem }}">
+                        {% else %}
+                        <img class="cart-img" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+                        {% endif %}
                     </td>
                     <td>{{ linha.produto }}</td>
                     <td>{{ linha.variacao }}</td>
