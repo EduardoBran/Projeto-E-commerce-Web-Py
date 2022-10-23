@@ -8,6 +8,16 @@
 </head>
 
 <body style='background-color: #f1f1f1;'>
+    <style>
+        ::selection {
+        background-color: #17a2b8;   
+        color: #fff;
+        }
+
+        input {
+            caret-color: #17a2b8;
+        }
+    </style>
     {% block nav %}{% include 'parciais/_nav.html' %}{% endblock %}
     {% block conteudoHome %}{% endblock %}
     {% block conteudoPageDetalhe %}{% endblock %}
