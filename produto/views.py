@@ -233,7 +233,7 @@ class AdicionarAoFavorito(DetalheProduto):
             )
             return redirect(http_referer)
 
-        # recuperando slug do produto via URL
+        # recuperando slug do produto via URL (por isso é necessário enviar o slug via url com o <str:slug>)
         slug = self.request.get_full_path()
         slug = slug.split('/')
         slug = slug.pop()

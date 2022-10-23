@@ -24,11 +24,26 @@
                             {% else %}
                             <img class="img-fluid" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
                             {% endif %}
-                            <div class="hover-box">
+
+                            <!-- <div class="hover-box">
                                 <ul class="list-inline">
-                                    <li class="list-inline-item">lançamento!</i></li>
+                                    <li class="list-inline-item">destaque!</i></li>
                                 </ul>
+                            </div> -->
+
+                            <div class="coracao-favorito" style="
+                            position: absolute; 
+                            top: 0; 
+                            right: 0;
+                            font-size: 1.8em;
+                            color: #5e17eb;
+                            ">
+                                <a href="{% url 'produto:adicionarfavorito' produto.slug %}" style="color: #5e17eb;"
+                                    title="adicionar aos favoritos">
+                                    <i class="fa-solid fa-heart-circle-plus" aria-hidden="true"></i>
+                                </a>
                             </div>
+
                         </a>
                     </div>
                     <!-- end item img -->

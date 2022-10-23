@@ -57,3 +57,12 @@ ul.errorlist li {
 .cart-img {
     max-width: 150px;
 }
+
+::selection {
+    background-color: #17a2b8;   
+    color: #fff;
+}
+
+input {
+    caret-color: #17a2b8;
+}
