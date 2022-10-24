@@ -6,6 +6,8 @@
 
 {% block conteudo %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <style>
     .texto-titulo {
         font-weight: 400;
@@ -45,6 +47,7 @@
     .msgSemProdutos .lead {
         color: red;
         font-size: 1.4rem;
+        font-weight: 350;
     }
 
     @media (max-width: 500px) {
@@ -95,59 +98,76 @@
     </span>
 </div>
 
-<div class="row">
-    <div class="col">
-        <p class="lead mb-4 texto-titulo">Olá <span style="text-decoration: underline;">{{ user.first_name }}</span>
-        </p>
-        <p class="lead mb-4 texto-sub-titulo">Aqui está a lista com todos os seus produtos favoritos.</p>
+<div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
+    {% include 'parciais/_carregamento.html' %}
+    <i class="fa-solid fa-heart-circle-check fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
+    <p class="lead mt-2">Carregando sua lista de favoritos</p>
+</div>
 
-        <div class="table-responsive text-center mt-3">
-            <table class="table">
-                <tr>
-                    <th>Imagem</th>
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Preço Promo</th>
-                </tr>
-                {% for linha in produto_favorito.itemfavorito_set.all %}
-                <tr id="conteudo-tabela-favoritos">
-                    <td>
-                        <a class="" href="{% url 'produto:removerfavorito' linha.slug %}">
-                            <!-- style="margin-right:-20px;"> -->
-                            <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir" aria-hidden="true"
-                                title="remover produto"></i>
-                        </a>
-                        {% if linha.imagem %}
-                        <img class="cart-img img-produto-favorito" src="{{ linha.imagem }}">
-                        {% else %}
-                        <img class="cart-img img-produto-favorito"
-                            src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a href="{% url 'produto:detalhe' linha.slug %}"
-                            style="color: #262727; text-decoration: underline;">{{ linha.produto }}
-                        </a>
-                    </td>
-                    <td>{{ linha.preco }}</td>
-                    <td>{{ linha.preco_promocional }}</td>
-                </tr>
-                {% endfor %}
+<div id="conteudo" style="display: none">
 
-            </table>
+    <div class="row">
+        <div class="col">
+            <p class="lead mb-4 texto-titulo">Olá <span style="text-decoration: underline;">{{ user.first_name }}</span>
+            </p>
+            <p class="lead mb-4 texto-sub-titulo">Aqui está a lista com todos os seus produtos favoritos.</p>
+
+            <div class="table-responsive text-center mt-3">
+                <table class="table">
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Preço Promo</th>
+                    </tr>
+                    {% for linha in produto_favorito.itemfavorito_set.all %}
+                    <tr id="conteudo-tabela-favoritos">
+                        <td>
+                            <a class="" href="{% url 'produto:removerfavorito' linha.slug %}">
+                                <!-- style="margin-right:-20px;"> -->
+                                <i class="fa-solid fa-heart-circle-minus posIconeExcluir iconeExcluir"
+                                    aria-hidden="true" title="remover produto"></i>
+                            </a>
+                            {% if linha.imagem %}
+                            <img class="cart-img img-produto-favorito" src="{{ linha.imagem }}">
+                            {% else %}
+                            <img class="cart-img img-produto-favorito"
+                                src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'produto:detalhe' linha.slug %}"
+                                style="color: #262727; text-decoration: underline;">{{ linha.produto }}
+                            </a>
+                        </td>
+                        <td>{{ linha.preco }}</td>
+                        <td>{{ linha.preco_promocional }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
         </div>
-    </div>
-    <div class="col-12 mt-2">
-        <div class="text-center msgSemProdutos">
-            <p class="lead">Você não possui produtos na sua lista de favoritos.</p>
+        <div class="col-12 mt-4 mb-2">
+            <div class="text-center msgSemProdutos">
+                <p class="lead">Você não possui produtos na sua lista de favoritos.</p>
+            </div>
         </div>
     </div>
 </div>
 
-{% include 'parciais/_pagination.html' %}
-
 <script>
+    // funcao pre loader
+    var i = setInterval(function () {
 
+        clearInterval(i);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("conteudo").style.display = "inline";
+
+    }, 2500);
+
+    // funcao verfica se tem produto na tabela
     let tabela = document.getElementById('conteudo-tabela-favoritos')
     let msg_sem_produtos = document.querySelector(".msgSemProdutos"); //setAttribute apenas com querySelector
 
@@ -155,7 +175,6 @@
         console.log('tabela vazia')
         msg_sem_produtos.setAttribute('style', 'display: inline');
     }
-
 </script>
 
 {% endblock %}

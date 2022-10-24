@@ -8,6 +8,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+<div class="mb-3">
+    <a href="{% url 'pedido:conta' %}" style="color: #262727;">
+        Início</a><span style="color: #939393;">
+        <i class="fa-solid fa-2xs fa-angles-right"></i> Pedidos
+    </span>
+</div>
+
 <div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
     {% include 'parciais/_carregamento.html' %}
     <i class="fa-regular fa-file-lines fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
@@ -15,13 +22,6 @@
 </div>
 
 <div id="conteudo" style="display: none">
-
-    <div class="mb-3">
-        <a href="{% url 'pedido:conta' %}" style="color: #262727;">
-            Início</a><span style="color: #939393;">
-            <i class="fa-solid fa-2xs fa-angles-right"></i> Pedidos
-        </span>
-    </div>
 
     <div class="row">
         <div class="col">
