@@ -92,15 +92,11 @@
     .btnBoleto button {
         height: 44px;
         border-radius: 10px;
+        width: 134px;
     }
 
     .btnFinal {
         border-radius: 10px;
-    }
-
-    .btnBoleto button:disabled {
-        cursor: not-allowed;
-        opacity: .5;
     }
 
     @media (max-width: 999px) {
@@ -200,10 +196,11 @@
             </div>
             <div class="btnBoleto mt-4">
                 <a href="{% url 'pedido:gerarboleto' pedido.id %}" target="_blank" rel="noopener noreferrer"
-                    title="Clique para visualizar seu boleto em uma nova aba"
+                    title="clique para visualizar seu boleto em uma nova aba"
                     style="color: #262727; text-decoration: none;"><button class="btn-secondary mr-3">Visualizar
                         Boleto</button></a>
-                <button class="btn-secondary" title="Indisponível no momento" disabled>Imprimir Boleto</button>
+                <button class="btn-secondary" title="clique para imprimir" onclick="window.print()">Imprimir
+                    Boleto</button>
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
@@ -264,7 +261,6 @@
     </div>
     <div class="col-6"></div>
 </div>
-
 
 <script>
     // funcao pre loader
