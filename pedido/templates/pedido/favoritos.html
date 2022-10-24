@@ -27,13 +27,10 @@
         position: absolute;
         width: 30px;
         z-index: 9;
-
     }
 
     .iconeExcluir {
         color: #262727;
-        margin: 0;
-        overflow: hidden;
     }
 
     .img-produto-favorito {
@@ -51,7 +48,6 @@
     }
 
     @media (max-width: 500px) {
-
         .texto-titulo {
             font-size: 1.8rem;
             text-align: center;
@@ -162,5 +158,6 @@
 
 </script>
 
-
 {% endblock %}
+
+{% block footer %} {% include 'parciais/_footerSimplesConta.html'%} {% endblock %}
