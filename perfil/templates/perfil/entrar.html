@@ -5,6 +5,36 @@
 
 {% block conteudo %}
 
+<style>
+    .input1 {
+        background-color: #f1f1f1;
+        border-color: #106572;
+    }
+
+    .input1:focus {
+        background-color: #f1f1f1;
+        border-color: #106572;
+    }
+
+    .input1:focus-within {
+        border: 1px solid #106572;
+        background-color: #f1f1f1;
+        border-color: #106572;
+    }
+
+    input:focus-within {
+        border: 1px solid #106572;
+        background-color: #f1f1f1;
+        border-color: #106572;
+    }
+
+    .form-control:focus-within {
+        border: 1px solid #106572;
+        background-color: #f1f1f1;
+        border-color: #106572;
+    }
+</style>
+
 <!-- subtitulo com nome da pagina e anterior -->
 <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
@@ -30,7 +60,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 mx-auto">
                 <form class="contact1-form" method="POST" action="{% url 'perfil:login' %}">
                     {% csrf_token %}
-                    <span class="contact1-form-title mt-5">
+                    <span class="contact1-form-title mt-5" style="color: #106572;">
                         Login
                     </span>
 
@@ -40,14 +70,14 @@
 
                     <div class="wrap-input1 validate-input mt-4">
                         <label for="id_user" class="requiredField">Usuário</label>
-                        <input class="input1 form-control" type="text" name='username' placeholder="Digite seu usuário"
-                            required id="id_user">
+                        <input class="input1 " type="text" name='username' placeholder="Digite seu usuário" required
+                            id="id_user">
                     </div>
 
                     <div class="wrap-input1 validate-input mt-3 mb-1">
                         <label for="id_senha" class="requiredField">Senha</label>
-                        <input class="input1 form-control" type="password" name='password'
-                            placeholder="Digite sua senha" required id="id_senha">
+                        <input class="input1 " type="password" name='password' placeholder="Digite sua senha" required
+                            id="id_senha">
                     </div>
 
                     <div class="container-contact1-form-btn mt-4">
