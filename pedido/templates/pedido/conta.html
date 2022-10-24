@@ -31,9 +31,10 @@
         color: #262727;
     }
 
-    .padding-baloes {
+    .posicao-baloes {
         padding-right: 30px;
         padding-left: 30px;
+        margin: auto;
     }
 
     .coluna-baloes-esq {
@@ -81,10 +82,15 @@
         line-height: 1;
     }
 
-    @media (max-width: 999px) {
+    @media (max-width: 992px) {
         .texto-titulo-conta {
             text-align: center;
         }
+
+        .posicao-baloes {
+            margin-top: 40px;
+        }
+
     }
 
     /* @media (max-width: 700px) {
@@ -118,17 +124,12 @@
         {% endfor %}
         <a href="{% url 'perfil:criar' %}" style="text-decoration: none;">
             <div class="conteudo-menu">
-                <p class="lead text-center texto-menu">Cadastro</p>
+                <p class="lead text-center texto-menu">Atualizar</p>
             </div>
         </a>
         <a href="{% url 'suporte:perguntas' %}" style="text-decoration: none;">
             <div class="conteudo-menu">
                 <p class="lead text-center texto-menu">Perguntas</p>
-            </div>
-        </a>
-        <a href="{% url 'suporte:privacidade' %}" style="text-decoration: none;">
-            <div class="conteudo-menu">
-                <p class="lead text-center texto-menu">Privacidade</p>
             </div>
         </a>
         <a href="{% url 'perfil:logout' %}" style="text-decoration: none;">
@@ -143,7 +144,7 @@
     <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
 
     <!-- balões -->
-    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3 padding-baloes">
+    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 posicao-baloes">
         <div class="row">
             <div class="col-6 coluna-baloes-esq">
                 <a href="{% url 'pedido:lista' %}" title="clique para ver seus pedidos">
@@ -184,30 +185,13 @@
                             <i class="fa-regular fa-pen-to-square fa-2xl" aria-hidden="true"></i>
                         </div>
                         <div class="col-12 conteudo-baloes">
-                            <span class="texto-baloes">CADASTRO</span>
+                            <span class="texto-baloes">ATUALIZAR</span>
                             <p><small class="texto-baloes-small">clique para alterar seus dados</small></p>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-6 coluna-baloes-dir">
-                <a href="{% url 'perfil:criar' %}" title="clique para alterar seus dados de endereço">
-                    <div class="row conteudo-baloes">
-                        <div class="col-12 mt-3 mb-3">
-                            <i class="fa-solid fa-location-dot fa-2xl" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-12 conteudo-baloes">
-                            <span class="texto-baloes">ENDEREÇO</span>
-                            <p><small class="texto-baloes-small">clique para alterar seu endereço</small></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <!--end row 2 baloes-->
-
-        <div class="row mt-3">
-            <div class="col-6 coluna-baloes-esq">
                 <a href="{% url 'suporte:perguntas' %}" title="clique para ver perguntas e respostas">
                     <div class="row conteudo-baloes">
                         <div class="col-12 mt-3 mb-3">
@@ -220,21 +204,9 @@
                     </div>
                 </a>
             </div>
-            <div class="col-6 coluna-baloes-dir">
-                <a href="{% url 'suporte:privacidade' %}" title="clique para ver sobre política de privacidade">
-                    <div class="row conteudo-baloes">
-                        <div class="col-12 mt-3 mb-3">
-                            <i class="fa-solid fa-shield-halved fa-lg fa-2xl" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-12 conteudo-baloes">
-                            <span class="texto-baloes">PRIVACIDADE</span>
-                            <p><small class="texto-baloes-small">clique para ver política de privacidade</small></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
-        <!--end row 3 baloes-->
+        <!--end row 2 baloes-->
+
     </div>
     <!-- end col baloes-->
 </div>
