@@ -6,47 +6,59 @@
 
 {% block conteudo %}
 
-<div class="mb-3">
-    <a href="{% url 'pedido:conta' %}" style="color: #262727;">
-        Início</a><span style="color: #939393;">
-        <i class="fa-solid fa-2xs fa-angles-right"></i> Pedidos
-    </span>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div class="containerHome text-center mt-4 mb-2" id="loading" style="display: block">
+    {% include 'parciais/_carregamento.html' %}
+    <i class="fa-regular fa-file-lines fa-2xl mt-4" style="color: #008B8B;" aria-hidden="true"></i>
+    <p class="lead mt-2">Carregando o histórico de pedidos</p>
 </div>
 
-<div class="row">
-    <div class="col">
-        <h3 class="mb-4">Pedidos de {{ user }}</h3>
-        {% if pedidos %}
-        <p>Abaixo todos os seus pedidos realizados na loja.</p>
+<div id="conteudo" style="display: none">
 
-        <div class="table-responsive text-center">
-            <table class="table table-striped">
-                <tr>
-                    <th scope="col">Pedido</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Qtd. Itens</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Mais detalhes</th>
-                </tr>
-
-                {% for pedido in pedidos %}
-                <tr>
-                    <th scope="row">{{ pedido }}</td>
-                    <td>{{ pedido.total|formata_preco }}</td>
-                    <td>{{ pedido.qtd_total }}</td>
-                    <td>{{ pedido.get_status_display }}</td>
-                    <td>
-                        <a href="{% url 'pedido:detalhe' pedido.id %}">
-                            Ver <i class="fas fa-search-plus ml-2"></i>
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-
-            </table>
-        </div>
+    <div class="mb-3">
+        <a href="{% url 'pedido:conta' %}" style="color: #262727;">
+            Início</a><span style="color: #939393;">
+            <i class="fa-solid fa-2xs fa-angles-right"></i> Pedidos
+        </span>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col">
+            <h3 class="mb-4">Pedidos de {{ user }}</h3>
+            {% if pedidos %}
+            <p>Abaixo todos os seus pedidos realizados na loja.</p>
+
+            <div class="table-responsive text-center">
+                <table class="table table-striped">
+                    <tr>
+                        <th scope="col">Pedido</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Qtd. Itens</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Mais detalhes</th>
+                    </tr>
+
+                    {% for pedido in pedidos %}
+                    <tr>
+                        <th scope="row">{{ pedido }}</td>
+                        <td>{{ pedido.total|formata_preco }}</td>
+                        <td>{{ pedido.qtd_total }}</td>
+                        <td>{{ pedido.get_status_display }}</td>
+                        <td>
+                            <a href="{% url 'pedido:detalhe' pedido.id %}">
+                                Ver <i class="fas fa-search-plus ml-2"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+</div> <!-- end conteudo -->
 
 {% include 'parciais/_pagination.html' %}
 
@@ -55,6 +67,18 @@
 <p class="lead text-center" style="font-weight: 350;">Você ainda não pediu com a gente :(</p>
 
 {% endif %}
+
+<script>
+    // funcao pre loader
+    var i = setInterval(function () {
+
+        clearInterval(i);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("conteudo").style.display = "inline";
+
+    }, 2500);
+</script>
 
 {% endblock %}
 

@@ -232,4 +232,3 @@ class Favoritos(DispatchLoginRequiredMixin, DetailView):
     model = Favorito
     pk_url_kwarg = 'pk'
     context_object_name = 'produto_favorito'
-    paginate_by = 5
