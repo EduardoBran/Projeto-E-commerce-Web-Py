@@ -25,3 +25,7 @@ urlpatterns = [
     path('suporte/', include('suporte.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = 'Unique Store'
+admin.site.site_title = 'Unique Store'
+admin.site.index_title = 'Sistema de Cadastro Unique'
