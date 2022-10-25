@@ -1,13 +1,13 @@
 import datetime
+from random import randint
 
 from categoria.models import Categoria
 from django.contrib import messages
-from django.http import HttpResponse
 from django.shortcuts import redirect, render, reverse
 from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView
 from perfil.models import Perfil
-from produto.models import Favorito, ItemFavorito, Variacao
+from produto.models import Favorito, Variacao
 from utils import utils
 
 from .models import ItemPedido, Pedido
@@ -81,13 +81,14 @@ class GerarBoleto(DispatchLoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        # context['numero_boleto'] = randint(0, 99999)
+
         valor_total = Pedido.objects.values('total').last()
         valor_total = valor_total['total']
         valor_total = str(valor_total)
 
-        # print('\n**************\n')
-        # print(valor_total)
-        # print('\n**************\n')
+        valor_total = valor_total.replace('.', ',')
+        valor_total = valor_total[:6]
 
         context['valor_total'] = valor_total
 

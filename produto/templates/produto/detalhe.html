@@ -632,6 +632,67 @@
 <!-- End Carousel Pequeno Lancamentos -->
 
 <script>
+    // funcao copiar link
+    function copyURI(evt) {
+        evt.preventDefault();
+        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
+            alertify.set('notifier', 'position', 'bottom-right');
+            alertify.success('Link copiado com sucesso!');
+        }, () => {
+            alertify.set('notifier', 'position', 'bottom-right');
+            alertify.error('Ooops... parece que ocorreu um erro ao copiar o link.');
+        });
+    }
+
+    // validando a ativação BOTÃO somente após selecionar o tamanho com javaScript puro
+    function validacao() {
+        let tamanhoTexto = document.getElementById('conteudo-variacao')
+        let tamanhoEscolhido = document.getElementById('exibir-tamanho')
+        let select = document.getElementById('select-variacoes');
+        let option = select.options[select.selectedIndex];
+        let button = document.querySelector(".botaoCarrinhoMobile");
+        let msgBotaoDesativado = document.querySelector(".msgBotaoDesativado");
+
+        button.disabled = true;
+
+        let outro = document.getElementById('value').value = option.value;
+        let outroiNNERtEXT = document.getElementById('value').value = option.innerText;
+
+        outroiNNERtEXT = outroiNNERtEXT.replace(' ', '')
+        outroiNNERtEXT = outroiNNERtEXT.trim()
+        outroiNNERtEXT = outroiNNERtEXT.split('');
+
+        let ante = outroiNNERtEXT[outroiNNERtEXT.length - 3]
+        let penultimo = outroiNNERtEXT[outroiNNERtEXT.length - 2]
+        let ultimo = outroiNNERtEXT[outroiNNERtEXT.length - 1]
+
+        if (ante === undefined) {
+            ante = ''
+        }
+        if (penultimo === undefined) {
+            penultimo = ''
+        }
+
+        if (outro.length > 4) {
+            button.disabled = true;
+        }
+        else {
+            button.disabled = false;
+            tamanhoTexto.innerHTML = 'Tamanho escolhido: <label style="color: whitesmoke; background-color: #17a2b8; border-radius: 6px; padding: 4px 8px; margin-left: 5px; font-size: 1.2rem;">' + ante + penultimo + ultimo + '</label>';
+            msgBotaoDesativado.setAttribute('style', 'display: none');
+        }
+    }
+    validacao();
+
+    // input quantidade funcao botao + e -
+    $('.add').click(function () {
+        if ($(this).prev().val() < 10) $(this).prev().val(+$(this).prev().val() + 1); // max 10
+        // $(this).prev().val(+$(this).prev().val() + 1);
+    });
+    $('.sub').click(function () {
+        if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1); // min 1
+    });
+
     // função lupa zoom imagem
     function magnify(imgID, zoom) {
         var img, glass, w, h, bw;
@@ -697,67 +758,6 @@
     /* Specify the id of the image, and the strength of the magnifier glass: */
     magnify("imagemDetalhe", 3);
     magnify("imagemDetalhe2", 3);
-
-    // funcao copiar link
-    function copyURI(evt) {
-        evt.preventDefault();
-        navigator.clipboard.writeText(evt.target.getAttribute('href')).then(() => {
-            alertify.set('notifier', 'position', 'bottom-right');
-            alertify.success('Link copiado com sucesso!');
-        }, () => {
-            alertify.set('notifier', 'position', 'bottom-right');
-            alertify.error('Ooops... parece que ocorreu um erro ao copiar o link.');
-        });
-    }
-
-    // validando a ativação BOTÃO somente após selecionar o tamanho com javaScript puro
-    function validacao() {
-        let tamanhoTexto = document.getElementById('conteudo-variacao')
-        let tamanhoEscolhido = document.getElementById('exibir-tamanho')
-        let select = document.getElementById('select-variacoes');
-        let option = select.options[select.selectedIndex];
-        let button = document.querySelector(".botaoCarrinhoMobile");
-        let msgBotaoDesativado = document.querySelector(".msgBotaoDesativado");
-
-        button.disabled = true;
-
-        let outro = document.getElementById('value').value = option.value;
-        let outroiNNERtEXT = document.getElementById('value').value = option.innerText;
-
-        outroiNNERtEXT = outroiNNERtEXT.replace(' ', '')
-        outroiNNERtEXT = outroiNNERtEXT.trim()
-        outroiNNERtEXT = outroiNNERtEXT.split('');
-
-        let ante = outroiNNERtEXT[outroiNNERtEXT.length - 3]
-        let penultimo = outroiNNERtEXT[outroiNNERtEXT.length - 2]
-        let ultimo = outroiNNERtEXT[outroiNNERtEXT.length - 1]
-
-        if (ante === undefined) {
-            ante = ''
-        }
-        if (penultimo === undefined) {
-            penultimo = ''
-        }
-
-        if (outro.length > 4) {
-            button.disabled = true;
-        }
-        else {
-            button.disabled = false;
-            tamanhoTexto.innerHTML = 'Tamanho escolhido: <label style="color: whitesmoke; background-color: #17a2b8; border-radius: 6px; padding: 4px 8px; margin-left: 5px; font-size: 1.2rem;">' + ante + penultimo + ultimo + '</label>';
-            msgBotaoDesativado.setAttribute('style', 'display: none');
-        }
-    }
-    validacao();
-
-    // input quantidade funcao botao + e -
-    $('.add').click(function () {
-        if ($(this).prev().val() < 10) $(this).prev().val(+$(this).prev().val() + 1); // max 10
-        // $(this).prev().val(+$(this).prev().val() + 1);
-    });
-    $('.sub').click(function () {
-        if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1); // min 1
-    });
 
      // exibindo valor parcelado de acordo com o preço
     // let valor = document.getElementById('variation-preco-promocional').innerText
