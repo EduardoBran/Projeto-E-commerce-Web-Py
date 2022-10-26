@@ -1,10 +1,7 @@
-import os
-
 from categoria.models import Categoria
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
-from PIL import Image
 from utils import utils
 
 
@@ -17,12 +14,12 @@ class Produto(models.Model):
     descricao_longa = models.TextField(verbose_name='Descrição longa')
     imagem = models.URLField(blank=True, null=True, verbose_name='Imagem 1')
     imagem2 = models.URLField(blank=True, null=True, verbose_name='Imagem 2')
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     preco_marketing = models.FloatField(verbose_name='Preço')
     preco_marketing_promocional = models.FloatField(
         default=0, verbose_name='Preço Promo. ')
     tipo = models.CharField(
-        default='N',
+        default='L',
         max_length=1,
         choices=(
             ('N', 'Nenhum'),
@@ -39,6 +36,12 @@ class Produto(models.Model):
     def get_preco_promocional_formatado(self):
         return utils.formata_preco(self.preco_marketing_promocional)
     get_preco_promocional_formatado.short_description = 'Preço Promo.'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = f'{slugify(self.nome)}'
+            self.slug = slug
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.nome

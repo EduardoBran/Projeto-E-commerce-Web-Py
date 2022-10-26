@@ -188,11 +188,10 @@
     }
 
     .msgBotaoDesativado {
-        line-height: 0.1;
         font-size: .75rem;
         font-family: 'Roboto', sans-serif;
         margin-left: 1px;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     /* responsividade */
@@ -457,17 +456,22 @@
 
                 <!-- tipo (Lançamento ou Destaque) -->
                 <span>
+                    {% if produto.tipo == 'L' %}
+
                     <a class="conteudoTipo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
-                        {% if produto.tipo == 'L' %}
-                        Lançamento
-                        {% endif %}
-                        {% if produto.tipo == 'V' %}
-                        Mais Vendido
-                        {% endif %}
-                        {% if produto.tipo == 'D' %}
-                        Destaque
-                        {% endif %}
-                    </a>
+                        Lançamento</a>
+                    {% endif %}
+                    {% if produto.tipo == 'V' %}
+                    <a class="conteudoTipo" href="{% url 'produto:lista' %}" style="text-decoration: none;">
+                        Mais Vendido</a>
+                    {% endif %}
+                    {% if produto.tipo == 'D' %}
+                    <a class="conteudoTipo" href="{% url 'produto:ord_destaque' %}" style="text-decoration: none;">
+                        Destaque</a>
+                    {% endif %}
+                    {% if produto.tipo == 'N' %}
+                    <div style="margin-top: 40px;"> <span style="display: none;"> A </span></div>
+                    {% endif %}
                 </span>
 
                 <!-- nome do produto + copiar link -->

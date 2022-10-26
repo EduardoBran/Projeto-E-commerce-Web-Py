@@ -190,14 +190,17 @@ class DetalheProduto(DetailView):
 
         context['carrinho'] = self.request.session.get('carrinho', {})
 
-        # recuperando slug do produto via URL
+        # # recuperando slug do produto via URL
         # slug = self.request.get_full_path()
         # slug = slug.split('/')
         # slug = slug.pop()
 
         # # filtrando produto através do slug recuperado
-        # contexto = Produto.objects.filter(
-        #     slug=slug)
+        # contexto = Produto.objects.filter(slug=slug)
+
+        # print('\n**************************\n')
+        # print(contexto.values())
+        # print('\n**************************\n')
 
         # # percorrendo contexto para virar um dicionario
         # for c in contexto:
