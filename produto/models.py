@@ -11,13 +11,13 @@ from utils import utils
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
     categoria_produto = models.ForeignKey(
-        Categoria, on_delete=models.DO_NOTHING,  blank=True, null=True, verbose_name='Categoria')
+        Categoria, on_delete=models.DO_NOTHING, verbose_name='Categoria')
     descricao_curta = models.TextField(
         max_length=255, verbose_name='Descrição curta')
     descricao_longa = models.TextField(verbose_name='Descrição longa')
     imagem = models.URLField(blank=True, null=True, verbose_name='Imagem 1')
     imagem2 = models.URLField(blank=True, null=True, verbose_name='Imagem 2')
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    slug = models.SlugField(unique=True)
     preco_marketing = models.FloatField(verbose_name='Preço')
     preco_marketing_promocional = models.FloatField(
         default=0, verbose_name='Preço Promo. ')
@@ -51,7 +51,8 @@ class Produto(models.Model):
 
 class Variacao(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=50, blank=True, null=True)
+    nome = models.CharField(
+        max_length=3, verbose_name="Nome (Máx de 3 caracteres)")
     preco = models.FloatField(verbose_name='Preço')
     preco_promocional = models.FloatField(
         default=0, verbose_name='Preço promocional')
@@ -62,7 +63,7 @@ class Variacao(models.Model):
 
     class Meta:
         verbose_name = 'Variação'
-        verbose_name_plural = 'Variações'
+        verbose_name_plural = 'Variações (obrigatório)'
 
 
 class BaseFavorito(models.Model):

@@ -504,7 +504,7 @@
 
                     {% else %}
                     <p class="mt-2">
-                        <span id="variation-preco-promocional" class="produto-preco">
+                        <span id="variation-preco" class="produto-preco">
                             {{ produto.preco_marketing|formata_preco }}
                         </span>
                     </p>
@@ -692,6 +692,36 @@
     $('.sub').click(function () {
         if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1); // min 1
     });
+
+
+    //funcao que manipula o preço de acordo com a variação
+    (function () {
+        select_variacao = document.getElementById('select-variacoes');
+        variation_preco = document.getElementById('variation-preco');
+        variation_preco_promocional = document.getElementById('variation-preco-promocional');
+
+        if (!select_variacao) {
+            console.log('!select_variacao')
+            return;
+        }
+
+        if (!variation_preco) {
+            console.log('!varation_preco')
+            return;
+        }
+
+        select_variacao.addEventListener('change', function () {
+            preco = this.options[this.selectedIndex].getAttribute('data-preco');
+            preco_promocional = this.options[this.selectedIndex].getAttribute('data-preco-promocional');
+
+            variation_preco.innerHTML = preco;
+
+            if (variation_preco_promocional) {
+                variation_preco_promocional.innerHTML = preco_promocional;
+            }
+        })
+    })();
+
 
     // função lupa zoom imagem
     function magnify(imgID, zoom) {
