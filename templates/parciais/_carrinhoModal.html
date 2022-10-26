@@ -26,14 +26,24 @@
         </a>
         {% if linha_carrinho.imagem %}
         <img class="img-fluid imagem-produto-carrinho" src="{{ linha_carrinho.imagem }}">
-        {% else %}
-        <img class="img-fluid imagem-produto-carrinho" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
-        {% endif %}
 
-        <span class="nome-produto" style="margin-left: 0px;"><a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
-                style="color: #262727; text-decoration: underline;">
-                {{ linha_carrinho.produto_nome }}</a>
-        </span>
+        <div style="width: 125px; margin-top: 10px;">
+            <span class="nome-produto"><a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+                    style="color: #262727; text-decoration: underline;">
+                    {{ linha_carrinho.produto_nome }}</a>
+            </span>
+        </div>
+
+        {% else %}
+        <img class="img-fluid imagem-produto-carrinhoSemFoto" src="https://i.postimg.cc/265tP6FY/produto-sem-foto.jpg">
+
+        <div style="width: 125px; margin-top: -15px;">
+            <span class="nome-produto"><a href="{% url 'produto:detalhe' linha_carrinho.slug %}"
+                    style="color: #262727; text-decoration: underline;">
+                    {{ linha_carrinho.produto_nome }}</a>
+            </span>
+        </div>
+        {% endif %}
 
         <p class="tamanho-produto-carrinho">Tamanho - {{ linha_carrinho.variacao_nome }}</p>
         <p class="preco-produto-carrinho">
