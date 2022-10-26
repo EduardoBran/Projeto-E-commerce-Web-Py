@@ -1,5 +1,4 @@
-import datetime
-from random import randint
+from datetime import date, timedelta
 
 from categoria.models import Categoria
 from django.contrib import messages
@@ -81,30 +80,25 @@ class GerarBoleto(DispatchLoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # context['numero_boleto'] = randint(0, 99999)
+        today_date = date.today()
+        data_hoje = str(today_date.day) + '/' + \
+            str(today_date.month) + '/' + str(today_date.year)
+
+        data_venc = today_date + timedelta(5)
+        data_venc = str(data_venc.day) + '/' + \
+            str(data_venc.month) + '/' + str(data_venc.year)
+
+        context['data_hoje'] = data_hoje
+        context['data_venc'] = data_venc
 
         valor_total = Pedido.objects.values('total').last()
         valor_total = valor_total['total']
         valor_total = str(valor_total)
 
         valor_total = valor_total.replace('.', ',')
-        valor_total = valor_total[:6]
+        valor_total = valor_total[:7]
 
         context['valor_total'] = valor_total
-
-        current_time = datetime.datetime.now()
-
-        dia = current_time.day
-        mes = current_time.month
-        ano = current_time.year
-
-        dia = str(dia)
-        mes = str(mes)
-        ano = str(ano)
-
-        data_hoje = dia + '/' + mes + '/' + ano
-
-        context['data_hoje'] = data_hoje
 
         return context
 
