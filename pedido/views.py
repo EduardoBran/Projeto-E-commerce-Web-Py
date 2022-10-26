@@ -51,25 +51,6 @@ class ResumoPagar(DispatchLoginRequiredMixin, DetailView):
     pk_url_kwarg = 'pk'
     context_object_name = 'pedido'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        if not self.request.user.is_authenticated:
-            return redirect('perfil:criar')
-
-        perfil = Perfil.objects.filter(usuario=self.request.user).exists()
-
-        if not perfil:
-            messages.error(
-                self.request,
-                'Usuário sem perfil.'
-            )
-            return redirect('perfil:criar')
-
-        context['usuario'] = self.request.user
-
-        return context
-
 
 class GerarBoleto(DispatchLoginRequiredMixin, ListView):
     template_name = 'pedido/gerarBoleto.html'
