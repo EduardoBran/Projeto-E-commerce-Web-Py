@@ -4,6 +4,18 @@
 
 {% block conteudo %}
 
+<style>
+    .conteudo .lead {
+        font-size: 1.2rem;
+    }
+
+    .conteudo .lead-titulo {
+        margin-top: 45px;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+</style>
+
 <div class="mb-3">
     <a href="{% url 'produto:home' %}" style="color: #262727;">
         Página inicial</a><span style="color: #939393;">
@@ -16,89 +28,265 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="conteudo">
                     <h4 class="text-center mb-5">TERMOS DE USO</h4>
-
-
-                    <h5 class="mb-2">1. Cadastro:</h5>
-                    <p>1.1. Ao se identificar com seus dados cadastrais (login e senha pessoais), você adere a este
-                        contrato, sem necessidade de assinatura.</p>
-                    <p>1.2. Este Contrato se aplica a compras feitas via Internet ou telefone (televendas).</p>
-                    <p>1.3. Você é o único responsável pela veracidade, exatidão, e atualização das informações que
-                        preencher no seu cadastro, bem como pelo sigilo e guarda de seu login e senha pessoal.</p>
-
-                    <h5 class="mt-2 mb-2">2. Garantia:</h5>
-                    <p>2.1. Todos os produtos da Loja Kirke estão cobertos pela Garantia Legal de 90 dias.</p>
-
-                    <h5 class="mt-2 mb-2">3. Nossos Serviços:</h5>
-                    <p>3.1. É nossa intenção é oferecer sempre o melhor atendimento possível. Em caso de problemas ou
-                        insatisfação com nosso atendimento, por favor, envie um e-mail para
-                        <strong>CRIAR_EMAIL@CRIAR.COM</strong> e em
-                        até 48 horas iremos retornar seu contato. Teremos prazer em atender a sua reclamação.
+                    <p class="lead">
+                        Bem-vindo ao website https://storeunique.herokuapp.com, onde todos os
+                        serviços são ofertados pela empresa Unique Store representado por meio dessa
+                        página na web.
                     </p>
-
-                    <h5 class="mt-2 mb-2">4. Preços e Disponibilidade:</h5>
-                    <p>4.1. Aceitamos pedidos 24 horas por dia, sete dias por semana.</p>
-                    <p>4.2. Todos os produtos ofertados em nosso site estão sujeitos a disponibilidade de nossos
-                        estoques.</p>
-
-                    <h5 class="mt-2 mb-2">5. Entrega:</h5>
-                    <p>5.1. Os preços são atualizados semanalmente de forma a refletir promoções e descontos ofertados
-                        em nosso site.</p>
-                    <p>5.2. Para que possamos entregar os pedidos em sua residência, você ou seu representante indicado
-                        no cadastro como pessoa autorizada a receber entregas, deve estar presente para receber o pedido
-                        em horário comercial.</p>
-                    <p>5.3. No ato da entrega a transportadora fornecerá a nota fiscal e colherá a sua assinatura ou do
-                        seu representante no canhoto da nota, dando a entrega como correta e completa.</p>
-                    <p>5.4. As entregas podem ocorrer em dias úteis e horário comercial.</p>
-                    <p>5.5. Em caso de insucesso na entrega (endereço incorreto ou cliente ausente), uma nova tentativa
-                        será realizada pelo e caso não seja encontrado o consumidor, será realizado contato com o
-                        cliente para agendamento prévio da entrega.</p>
-                    <p>5.6. Feriados nacionais e/ou regionais não são considerados como dia útil para a entrega.</p>
-                    <p>5.7. Os serviços de entrega serão realizados por empresas contratadas pela Kirke.</p>
-
-                    <h5 class="mt-2 mb-2">6. Frete:</h5>
-                    <p>6.1. O frete será calculado com base na região de entrega e volume de produtos adquiridos. Este
-                        valor estará disponível na página de produto e checkout antes de finalizar o pedido.</p>
-                    <p>6.2. Não será possível alterar o endereço de entrega ou modalidade após o processamento do
-                        pedido.
-                        Caso necessário, entre em contato com nosso site através de email ou whatsapp.</p>
-
-                    <h5 class="mt-2 mb-2">7. Pagamento:</h5>
-                    <p>7.1. As únicas opções para pagamento das compras realizadas em nosso website são: cartão de
-                        crédito, pix ou boleto bancário com 5% de desconto emitido pelo site sempre com o vencimento
-                        para o próximo dia útil. Não aceitamos outras formas de pagamento.</p>
-                    <p>7.2. O desconto de 5% para pagamentos realizados pelo boleto bancário será aplicado apenas na
-                        valor dos produtos disponíveis no site e não é cumulativo com o frete.</p>
-                    <p>7.3. As bandeiras de cartão de crédito aceitas no site são: Visa, Mastercard, Diners, Elo,
-                        Hipercard ou American Express, disponíveis na página de produto ou rodapé do site para o
-                        consumidor.</p>
-
-                    <p>7.4. Suas compras podem ser parceladas em até 6x Sem Juros*.</p>
-                    <p>7.5. Compras realizadas pelo WhatsApp, o cliente ganha 10% de desconto com pagamento em boleto
-                        bancário ou pix.</p>
-
-                    <small>*Por favor, confira as informações de pagamento na página do produto.</small>
-
-                    <h5 class="mt-4 mb-2">8. Segurança Eletrônica:</h5>
-                    <p>8.1. Todas as páginas no nosso site que começam por https são criptografadas usando SSL durante a
-                        transmissão. Utilizamos este meio de segurança em todas as páginas que contém trocas de
-                        informações
-                        pessoais e de forma de pagamento.</p>
-
-                    <h5 class="mt-2 mb-2">9. Condições Gerais:</h5>
-                    <p>9.1. Você concorda que o uso de meios eletrônicos de comunicação nos endereços aqui previstos
-                        será
-                        considerado aceitável para todos os fins.</p>
-                    <p>9.2. Você concorda em fornecer informações que nos permitam confirmar que você é efetivamente a
-                        pessoa que está efetuando a compra em nosso website.</p>
-                    <p>9.3. Você concorda em fornecer cópias de documentos solicitados por nosso departamento de
-                        aprovação de crédito a fim de confirmar a veracidade das informações fornecidas no ato do seu
-                        cadastro caso isso seja necessário. </p>
-                    <p>9.4. Você concorda com nossa política de privacidade para o site
-                        https://storeunique.herokuapp.com</p>
-                    <p>9.5. São aplicáveis as leis brasileiras, e o foro da cidade do Rio de Janeiro, RJ.</p>
-                    <br>
-                    <p>Esta página regula as condições de nosso serviço de vendas online com entrega em domicílio. Em
-                        caso de dúvida, envie mensagem para <strong>CRIAR_EMAIL@CRIAR.COM</strong>.</p>
+                    <p class="lead">
+                        Avisamos previamente que ao acessar esse site você concorda
+                        tacitamente com as disposições contidas nesse documento, por isso
+                        muito atenção ao ler cada uma das cláusulas e obrigações dispostas a
+                        seguir:
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>1.Do Objeto</strong>
+                    </p>
+                    <p class="lead">
+                        Essa plataforma tem como finalidade de “e-commerce”, ou seja,
+                        disponibilizar a venda de produtos e serviços online disponibilizados na
+                        nossa plataforma.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>2. Da reserva de produtos</strong>
+                    </p>
+                    <p class="lead">
+                        2.1 O nosso website não trabalha com nenhuma possibilidade de
+                        reservar qualquer um dos produtos ofertados em nossa plataforma.
+                    </p>
+                    <p class="lead">
+                        2.2 O fato de o produto estar no carrinho de compras não é tido como
+                        uma reserva e não impossibilita que outras pessoas possam adquirir o
+                        produto e eles venham a se esgotar.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>3. Das obrigações do cliente</strong>
+                    </p>
+                    <p class="lead">
+                        3.1 O cliente deverá informar os dados de forma completa e correta no
+                        momento de cadastro em nossa plataforma.
+                    </p>
+                    <p class="lead">
+                        3.2 É responsabilidade do cliente qualquer erro na escrita ou na
+                        transmissão errônea dos dados.
+                    </p>
+                    <p class="lead">
+                        3.3 Para efetuar qualquer compra em nosso website ou adicionar
+                        produtos ao carrinho é necessário logar com o usuário e senha que foi
+                        fornecido no momento do cadastro.
+                    </p>
+                    <p class="lead">
+                        3.4 Não informar os seus dados de login a terceiros sob pena de ser
+                        responsabilizado por qualquer conduta advinda desse uso.
+                    </p>
+                    <p class="lead">
+                        3.5 Cada cliente só poderá efetuar um cadastro, não sendo aceito mais
+                        de uma conta por CPF.
+                    </p>
+                    <p class="lead">
+                        3.6 Usar a plataforma respeitando a ética, bons costumes, legislações e
+                        ordenamentos vigentes no país, sob pena de sofrer sanções.
+                    </p>
+                    <p class="lead">
+                        3.7 Ser maior de idade (18 anos) e ter capacidade plena para realizar o
+                        cadastro e efetuar compras em nossa plataforma.
+                    </p>
+                    <p class="lead">
+                        3.7.1 Se um menor de idade ou pessoa física sem capacidade plena vir a
+                        adquirir algum produto ou serviço ofertado em nossa plataforma,
+                        entenderemos que os responsáveis autorizaram, respondendo esses por
+                        toda e qualquer situação que advir, bem como pela compra.
+                    </p>
+                    <p class="lead">
+                        3.8 Não comentar ou enviar imagens nas avaliações que possam ir de
+                        encontro com a ética e o respeito, ou que tenha cunho difamatório,
+                        ofensivo ou preconceituoso.
+                    </p>
+                    <p class="lead">
+                        3.9 Não fornecer qualquer informação falsa, fraudulenta ou que não
+                        seja correspondente aos seus dados.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>4. Das obrigações do proprietário do e-commerce</strong>
+                    </p>
+                    <p class="lead">
+                        4.1 Informar de forma ostensiva e verdadeira sobre as características e
+                        especificações do produto disponível para venda de forma clara e
+                        completa
+                    </p>
+                    <p class="lead">
+                        4.2 Enviar os produtos dentro do prazo estabelecido.
+                    </p>
+                    <p class="lead">
+                        4.3 Disponibilizar uma plataforma segura.
+                    </p>
+                    <p class="lead">
+                        4.4 Emitir a nota fiscal do produto que será enviado e enviá-la ao cliente
+                        junto do produto.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>5. Isenção de responsabilidade</strong>
+                    </p>
+                    <p class="lead">
+                        5.1 Não nos responsabilizamos pelo mau uso ou manuseio errado do
+                        produto, bem como de qualquer dano que possa ocorrer na instalação
+                        de qualquer produto adquirido em nossa plataforma.
+                    </p>
+                    <p class="lead">
+                        5.2 Todos os produtos que vendemos estão dentro dos padrões e
+                        condições que vem de fábrica, do distribuidor ou da empresa que
+                        revendeu o produto.
+                    </p>
+                    <p class="lead">
+                        5.3 Fornecemos todas as informações pertinentes relacionadas ao
+                        produto, bem como os mesmos vão acompanhados de instruções de
+                        uso e cuidados em suas caixas ou através de manual de instruções.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>6. Da Propriedade intelectual</strong>
+                    </p>
+                    <p class="lead">
+                        6.1 Todo o design e paginação são de propriedade do nosso website, e
+                        foram desenvolvidos por um prestador de serviços que foi contratado
+                        para tal finalidade.
+                    </p>
+                    <p class="lead">
+                        6.2 Toda imagem, ilustração, obras de arte, HTML, nomes comerciais,
+                        softwares ou vídeo disponibilizados em nossa plataforma por um dos
+                        gerenciadores da página são de nossa propriedade.
+                    </p>
+                    <p class="lead">
+                        6.2.1 As imagens são meramente ilustrativas, pois dependendo
+                        do monitor ou da tela do aparelho eletrônico o mesmo pode apresentar
+                        variação de cores ou tons.
+                    </p>
+                    <p class="lead">
+                        6.3 A logo, a marca e toda a aparência da webempresa/empresa são de
+                        nossa propriedade.
+                    </p>
+                    <p class="lead">
+                        6.4 É vedada a cópia sem autorização de qualquer imagem, vídeo,
+                        design, áudios, aparência ou descrições de produtos existentes em
+                        nossa web página, sob pena se responder por sanções quem
+                        desobedecer.
+                    </p>
+                    <p class="lead">
+                        6.5 Não nos responsabilizamos por links externos que possam vir a
+                        aparecer em nossa página.
+                    </p>
+                    <p class="lead">
+                        6.5.1 Há algumas áreas que poderão apresentar propagandas ou
+                        divulgação de links, mas não temos qualquer tipo de relação, por isso
+                        muito cuidado ao navegar por essas páginas e ao fornecer os seus
+                        dados, pois navegar por essas páginas é responsabilidade do
+                        usuário/cliente.
+                    </p>
+                    <p class="lead">
+                        6.6 Nada contido em nossa web página garante o direito a concessão de
+                        licença ou direito de uso sem o consentimento expresso de um dos
+                        gerenciadores da página ou do proprietário da página.
+                    </p>
+                    <p class="lead">
+                        6.7 O consentimento de cópia ou compartilhamento deve vir por escrito
+                        de forma clara e expressa.
+                    </p>
+                    <p class="lead">
+                        6.8 É vedado compartilhar, copiar, plagiar ou disponibilizar qualquer
+                        conteúdo, foto, vídeo ou áudio encontrado em nosso site sem
+                        consentimento expresso.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>7. Formas de pagamento</strong>
+                    </p>
+                    <p class="lead">
+                        7.1 A forma de pagamento aceitas em nosso e-commerce será somente
+                        boleto bancário.
+                    </p>
+                    <p class="lead">
+                        7.2 O boleto bancário poderá ser emitido no momento em que você
+                        escolheu a opção, preencheu os dados requisitados e gerou.
+                    </p>
+                    <p class="lead">
+                        7.2.1 O boleto não será aceito após a data de vencimento.
+                    </p>
+                    <p class="lead">
+                        7.2.2 Se o boleto vencer e o pagamento não tiver sido efetuado, o
+                        produto voltará a ficar disponível para venda e será necessário realizar
+                        uma nova compra para adquiri-lo.
+                    </p>
+                    <p class="lead">
+                        7.3 O produto será enviado assim que o pagamento for processado,
+                        registrado e confirmado em nossa plataforma.
+                    </p>
+                    <p class="lead">
+                        7.4 Qualquer outra forma de pagamento não é aceita por nosso ecommerce.
+                    </p>
+                    <p class="lead">
+                        7.5 Para solicitar o estorno entre em contato com a nossa Central de
+                        Atendimento.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>8. Entrega e envio do produto</strong>
+                    </p>
+                    <p class="lead">
+                        8.1 O produto será enviado assim que o pagamento for confirmado,
+                        podendo ser enviado até 3 dias após a confirmação do pagamento.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>9. Troca e devolução</strong>
+                    </p>
+                    <p class="lead">
+                        9.1 O cliente poderá devolver o produto ou trocar por outro produto adquirido
+                        em nosso e-commerce em até 7 dias, seja qual for a razão, conforme a
+                        previsão expressa no Código de Defesa do Consumidor em seu art. 49.
+                    </p>
+                    <p class="lead">
+                        9.1.1 Para que ocorra a troca ou a devolução é necessário que o produto
+                        esteja conforme foi entregue, com todos os acessórios, manual e
+                        embalagem, caixa.
+                    </p>
+                    <p class="lead">
+                        9.1.2 O produto que será devolvido ou trocado não poderá apresentar
+                        qualquer marca de uso, como o produto estar trincado, riscado ou
+                        apresentar sinais de quedas.
+                    </p>
+                    <p class="lead">
+                        9.2 Se você requisitou a troca do produto o novo será enviado para o
+                        endereço e você será notificado sobre o envio via e-mail.
+                    </p>
+                    <p class="lead">
+                        9.3 Se você solicitou o reembolso, a devolução do valor ocorrerá da
+                        forma como foi efetuado o pagamento.
+                    </p>
+                    <p class="lead">
+                        9.3.1 Se o pagamento foi feito via boleto bancário, o valor de reembolso
+                        será restituído dentro de 30 dias úteis diretamente na conta que
+                        solicitaremos no momento de sua requisição de devolução.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>10. Política de Privacidade e Proteção de Dados</strong>
+                    </p>
+                    <p class="lead">
+                        10.1 Você pode conferir a nossa política de privacidade no link de
+                        rodapé, onde informamos como ocorre a coleta e o tratamentos dos
+                        dados cadastrados em nosso site, bem como da navegação.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>11. Do Foro</strong>
+                    </p>
+                    <p class="lead">
+                        11.1 Fica eleito o foro da Cidade da nossa empresa, para dirimir quaisquer
+                        controvérsias, dúvidas, desentendimentos, litígios ou questões advindas
+                        da relação cliente e e-commerce, mesmo que possa existir algum local,
+                        por mais privilegiado que possa ser.
+                    </p>
+                    <p class="lead lead-titulo">
+                        <strong>12. Do documento</strong>
+                    </p>
+                    <p class="lead">
+                        12.1 Este documento foi feito pelo Advogado Diego Castro (OAB/PI
+                        15.613) e foi modificado com permissão para uso neste site.
+                    </p>
                 </div>
             </div>
         </div>
