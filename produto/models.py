@@ -61,6 +61,10 @@ class Variacao(models.Model):
         default=0, verbose_name='Preço promocional')
     estoque = models.PositiveBigIntegerField(default=1)
 
+    def save(self, *args, **kwargs):
+        self.nome = self.nome.upper()
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.nome or self.produto.nome
 
