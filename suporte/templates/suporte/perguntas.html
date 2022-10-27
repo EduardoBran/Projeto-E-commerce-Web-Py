@@ -9,6 +9,10 @@
     .esconder {
         display: none;
     }
+
+    .card-conteudo-respostas .lead {
+        font-size: 1.1rem;
+    }
 </style>
 
 <div class="mb-3">
@@ -25,22 +29,41 @@
                     aria-expanded="false" aria-controls="collapseOne" id="btn1">
                     <i class="fa-solid fa-angles-right fa-2xs" id="mostrar"></i>
                     <i class="fa-solid fa-angles-down fa-2xs" id="esconder" style="display: none;"></i>
-                    Políticas de troca, devolução e garantia
+                    Política de troca, devolução e garantia
                 </button>
             </h5>
         </div>
 
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body mb-3">
+            <div class="card-body card-conteudo-respostas">
                 <div class="text-right mb-1">
                     <button type="button" aria-label="Close" onclick="fechar()">
                         <i class="fa-solid fa-xmark fa-lg"></i>
                     </button>
                 </div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et.
+                <p class="lead"> Todos os produtos estão cobertos com a garantia legal de 90 dias, caso
+                    deseje
+                    trocar ou devolver seu pedido, isso é perfeitamente possível. É um direito do
+                    consumidor garantido por lei. Nós, da Unique Store, fazemos questão de explicar o
+                    passo a passo, de forma que o processo fique fácil para você.
+                    O Código de Defesa do Consumidor dispõe que as trocas e devoluções podem ser feitas
+                    em até 7 (sete) dias corridos se o cliente se arrepender da compra.
+                    Depois desse prazo, elas são gratuitas durante 30 dias depois da data do pedido.
+                    Oferecemos as seguintes opções de troca: créditos para novas compras, uma mercadoria
+                    diferente ou reembolso do valor pago. Há, contudo, algumas regras que devem ser
+                    observadas:
+                </p>
+                <ul class="lead">
+                    <li>
+                        produtos com desconto são de venda final e não estão disponíveis para trocas nem devoluções;
+                    </li>
+                    <li>
+                        produtos devolvidos devem conservar a etiqueta e ser enviados na embalagem original;
+                    </li>
+                    <li>
+                        produtos devolvidos não devem apresentar sinais de uso.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -55,16 +78,31 @@
             </h5>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
+            <div class="card-body card-conteudo-respostas">
                 <div class="text-right mb-1">
                     <button type="button" aria-label="Close" onclick="fechar()">
                         <i class="fa-solid fa-xmark fa-lg"></i>
                     </button>
                 </div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et.
+                <p class="lead">
+                    Para iniciar o processo de troca siga as etapas abaixo:
+                </p>
+                <ul class="lead">
+                    <li>
+                        Faça login no site;
+                    </li>
+                    <li>
+                        Vá na aba contatos;
+                    </li>
+                    <li>
+                        Preencha os dados, em assunto escreva solicitar troca, após em mensagem digite o
+                        número do pedido e o motivo da troca;
+                    </li>
+                    <li>
+                        Retornaremos o contato no prazo máximo de 72 horas, a troca poderá ser realizada em
+                        até 30 dias após solicitada.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -80,16 +118,31 @@
             </h5>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
+            <div class="card-body card-conteudo-respostas">
                 <div class="text-right mb-1">
                     <button type="button" aria-label="Close" onclick="fechar()">
                         <i class="fa-solid fa-xmark fa-lg"></i>
                     </button>
                 </div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et.
+                <p class="lead">
+                    Para iniciar o processo de devolução siga as etapas abaixo:
+                </p>
+                <ul class="lead">
+                    <li>
+                        Faça login no site;
+                    </li>
+                    <li>
+                        Vá na aba contatos;
+                    </li>
+                    <li>
+                        Preencha os dados, em assunto escreva solicitar devolução, após em mensagem digite o
+                        número do pedido e o motivo da devolução;
+                    </li>
+                    <li>
+                        Retornaremos o contato no prazo máximo de 72 horas, a devolução poderá ser realizada
+                        em até 7 dias após a devolução do produto.
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -105,16 +158,18 @@
             </h5>
         </div>
         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-            <div class="card-body">
+            <div class="card-body card-conteudo-respostas">
                 <div class="text-right mb-1">
                     <button type="button" aria-label="Close" onclick="fechar()">
                         <i class="fa-solid fa-xmark fa-lg"></i>
                     </button>
                 </div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et.
+                <p class="lead">
+                    Será gerado um código postal autorizando o retorno do produto, o mesmo deve ser
+                    postado em uma agência dos correios indicada pela Unique Store, o produto deve
+                    continuar nas mesmas condições que recebido, com etiqueta original, embalagem e sem
+                    avaria.
+                </p>
             </div>
         </div>
     </div>
@@ -130,16 +185,18 @@
             </h5>
         </div>
         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-            <div class="card-body">
+            <div class="card-body card-conteudo-respostas">
                 <div class="text-right mb-1">
                     <button type="button" aria-label="Close" onclick="fechar()">
                         <i class="fa-solid fa-xmark fa-lg"></i>
                     </button>
                 </div>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et.
+                <p class="lead">
+                    Se você solicitou o reembolso, a devolução do valor ocorrerá da forma como foi
+                    efetuado o pagamento, se o pagamento foi feito via boleto bancário, o valor de
+                    reembolso será restituído dentro de 30 dias úteis diretamente na conta que solicitaremos
+                    no momento de sua requisição de devolução
+                </p>
             </div>
         </div>
     </div>

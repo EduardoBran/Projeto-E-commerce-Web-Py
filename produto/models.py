@@ -6,7 +6,7 @@ from utils import utils
 
 
 class Produto(models.Model):
-    nome = models.CharField(max_length=255)
+    nome = models.CharField(max_length=24)
     categoria_produto = models.ForeignKey(
         Categoria, on_delete=models.DO_NOTHING, verbose_name='Categoria')
     descricao_curta = models.TextField(
