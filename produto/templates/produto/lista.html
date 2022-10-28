@@ -8,6 +8,26 @@
 
 <link rel="stylesheet" href="{% static 'css/pageProdutos.css'%}">
 
+<style>
+    .btnPageLista {
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        transition: none;
+        color: #fff;
+        border-color: #17a2b8;
+        padding: 0.5rem 0.75rem;
+        font-size: 1.1rem;
+        line-height: 1.5;
+        background-color: #008b8b;
+        border-radius: 12px;
+        cursor: pointer;
+        width: 160px;
+    }
+</style>
+
 <!-- subtitulo com nome da pagina e anterior -->
 <div class="row">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
@@ -97,64 +117,53 @@
                     <div class="card-body">
                         <div class="text-box text-center product-price-block">
                             <a href="{% url 'produto:detalhe' produto.slug %}" style="text-decoration: none;">
-                                <h5>{{ produto.nome }}</h5>
+                                <h5 style="margin-bottom: 20px; color: #5e17eb; font-weight: bold;">{{ produto.nome }}
+                                </h5>
                             </a>
 
                             {% if produto.preco_marketing_promocional %}
 
                             <p>
-                                <strike class="mr-2 product-old-price">
+                                <strike id="variation-preco" class="mr-2 product-old-price">
                                     {{ produto.preco_marketing|formata_preco }}</strike>
-                                <span class="product-price">
+                                <span id="variation-preco-promocional" class="product-price">
                                     {{produto.preco_marketing_promocional|formata_preco }}</span>
                             </p>
 
                             {% else %}
-                            <p><span class="product-price">{{ produto.preco_marketing|formata_preco }}</span>
+                            <p> <span id="variation-preco" class="product-price">
+                                    {{ produto.preco_marketing|formata_preco }}
+                                </span>
                             </p>
 
                             {% endif %}
                         </div>
                         <!-- end text-box box-->
 
-                        <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
-                            <div class="form-group text-center">
-                                <label>Tamanho: </label>
-                                <select class="form-select form-selectCarrinho form-select-sm ml-2"
-                                    aria-label=".form-select-sm example" id="select-variacoes" name="select-variacoes">
+                        <!-- <div class="text-center">
+                            <span>Tamanhos Disponíveis: </span>
 
-                                    {% for variacao in produto.variacao_set.all %}
-                                    {% if variacao.preco_promocional %}
-                                    <option data-preco="{{ variacao.preco|formata_preco }}"
-                                        data-preco-promocional="{{ variacao.preco_promocional|formata_preco }}"
-                                        value="{{ variacao.id }}">
-                                        {% if variacao.nome %}
-                                        {{ variacao.nome }}
-                                        {% else %}
-                                        {{ variacao }}
-                                        {% endif %}
-                                    </option>
-                                    {% else %}
-                                    <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
-                                        {% if variacao.nome %}
-                                        {{ variacao.nome }}
-                                        {% else %}
-                                        {{ variacao }}
-                                        {% endif %}
-                                    </option>
-                                    {% endif %}
-                                    {% endfor %}
-                                </select>
+                            {% for variacao in produto.variacao_set.all %}
 
-                                <button type="submit" class="mt-3 btn btn-info">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    Adicionar ao carrinho
-                                </button>
+                            {% if variacao.nome %}
+                            <label class="nome-variacao" style="color: orange;">{{ variacao.nome }}</label>
+                            {% else %}
+                            <label style="color: orange;">{{ variacao }}</label>
+                            {% endif %}
 
-                            </div>
-                            <!-- end form-group text-center -->
-                        </form>
-                        <!-- end form add carrinho-->
+                            {% endfor %}
+                        </div> -->
+
+                        <div class="text-center" style="margin-top: -10px; margin-bottom: 7px;">
+                            <a href="{% url 'produto:detalhe' produto.slug %}">
+                                <button type="button" class="mt-3 btn btn-info btnPageLista"
+                                    title="veja mais detalhes do produto">
+                                    <i class="fa-solid fa-magnifying-glass-plus mr-2"></i>
+                                    Ver mais
+                                </button></a>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
