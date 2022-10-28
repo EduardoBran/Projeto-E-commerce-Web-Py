@@ -7,6 +7,12 @@
 
 <script src="{% static 'js/tilt.jquery.min.js'%}"></script>
 
+<style>
+    .conteudo p {
+        text-align: justify;
+    }
+</style>
+
 <div class="mb-3">
     <a href="{% url 'produto:home' %}" style="color: #262727;">
         Página inicial</a><span style="color: #939393;">
@@ -37,50 +43,42 @@
 
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-9 mx-auto">
             <div class="conteudo">
-                <h2 class="text-center">
-                    QUEM SOMOS
-                </h2>
-                <br>
-                <p>
-                    Lorem ipsum blandit taciti consequat quam etiam nam, pretium suscipit curae neque senectus
-                    adipiscing per faucibus, dapibus velit primis convallis integer quisque.
-                    quis sapien scelerisque pharetra venenatis pellentesque orci praesent, turpis blandit tristique eu
-                    morbi accumsan augue, integer iaculis imperdiet vel varius condimentum.
+
+                <h3 class="text-center mb-3" style="text-transform: uppercase;">QUEM SOMOS</h3>
+                <p class="lead">
+                    A Unique store surgiu de um sonho de criar um modelo de negócio,
+                    proporcionando qualidade, preço justo e produtos exclusivos. Somos uma empresa
+                    voltada para o comércio de vendas de vestuários, pensando sempre em satisfazer nossos
+                    clientes, comercializamos somente grandes marcas buscando acompanhar sempre as
+                    tendências de moda, afim de se tornar referência no nosso modelo de negócio e atender
+                    as necessidades e interesses dos nossos clientes.
                 </p>
-                <p>
-                    Diam faucibus duis rhoncus lacinia posuere tortor dictum venenatis, arcu massa pulvinar dapibus quis
-                    aenean porttitor, vulputate mi quisque vestibulum amet nec aenean.
+
+                <h5 class="mt-4 mb-3">NOSSA MISSÃO</h5>
+                <p class="lead">
+                    Satisfazer aos anseios de nossos clientes com muito respeito e transparência nas
+                    escolhas e decisões.
                 </p>
-                <p>
-                    Ipsum varius lacus blandit a vivamus velit porttitor fames interdum, rutrum dui ligula mauris nisl
-                    nam pellentesque sem, ac elit felis gravida viverra cubilia fusce nulla.
-                    ultrices scelerisque accumsan habitasse tellus euismod ad tortor neque, faucibus ut rhoncus
-                    fermentum duis congue vehicula nisl commodo, interdum enim ante egestas lacus sed nisi.
+
+                <h5 class="mt-4 mb-3">NOSSA VISÃO</h5>
+                <p class="lead">
+                    Ocupar um lugar de destaque no mercado e-commerce e ser reconhecido por
+                    comercializar produtos de alto padrão.
                 </p>
-                <p>
-                    Blandit est eleifend habitant lobortis faucibus ornare turpis sit, sollicitudin porta pharetra purus
-                    tellus pulvinar turpis neque nam, velit aptent vel duis taciti facilisis tortor.
-                    vel nullam elementum auctor donec ligula facilisis eros metus, commodo laoreet vivamus eget eu
-                    rutrum fermentum mi, magna justo fermentum felis ligula potenti adipiscing.
-                </p>
-                <p>
-                    Nam curabitur rhoncus maecenas purus libero vehicula egestas fames convallis vulputate, blandit sed
-                    orci inceptos dapibus suscipit ultricies enim etiam, aenean habitant etiam placerat nec class
-                    torquent arcu ad.
-                </p>
-                <p>
-                    Risus id sollicitudin ultricies aptent, fringilla lectus.
+
+                <h5 class="mt-4 mb-3">NOSSOS VALORES</h5>
+                <p class="lead">
+                    Ética, comprometimento, respeito a vida e ao meio ambiente.
                 </p>
             </div>
         </div>
     </div>
-</div>
 
-<!-- EFEITO IMAGEM -->
-<script>
-    $('.js-tilt').tilt({
-        scale: 1.1
-    })
-</script>
+    <!-- EFEITO IMAGEM -->
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
 
-{% endblock %}
+    {% endblock %}
