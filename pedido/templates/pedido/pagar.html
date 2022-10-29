@@ -40,7 +40,7 @@
     .conteudo-pix-text-number {
         margin-top: 15px;
         width: 34px;
-        font-size: 16px;
+        font-size: 1.1rem;
         font-weight: 500;
         color: #4BB8A9;
         /* border: 1px solid #E3E4E6;
@@ -73,6 +73,20 @@
         }
     }
 
+    ul {
+        list-style: none
+    }
+
+    li::before {
+        content: "•";
+        color: #008b8b;
+        display: inline-block;
+        width: 1em;
+        font-size: 1.4rem;
+        margin-left: -1em
+    }
+
+
     /* @media (max-width: 700px) {
         }
     }
@@ -87,6 +101,161 @@
             justify-content: center;
             vertical-align: middle;
         }
+    }
+
+    /* form cartão de crédtio */
+
+    .checkout {
+        margin: 10px auto;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 4px;
+        background: #f3f6fa;
+        border: 1px solid;
+        border-color: #c2cadb #bbc5d6 #b7c0cd;
+        border-radius: 7px;
+        -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .checkout>p {
+        zoom: 1;
+    }
+
+    .checkout>p:before,
+    .checkout>p:after {
+        content: '';
+        display: table;
+    }
+
+    .checkout>p:after {
+        clear: both;
+    }
+
+    .checkout>p+p {
+        margin-top: 15px;
+    }
+
+    .checkout-header {
+        position: relative;
+        margin: -15px -15px 15px;
+    }
+
+    .checkout-title {
+        padding: 0 15px;
+        line-height: 38px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #7f889e;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+        background: #eceff5;
+        border-bottom: 1px solid #c5ccdb;
+        border-radius: 7px 7px 0 0;
+        background-image: -webkit-linear-gradient(top, #f5f8fb, #e9edf3);
+        background-image: -moz-linear-gradient(top, #f5f8fb, #e9edf3);
+        background-image: -o-linear-gradient(top, #f5f8fb, #e9edf3);
+        background-image: linear-gradient(to bottom, #f5f8fb, #e9edf3);
+        -webkit-box-shadow: inset 0 1px white;
+        box-shadow: inset 0 1px white;
+    }
+
+    .checkout-title:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    input {
+        margin: 0;
+        line-height: normal;
+        font-family: inherit;
+        font-size: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .checkout-input {
+        float: left;
+        padding: 0 7px;
+        height: 32px;
+        color: #525864;
+        background: white;
+        border: 1px solid;
+        border-color: #b3c0e2 #bcc5e2 #c0ccea;
+        border-radius: 4px;
+        background-image: -webkit-linear-gradient(top, #f6f8fa, white);
+        background-image: -moz-linear-gradient(top, #f6f8fa, white);
+        background-image: -o-linear-gradient(top, #f6f8fa, white);
+        background-image: linear-gradient(to bottom, #f6f8fa, white);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.5);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .lt-ie9 .checkout-input {
+        line-height: 30px;
+    }
+
+    .checkout-name {
+        width: 150px;
+    }
+
+    .checkout-card {
+        width: 210px;
+    }
+
+    .checkout-exp,
+    .checkout-cvc {
+        margin-left: 15px;
+        width: 45px;
+    }
+
+    .checkout-btn {
+        width: 100%;
+        height: 34px;
+        padding: 0;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+        border: 1px solid;
+        background: #008b8b;
+        border-radius: 12px;
+        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .checkout-btn:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+    }
+
+    :-moz-placeholder {
+        color: #acb6c8 !important;
+    }
+
+    ::-moz-placeholder {
+        color: #acb6c8 !important;
+        opacity: 1;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #acb6c8;
+    }
+
+    :-ms-input-placeholder {
+        color: #acb6c8;
+    }
+
+    ::-moz-focus-inner {
+        padding: 0 !important;
+        border: 0 !important;
     }
 
     a[disabled="disabled"] {
@@ -133,7 +302,11 @@
 
             <div id="div1" class="div-radiobox" style="display:none">
                 <div class="conteudo-boleto">
-                    <ul>
+                    <div class="text-center" style="margin-top: -15px;">
+                        <img src="https://i.postimg.cc/wv2KTRKW/224427-boleto-icon.png" alt="imagem de um boleto"
+                            style="height: 100px; width: 145px;">
+                    </div>
+                    <ul class="lead" style="font-size: 1.1rem; font-weight: 400;">
                         <li>Pagamento somente à vista</li>
                         <li>O boleto vence em 3 dias corridos</li>
                         <li>É necessário imprimir o boleto ou utilizar o código de barras do mesmo para fazer o
@@ -153,10 +326,14 @@
                 </div>
                 <div class="row">
                     <div class="col-6 conteudo-pix-text">
-                        Aperte em Finalizar compra para gerar o código QR
+                        <span class="lead" style="font-size: 1.1rem; font-weight: 400;">Aperte em Finalizar compra para
+                            gerar o código
+                            QR</span>
                     </div>
                     <div class="col-6 conteudo-pix-text" style="padding: 0 10px;">
-                        Confira os dados e realize o pagamento pelo app do seu banco
+                        <span class="lead" style="font-size: 1.1rem; font-weight: 400;">Confira os dados e realize o
+                            pagamento pelo app do
+                            seu banco</span>
                     </div>
                     <div class="col-12 mt-3">
                         <p class="lead text-danger text-center mt-3">Indisponível no momento</p>
@@ -166,7 +343,33 @@
 
             <div id="div3" class="div-radiobox" style="display:none">
                 <div class="conteudo-cartao-credito">
-                    Adicionar tabela inputs com os campos para add cartão DESATIVADOS
+                    <div class="text-center" style="margin-top: -10px;">
+                        <img src="https://i.postimg.cc/CMt0ZDBt/cartao-de-credito.png" alt="imagem de um cartão"
+                            style="height: 90px; width: 135px;">
+                    </div>
+
+                    <form class="checkout">
+                        <div class="checkout-header">
+                            <h1 class="checkout-title">
+                                Dados do cartão
+                            </h1>
+                        </div>
+                        <p>
+                            <input type="text" class="checkout-input checkout-name" placeholder="Seu nome" autofocus
+                                disabled>
+                            <input type="text" class="checkout-input checkout-exp" placeholder="Mês" disabled>
+                            <input type="text" class="checkout-input checkout-exp" placeholder="Ano" disabled>
+                        </p>
+                        <p>
+                            <input type="text" class="checkout-input checkout-card" placeholder="4111 1111 1111 1111"
+                                disabled>
+                            <input type="text" class="checkout-input checkout-cvc" placeholder="CVC" disabled>
+                        </p>
+                        <p>
+                            <input type="submit" value="Cadastrar" class="checkout-btn" disabled title="indisponível">
+                        </p>
+                    </form>
+
                     <p class="lead text-danger text-center mt-3">Indisponível no momento</p>
                 </div>
             </div> <!-- end div3 -->
