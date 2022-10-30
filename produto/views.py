@@ -305,7 +305,12 @@ class AdicionarAoFavorito(DetalheProduto):
         return redirect(http_referer)
 
 
-class RemoverFavorito(DetalheProduto):
+class RemoverFavorito(DetailView):
+    model = models.Produto
+    template_name = 'produto/detalhe.html'
+    context_object_name = 'produto'
+    slug_url_kwarg = 'slug'  # o slug vem da urls.
+
     def get(self, *args, **kwargs):
         # última pág do usuário
         http_referer = self.request.META.get(
@@ -327,15 +332,15 @@ class RemoverFavorito(DetalheProduto):
         slug = slug.pop()
 
         # filtrando produto através do slug recuperado
-        produto = get_object_or_404(Produto, slug=slug)
+        # produto = get_object_or_404(Produto, slug=slug)
 
         # verificando se produto existe
-        if not produto.id or not produto.slug:
-            messages.error(
-                self.request,
-                'Produto não existe.'
-            )
-            return redirect(http_referer)
+        # if not produto.id or not produto.slug:
+        #     messages.error(
+        #         self.request,
+        #         'Produto não existe.'
+        #     )
+        #     return redirect(http_referer)
 
         # buscando a tabela do usuário logado
         tabela_favorito_get_object = get_object_or_404(
