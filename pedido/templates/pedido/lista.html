@@ -6,6 +6,18 @@
 
 {% block conteudo %}
 
+<style>
+    .textoDireita {
+        text-align: right;
+    }
+
+    @media (max-width: 769px) {
+        .textoDireita {
+            text-align: left;
+        }
+    }
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <div class="mb-3">
@@ -27,7 +39,20 @@
         <div class="col">
             <h3 class="mb-4">Pedidos de {{ user }}</h3>
             {% if pedidos %}
-            <p class="lead mb-3" style="font-size: 1.2rem;">Abaixo todos os seus pedidos realizados na loja.</p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <p class="lead mb-3" style="font-size: 1.2rem;">Abaixo os seus pedidos realizados na loja.</p>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <p class="lead mb-3 textoDireita" style="font-size: 1.25rem;">
+                        Você já realizou <i><span id="pedido_qtd" style="font-weight: 450;">{{ pedido_total }}</span>
+                            <span id="pedido_txt" style="font-weight: 450;"></span></i>
+                        conosco.
+                    </p>
+                </div>
+            </div>
+
 
             <div class="table-responsive text-center">
                 <table class="table table-striped">
@@ -45,7 +70,7 @@
                     <tr>
                         <th scope="row">{{ pedido }}</td>
                         <td>{{ pedido.total|formata_preco }}</td>
-                        <td>{{ pedido.qtd_total }}</td>
+                        <td id='teste'>{{ pedido.qtd_total }}</td>
                         <td>{{ pedido.criado|formata_data }}</td>
                         <td>{{ pedido.get_status_display }}</td>
                         <td>
@@ -59,6 +84,7 @@
 
                 </table>
             </div>
+
         </div> <!-- end col -->
     </div> <!-- end row -->
 
@@ -73,6 +99,8 @@
 {% endif %}
 
 <script>
+
+
     // funcao pre loader
     var i = setInterval(function () {
 
@@ -82,6 +110,22 @@
         document.getElementById("conteudo").style.display = "inline";
 
     }, 2500);
+
+
+    // funcao escrita peditos
+    pedido_qtd = document.getElementById('pedido_qtd').innerText
+    pedido_txt = document.getElementById('pedido_txt')
+
+    if (pedido_qtd > 1) {
+        pedido_txt.innerHTML = 'pedidos'
+    }
+    else {
+        pedido_txt.innerHTML = 'pedido'
+    }
+
+
+
+
 </script>
 
 {% endblock %}

@@ -195,6 +195,14 @@ class Lista(DispatchLoginRequiredMixin, ListView):
     paginate_by = 5
     ordering = ['-id']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['pedido_total'] = Pedido.objects.filter(
+            usuario=self.request.user).count()
+
+        return context
+
 
 class Detalhe(DispatchLoginRequiredMixin, DetailView):
     template_name = 'pedido/detalhe.html'
