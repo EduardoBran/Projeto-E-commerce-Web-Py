@@ -27,7 +27,7 @@
         <div class="col">
             <h3 class="mb-4">Pedidos de {{ user }}</h3>
             {% if pedidos %}
-            <p>Abaixo todos os seus pedidos realizados na loja.</p>
+            <p class="lead mb-3" style="font-size: 1.2rem;">Abaixo todos os seus pedidos realizados na loja.</p>
 
             <div class="table-responsive text-center">
                 <table class="table table-striped">
@@ -35,8 +35,10 @@
                         <th scope="col">Pedido</th>
                         <th scope="col">Total</th>
                         <th scope="col">Qtd. Itens</th>
+                        <th scope="col">Criado</th>
                         <th scope="col">Status</th>
                         <th scope="col">Mais detalhes</th>
+                        <th scope="col">Atualizado</th>
                     </tr>
 
                     {% for pedido in pedidos %}
@@ -44,12 +46,14 @@
                         <th scope="row">{{ pedido }}</td>
                         <td>{{ pedido.total|formata_preco }}</td>
                         <td>{{ pedido.qtd_total }}</td>
+                        <td>{{ pedido.criado|formata_data }}</td>
                         <td>{{ pedido.get_status_display }}</td>
                         <td>
-                            <a href="{% url 'pedido:detalhe' pedido.id %}">
-                                Ver <i class="fas fa-search-plus ml-2"></i>
+                            <a href="{% url 'pedido:detalhe' pedido.id %}" style="color: #008B8B;">
+                                Ver <i class="fas fa-search-plus ml-2" style="color: #008B8B;"></i>
                             </a>
                         </td>
+                        <td>{{ pedido.modificado|formata_data }}</td>
                     </tr>
                     {% endfor %}
 

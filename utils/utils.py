@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def formata_preco(val):
     return f'R$ {val:.2f}'.replace('.', ',')
 
@@ -19,3 +22,7 @@ def total_carrinho(carrinho):
             for item in carrinho.values()
         ]
     )
+
+
+def formata_data(data):
+    return data.strftime(('%d/%m/%Y'))

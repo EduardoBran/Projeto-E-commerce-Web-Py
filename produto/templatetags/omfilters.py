@@ -17,3 +17,8 @@ def qtd_total_carrinho(carrinho):
 @register.filter
 def total_carrinho(carrinho):
     return utils.total_carrinho(carrinho=carrinho)
+
+
+@register.filter
+def formata_data(data):
+    return utils.formata_data(data=data)
