@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Pedido(models.Model):
@@ -7,6 +7,7 @@ class Pedido(models.Model):
         User, on_delete=models.CASCADE, verbose_name='Usuário')
     total = models.FloatField()
     qtd_total = models.PositiveIntegerField()
+    criado = models.DateField(verbose_name='Criação', auto_now_add=True)
     status = models.CharField(
         default="C",
         max_length=1,
@@ -19,6 +20,7 @@ class Pedido(models.Model):
             ('F', 'Finalizado'),
         )
     )
+    modificado = models.DateField(verbose_name='Atualização', auto_now=True)
 
     def __str__(self):
         return f'Pedido N. {self.pk}'
