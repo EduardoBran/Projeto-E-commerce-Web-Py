@@ -1,0 +1,13 @@
+{% extends 'parciais/_pedido.html' %}
+
+{% load static %}
+{% load omfilters %}
+
+{% block pedidoConta %}
+
+<div class="col-lg-2 font-weight-bold">Data do Pedido:</div>
+<div class="col-lg-4">{{ pedido.criado|formata_data }}</div>
+<div class="col-lg-2 font-weight-bold">Data atualização:</div>
+<div class="col-lg-4">{{ pedido.modificado|formata_data }}</div>
+
+{% endblock %}

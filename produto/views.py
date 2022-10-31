@@ -720,8 +720,6 @@ class ResumoDaCompra(View):
             'carrinho': self.request.session['carrinho'],
             'categorias': Categoria.objects.all(),
             'categoria': self.kwargs.get('categoria', None),
-            'produtoLancamento': Produto.objects.filter(
-                tipo='L').order_by('?')
         }
 
         return render(self.request, 'produto/resumodacompra.html', contexto)

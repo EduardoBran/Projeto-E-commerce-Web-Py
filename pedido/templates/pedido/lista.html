@@ -50,7 +50,7 @@
                         <td>{{ pedido.get_status_display }}</td>
                         <td>
                             <a href="{% url 'pedido:detalhe' pedido.id %}" style="color: #008B8B;">
-                                Ver <i class="fas fa-search-plus ml-2" style="color: #008B8B;"></i>
+                                Ver<i class="fas fa-search-plus ml-2" style="color: #008B8B;"></i>
                             </a>
                         </td>
                         <td>{{ pedido.modificado|formata_data }}</td>
