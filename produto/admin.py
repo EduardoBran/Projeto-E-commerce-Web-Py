@@ -18,6 +18,8 @@ class ProdutoAdmin(admin.ModelAdmin):
 
     search_fields = ['nome']
 
+    list_per_page = 20
+
     inlines = [
         VariacaoInline
     ]

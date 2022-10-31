@@ -18,6 +18,8 @@ class PedidoAdmin(admin.ModelAdmin):
 
     list_display_links = ['id', 'criado', 'usuario']
 
+    list_per_page = 20
+
     search_fields = ['usuario']
 
     def valor_total(self, obj):
