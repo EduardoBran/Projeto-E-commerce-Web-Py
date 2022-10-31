@@ -17,9 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from perfil.views import BasePerfil
 
 urlpatterns = [
     path('', include('produto.urls')),
+    path('', include('django.contrib.auth.urls')),
+    path('accounts/login/', BasePerfil.as_view(), name='entrar'),
     path('perfil/', include('perfil.urls')),
     path('pedido/', include('pedido.urls')),
     path('suporte/', include('suporte.urls')),

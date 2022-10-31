@@ -14,15 +14,15 @@ class ContatoForm(forms.Form):
         assunto = self.cleaned_data['assunto']
         mensagem = self.cleaned_data['mensagem']
 
-        corpo = f'Nome:{nome}\nMensagem:{mensagem}'
+        corpo = f'Nome: {nome}\nEmail: {email}\nMensagem:{mensagem}'
 
         mail = EmailMessage(
             subject=assunto,
-            from_email='eduardo.ads1814@gmail.com',
-            to=[email, ],
+            from_email=email,
+            to=['uniquestore.online2022@gmail.com', ],
             body=corpo,
             headers={
-                'Replay-To': 'eduardo.ads1814@gmail.com'
+                'Replay-To': 'uniquestore.online2022@gmail.com'
             }
         )
         mail.send()
