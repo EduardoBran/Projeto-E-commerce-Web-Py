@@ -89,6 +89,10 @@ class Favorito(BaseFavorito):
     def __str__(self):
         return f'{self.usuario}'
 
+    class Meta:
+        verbose_name = 'Produto Favorito'
+        verbose_name_plural = 'Favoritos Por Usuário'
+
 
 class ItemFavorito (BaseFavorito):
     favorito = models.ForeignKey(Favorito, on_delete=models.CASCADE)
