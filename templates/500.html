@@ -1,0 +1,30 @@
+{% extends '404.html' %}
+{% load static %}
+{% load omfilters %}
+
+{% block titulo %}Erro Interno do Servidor | {% endblock %}
+
+{% block pagina_erro %}
+    <style>   
+        .link-erro {
+            margin-left: 105px;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        @media only screen and (max-width: 991px) {
+            .link-erro {
+                text-align: center;
+                margin-left: 0px;
+                margin-bottom: 50px;
+            }
+        }
+    </style>    
+
+    <h2 class="titulo-erro" style='font-size: 21px;'>500 - Internal Server Error</h2>
+    <p class="conteudo-erro">Ocorreu algum tipo de problema que pode estar afetando o desempenho do servidor.</p>
+    <div class="link-erro">
+        <a href="{% url 'produto:home' %}">página inicial</a>
+    </div>
+    
+{% endblock %}

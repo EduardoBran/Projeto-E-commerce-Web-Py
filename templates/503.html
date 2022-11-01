@@ -1,0 +1,30 @@
+{% extends '404.html' %}
+{% load static %}
+{% load omfilters %}
+
+{% block titulo %}Servido Indisponível | {% endblock %}
+
+{% block pagina_erro %}
+    <style>   
+        .link-erro {
+            margin-left: 105px;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        @media only screen and (max-width: 991px) {
+            .link-erro {
+                text-align: center;
+                margin-left: 0px;
+                margin-bottom: 50px;
+            }
+        }
+    </style>    
+
+    <h2 class="titulo-erro" style='font-size: 24px;'>503 - Service Unavailable</h2>
+    <p class="conteudo-erro">O servidor não está pronto para lidar com a requisição. Causas comuns são um servidor que está em manutenção ou sobrecarregado.</p>
+    <div class="link-erro">
+        <a href="{% url 'produto:home' %}">página inicial</a>
+    </div>
+    
+{% endblock %}

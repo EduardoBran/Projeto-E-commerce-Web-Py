@@ -1,0 +1,126 @@
+/* estrutura */
+.site-footer {
+    background: #008B8B !important;
+    padding: 22px 0px;
+    font-size: 1.02rem;
+    line-height: 30px;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* hr */
+.site-footer hr {
+    border-top-color: #bbb;
+    opacity: 0.5
+}
+
+.site-footer hr.small {
+    margin: 20px 0
+}
+
+/* texto */
+.site-footer h6 {
+    color: #fff;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.site-footer a {
+    color: white;
+}
+
+.site-footer a:hover {
+    text-decoration: none;
+}
+
+.footer-links {
+    list-style: none
+}
+
+.footer-links li {
+    display: block
+}
+
+.footer-links a {
+    color: #F0F0F0;
+}
+
+.footer-links a:active,
+.footer-links a:focus,
+.footer-links a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.footer-links.inline li {
+    display: inline-block
+}
+
+.copyright-text {
+    margin: 0;
+}
+
+.copyright-text label {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-right: 10px;
+}
+
+/* icone rede social */
+
+.copyright-text a {
+    font-size: 1.25rem;
+    color: #fff;
+    margin: 0px 7px;
+}
+
+.copyright-text a:active,
+.copyright-text a:focus,
+.copyright-text a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* responsivo */
+@media (max-width:991px) {
+    .site-footer [class^=col-] {
+        margin-bottom: 30px
+    }
+}
+
+@media (max-width:767px) {
+    .site-footer {
+        padding-bottom: 0
+    }
+
+    .site-footer .copyright-text {
+        text-align: center
+    }
+}
+
+@media (max-width:500px) {
+    .site-footer {
+        font-size: 1.1rem;
+    }
+
+    .site-footer h6 {
+        font-size: 1.45rem;
+        margin-left: 9px;
+    }
+
+    .footer-linksMobile {
+        margin-left: 12px;
+    }
+
+    .copyright-text label {
+        font-size: 1.2rem;
+    }
+
+    .copyright-text a {
+        font-size: 1.15rem;
+        color: #fff;
+        margin: 0px 7px;
+    }
+}

@@ -1,0 +1,84 @@
+
+    /* page produtos */
+
+    /* selects inicio */
+    .spanFiltro {
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .ladoMobile {
+        text-align: right;
+    }
+
+    /* cards img */
+    .card img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+        transition: ease-in-out .3s;
+        box-shadow: 0 0 0 rgb(0 0 0 / 10%);
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-top: 5px;
+    }
+
+    .card a:hover img {
+        opacity: .9;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+    }
+
+    /* selects mobile*/
+    @media (max-width: 769px) {
+        .ladoMobile {
+            text-align: left;
+        }
+
+        .espacoMobile {
+            margin-right: 12px;
+        }
+    }
+
+    /* carousel pequeno */
+
+    .text-box h5 {
+        color: #076B6B;
+        font-weight: bold;
+    }
+
+    .text-box span {
+        color: red;
+        font-weight: bold;
+    }
+
+    /* select carrinho */
+    .form-group label {
+        color: #1D1D1E;
+        font-style: italic;
+    }
+
+    .form-group button {
+        border-radius: 12px;
+    }
+
+    .form-selectCarrinho {
+        background-color: #f1f1f1;
+        border-radius: 10px;
+        width: 60px;
+        text-align: center;
+    }
+
+    /** responsivo **/
+
+    @media (max-width: 1000px) {
+        .text-box h5 {
+            font-size: 1.025rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .text-box h5 {
+            font-size: 1.125rem;
+        }
+    }

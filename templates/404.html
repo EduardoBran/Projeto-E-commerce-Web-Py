@@ -1,0 +1,115 @@
+{% extends 'basePerfil.html' %}
+{% load static %}
+{% load omfilters %}
+
+{% block titulo %}Página Não Encontrada | {% endblock %}
+
+{% block conteudo %}
+
+<style>
+    .emoji-triste {
+        text-align: right;
+        margin-top: 100px;
+        margin-bottom: 150px;
+    }
+
+    .emoji-triste h1 {
+        font-family: 'Passion One', cursive;
+        color: #008B8B;
+        font-size: 100px;
+        letter-spacing: 10.5px;
+        font-weight: 900;
+    }
+
+    .titulo-erro {
+        font-family: 'Raleway', sans-serif;
+        color: #292929;
+        font-size: 28px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        margin-top: 120px;
+    }
+
+    .conteudo-erro {
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 0;
+        max-width: 370px;
+        text-align: justify;
+        color: #333;
+    }
+
+    .link-erro {
+        margin-left: 80px;
+        margin-bottom: 20px;
+        margin-top: 40px;
+    }
+
+    .link-erro a {
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: #fff;
+        padding: 15px 30px;
+        border-radius: 40px;
+        color: #292929;
+        font-weight: 700;
+        -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+
+    .link-erro a:hover {
+        color: #fff;
+        background-color: #008B8B;
+    }
+
+    @media only screen and (max-width: 991px) {
+        .emoji-triste {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 0px;
+            margin-right: 5px;
+        }
+
+        .titulo-erro {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .conteudo-erro {
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .link-erro {
+            text-align: center;
+            margin-left: 0px;
+            margin-bottom: 50px;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="emoji-triste">
+            <h1>:(</h1>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+        {% block pagina_erro %}
+        <h2 class="titulo-erro">404 - Page not found</h2>
+        <p class="conteudo-erro">A página que você está procurando pode ter sido removida ou está temporariamente
+            indisponível.</p>
+        <div class="link-erro">
+            <a href="{% url 'produto:home' %}">página inicial</a>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}
