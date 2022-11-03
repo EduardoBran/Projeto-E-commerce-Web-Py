@@ -15,6 +15,7 @@ gunicorn==20.1.0
 isort==5.10.1
 lazy-object-proxy==1.7.1
 mccabe==0.7.0
+model-bakery==1.9.0
 model-mommy==2.0.0
 Pillow==9.2.0
 platformdirs==2.5.2
@@ -23,6 +24,7 @@ pycodestyle==2.8.0
 pylint==2.14.4
 pylint-django==2.5.3
 pylint-plugin-utils==0.7
+python-barcode==0.14.0
 sqlparse==0.4.2
 toml==0.10.2
 tomli==2.0.1
