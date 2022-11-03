@@ -1,6 +1,5 @@
 import re
 from datetime import date
-from unittest.mock import NonCallableMagicMock
 
 from django.contrib.auth.models import User
 from django.db import models

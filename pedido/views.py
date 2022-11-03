@@ -2,10 +2,10 @@ from datetime import date, timedelta
 
 from categoria.models import Categoria
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render, reverse
 from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView
-from perfil.models import Perfil
 from produto.models import Favorito, Variacao
 from utils import utils
 
@@ -186,6 +186,19 @@ class SalvarPedido(View):
 
 class Conta(DispatchLoginRequiredMixin, TemplateView):
     template_name = 'pedido/conta.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        teste = User.objects.all().filter(username=self.request.user)
+
+        teste = teste.values('last_login')
+
+        print('\n*************************\n')
+        print(teste)
+        print('\n*************************\n')
+
+        return context
 
 
 class Lista(DispatchLoginRequiredMixin, ListView):
