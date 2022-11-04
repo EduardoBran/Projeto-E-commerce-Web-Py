@@ -1,4 +1,3 @@
-from categoria.models import Categoria
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponse
@@ -7,6 +6,8 @@ from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+
+from categoria.models import Categoria
 from perfil.models import Perfil
 
 from . import models
@@ -658,8 +659,7 @@ class RemoverDoCarrinhoModal(View):
         if self.request.session['carrinho'][variacao_id]['quantidade'] <= 0:
             messages.warning(
                 self.request,
-                f'Produto {carrinho["produto_nome"]} (Tam: {carrinho["variacao_nome"]}) '
-                f'removido do seu carrinho.'
+                f'O Produto foi removido do seu carrinho.'
             )
             del self.request.session['carrinho'][variacao_id]
             self.request.session.save()
@@ -672,11 +672,6 @@ class RemoverDoCarrinhoModal(View):
             f'Foi removido 1x {produto_nome} (Tam: {variacao_nome}) '
             f'do seu carrinho.'
         )
-
-        # tamanho = self.request.session['carrinho'][variacao_id]['quantidade']
-        # print('\n***********\n')
-        # print(tamanho)
-        # print('\n***********\n')
 
         return redirect(http_referer)
 
